@@ -8,10 +8,19 @@ import { LayoutComponent } from './layout.component';
 import { LayoutRoutingModule } from './layout-routing.module';
 import { HomeComponent } from './home/home.component';
 import { NotfoundComponent } from './notfound/notfound.component';
-import { HeaderComponent, FooterComponent, SearchComponent } from '../shared';
+import { HeaderComponent, FooterComponent, SearchComponent, TableComponent, AddComponent } from '../shared';
+ //modal
+ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+ //Table
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import {NgxPaginationModule} from 'ngx-pagination';
+//forms
+import { FormsModule} from '@angular/forms';
+
 
 @NgModule({
   declarations: [
+    //layout
     ContactComponent,
     AboutComponent,
     AdminComponent,
@@ -19,14 +28,24 @@ import { HeaderComponent, FooterComponent, SearchComponent } from '../shared';
     LayoutComponent,
     HomeComponent,
     NotfoundComponent,
+    //shared
     HeaderComponent,
     FooterComponent,
-    SearchComponent
+    SearchComponent,
+    TableComponent,
+    AddComponent
   ],
 
   imports: [
     CommonModule,
-    LayoutRoutingModule
+    LayoutRoutingModule,
+    //forms
+    FormsModule,
+    NgbModule,
+    Ng2SearchPipeModule,
+    NgxPaginationModule,
+
+    
   ]
 })
 export class LayoutModule { }

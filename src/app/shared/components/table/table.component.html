@@ -1,0 +1,22 @@
+<app-search></app-search>
+<div class="table-responsive">
+  <table class="table" [ngClass]='theme'>
+    <thead>
+      <tr>
+        <th *ngFor="let col of header">
+          {{col}}
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let row of catalog$ | async">
+        <td *ngFor="let col of header">
+          {{row[col]}}
+        </td>
+      </tr >
+    </tbody>
+  </table>
+  
+</div>
+
+

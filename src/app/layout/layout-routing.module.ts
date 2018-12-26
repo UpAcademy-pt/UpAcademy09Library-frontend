@@ -18,6 +18,7 @@ const routes: Routes = [
             { path: 'admin', component: AdminComponent },
             { path: 'about', component: AboutComponent },
             { path: 'contact', component: ContactComponent },
+            //notfound não funciona
             { path: 'notfound', component: NotfoundComponent },
             { path: '**', redirectTo: 'notfound' }
 
