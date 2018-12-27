@@ -9,13 +9,7 @@ import { LayoutRoutingModule } from './layout-routing.module';
 import { HomeComponent } from './home/home.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { HeaderComponent, FooterComponent, SearchComponent, TableComponent, AddComponent } from '../shared';
- //modal
- import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
- //Table
-import { Ng2SearchPipeModule } from 'ng2-search-filter';
-import {NgxPaginationModule} from 'ngx-pagination';
-//forms
-import { FormsModule} from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -39,13 +33,7 @@ import { FormsModule} from '@angular/forms';
   imports: [
     CommonModule,
     LayoutRoutingModule,
-    //forms
-    FormsModule,
-    NgbModule,
-    Ng2SearchPipeModule,
-    NgxPaginationModule,
-
-    
+    FormsModule
   ]
 })
 export class LayoutModule { }

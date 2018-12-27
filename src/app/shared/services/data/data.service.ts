@@ -9,8 +9,8 @@ import { NgForm } from '@angular/forms';
 export class DataService {
    //observable
   public catalog$: ReplaySubject<any[]> = new ReplaySubject(1);
-  isLoadingResults: boolean;
 
+  
   constructor(private catalogApi: CatalogApiService) {
       this.getCatalog();
     }
@@ -24,25 +24,6 @@ export class DataService {
     }
 
     public createCatalog(catalog) {
-      this.catalogApi.createBook(catalog).subscribe(
-        (res: any) => {
-          this.catalog$.next(res);
-        }
-      );
+      this.catalogApi.createBook(catalog);
     }
-
-    public onFormSubmit(form:NgForm) {
-      this.isLoadingResults = true;
-      this.catalogApi.createBook(form)
-        .subscribe(res => {
-      
-            this.isLoadingResults = false;
-          
-          }, (err) => {
-            console.log(err);
-            this.isLoadingResults = false;
-          });
-    }
-
-
 }

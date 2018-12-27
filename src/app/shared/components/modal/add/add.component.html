@@ -1,35 +1,27 @@
-<!-- <ng-template #content let-modal>
-  <div class="modal-header"  *ngIf="isLoadingResults"  >
-    <h4 class="modal-title" id="modal-basic-title">Introduzir um livro</h4>
-    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+<button type="button" class="btn btn-primary" (click)="openModal(template)">Create template modal</button>
+
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Add Books</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
   <div class="modal-body">
-    <form [FormGroup]="bookForm" (ngSubmit)="onFormSubmit(bookForm.value)">
+    <form>
       <div class="form-group">
-        <label for="title">Titlo</label>
-        <input type="text" class="form-control" id="title" placeholder="Titlo" formControlName="book_title">
+        <label for="title">Title</label>
+        <input type="text" class="form-control" name="title"  [(ngModel)] = "catalog.title" required>
       </div>
       <div class="form-group">
-        <label for="author">Autor</label>
-        <input type="text" class="form-control" id="author" placeholder="Autor" formControlName="book_author">
+        <label for="description">description</label>
+        <input type="text" class="form-control" name="description"  [(ngModel)] = "catalog.description" required>
       </div>
       <div class="form-group">
-        <label for="description">Tema</label>
-        <input type="text" class="form-control" id="description" placeholder="Descrição" formControlName="book_description" >
+        <label for="author">author</label>
+        <input type="text" class="form-control" name="author" [(ngModel)] = "catalog.author" required>
       </div>
-      <div class="form-group">
-        <label for="Isbn">Isbn</label>
-        <input type="text" class="form-control" id="Isbn" placeholder="Isbn" formControlName="book_isbn">
-      </div>
+      <button type="button" (click)="onSubmit()" class="btn btn-success">Submit</button>
     </form>
   </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
-  </div>
 </ng-template>
-
-<button class="btn btn-lg btn-outline-primary" (click)="open(content)">Introduzir um livro</button>
-
-<hr> -->
