@@ -26,4 +26,8 @@ export class DataService {
     public createCatalog(catalog) {
       this.catalogApi.createBook(catalog);
     }
+
+    public deleteCatalogService(id){
+      this.catalogApi.deleteBook(id);
+    }
 }

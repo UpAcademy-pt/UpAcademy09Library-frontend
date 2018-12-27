@@ -16,12 +16,12 @@ export class CatalogApiService {
 
   public getCatalogDB() {
 
-    return this.http.get('http://localhost:8080/libraryManagmentApp/api/books/');
+    return this.http.get(apiUrl);
   }
 
   public getCatalogById(id: number) {
 
-    return this.http.get('http://localhost:8080/libraryManagmentApp/api/books/' + id);
+    return this.http.get(apiUrl + id);
   }
 
   public createBook(book: Catalog) {
@@ -31,9 +31,8 @@ export class CatalogApiService {
       error => { console.error(error) });
   }
 
-  public deleteBook(book: Catalog) {
-
-    this.http.post(apiUrl, book.id).subscribe(
+  public deleteBook(id) {
+    this.http.delete(apiUrl + id).subscribe(
       (res) => { console.log("OK") },
       error => { console.error(error) });
   }

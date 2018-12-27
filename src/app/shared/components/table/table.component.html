@@ -14,8 +14,8 @@
           {{row[col]}}
         </td>
         <td>
-          <button (click)="deleteBook(book)" class="btn btn-info"> Delete</button>  
-          <button (click)="updateBook(book)" style="margin-left: 20px;" class="btn btn-info"> Edit</button>  </td>
+          <button (click)="deleteCatalog(row.id)" class="btn btn-info"> Delete</button>  
+          <button (click)="updateBook(catalog)" style="margin-left: 20px;" class="btn btn-info"> Edit</button> </td>
       </tr >
     </tbody>
   </table>
