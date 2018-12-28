@@ -15,18 +15,21 @@ export class UpdateComponent implements OnInit {
   @Input() row: any;
 
   modalRef: BsModalRef;
-  catalog: Catalog = new Catalog();
+  public catalog: Catalog = new Catalog();
 
   constructor(private modalService: BsModalService, private dataService: DataService) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.catalog = this.row;
+  }
 
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
+   
   }
 
   onSubmit() {
-  this.catalog.id = this.row.id;
+  //this.catalog.id = this.row.id;
   this.dataService.updateCatalog(this.catalog);
   }
  }
