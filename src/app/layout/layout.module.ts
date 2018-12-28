@@ -8,8 +8,9 @@ import { LayoutComponent } from './layout.component';
 import { LayoutRoutingModule } from './layout-routing.module';
 import { HomeComponent } from './home/home.component';
 import { NotfoundComponent } from './notfound/notfound.component';
-import { HeaderComponent, FooterComponent, SearchComponent, TableComponent, AddComponent, UpdateComponent } from '../shared';
+import { HeaderComponent, FooterComponent, TableComponent, AddComponent, UpdateComponent } from '../shared';
 import { FormsModule } from '@angular/forms';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 
 @NgModule({
@@ -25,17 +26,19 @@ import { FormsModule } from '@angular/forms';
     //shared components
     HeaderComponent,
     FooterComponent,
-    SearchComponent,
     TableComponent,
     //shared modal
     AddComponent,
-    UpdateComponent 
+    UpdateComponent
   ],
 
   imports: [
     CommonModule,
     LayoutRoutingModule,
-    FormsModule
+    // modal
+    FormsModule,
+    // search
+    Ng2SearchPipeModule
   ]
 })
 export class LayoutModule { }

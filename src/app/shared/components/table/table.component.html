@@ -1,5 +1,8 @@
-<app-search></app-search>
+
 <div class="table-responsive">
+    <div class="search-hero">
+        <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="&#61442; search">
+      </div>
   <table class="table" [ngClass]='theme'>
     <thead>
       <tr>
@@ -9,7 +12,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let row of catalog$ | async">
+      <tr *ngFor="let row of catalog$ | async  | filter:searchText">
         <td *ngFor="let col of header">
           {{row[col]}}
         </td>

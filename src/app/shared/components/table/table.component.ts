@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataService } from '../../services/data/data.service';
-import { UpdateComponent } from '../modal';
+
 
 
 
@@ -15,6 +15,7 @@ export class TableComponent implements OnInit {
   @Input() header: any;
   @Input() catalog$: any;
   @Input() theme = 'table-dark';
+  searchText;
 
   constructor(public router: Router, private dataService: DataService){ }
 
