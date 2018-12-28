@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataService } from '../../services/data/data.service';
+import { UpdateComponent } from '../modal';
 
 
 
@@ -15,8 +16,7 @@ export class TableComponent implements OnInit {
   @Input() catalog$: any;
   @Input() theme = 'table-dark';
 
-
-  constructor(public router: Router, private dataService: DataService) { }
+  constructor(public router: Router, private dataService: DataService){ }
 
   ngOnInit() {
   }
@@ -27,7 +27,5 @@ export class TableComponent implements OnInit {
     this.dataService.deleteCatalogService(id);
     console.log("delete in table ok")
 }
-
-
 
 }

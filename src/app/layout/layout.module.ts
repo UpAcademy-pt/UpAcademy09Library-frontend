@@ -8,7 +8,7 @@ import { LayoutComponent } from './layout.component';
 import { LayoutRoutingModule } from './layout-routing.module';
 import { HomeComponent } from './home/home.component';
 import { NotfoundComponent } from './notfound/notfound.component';
-import { HeaderComponent, FooterComponent, SearchComponent, TableComponent, AddComponent } from '../shared';
+import { HeaderComponent, FooterComponent, SearchComponent, TableComponent, AddComponent, UpdateComponent } from '../shared';
 import { FormsModule } from '@angular/forms';
 
 
@@ -22,12 +22,14 @@ import { FormsModule } from '@angular/forms';
     LayoutComponent,
     HomeComponent,
     NotfoundComponent,
-    //shared
+    //shared components
     HeaderComponent,
     FooterComponent,
     SearchComponent,
     TableComponent,
-    AddComponent
+    //shared modal
+    AddComponent,
+    UpdateComponent 
   ],
 
   imports: [

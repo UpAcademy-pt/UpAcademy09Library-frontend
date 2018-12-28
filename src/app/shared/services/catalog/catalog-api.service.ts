@@ -36,6 +36,14 @@ export class CatalogApiService {
       (res) => { console.log("OK") },
       error => { console.error(error) });
   }
+
+  public updateBook(book: Catalog) {
+    console.log("book : ", book);
+    this.http.put(apiUrl, book).subscribe(
+      (res) => { console.log("OK") },
+      error => { console.error(error) });
+  }
+
 }
 
 

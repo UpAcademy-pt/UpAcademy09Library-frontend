@@ -15,7 +15,7 @@
         </td>
         <td>
           <button (click)="deleteCatalog(row.id)" class="btn btn-info"> Delete</button>  
-          <button (click)="updateBook(catalog)" style="margin-left: 20px;" class="btn btn-info"> Edit</button> </td>
+          <app-update [row]='row' ></app-update></td>
       </tr >
     </tbody>
   </table>
