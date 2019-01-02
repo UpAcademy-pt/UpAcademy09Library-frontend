@@ -3,6 +3,7 @@
     <div class="search-hero">
         <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="&#61442; search">
       </div>
+      <br>
   <table class="table" [ngClass]='theme'>
     <thead>
       <tr>
@@ -16,9 +17,10 @@
         <td *ngFor="let col of header">
           {{row[col]}}
         </td>
-        <td>
+        <td *ngIf="isBook">
           <button (click)="deleteCatalog(row.id)" class="btn btn-info"> Delete</button>  
-          <app-update [row]='row' ></app-update></td>
+          <app-update [row]='row' ></app-update>
+        </td>
       </tr >
     </tbody>
   </table>

@@ -23,11 +23,21 @@ export class DataService {
       );
     }
     public createCatalog(catalog) {
-      this.catalogApi.createBook(catalog);
+      this.catalogApi.createBook(catalog).subscribe(
+        (res) => {
+          console.log("OK");
+          this.getCatalog();
+        },
+        error => { console.error(error) });
     }
 
     public deleteCatalogService(id){
-      this.catalogApi.deleteBook(id);
+      this.catalogApi.deleteBook(id).subscribe(
+        (res) => { 
+          console.log("OK");
+          this.getCatalog();
+        },
+        error => { console.error(error) });
     }
 
     public updateCatalog(catalog){

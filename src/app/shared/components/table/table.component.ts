@@ -15,6 +15,7 @@ export class TableComponent implements OnInit {
   @Input() header: any;
   @Input() catalog$: any;
   @Input() theme = 'table-dark';
+  @Input() isBook = true;
   searchText;
 
   constructor(public router: Router, private dataService: DataService){ }

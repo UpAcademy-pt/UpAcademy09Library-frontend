@@ -11,6 +11,8 @@ import { NotfoundComponent } from './notfound/notfound.component';
 import { HeaderComponent, FooterComponent, TableComponent, AddComponent, UpdateComponent } from '../shared';
 import { FormsModule } from '@angular/forms';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 
 @NgModule({
@@ -29,7 +31,9 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     TableComponent,
     //shared modal
     AddComponent,
-    UpdateComponent
+    UpdateComponent,
+    LoginComponent,
+    RegisterComponent
   ],
 
   imports: [

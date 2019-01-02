@@ -11,8 +11,7 @@ export class LayoutComponent implements OnInit {
   //usamos isto para definir que a app começa na homepage
   constructor(
     private router: Router) {
-    this.router.navigate(['/home']
-    )
+    // this.router.navigate(['/login'])
   }
 
   ngOnInit() {

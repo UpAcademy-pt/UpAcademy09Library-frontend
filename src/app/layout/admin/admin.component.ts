@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ReplaySubject } from 'rxjs';
-import { DataService, CatalogApiService } from 'src/app/shared';
-import { Catalog } from 'src/app/shared/models';
+import { DataService } from 'src/app/shared';
 
 @Component({
   selector: 'app-admin',
@@ -9,12 +8,14 @@ import { Catalog } from 'src/app/shared/models';
   styleUrls: ['./admin.component.css']
 })
 export class AdminComponent implements OnInit {
-   //observable
+  //observable
   public catalog$: ReplaySubject<any[]> = new ReplaySubject(1);
 
-  constructor(private dataService: DataService) {
+  constructor(
+    private dataService: DataService
+  ) {
     this.catalog$ = this.dataService.catalog$;
-   }
+  }
 
   ngOnInit() {
   }

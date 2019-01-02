@@ -12,7 +12,9 @@ const apiUrl = "http://localhost:8080/libraryManagmentApp/api/books/";
 export class CatalogApiService {
 
   // pedidos ajax
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+  ) { }
 
   public getCatalogDB() {
 
@@ -26,15 +28,11 @@ export class CatalogApiService {
 
   public createBook(book: Catalog) {
     console.log("book : ", book);
-    this.http.post(apiUrl, book).subscribe(
-      (res) => { console.log("OK") },
-      error => { console.error(error) });
+    return this.http.post(apiUrl, book)
   }
 
   public deleteBook(id) {
-    this.http.delete(apiUrl + id).subscribe(
-      (res) => { console.log("OK") },
-      error => { console.error(error) });
+    return this.http.delete(apiUrl + id)
   }
 
   public updateBook(book: Catalog) {
