@@ -16,10 +16,10 @@
         <li class="nav-item">
           <a class="nav-item nav-link" href="#" [routerLinkActive]="['active']" routerLink="/contact">contactos</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" *ngIf="isLogged">
           <a class="nav-item nav-link" href="#" [routerLinkActive]="['active']" routerLink="/user">utilizador</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" *ngIf="isAdmin">
           <a class="nav-item nav-link" href="#" [routerLinkActive]="['active']" routerLink="/admin">administrador</a>
         </li>
         

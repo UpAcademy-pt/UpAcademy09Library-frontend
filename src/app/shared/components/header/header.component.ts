@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,9 +8,13 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
 
+  
+  @Input() isLogged?:boolean =  false;
+  @Input() isAdmin?:boolean =  false;
   constructor(public router: Router) { }
 
   ngOnInit() {
+     
   }
 
 }
