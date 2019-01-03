@@ -13,6 +13,8 @@ import { FormsModule } from '@angular/forms';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { BsDropdownModule } from 'ngx-bootstrap';
+import { FilterPipe } from '../shared/components/filter/filter.pipe';
 
 
 @NgModule({
@@ -33,7 +35,8 @@ import { RegisterComponent } from './register/register.component';
     AddComponent,
     UpdateComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    FilterPipe
   ],
 
   imports: [
@@ -42,7 +45,9 @@ import { RegisterComponent } from './register/register.component';
     // modal
     FormsModule,
     // search
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
+    // dropdown
+    BsDropdownModule.forRoot()
   ]
 })
 export class LayoutModule { }
