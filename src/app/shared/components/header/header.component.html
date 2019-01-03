@@ -23,7 +23,7 @@
           <a class="nav-item nav-link" href="#" [routerLinkActive]="['active']" routerLink="/admin">administrador</a>
         </li>
         <li class="nav-item" >
-          <a class="nav-item nav-link" href="#" [routerLinkActive]="['active']" routerLink="/login">login</a>
+          <a class="nav-item nav-link" (click)="openModal(login)">login</a>
         </li>
         <li class="nav-item" >
           <a class="nav-item nav-link" href="#" [routerLinkActive]="['active']" routerLink="/register">registe-se</a>
@@ -33,3 +33,26 @@
     </div>
   </div>
 </nav>
+
+<ng-template #login>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Login</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="text" class="form-control" name="email"  [(ngModel)] = "account.email" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="text" class="form-control" name="password"  [(ngModel)] = "account.password" required>
+      </div>
+      <div>{{msg}}</div>
+      <button type="button" (click)="loginUserNg()" class="btn btn-success">Login</button>
+    </form>
+  </div>
+</ng-template>
