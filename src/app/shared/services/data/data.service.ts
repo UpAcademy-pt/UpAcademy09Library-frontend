@@ -41,6 +41,7 @@ export class DataService {
     }
 
     public updateCatalog(catalog){
+      console.log(catalog);
       this.catalogApi.updateBook(catalog);
     }
 }

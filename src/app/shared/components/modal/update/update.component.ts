@@ -16,11 +16,9 @@ export class UpdateComponent implements OnInit {
 
   modalRef: BsModalRef;
   public catalog: Catalog = new Catalog();
-  updateImage: string;
+ 
 
-  constructor(private modalService: BsModalService, private dataService: DataService) {
-    this.updateImage = '/assets/icons8-compose-16.png'
-   }
+  constructor(private modalService: BsModalService, private dataService: DataService) {}
 
   ngOnInit() {
     this.catalog = this.row;
@@ -28,11 +26,9 @@ export class UpdateComponent implements OnInit {
 
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
-   
   }
 
   onSubmit() {
-  //this.catalog.id = this.row.id;
   this.dataService.updateCatalog(this.catalog);
   }
  }

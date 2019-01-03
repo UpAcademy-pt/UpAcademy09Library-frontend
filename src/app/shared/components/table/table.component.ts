@@ -20,14 +20,10 @@ export class TableComponent implements OnInit {
 
   // filter var
   selectedTypeSearch: string = '';
-  searchableList: string[];
-  // image
-  deleteImage: string;
+  searchableList: string;
 
-  constructor(public router: Router, private dataService: DataService) {
-    // é necessário adicionar ao constructor as imagens
-    this.deleteImage = '/assets/icons8-close-window-16.png';
-  }
+
+  constructor(public router: Router, private dataService: DataService) {}
 
   ngOnInit() { }
   
@@ -43,9 +39,7 @@ export class TableComponent implements OnInit {
   selectChangeHandler(event: any) {
     // search selected
     this.selectedTypeSearch = event.target.value;
-  
     // search Type to FilterPipe
-    return this.searchableList = [this.selectedTypeSearch];
-    
+    return this.searchableList = this.selectedTypeSearch; 
   }
 }

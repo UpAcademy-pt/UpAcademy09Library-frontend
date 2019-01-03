@@ -5,19 +5,36 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class FilterPipe implements PipeTransform {
 
-  // falta colocar para caso seja keyword fazer a pesquisa geral
-  transform(value: any, input: string, searchableList: any) {
-    if (input) {
+
+  transform(value: any, input: string, searchableList: string) {
+
+    if (input && searchableList) {
       input = input.toLowerCase();
-      return value.filter(function (catalog: any) {
+      return value.filter((catalog: any) => {
         var isTrue = false;
-        for (var type in searchableList) {
-          if (catalog[searchableList[type]].toLowerCase().indexOf(input) > -1) {
-            isTrue = true;
-          }
-          if (isTrue) {
-            return catalog;
-          }
+        switch (searchableList) {
+          case 'keyword':
+            console.log(searchableList);
+            if (catalog['title'].indexOf(input) > -1     ||
+              catalog['author'].indexOf(input) > -1      ||
+              catalog['description'].indexOf(input) > -1 ||
+              catalog['topic'].indexOf(input) > -1       ||
+              catalog['isbn'].indexOf(input) > -1) {
+              isTrue = true;
+            }
+            if (isTrue) {
+              return catalog;
+            }
+
+            break;
+          default:
+            if (catalog[searchableList].toLowerCase().indexOf(input) > -1) {
+              isTrue = true;
+            }
+            if (isTrue) {
+              return catalog;
+            }
+            break;
         }
       })
     }

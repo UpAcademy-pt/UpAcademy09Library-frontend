@@ -3,10 +3,12 @@
     <div class="row justify-content-md-left">
       <div class="col-2">
         <select (change)="selectChangeHandler($event)">
-          <option value="keyword" (click)="changeValue(true)">Palavra-Chave</option>
-          <option value="title" (click)="changeValue(false)">Título</option>
-          <option value="author" (click)="changeValue(false)">Autor</option>
-          <option value="description" (click)="changeValue(false)">descrição</option>
+          <option value="keyword">Palavra-Chave</option>
+          <option value="title">Título</option>
+          <option value="author">Autor</option>
+          <option value="description">descrição</option>
+          <option value="isbn">isbn</option>
+          <option value="topic">topico</option>
         </select>
       </div>
       <div class="col-10">
@@ -29,9 +31,9 @@
       <td *ngFor="let col of header">
         {{row[col]}}
       </td>
-      <td *ngIf="isBook">
+      <td>
         <app-update [row]='row'></app-update>
-        <button (click)="deleteCatalog(row.id)" class="btn btn-info"><img [src]="deleteImage"></button>
+        <button (click)="deleteCatalog(row.id)" class="btn btn-info"><img src="/assets/icons8-close-window-16.png"></button>
       </td>
     </tr>
   </tbody>
