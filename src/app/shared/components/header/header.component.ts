@@ -9,8 +9,8 @@ import { Router } from '@angular/router';
 export class HeaderComponent implements OnInit {
 
   
-  @Input() isLogged?:boolean =  false;
-  @Input() isAdmin?:boolean =  false;
+  @Input() isLogged?:boolean =  true;
+  @Input() isAdmin?:boolean =  true;
   constructor(public router: Router) { }
 
   ngOnInit() {
