@@ -15,6 +15,8 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { BsDropdownModule } from 'ngx-bootstrap';
 import { FilterPipe } from '../shared/components/filter/filter.pipe';
+import { PanelComponent } from '../shared/components/panel/panel.component';
+
 
 
 @NgModule({
@@ -31,12 +33,14 @@ import { FilterPipe } from '../shared/components/filter/filter.pipe';
     HeaderComponent,
     FooterComponent,
     TableComponent,
+    PanelComponent,
     //shared modal
     AddComponent,
     UpdateComponent,
     LoginComponent,
     RegisterComponent,
-    FilterPipe
+    FilterPipe,
+  
   ],
 
   imports: [
