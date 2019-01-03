@@ -8,9 +8,13 @@ import { Router } from '@angular/router';
 })
 export class LayoutComponent implements OnInit {
 
+ 
+ 
   //usamos isto para definir que a app começa na homepage
-  constructor(
-    private router: Router) {
+  constructor(private router: Router) {
+  
+   
+     
     // this.router.navigate(['/login'])
   }
 

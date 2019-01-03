@@ -16,8 +16,11 @@ export class UpdateComponent implements OnInit {
 
   modalRef: BsModalRef;
   public catalog: Catalog = new Catalog();
+  updateImage: string;
 
-  constructor(private modalService: BsModalService, private dataService: DataService) { }
+  constructor(private modalService: BsModalService, private dataService: DataService) {
+    this.updateImage = '/assets/icons8-compose-16.png'
+   }
 
   ngOnInit() {
     this.catalog = this.row;

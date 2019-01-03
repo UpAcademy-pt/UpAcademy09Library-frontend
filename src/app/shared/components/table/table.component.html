@@ -1,30 +1,39 @@
-
 <div class="table-responsive">
-    <div class="search-hero">
-        <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="&#61442; search">
+  <div class="search">
+    <div class="row justify-content-md-left">
+      <div class="col-2">
+        <select (change)="selectChangeHandler($event)">
+          <option value="keyword" (click)="changeValue(true)">Palavra-Chave</option>
+          <option value="title" (click)="changeValue(false)">Título</option>
+          <option value="author" (click)="changeValue(false)">Autor</option>
+          <option value="description" (click)="changeValue(false)">descrição</option>
+        </select>
       </div>
-      <br>
-  <table class="table" [ngClass]='theme'>
-    <thead>
-      <tr>
-        <th *ngFor="let col of header">
-          {{col}}
-        </th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let row of catalog$ | async  | filter:searchText">
-        <td *ngFor="let col of header">
-          {{row[col]}}
-        </td>
-        <td *ngIf="isBook">
-          <button (click)="deleteCatalog(row.id)" class="btn btn-info"> Delete</button>  
-          <app-update [row]='row' ></app-update>
-        </td>
-      </tr >
-    </tbody>
-  </table>
+      <div class="col-10">
+        <input class="form-control" type="text" name="search" [(ngModel)]="queryString" 
+        autocomplete="off" placeholder="Procurar por {{selectedTypeSearch}}">
+      </div>
+    </div>
+  </div>
+<br>
+<table class="table" [ngClass]='theme'>
+  <thead>
+    <tr>
+      <th *ngFor="let col of header">
+        {{col}}
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let row of catalog$ | async | FilterPipe: queryString: searchableList">
+      <td *ngFor="let col of header">
+        {{row[col]}}
+      </td>
+      <td *ngIf="isBook">
+        <app-update [row]='row'></app-update>
+        <button (click)="deleteCatalog(row.id)" class="btn btn-info"><img [src]="deleteImage"></button>
+      </td>
+    </tr>
+  </tbody>
+</table>
 </div>
-
-
-
