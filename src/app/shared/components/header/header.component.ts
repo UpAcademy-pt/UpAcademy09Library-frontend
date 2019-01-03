@@ -13,6 +13,7 @@ import { AcountApiService } from '../../services';
 export class HeaderComponent implements OnInit {
   @Input() isLogged?= false;
   @Input() isAdmin?= false;
+  
 
   public account: User = new User();
   public modalRef: BsModalRef;
@@ -38,6 +39,9 @@ export class HeaderComponent implements OnInit {
         if (res !== null) {
           this.accountApi.setCurrentUser(res);
           this.modalRef.hide();
+      
+          this.account=res;
+          console.log(this.account);
           if (res.admin) {
             this.router.navigate(['admin']);
             this.isAdmin = true;
