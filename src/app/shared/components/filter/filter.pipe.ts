@@ -5,8 +5,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class FilterPipe implements PipeTransform {
 
+  // falta colocar para caso seja keyword fazer a pesquisa geral
   transform(value: any, input: string, searchableList: any) {
-
     if (input) {
       input = input.toLowerCase();
       return value.filter(function (catalog: any) {

@@ -1,10 +1,16 @@
 export class Catalog {
-    //ver porque do ?
+    // ? quer dizer opcional
     id?: number;
-    title: string;
-    description: string;
-    author: string;
-    isbn: string;
+    title: String ;
+	description: String;
+	author: String;
+	photoLink: String;
+	topic: String;
+	location: String;
+	criationDate: String;
+	lastChangeDate: String;
+    isbn: String;
+	state: String;
     constructor(catalog?: any) {
         Object.assign(this, catalog);
     }

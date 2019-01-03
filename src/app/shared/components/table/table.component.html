@@ -30,8 +30,8 @@
         {{row[col]}}
       </td>
       <td *ngIf="isBook">
-        <button (click)="deleteCatalog(row.id)" class="btn btn-info"> Delete</button>
         <app-update [row]='row'></app-update>
+        <button (click)="deleteCatalog(row.id)" class="btn btn-info"><img [src]="deleteImage"></button>
       </td>
     </tr>
   </tbody>

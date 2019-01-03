@@ -17,14 +17,16 @@ export class TableComponent implements OnInit {
   @Input() catalog$: any;
   @Input() theme = 'table-dark';
   @Input() isBook = true;
-  search: any;
-  simpleSearch: boolean = false;
 
   // filter var
   selectedTypeSearch: string = '';
   searchableList: string[];
+  // image
+  deleteImage: string;
 
   constructor(public router: Router, private dataService: DataService) {
+    // é necessário adicionar ao constructor as imagens
+    this.deleteImage = '/assets/icons8-close-window-16.png';
   }
 
   ngOnInit() { }
@@ -46,14 +48,4 @@ export class TableComponent implements OnInit {
     return this.searchableList = [this.selectedTypeSearch];
     
   }
-
-  changeValue(valid: boolean) {
-    this.simpleSearch = valid;
-       }
-
-
-
-
-
-
 }
