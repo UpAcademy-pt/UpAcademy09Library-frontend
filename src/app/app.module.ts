@@ -14,7 +14,7 @@ import { BookDetailsComponent } from './shared/components/book-details/book-deta
 @NgModule({
   declarations: [
     AppComponent,
-    BookDetailsComponent,
+    
  
    
     
