@@ -1,3 +1,4 @@
+declare var Object: any;
 export class Catalog {
     // ? quer dizer opcional
     id?: number;

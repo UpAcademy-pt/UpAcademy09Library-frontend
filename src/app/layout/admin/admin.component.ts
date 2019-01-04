@@ -10,11 +10,11 @@ import { DataService } from 'src/app/shared';
 export class AdminComponent implements OnInit {
   //observable
   public catalog$: ReplaySubject<any[]> = new ReplaySubject(1);
+  public user$: ReplaySubject<any[]> = new ReplaySubject(1);
 
-  constructor(
-    private dataService: DataService
-  ) {
+  constructor(private dataService: DataService) {
     this.catalog$ = this.dataService.catalog$;
+    this.user$ = this.dataService.user$;
   }
 
   ngOnInit() {
