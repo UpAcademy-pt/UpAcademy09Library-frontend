@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { DataService } from '../../services';
 import { ReplaySubject } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-panel',
@@ -14,17 +15,23 @@ export class PanelComponent implements OnInit {
   searchableList: string;
 
   constructor(
-    private dataservice: DataService
+    private dataservice: DataService,
+    private router: Router
   ) {
     this.catalog$ = this.dataservice.catalog$;
    }
 
   ngOnInit() {
   }
+
  // search type
  selectChangeHandler(event: any) {
   // search selected
   this.selectedTypeSearch = event.target.value;
   // search Type to FilterPipe
   return this.searchableList = this.selectedTypeSearch; }
+
+  clickItem(item) {
+    this.router.navigate(['bookdetails', item.id]);
+  }
 }

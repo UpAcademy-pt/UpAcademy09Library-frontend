@@ -16,7 +16,7 @@ import { RegisterComponent } from './register/register.component';
 import { BsDropdownModule } from 'ngx-bootstrap';
 import { FilterPipe } from '../shared/components/filter/filter.pipe';
 import { PanelComponent } from '../shared/components/panel/panel.component';
-
+import { BookDetailsComponent } from './book-details/book-details.component';
 
 
 
