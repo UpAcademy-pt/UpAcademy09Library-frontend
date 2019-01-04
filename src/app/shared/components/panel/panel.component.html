@@ -1,8 +1,9 @@
 
 <div class="search">
+  <div class="container mb-3">
     <div class="row justify-content-md-left">
-      <div class="col-2">
-        <select (change)="selectChangeHandler($event)">
+      <div class="input-group">
+        <select  (change)="selectChangeHandler($event)">
           <option value="keyword">Palavra-Chave</option>
           <option value="title">Título</option>
           <option value="author">Autor</option>
@@ -10,15 +11,33 @@
           <option value="isbn">isbn</option>
           <option value="topic">topico</option>
         </select>
-      </div>
-      <div class="col-10">
+     
+    
         <input class="form-control" type="text" name="search" [(ngModel)]="queryString" 
         autocomplete="off" placeholder="Procurar por {{selectedTypeSearch}}">
       </div>
     </div>
+</div>
 
 
-<div class="card mb-3" *ngFor="let item of catalog$ | async | FilterPipe: queryString: searchableList">
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="card mb-3" *ngFor="let item of catalog$ | async | FilterPipe: queryString: searchableList">
   <h5 class="card-header">{{item.title}}</h5>
   <div class="card-body">
     <h5 class="card-title">Autor: {{item.author}}</h5>
