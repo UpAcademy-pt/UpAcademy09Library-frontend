@@ -62,16 +62,7 @@ export class DataService {
     }
 
     //create users
-    public createUser(user) {
-      this.acountApi.createUser(user).subscribe(
-        (res) => {
-          console.log("OK");
-          this.getUsers();
-        },
-        error => { console.error(error) });
+    public createUser(user): any {
+      return this.acountApi.createUser(user);
     }
-
-
-
-
 }

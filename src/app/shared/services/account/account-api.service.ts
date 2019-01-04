@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User } from '../../models/user';
+import { ReplaySubject } from 'rxjs';
 
 const apiUrl = "http://localhost:8080/libraryManagmentApp/api/users/";
 
@@ -9,23 +10,27 @@ const apiUrl = "http://localhost:8080/libraryManagmentApp/api/users/";
 })
 
 export class AcountApiService {
+  public currentUser$: ReplaySubject<User> = new ReplaySubject(1);
   private currentUser: User = new User();
-  public id ;
-  
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient
+  ) { }
 
-  public loginUserNg(email,password) {
-    return this.http.get(apiUrl +'loginuser?userEmail='+email+'&userPassword='+password);
+  public loginUserNg(email, password) {
+    return this.http.get(apiUrl + 'loginuser?userEmail=' + email + '&userPassword=' + password);
   }
 
   public logout() {
+    this.currentUser$.next(new User());
     this.currentUser = null;
+    
     return 'logout';
   }
 
   public setCurrentUser(user) {
     this.currentUser = user;
+    this.currentUser$.next(user);
   }
 
   public getCurrentId() {
@@ -43,7 +48,6 @@ export class AcountApiService {
   // create user
 
   public createUser(user: User) {
-    console.log("user : ", user);
     return this.http.post(apiUrl, user)
   }
 

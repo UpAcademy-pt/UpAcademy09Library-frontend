@@ -16,19 +16,19 @@
         <li class="nav-item">
           <a class="nav-item nav-link" href="#" [routerLinkActive]="['active']" routerLink="/contact">contactos</a>
         </li>
-        <li class="nav-item" *ngIf="isLogged && !isAdmin">
+        <li class="nav-item" *ngIf="(currentUser$ | async)?.id && ((currentUser$ | async)?.admin === false)">
           <a class="nav-item nav-link" href="#" [routerLinkActive]="['active']" routerLink="/user">{{account.name}}</a>
         </li>
-        <li class="nav-item" *ngIf="isLogged">
-            <a class="nav-item nav-link" href="#" [routerLinkActive]="['active']" routerLink="/home" (click)="isLogged=false">logout</a>
+        <li class="nav-item" *ngIf="(currentUser$ | async)?.id">
+            <a class="nav-item nav-link" href="#" [routerLinkActive]="['active']" routerLink="/home" (click)="logout()">logout</a>
           </li>
-        <li class="nav-item" *ngIf="isAdmin">
+        <li class="nav-item" *ngIf="(currentUser$ | async)?.admin">
           <a class="nav-item nav-link" href="#" [routerLinkActive]="['active']" routerLink="/admin">administrador</a>
         </li>
-        <li class="nav-item" *ngIf="!isLogged" >
+        <li class="nav-item" *ngIf="!(currentUser$ | async)?.id" >
           <a class="nav-item nav-link" (click)="openModal(login)">login</a>
         </li>
-        <li class="nav-item" *ngIf="!isLogged" >
+        <li class="nav-item" *ngIf="!(currentUser$ | async)?.id" >
           <a class="nav-item nav-link" href="#" [routerLinkActive]="['active']" routerLink="/register">registe-se</a>
         </li>
         
