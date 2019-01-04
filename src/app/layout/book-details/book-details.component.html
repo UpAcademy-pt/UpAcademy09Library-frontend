@@ -1,6 +1,14 @@
-<p>
-  book-details works!
-</p>
-<h5 class="card-title">Autor: {{catalog.author}}</h5>
+<h2>Detalhes do livro</h2>
+
+<div class="card">
+
+<!-- <img src="{{catalog.photoLink}}" alt="Não tem imagem"> -->
+<h3 class="card-title">Titulo: {{catalog.title}}</h3>
+<h5 class="card-text">Autor: {{catalog.author}}</h5>
+<h5 class="card-text">Categoria: {{catalog.topic}}</h5>
 <p class="card-text">Descrição: {{catalog.description}} </p>
+<p class="card-text">Localização: {{catalog.location}} </p>
+<p class="card-text">ISBN: {{catalog.isbn}} </p>
 <p class="card-text ">Estado: {{catalog.state}}</p>
+
+</div>
