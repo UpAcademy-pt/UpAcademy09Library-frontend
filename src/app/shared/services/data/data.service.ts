@@ -9,6 +9,7 @@ import { NgForm } from '@angular/forms';
 export class DataService {
    //observable
   public catalog$: ReplaySubject<any[]> = new ReplaySubject(1);
+  private catalog: any;
 
   
   constructor(private catalogApi: CatalogApiService) {
@@ -18,6 +19,7 @@ export class DataService {
     public getCatalog() {
       this.catalogApi.getCatalogDB().subscribe(
         (res: any) => {
+          this.catalog = res;
           this.catalog$.next(res);
         }
       );
@@ -44,4 +46,14 @@ export class DataService {
       console.log(catalog);
       this.catalogApi.updateBook(catalog);
     }
+
+    public getCatalogById(id){
+      for (const item of this.catalog) {
+        if(item.id === id) {
+          return item;
+        }
+      }
+    }
+
+    
 }

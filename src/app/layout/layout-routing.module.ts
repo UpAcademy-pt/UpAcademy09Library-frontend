@@ -9,6 +9,7 @@ import { HomeComponent } from './home/home.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { BookDetailsComponent } from './book-details/book-details.component';
 
 const routes: Routes = [
     {
@@ -24,6 +25,7 @@ const routes: Routes = [
             { path: 'login', component: LoginComponent},
             { path: 'register', component: RegisterComponent},
             { path: 'notfound', component: NotfoundComponent },
+            { path: 'bookdetails/:id', component: BookDetailsComponent },
             { path: '**', redirectTo: 'notfound' }
 
         ]

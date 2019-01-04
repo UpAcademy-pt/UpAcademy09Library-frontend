@@ -1,9 +1,8 @@
-
 <div class="search">
   <div class="container mb-3">
     <div class="row justify-content-md-left">
       <div class="input-group">
-        <select  (change)="selectChangeHandler($event)">
+        <select (change)="selectChangeHandler($event)">
           <option value="keyword">Palavra-Chave</option>
           <option value="title">Título</option>
           <option value="author">Autor</option>
@@ -11,41 +10,26 @@
           <option value="isbn">isbn</option>
           <option value="topic">topico</option>
         </select>
-     
-    
-        <input class="form-control" type="text" name="search" [(ngModel)]="queryString" 
-        autocomplete="off" placeholder="Procurar por {{selectedTypeSearch}}">
+
+
+        <input class="form-control" type="text" name="search" [(ngModel)]="queryString" autocomplete="off" placeholder="Procurar por {{selectedTypeSearch}}">
       </div>
     </div>
-</div>
-
-
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <div class="card mb-3" *ngFor="let item of catalog$ | async | FilterPipe: queryString: searchableList">
-  <h5 class="card-header">{{item.title}}</h5>
-  <div class="card-body">
-    <h5 class="card-title">Autor: {{item.author}}</h5>
-    <p class="card-text">Descrição: {{item.description}} </p>
-    <p class="card-text ">Estado: {{item.state}}</p>
-    <div class="text-center">
-    <a href="#" class="btn btn-primary">Reservar</a>
-    <a href="#" class="btn btn-primary ml-3">Ver detalhes</a></div>
   </div>
 
-</div>
+
+
+
+  <div class="card mb-3" *ngFor="let item of catalog$ | async | FilterPipe: queryString: searchableList" (click)="clickItem(item)">
+    <h5 class="card-header">{{item.title}}</h5>
+    <div class="card-body">
+      <h5 class="card-title">Autor: {{item.author}}</h5>
+      <p class="card-text">Descrição: {{item.description}} </p>
+      <p class="card-text ">Estado: {{item.state}}</p>
+      <div class="text-center">
+        <a href="#" class="btn btn-primary">Reservar</a>
+        <!-- <a href="#" class="btn btn-primary ml-3" routerLink="/bookdetails">Ver detalhes</a> -->
+      </div>
+    </div>
+
+  </div>
