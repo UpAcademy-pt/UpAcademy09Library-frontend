@@ -1,0 +1,26 @@
+<br>
+<br>
+<div class="table-responsive">
+<table class="table" [ngClass]='theme'>
+  <thead>
+    <tr>
+      <th *ngFor="let col of headerUsers">
+        {{col}}
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let row of user$ | async">
+      <td *ngFor="let col of headerUsers">
+        {{row[col]}}
+      </td>
+      <td>
+        <button (click)="changePrivileges(row.id)" class="btn btn-info">admin privileges</button>
+        <button (click)="disable(row.id)" class="btn btn-info">disable</button>
+        <button (click)="reactivate(row.id)" class="btn btn-info">reactivate</button>
+      </td>
+    </tr>
+
+  </tbody>
+</table>
+</div>

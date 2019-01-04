@@ -1,4 +1,7 @@
-<app-table [isBook]="true" [header]='["title","description","author","isbn","topic","state"]' [catalog$]='catalog$' [theme]='"table-bordered" '></app-table>
+<app-admin-management  [headerUsers]='["name","email","nip","admin","active"]' [user$]='user$' [theme]='"table-bordered" '></app-admin-management>
 
-<app-add></app-add>
+<app-table [isBook]="true" [header]='["title","description","author","isbn","topic","state"]' [catalog$]='catalog$' [theme]='"table-bordered" '></app-table>
+<app-add></app-add> 
+
+
 

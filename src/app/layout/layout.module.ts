@@ -8,7 +8,7 @@ import { LayoutComponent } from './layout.component';
 import { LayoutRoutingModule } from './layout-routing.module';
 import { HomeComponent } from './home/home.component';
 import { NotfoundComponent } from './notfound/notfound.component';
-import { HeaderComponent, FooterComponent, TableComponent, AddComponent, UpdateComponent } from '../shared';
+import { HeaderComponent, FooterComponent, TableComponent, AddComponent, UpdateComponent, AdminManagementComponent } from '../shared';
 import { FormsModule } from '@angular/forms';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { LoginComponent } from './login/login.component';
@@ -16,7 +16,7 @@ import { RegisterComponent } from './register/register.component';
 import { BsDropdownModule } from 'ngx-bootstrap';
 import { FilterPipe } from '../shared/components/filter/filter.pipe';
 import { PanelComponent } from '../shared/components/panel/panel.component';
-import { BookDetailsComponent } from '../shared/components/book-details/book-details.component';
+
 
 
 
@@ -35,7 +35,7 @@ import { BookDetailsComponent } from '../shared/components/book-details/book-det
     FooterComponent,
     TableComponent,
     PanelComponent,
-    BookDetailsComponent,
+    AdminManagementComponent,
     //shared modal
     AddComponent,
     UpdateComponent,

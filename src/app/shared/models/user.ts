@@ -1,5 +1,3 @@
-import { } from '../index';
-
 declare var Object: any;
 export class User {
     'email': string;
@@ -8,6 +6,7 @@ export class User {
     'password': string;
     'admin': boolean;
     'id': any;
+    'active': boolean;
     constructor(data?: any) {
         Object.assign(this, data);
     }

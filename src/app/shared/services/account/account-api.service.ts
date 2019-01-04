@@ -40,21 +40,58 @@ export class AcountApiService {
   // pedidos a base de dados
 
   // get all users
-
   public getUsersDB() {
-    return this.http.get(apiUrl);
+    return this.http.get(apiUrl + "getall");
   }
 
   // create user
-
   public createUser(user: User) {
     return this.http.post(apiUrl, user)
   }
 
+  // update user
+  public updateUser(id: number, user: User){
+    console.log("service id: " + id);
+    this.http.put(apiUrl+"update/"+ id, user).subscribe(
+      (res) => { console.log("OK") },
+      error => { console.error(error) });
+  }
 
-  // /changetoadmin/{userId}
+  // Change user to admin --- um put precisa sempre de body, nem que seja null
+  public changePrivilegesUser(id){
+    console.log("service id: " + id);
+    this.http.put(apiUrl+"changetoadmin/"+ id, null).subscribe(
+      (res) => { console.log("OK") },
+      error => { console.error(error) });
+  }
+
+  // Disable User
+  public disableUser(id){
+    console.log("service id: " + id);
+    this.http.put(apiUrl+ "disable/"+ id, null).subscribe(
+      (res) => { console.log("disable") },
+      error => { console.error(error) });
+  }
+
+  // Reactive User
+  public reactivateUser(id){
+    console.log("service id: " + id);
+    this.http.put(apiUrl+ "reactivateuser/"+ id, null).subscribe(
+      (res) => { console.log("reactivate") },
+      error => { console.error(error) });
+  }
+
+
+
+
+
+
+
+
+  
+
+
   // /disable/{userId}"
   // /reactivateuser/{userId}
-
 
 }

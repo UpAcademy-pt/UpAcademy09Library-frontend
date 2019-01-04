@@ -6,28 +6,22 @@ import { HttpClientModule } from '@angular/common/http';
 import { ModalModule } from 'ngx-bootstrap';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { PanelComponent } from './shared/components/panel/panel.component';
-import { BookDetailsComponent } from './shared/components/book-details/book-details.component';
+import { AdminManagementComponent } from './shared';
+
 
 
 
 
 @NgModule({
   declarations: [
-    AppComponent,
-    
- 
-   
-    
+    AppComponent
+  
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     ModalModule.forRoot()
-
-    
- 
-   
 
   ],
   providers: [],

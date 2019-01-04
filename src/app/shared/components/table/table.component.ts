@@ -4,8 +4,6 @@ import { DataService } from '../../services/data/data.service';
 import { Catalog } from '../../models';
 
 
-
-
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
@@ -26,7 +24,6 @@ export class TableComponent implements OnInit {
   constructor(public router: Router, private dataService: DataService) {}
 
   ngOnInit() { }
-  
   
   // delete
   deleteCatalog(id) {
