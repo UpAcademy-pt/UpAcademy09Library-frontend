@@ -12,9 +12,7 @@ const apiUrl = "http://localhost:8080/libraryManagmentApp/api/books/";
 export class CatalogApiService {
 
   // pedidos ajax
-  constructor(
-    private http: HttpClient,
-  ) { }
+  constructor(private http: HttpClient) { }
 
   public getCatalogDB() {
 
