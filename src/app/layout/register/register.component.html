@@ -1,3 +1,29 @@
-<p>
-  register works!
-</p>
+<form novalidate>
+  <fieldset>
+    <div class="form-group">
+      <label>Nome</label>
+      <input type="text"
+             class="form-control" required>
+    </div>
+
+    <div class="form-group">
+      <label>Numero de identificação pessoal</label>
+      <input type="text"
+             class="form-control" required>
+    </div>
+  </fieldset>
+
+  <div class="form-group">
+    <label>Email</label>
+    <input type="email"
+           class="form-control" required>
+  </div>
+
+  <div class="form-group">
+    <label>Password</label>
+    <input type="password"
+           class="form-control" required>
+  </div>
+
+  <button type="button" (click)="registerUserNg()" class="btn btn-success">Registar</button>
+</form>
