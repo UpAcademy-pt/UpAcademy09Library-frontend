@@ -12,6 +12,7 @@ export class DataService {
   public catalog$: ReplaySubject<any[]> = new ReplaySubject(1);
   // observable users
   public user$: ReplaySubject<any[]> = new ReplaySubject(1);
+  private catalog: any
 
   constructor(private catalogApi: CatalogApiService, private acountApi: AcountApiService) {
     this.getCatalog();
@@ -19,10 +20,19 @@ export class DataService {
   }
 
   /* BOOKS DATA LOGIC*/
+  public getCatalogById(id){
+    for (const item of this.catalog) {
+      if(item.id === id) {
+        return item;
+      }
+    }
+  }
+
 
   public getCatalog() {
     this.catalogApi.getCatalogDB().subscribe(
       (res: any) => {
+        this.catalog = res;
         this.catalog$.next(res);
       }
     );
@@ -65,12 +75,7 @@ export class DataService {
 
   //create users
   public createUser(user) {
-    this.acountApi.createUser(user).subscribe(
-      (res) => {
-        console.log("OK");
-        this.getUsers();
-      },
-      error => { console.error(error) });
+    return this.acountApi.createUser(user)
   }
 
   // update user

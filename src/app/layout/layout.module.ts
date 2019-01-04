@@ -30,6 +30,7 @@ import { BookDetailsComponent } from './book-details/book-details.component';
     LayoutComponent,
     HomeComponent,
     NotfoundComponent,
+    BookDetailsComponent,
     //shared components
     HeaderComponent,
     FooterComponent,
