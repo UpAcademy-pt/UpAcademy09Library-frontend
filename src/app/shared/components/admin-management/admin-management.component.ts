@@ -34,10 +34,7 @@ export class AdminManagementComponent implements OnInit {
 
   public reactivate(id) {
     this.dataService.reactivateServices(id);
-
   }
-
-
 
 }
 
