@@ -19,6 +19,9 @@
         <li class="nav-item" *ngIf="(currentUser$ | async)?.id && ((currentUser$ | async)?.admin === false)">
           <a class="nav-item nav-link" href="#" [routerLinkActive]="['active']" routerLink="/user">{{account.name}}</a>
         </li>
+        <li class="nav-item" *ngIf="(currentUser$ | async)?.id && ((currentUser$ | async)?.admin === false)">
+            <a class="nav-item nav-link" href="#" [routerLinkActive]="['active']" routerLink="/personal">Area Pessoal</a>
+          </li>
         <li class="nav-item" *ngIf="(currentUser$ | async)?.id">
             <a class="nav-item nav-link" href="#" [routerLinkActive]="['active']" routerLink="/home" (click)="logout()">logout</a>
           </li>
