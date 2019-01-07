@@ -1,7 +1,12 @@
-<app-admin-management  [headerUsers]='["name","email","nip","admin","active"]' [user$]='user$' [theme]='"table-bordered" '></app-admin-management>
-
-<app-table [isBook]="true" [header]='["title","description","author","isbn","topic","state"]' [catalog$]='catalog$' [theme]='"table-bordered" '></app-table>
-<app-add></app-add> 
-
-
-
+<tabset>
+    <tab heading="Gestão de Utilizadores">
+        <br>
+        <app-admin-management [headerUsers]='["name","email","nip","admin","active"]' [user$]='user$' [theme]='"table-bordered" '></app-admin-management>
+    </tab>
+    <tab heading="Gestão de Livros">
+        <br>
+        <app-table [isBook]="true" [header]='["title","description","author","isbn","topic","state"]' [catalog$]='catalog$'
+            [theme]='"table-bordered" '></app-table>
+        <app-add></app-add>
+    </tab>
+</tabset>

@@ -1,41 +1,40 @@
 <div class="table-responsive">
   <div class="search">
-    <div class="row justify-content-md-left">
-      <div class="col-2">
-        <select (change)="selectChangeHandler($event)">
+    <div class="container mb-3">
+      <div class="row justify-content-md-left">
+        <div class="input-group">
+        <select (change)=" selectChangeHandler($event)">
           <option value="keyword">Palavra-Chave</option>
           <option value="title">Título</option>
           <option value="author">Autor</option>
           <option value="description">descrição</option>
           <option value="isbn">isbn</option>
           <option value="topic">topico</option>
-        </select>
-      </div>
-      <div class="col-10">
-        <input class="form-control" type="text" name="search" [(ngModel)]="queryString" 
-        autocomplete="off" placeholder="Procurar por {{selectedTypeSearch}}">
+          </select>
+          <input class="form-control" type="text" name="search" [(ngModel)]="queryString" autocomplete="off"
+            placeholder="Procurar por {{selectedTypeSearch}}">
+        </div>
       </div>
     </div>
+    <br>
+    <table class="table" [ngClass]='theme'>
+      <thead>
+        <tr>
+          <th *ngFor="let col of header">
+            {{col}}
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let row of catalog$ | async | FilterPipe: queryString: searchableList">
+          <td *ngFor="let col of header">
+            {{row[col]}}
+          </td>
+          <td>
+            <app-update [row]='row'></app-update>
+            <button (click)="deleteCatalog(row.id)" class="btn btn-info"><img src="/assets/icons8-close-window-16.png"></button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
-<br>
-<table class="table" [ngClass]='theme'>
-  <thead>
-    <tr>
-      <th *ngFor="let col of header">
-        {{col}}
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let row of catalog$ | async | FilterPipe: queryString: searchableList">
-      <td *ngFor="let col of header">
-        {{row[col]}}
-      </td>
-      <td>
-        <app-update [row]='row'></app-update>
-        <button (click)="deleteCatalog(row.id)" class="btn btn-info"><img src="/assets/icons8-close-window-16.png"></button>
-      </td>
-    </tr>
-  </tbody>
-</table>
-</div>

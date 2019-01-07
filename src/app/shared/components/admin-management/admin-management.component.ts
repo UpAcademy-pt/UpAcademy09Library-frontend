@@ -17,10 +17,21 @@ export class AdminManagementComponent implements OnInit {
   @Input() headerUsers: any;
   @Input() user$: any;
   @Input() theme = 'table-dark';
+  // filter var
+  selectedTypeSearch: string = 'keyword';
+  searchableListUser: string;
+  
 
   constructor(public router: Router, private dataService: DataService) { }
 
   ngOnInit() {
+  }
+  // search type
+  selectChangeHandler(event: any) {
+    // search selected
+    this.selectedTypeSearch = event.target.value;
+    // search Type to FilterPipe
+    return this.searchableListUser = this.selectedTypeSearch;
   }
 
   public changePrivileges(id) {
@@ -34,10 +45,7 @@ export class AdminManagementComponent implements OnInit {
 
   public reactivate(id) {
     this.dataService.reactivateServices(id);
-
   }
-
-
 
 }
 
