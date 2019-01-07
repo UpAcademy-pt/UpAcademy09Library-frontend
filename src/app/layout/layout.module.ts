@@ -18,6 +18,7 @@ import { FilterPipe } from '../shared/components/filter/filter.pipe';
 import { PanelComponent } from '../shared/components/panel/panel.component';
 import { BookDetailsComponent } from './book-details/book-details.component';
 import { TabsModule } from 'ngx-bootstrap';
+import { FilterUserPipe } from '../shared/components/filter/filter-user.pipe';
 
 
 
@@ -45,6 +46,7 @@ import { TabsModule } from 'ngx-bootstrap';
     LoginComponent,
     RegisterComponent,
     FilterPipe,
+    FilterUserPipe
   
   ],
 
