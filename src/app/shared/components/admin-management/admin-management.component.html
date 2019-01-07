@@ -1,25 +1,42 @@
-<br>
-<br>
 <div class="table-responsive">
-<table class="table" [ngClass]='theme'>
-  <thead>
-    <tr>
-      <th *ngFor="let col of headerUsers">
-        {{col}}
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let row of user$ | async">
-      <td *ngFor="let col of headerUsers">
-        {{row[col]}}
-      </td>
-      <td>
-        <button (click)="changePrivileges(row.id)" class="btn btn-info">admin privileges</button>
-        <button (click)="disable(row.id)" class="btn btn-info">disable</button>
-        <button (click)="reactivate(row.id)" class="btn btn-info">reactivate</button>
-      </td>
-    </tr>
-  </tbody>
-</table>
-</div>
+  <div class="search">
+    <div class="container mb-3">
+      <div class="row justify-content-md-left">
+        <div class="input-group">
+          <select (change)=" selectChangeHandler($event)">
+            <option value="keyword">Palavra-Chave</option>
+            <option value="name">name</option>
+            <option value="email">email</option>
+            <option value="nip">nip</option>
+            <option value="admin">admin</option>
+            <option value="active">active</option>
+          </select>
+          <input class="form-control" type="text" name="search" [(ngModel)]="queryStringUser" autocomplete="off"
+            placeholder="Procurar por {{selectedTypeSearch}}">
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="table-responsive">
+      <table class="table" [ngClass]='theme'>
+        <thead>
+          <tr>
+            <th *ngFor="let col of headerUsers">
+              {{col}}
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let row of user$ | async | FilterUser: queryStringUser: searchableListUser">
+            <td *ngFor="let col of headerUsers">
+              {{row[col]}}
+            </td>
+            <td>
+              <button (click)="changePrivileges(row.id)" class="btn btn-info">admin privileges</button>
+              <button (click)="disable(row.id)" class="btn btn-info">disable</button>
+              <button (click)="reactivate(row.id)" class="btn btn-info">reactivate</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>

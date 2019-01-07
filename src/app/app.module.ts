@@ -4,6 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ModalModule, TabsModule } from 'ngx-bootstrap';
+import { FilterUserPipe } from './shared/components/filter/filter-user.pipe';
 
 
 
