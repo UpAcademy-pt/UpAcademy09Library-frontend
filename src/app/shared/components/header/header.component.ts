@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, TemplateRef } from '@angular/core';
+import { Component, OnInit, Input, TemplateRef, ViewChild, ViewChildren } from '@angular/core';
 import { Router } from '@angular/router';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
@@ -6,6 +6,7 @@ import { User } from '../../models/user';
 import { AcountApiService } from '../../services';
 import { ReplaySubject } from 'rxjs';
 import { longStackSupport } from 'q';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-header',
@@ -14,9 +15,10 @@ import { longStackSupport } from 'q';
 })
 export class HeaderComponent implements OnInit {
   public currentUser$: ReplaySubject<User> = new ReplaySubject(1);
-  @Input() isLogged?= false;
-  @Input() isAdmin?= false;
-
+  @Input() isLogged ?= false;
+  @Input() isAdmin ?= false;
+  @ViewChildren('login') login
+  @ViewChild('f') form: NgForm;
 
   public account: User = new User();
   public modalRef: BsModalRef;
@@ -44,6 +46,7 @@ export class HeaderComponent implements OnInit {
   }
 
   loginUserNg() {
+    console.log(this.form);
     this.accountApi.loginUserNg(this.account.email, this.account.password).subscribe(
       (res: any) => {
         if (res !== null) {
