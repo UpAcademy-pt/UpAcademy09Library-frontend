@@ -12,30 +12,29 @@
         </select>
       </div>
       <div class="col-10">
-        <input class="form-control" type="text" name="search" [(ngModel)]="queryString" 
-        autocomplete="off" placeholder="Procurar por {{selectedTypeSearch}}">
+        <input class="form-control" type="text" name="search" [(ngModel)]="queryString" autocomplete="off" placeholder="Procurar por {{selectedTypeSearch}}">
       </div>
     </div>
   </div>
-<br>
-<table class="table" [ngClass]='theme'>
-  <thead>
-    <tr>
-      <th *ngFor="let col of header">
-        {{col}}
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let row of catalog$ | async | FilterPipe: queryString: searchableList">
-      <td *ngFor="let col of header">
-        {{row[col]}}
-      </td>
-      <td>
-        <app-update [row]='row'></app-update>
-        <button (click)="deleteCatalog(row.id)" class="btn btn-info"><img src="/assets/icons8-close-window-16.png"></button>
-      </td>
-    </tr>
-  </tbody>
-</table>
+  <br>
+  <table class="table" [ngClass]='theme'>
+    <thead>
+      <tr>
+        <th *ngFor="let col of header">
+          {{col}}
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let row of catalog$ | async | FilterPipe: queryString: searchableList">
+        <td *ngFor="let col of header">
+          {{row[col]}}
+        </td>
+        <td>
+          <app-update [row]='row'></app-update>
+          <button (click)="deleteCatalog(row.id)" class="btn btn-info"><img src="/assets/icons8-close-window-16.png"></button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>

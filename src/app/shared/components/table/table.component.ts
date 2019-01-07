@@ -2,6 +2,8 @@ import { Component, OnInit, Input, SimpleChange } from '@angular/core';
 import { Router, RouterLinkWithHref } from '@angular/router';
 import { DataService } from '../../services/data/data.service';
 import { Catalog } from '../../models';
+import { PageChangedEvent } from 'ngx-bootstrap';
+import { ResourceLoader } from '@angular/compiler';
 
 
 @Component({
@@ -17,14 +19,19 @@ export class TableComponent implements OnInit {
   @Input() isBook = true;
 
   // filter var
-  selectedTypeSearch: string = '';
+  selectedTypeSearch: string = 'keyword';
   searchableList: string;
 
 
-  constructor(public router: Router, private dataService: DataService) {}
+  constructor(public router: Router, private dataService: DataService) { }
 
-  ngOnInit() { }
-  
+  ngOnInit() {
+
+
+    // this.catalog$.subscribe(result => { 
+    //   console.log(result.length) });
+  }
+
   // delete
   deleteCatalog(id) {
     console.log(id);
@@ -37,6 +44,6 @@ export class TableComponent implements OnInit {
     // search selected
     this.selectedTypeSearch = event.target.value;
     // search Type to FilterPipe
-    return this.searchableList = this.selectedTypeSearch; 
+    return this.searchableList = this.selectedTypeSearch;
   }
 }

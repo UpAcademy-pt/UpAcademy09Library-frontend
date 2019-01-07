@@ -6,7 +6,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class FilterPipe implements PipeTransform {
 
 
-  transform(value: any, input: string, searchableList: string) {
+  transform(value: any, input: string, searchableList = 'keyword') {
 
     if (input && searchableList) {
       input = input.toLowerCase();
