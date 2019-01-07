@@ -44,7 +44,6 @@ export class HeaderComponent implements OnInit {
   }
 
   loginUserNg() {
-    console.log("ola3")
     this.accountApi.loginUserNg(this.account.email, this.account.password).subscribe(
       (res: any) => {
         if (res !== null) {

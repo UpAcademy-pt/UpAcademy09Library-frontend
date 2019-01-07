@@ -10,12 +10,29 @@ const apiUrl = "http://localhost:8080/libraryManagmentApp/api/users/";
 })
 
 export class AcountApiService {
+ 
   public currentUser$: ReplaySubject<User> = new ReplaySubject(1);
   private currentUser: User = new User();
 
   constructor(
     private http: HttpClient
   ) { }
+
+  public isAuthenticated(): boolean {
+    if (this.currentUser.id) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  public isAdmin(): boolean {
+    if (this.currentUser.admin) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 
   public loginUserNg(email, password) {
     return this.http.get(apiUrl + 'loginuser?userEmail=' + email + '&userPassword=' + password);
