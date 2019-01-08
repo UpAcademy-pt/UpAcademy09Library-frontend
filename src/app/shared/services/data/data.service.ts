@@ -13,6 +13,7 @@ export class DataService {
   // observable users
   public user$: ReplaySubject<any[]> = new ReplaySubject(1);
   private catalog: any
+  private users:any
 
   constructor(private catalogApi: CatalogApiService, private acountApi: AcountApiService) {
     this.getCatalog();
@@ -63,6 +64,15 @@ export class DataService {
   /* USERS DATA LOGIC*/
 
   // getusers
+
+
+  public getUserById(id){
+    for (const item of this.users) {
+      if(item.id === id) {
+        return item;
+      }
+    }
+  }
   public getUsers() {
     this.acountApi.getUsersDB().subscribe(
       (res: any) => {

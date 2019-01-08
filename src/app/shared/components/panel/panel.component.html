@@ -25,8 +25,9 @@
     <div class="card-body" (click)="clickItem(item)">
       <h5 class="card-title"> {{item.title}}, {{item.author}}</h5>
       <p class="card-text">Descrição: {{item.description}} </p>
-      <p class="card-text ">Estado: {{item.state}}</p>
-     
+      <p class="card-text ">Estado: {{item.state}} </p> 
     </div>
-    <div class="card-footer text-center">Reservar<div>
+    <div><img class="reservar"   (click)="changeImg($event.target)" src="/assets/bookEmpty.png" ></div>
+     
+    <!-- <div class="card-footer text-center">Reservar<div> -->
   </div>

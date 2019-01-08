@@ -34,4 +34,9 @@ export class PanelComponent implements OnInit {
   clickItem(item) {
     this.router.navigate(['bookdetails', item.id]);
   }
+
+  changeImg(image:any){
+   
+    image.src='/assets/bookFull.png';
+  }
 }
