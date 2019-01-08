@@ -16,12 +16,12 @@ export class DataService {
   public user$: ReplaySubject<any[]> = new ReplaySubject(1);
   // observable hisotry
   public history$: ReplaySubject<any[]> = new ReplaySubject(1);
-  //  
+  // 
+  private users:any[]=[];
   private catalog: any
   // object of add and remove favorites
   public objectToSend: Object;
   //
-  public users:any;
   public search$: ReplaySubject<any[]> = new ReplaySubject(1);
   public search:any;
 
