@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ModalModule, TabsModule } from 'ngx-bootstrap';
 import { FilterUserPipe } from './shared/components/filter/filter-user.pipe';
+import { SearchComponent } from './shared/components/search/search/search.component';
 
 
 
@@ -12,7 +13,8 @@ import { FilterUserPipe } from './shared/components/filter/filter-user.pipe';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SearchComponent
   
   ],
   imports: [
