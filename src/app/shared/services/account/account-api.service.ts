@@ -102,12 +102,13 @@ export class AcountApiService {
 
   // add to Favorite ---- TESTAR COM URGÊNCIA --- é a maneira que encontrei para enviar dois objectos --- SENÃO DER É PRECISO QUERYPARAM?
   
-  public addBookToFavourites(objectToSend) {
-    return this.http.post(apiUrl + "/addfavourite/", objectToSend);
+  public addBookToFavourites(userID: number, bookID: number) {
+    return this.http.post(apiUrl + '/addfavourite?userId=' + userID + '&bookId=' + bookID, null);
   }
+
   // remove from favorite
-  public removeFavourite(objectToSend){
-    return this.http.delete(apiUrl + "/removefavourite/" , objectToSend);
+  public removeFavourite(userID: number, bookID: number){
+    return this.http.delete(apiUrl + '/removefavourite?userId=' + userID + '&bookId=' + bookID, null);
   }
   // get all favorites
   public getAllFavourites(userID: number){
