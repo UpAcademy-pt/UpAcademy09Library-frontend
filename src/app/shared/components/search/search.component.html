@@ -1,3 +1,18 @@
-<p>
-  search works!
-</p>
+<div class="search">
+  <div class="container mb-3">
+    <div class="row justify-content-md-left">
+      <div class="input-group">
+      <select (change)=" selectChangeHandler($event)">
+        <option value="keyword">Palavra-Chave</option>
+        <option value="title">Título</option>
+        <option value="author">Autor</option>
+        <option value="description">descrição</option>
+        <!-- <option value="isbn">isbn</option> -->
+        <option value="topic">topico</option>
+        </select>
+        <input class="form-control" type="text" name="search" [(ngModel)]="input" autocomplete="off"
+          placeholder="Procurar por {{selectedTypeSearch}}" (click)="searchMethod(input)">
+      </div>
+    </div>
+  </div>
+

@@ -20,12 +20,16 @@ export class DataService {
   private catalog: any
   // object of add and remove favorites
   public objectToSend: Object;
+  //
+  public users:any;
+  public search$: ReplaySubject<any[]> = new ReplaySubject(1);
+  public search:any;
 
 
   constructor(private catalogApi: CatalogApiService, private acountApi: AcountApiService, private historyApi: HistoryApiService) {
     this.getCatalog();
     this.getUsers();
-
+    console.log(this.queryUserIDServices(1));
   }
 
   /* BOOKS DATA LOGIC*/
@@ -72,7 +76,14 @@ export class DataService {
   }
   //Find book keyword
   public getCatalogByKeywordService(keyword) {
-    return this.catalogApi.getCatalogByKeyword(keyword);
+    this.catalogApi.getCatalogByKeyword(keyword).subscribe(
+      (res: any) => {
+        this.search = res;
+        this.search$.next(res);
+      }
+    );
+    console.log(this.search$);
+    return this.search$;
   }
   //Find by title
   public getCatalogByTitleService(title) {
@@ -156,7 +167,14 @@ export class DataService {
   }
   //Find By Id ???
   public queryUserIDServices(userID) {
-    return this.acountApi.queryUserID(userID);
+    this.acountApi.queryUserID(userID).subscribe(
+      (res: any) => {
+        console.log("OK");
+        this.user$.next(res);
+        console.log(this.user$);
+      }
+    );
+    
   }
 
   //Find By Name

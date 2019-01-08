@@ -24,8 +24,7 @@ export class AdminManagementComponent implements OnInit {
 
   constructor(public router: Router, private dataService: DataService) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
   // search type
   selectChangeHandler(event: any) {
     // search selected

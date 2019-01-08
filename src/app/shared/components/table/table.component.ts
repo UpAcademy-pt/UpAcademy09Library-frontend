@@ -14,7 +14,7 @@ import { ResourceLoader } from '@angular/compiler';
 export class TableComponent implements OnInit {
 
   @Input() header: any;
-  @Input() catalog$: any;
+  @Input() search$: any;
   @Input() theme = 'table-dark';
   @Input() isBook = true;
 
@@ -26,10 +26,6 @@ export class TableComponent implements OnInit {
   constructor(public router: Router, private dataService: DataService) { }
 
   ngOnInit() {
-
-
-    // this.catalog$.subscribe(result => { 
-    //   console.log(result.length) });
   }
 
   // delete
