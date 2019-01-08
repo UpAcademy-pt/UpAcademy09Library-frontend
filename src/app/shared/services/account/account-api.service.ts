@@ -19,6 +19,8 @@ export class AcountApiService {
     private http: HttpClient
   ) { }
 
+  // login
+
   public isAuthenticated(): boolean {
     if (this.currentUser.id) {
       return true;
@@ -98,7 +100,8 @@ export class AcountApiService {
       error => { console.error(error) });
   }
 
-  // add to Favorite ---- TESTAR COM URGÊNCIA --- é a maneira que encontrei para enviar dois objectos
+  // add to Favorite ---- TESTAR COM URGÊNCIA --- é a maneira que encontrei para enviar dois objectos --- SENÃO DER É PRECISO QUERYPARAM?
+  
   public addBookToFavourites(objectToSend) {
     return this.http.post(apiUrl + "/addfavourite/", objectToSend);
   }
@@ -110,5 +113,26 @@ export class AcountApiService {
   public getAllFavourites(userID: number){
     return this.http.get(apiUrl + "/getallfavourites/" + userID);
   }
+
+  /* QUERYS */
+
+  //Find By Id ???
+  public queryUserID(id: number){
+    this.http.get(apiUrl + "/" + id);
+  }
+
+  //Find By Name
+  public queryUserName(name: string){
+    this.http.get(apiUrl + "/findby/name/" + name);
+  }
+  //Find by Nip
+  public queryUserNip(nip: string){
+    this.http.get(apiUrl + "/findby/nip/" + nip);
+  }
+   //Find by Nip
+   public queryUserEmail(email: string){
+    this.http.get(apiUrl + "/findby/email/" + email);
+  }
+
 
 }

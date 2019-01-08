@@ -19,12 +19,6 @@ export class CatalogApiService {
     return this.http.get(apiUrl);
   }
 
-  // GET Catalog by ID  ---- Não temos aplicado -- como podemos aplicar -- 
-  // dizemos que é como se fosse o código de barras que os livros costuma ter???
-  public getCatalogById(id: number) {
-    return this.http.get(apiUrl + id);
-  }
-
   // POST create a book to catalog
   public createBook(book: Catalog) {
     console.log("book : ", book);
@@ -43,7 +37,43 @@ export class CatalogApiService {
   public deleteBook(id) {
     return this.http.delete(apiUrl + id)
   }
-  
+
+  /* QUERYS */
+
+  // Find Book by ID  ---- Não temos aplicado -- como podemos aplicar -- 
+  // dizemos que é como se fosse o código de barras que os livros costuma ter???
+  public getCatalogById(id: number) {
+    return this.http.get(apiUrl + id);
+  }
+  //Find book keyword
+  public getCatalogByKeyword(string: string) {
+    return this.http.get(apiUrl + "generalresearch/" + string);
+  }
+
+  //Find by title
+  public getCatalogByTitle(string: string) {
+    return this.http.get(apiUrl + "researchbytitle/" + string);
+  }
+
+  //Find by Description
+  public getCatalogByDescription(string: string) {
+    return this.http.get(apiUrl + "researchbydescription/" + string);
+  }
+
+  //Find by author
+  public getCatalogByAuthor(string: string) {
+    return this.http.get(apiUrl + "researchbyauthor/" + string);
+  }
+
+  //Find by topic
+  public getCatalogByTopic(string: string) {
+    return this.http.get(apiUrl + "researchbytopic/" + string);
+  }
+
+  //Get all available books
+  public getAvailableBooks() {
+    return this.http.get(apiUrl + "getallavailablebooks");
+  }  
 }
 
 

@@ -30,14 +30,6 @@ export class DataService {
 
   /* BOOKS DATA LOGIC*/
 
-  // Está função não está em uso
-  public getCatalogById(id) {
-    for (const item of this.catalog) {
-      if (item.id === id) {
-        return item;
-      }
-    }
-  }
   public getCatalog() {
     this.catalogApi.getCatalogDB().subscribe(
       (res: any) => {
@@ -58,7 +50,6 @@ export class DataService {
     console.log(catalog);
     this.catalogApi.updateBook(catalog);
   }
-
   public deleteCatalogService(id) {
     this.catalogApi.deleteBook(id).subscribe(
       (res) => {
@@ -67,6 +58,39 @@ export class DataService {
       },
       error => { console.error(error) });
   }
+  // Está função não está em uso --- ver se está, senão modificar
+  public getCatalogById(id) {
+    for (const item of this.catalog) {
+      if (item.id === id) {
+        return item;
+      }
+    }
+  }
+  //Get all available books
+  public getAvailableBooksService() {
+    return this.catalogApi.getAvailableBooks();
+  }
+  //Find book keyword
+  public getCatalogByKeywordService(keyword) {
+    return this.catalogApi.getCatalogByKeyword(keyword);
+  }
+  //Find by title
+  public getCatalogByTitleService(title) {
+    return this.catalogApi.getCatalogByTitle(title);
+  }
+  //Find by Description
+  public getCatalogByDescriptionService(description) {
+    return this.catalogApi.getCatalogByDescription(description);
+  }
+  //Find by author
+  public getCatalogByAuthorService(author) {
+    return this.catalogApi.getCatalogByAuthor(author);
+  }
+  //Find by topic
+  public getCatalogByTopicService(topic) {
+    return this.catalogApi.getCatalogByTopic(topic);
+  }
+
 
   /* USERS DATA LOGIC*/
 
@@ -122,6 +146,23 @@ export class DataService {
   // get all favorites
   public getAllFavoritesServices(userID: number) {
     return this.acountApi.getAllFavourites(userID);
+  }
+  //Find By Id ???
+  public queryUserIDServices(userID) {
+    return this.acountApi.queryUserID(userID);
+  }
+
+  //Find By Name
+  public queryUserNameServices(name) {
+    return this.acountApi.queryUserName(name);
+  }
+  //Find by Nip
+  public queryUserNipServices(nip) {
+    return this.acountApi.queryUserNip(nip);
+  }
+  //Find by Nip
+  public queryUserEmailServices(email) {
+    return this.acountApi.queryUserEmail(email);
   }
 
   /* HISTORY DATA LOGIC*/
