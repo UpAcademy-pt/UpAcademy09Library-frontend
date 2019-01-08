@@ -28,6 +28,15 @@ export class UpdateComponent implements OnInit {
     this.modalRef = this.modalService.show(template);
   }
 
+  onClose() {
+    this.catalog.title = '';
+    this.catalog.description = '';
+    this.catalog.author = '';
+    this.catalog.topic = '';
+    this.catalog.location = '';
+    this.catalog.isbn = '';
+  }
+
   onSubmit() {
   this.dataService.updateCatalog(this.catalog);
   }

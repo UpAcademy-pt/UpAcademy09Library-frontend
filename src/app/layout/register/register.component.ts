@@ -23,6 +23,12 @@ export class RegisterComponent implements OnInit {
   }
   // public account: User = new User();
 
+  onClose() {
+    this.user.name = '';
+      this.user.email = '';
+      this.user.nip = '';
+      this.user.password = '';
+  }
   onSubmit() {
     if (
       this.user.name &&
