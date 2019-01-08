@@ -24,6 +24,7 @@ export class HeaderComponent implements OnInit {
   public modalRef: BsModalRef;
   public msg: String;
 
+
   constructor(
     private router: Router,
     private modalService: BsModalService,
@@ -52,9 +53,7 @@ export class HeaderComponent implements OnInit {
         if (res !== null) {
           this.accountApi.setCurrentUser(res);
           this.modalRef.hide();
-
           this.account = res;
-          console.log(this.account);
           if (res.admin) {
             this.router.navigate(['admin']);
             this.isAdmin = true;
@@ -64,7 +63,10 @@ export class HeaderComponent implements OnInit {
             this.isLogged = true;
           }
         } else {
-          this.msg = 'Erro';
+          // tslint:disable-next-line:label-position
+
+          // tslint:disable-next-line:max-line-length
+          this.msg = 'O par e-mail/password está incorrecto. Por favor tente novamente ou contacte o administrador para recuperar a sua password';
         }
       }
     );
@@ -73,5 +75,4 @@ export class HeaderComponent implements OnInit {
     this.accountApi.logout();
     this.isLogged = false;
   }
-
 }
