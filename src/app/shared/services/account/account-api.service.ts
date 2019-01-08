@@ -2,21 +2,24 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User } from '../../models/user';
 import { ReplaySubject } from 'rxjs';
+import { Catalog } from '../../models';
 
-const apiUrl = "http://localhost:8080/libraryManagmentApp/api/users/";
+const apiUrl = "http://localhost:8080/libraryManagmentApp/api/users";
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class AcountApiService {
- 
+
   public currentUser$: ReplaySubject<User> = new ReplaySubject(1);
   private currentUser: User = new User();
 
   constructor(
     private http: HttpClient
   ) { }
+
+  // login
 
   public isAuthenticated(): boolean {
     if (this.currentUser.id) {
@@ -35,13 +38,13 @@ export class AcountApiService {
   }
 
   public loginUserNg(email, password) {
-    return this.http.get(apiUrl + 'loginuser?userEmail=' + email + '&userPassword=' + password);
+    return this.http.get(apiUrl + '/loginuser?userEmail=' + email + '&userPassword=' + password);
   }
 
   public logout() {
     this.currentUser$.next(new User());
     this.currentUser = null;
-    
+
     return 'logout';
   }
 
@@ -58,7 +61,7 @@ export class AcountApiService {
 
   // get all users
   public getUsersDB() {
-    return this.http.get(apiUrl + "getall");
+    return this.http.get(apiUrl + "/getall");
   }
 
   // create user
@@ -67,48 +70,70 @@ export class AcountApiService {
   }
 
   // update user
-  public updateUser(id: number, user: User){
+  public updateUser(id: number, user: User) {
     console.log("service id: " + id);
-    this.http.put(apiUrl+"update/"+ id, user).subscribe(
+    this.http.put(apiUrl + "/update/" + id, user).subscribe(
       (res) => { console.log("OK") },
       error => { console.error(error) });
   }
 
   // Change user to admin --- um put precisa sempre de body, nem que seja null
-  public changePrivilegesUser(id){
+  public changePrivilegesUser(id) {
     console.log("service id: " + id);
-    this.http.put(apiUrl+"changetoadmin/"+ id, null).subscribe(
+    this.http.put(apiUrl + "/changetoadmin/" + id, null).subscribe(
       (res) => { console.log("OK") },
       error => { console.error(error) });
   }
 
   // Disable User
-  public disableUser(id){
+  public disableUser(id) {
     console.log("service id: " + id);
-    this.http.put(apiUrl+ "disable/"+ id, null).subscribe(
+    this.http.put(apiUrl + "/disable/" + id, null).subscribe(
       (res) => { console.log("disable") },
       error => { console.error(error) });
   }
-
   // Reactive User
-  public reactivateUser(id){
+  public reactivateUser(id) {
     console.log("service id: " + id);
-    this.http.put(apiUrl+ "reactivateuser/"+ id, null).subscribe(
+    this.http.put(apiUrl + "/reactivateuser/" + id, null).subscribe(
       (res) => { console.log("reactivate") },
       error => { console.error(error) });
   }
 
-
-
-
-
-
-
-
+  // add to Favorite ---- TESTAR COM URGÊNCIA --- é a maneira que encontrei para enviar dois objectos --- SENÃO DER É PRECISO QUERYPARAM?
   
+  public addBookToFavourites(userID: number, bookID: number) {
+    return this.http.post(apiUrl + '/addfavourite?userId=' + userID + '&bookId=' + bookID, null);
+  }
 
+  // remove from favorite
+  public removeFavourite(userID: number, bookID: number){
+    return this.http.delete(apiUrl + '/removefavourite?userId=' + userID + '&bookId=' + bookID, null);
+  }
+  // get all favorites
+  public getAllFavourites(userID: number){
+    return this.http.get(apiUrl + "/getallfavourites/" + userID);
+  }
 
-  // /disable/{userId}"
-  // /reactivateuser/{userId}
+  /* QUERYS */
+
+  //Find By Id ???
+  public queryUserID(id: number){
+    this.http.get(apiUrl + "/" + id);
+  }
+
+  //Find By Name
+  public queryUserName(name: string){
+    this.http.get(apiUrl + "/findby/name/" + name);
+  }
+  //Find by Nip
+  public queryUserNip(nip: string){
+    this.http.get(apiUrl + "/findby/nip/" + nip);
+  }
+   //Find by Nip
+   public queryUserEmail(email: string){
+    this.http.get(apiUrl + "/findby/email/" + email);
+  }
+
 
 }

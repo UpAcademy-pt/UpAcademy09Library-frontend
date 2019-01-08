@@ -10,10 +10,11 @@ import { FilterUserPipe } from './shared/components/filter/filter-user.pipe';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent
-  
+   
   ],
   imports: [
     BrowserModule,
