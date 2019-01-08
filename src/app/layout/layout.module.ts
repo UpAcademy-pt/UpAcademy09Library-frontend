@@ -50,7 +50,8 @@ import { SearchComponent } from '../shared/components/search/search.component';
     RegisterComponent,
     FilterPipe,
     FilterUserPipe,
-    PersonalComponent
+    PersonalComponent,
+    SearchComponent
   
   ],
 

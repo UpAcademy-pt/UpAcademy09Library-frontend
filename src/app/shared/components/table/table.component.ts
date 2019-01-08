@@ -26,10 +26,6 @@ export class TableComponent implements OnInit {
   constructor(public router: Router, private dataService: DataService) { }
 
   ngOnInit() {
-
-
-    // this.catalog$.subscribe(result => { 
-    //   console.log(result.length) });
   }
 
   // delete

@@ -119,20 +119,20 @@ export class AcountApiService {
 
   //Find By Id ???
   public queryUserID(id: number){
-    this.http.get(apiUrl + "/" + id);
+    return this.http.get(apiUrl + "/" + id);
   }
 
   //Find By Name
   public queryUserName(name: string){
-    this.http.get(apiUrl + "/findby/name/" + name);
+    return this.http.get(apiUrl + "/findby/name/" + name);
   }
   //Find by Nip
   public queryUserNip(nip: string){
-    this.http.get(apiUrl + "/findby/nip/" + nip);
+    return this.http.get(apiUrl + "/findby/nip/" + nip);
   }
    //Find by Nip
    public queryUserEmail(email: string){
-    this.http.get(apiUrl + "/findby/email/" + email);
+    return  this.http.get(apiUrl + "/findby/email/" + email);
   }
 
 
