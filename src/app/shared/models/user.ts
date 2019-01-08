@@ -1,3 +1,5 @@
+import { Catalog } from './catalog';
+
 declare var Object: any;
 export class User {
     'email': string;
@@ -7,6 +9,7 @@ export class User {
     'admin': boolean;
     'id': any;
     'active': boolean;
+    'favouritesBooks': Array<Catalog>;
     constructor(data?: any) {
         Object.assign(this, data);
     }

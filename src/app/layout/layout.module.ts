@@ -13,7 +13,7 @@ import { FormsModule } from '@angular/forms';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-import { BsDropdownModule, PaginationModule } from 'ngx-bootstrap';
+import { BsDropdownModule, PaginationModule, TooltipModule } from 'ngx-bootstrap';
 import { FilterPipe } from '../shared/components/filter/filter.pipe';
 import { PanelComponent } from '../shared/components/panel/panel.component';
 import { BookDetailsComponent } from './book-details/book-details.component';
@@ -62,7 +62,9 @@ import { FilterUserPipe } from '../shared/components/filter/filter-user.pipe';
     // tabs
     TabsModule.forRoot(),
     // pagination
-    PaginationModule.forRoot()
+    PaginationModule.forRoot(),
+    // tooltip
+    TooltipModule.forRoot()
   ]
 })
 export class LayoutModule { }

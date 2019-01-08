@@ -3,7 +3,7 @@
     <div class="container mb-3">
       <div class="row justify-content-md-left">
         <div class="input-group">
-          <select (change)=" selectChangeHandler($event)">
+          <select class="btnSearch" (change)=" selectChangeHandler($event)">
             <option value="keyword">Palavra-Chave</option>
             <option value="name">name</option>
             <option value="email">email</option>
@@ -32,9 +32,9 @@
               {{row[col]}}
             </td>
             <td>
-              <button (click)="changePrivileges(row.id)" class="btn btn-info">admin privileges</button>
-              <button (click)="disable(row.id)" class="btn btn-info">disable</button>
-              <button (click)="reactivate(row.id)" class="btn btn-info">reactivate</button>
+              <button (click)="changePrivileges(row.id)" class="btn btn-info" tooltip="Conceder Privilégios Administrativos" placement="top">admin privileges</button>
+              <button (click)="disable(row.id)" class="btn btn-info" tooltip="Desactivar o utilizador" placement="top">disable</button>
+              <button (click)="reactivate(row.id)" class="btn btn-info" tooltip="Reactivar o utilizador" placement="top">reactivate</button>
             </td>
           </tr>
         </tbody>
