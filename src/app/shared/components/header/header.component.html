@@ -19,6 +19,9 @@
         <li class="nav-item" *ngIf="(currentUser$ | async)?.id && ((currentUser$ | async)?.admin === false)">
           <a class="nav-item nav-link" href="#" [routerLinkActive]="['active']" routerLink="/user">{{account.name}}</a>
         </li>
+        <li class="nav-item" *ngIf="(currentUser$ | async)?.id && ((currentUser$ | async)?.admin === false)">
+            <a class="nav-item nav-link" href="#" [routerLinkActive]="['active']" routerLink="/personal">Area Pessoal</a>
+          </li>
         <li class="nav-item" *ngIf="(currentUser$ | async)?.id">
             <a class="nav-item nav-link" href="#" [routerLinkActive]="['active']" routerLink="/home" (click)="logout()">logout</a>
           </li>
@@ -37,25 +40,29 @@
   </div>
 </nav>
 
-<ng-template #login>
-  <div class="modal-header">
+<ng-template  #login>
+  <div  class="modal-header">
     <h4 class="modal-title pull-left">Login</h4>
     <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
   <div class="modal-body">
-    <form>
+    <form #f="ngForm" (ngSubmit)="loginUserNg()">
       <div class="form-group">
         <label for="email">Email</label>
-        <input type="text" class="form-control" name="email"  [(ngModel)] = "account.email" required>
+        <input #email="ngModel" ngModel email type="text" class="form-control" name="email"  [(ngModel)] = "account.email" required>
       </div>
+      <div *ngIf="email.invalid && email.touched" class="alert alert-danger" role="alert">
+        Insira um email correto!
+      </div>
+     
       <div class="form-group">
         <label for="password">Password</label>
-        <input type="password" class="form-control" name="password"  [(ngModel)] = "account.password" required>
+        <input ngModel  type="password" class="form-control" name="password"  [(ngModel)] = "account.password" required>
       </div>
       <div>{{msg}}</div>
-      <button type="button" (click)="loginUserNg()" class="btn btn-success">Login</button>
+      <button type="submit" (click)="loginUserNg()" class="btn btn-success" [disabled]="f.invalid">Login</button>
     </form>
   </div>
 </ng-template>

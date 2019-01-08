@@ -11,6 +11,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { BookDetailsComponent } from './book-details/book-details.component';
 import { AuthGuard } from '../shared/guards';
+import { PersonalComponent } from './personal/personal.component';
 
 const routes: Routes = [
     {
@@ -24,6 +25,7 @@ const routes: Routes = [
             { path: 'about', component: AboutComponent },
             { path: 'contact', component: ContactComponent },
             { path: 'log in', component: LoginComponent},
+            { path: 'personal', component: PersonalComponent},
             { path: 'register', component: RegisterComponent},
             { path: 'notfound', component: NotfoundComponent },
             { path: 'bookdetails/:id', component: BookDetailsComponent },
