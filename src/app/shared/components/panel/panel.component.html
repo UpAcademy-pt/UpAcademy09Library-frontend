@@ -27,7 +27,7 @@
       <p class="card-text">Descrição: {{item.description}} </p>
       <p class="card-text ">Estado: {{item.state}} </p> 
     </div>
-    <div><img class="reservar"   (click)="changeImg($event.target)" src="/assets/bookEmpty.png" ></div>
-     
+    <div><img class="reservar" (click)="reservar(item)"  src="/assets/bookEmpty.png" ></div>
+   <!-- / (click)="changeImg($event.target)" -->
     <!-- <div class="card-footer text-center">Reservar<div> -->
   </div>

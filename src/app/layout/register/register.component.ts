@@ -23,6 +23,12 @@ export class RegisterComponent implements OnInit {
   }
   // public account: User = new User();
 
+  onClose() {
+    this.user.name = '';
+      this.user.email = '';
+      this.user.nip = '';
+      this.user.password = '';
+  }
   onSubmit() {
     if (
       this.user.name &&
@@ -35,7 +41,6 @@ export class RegisterComponent implements OnInit {
           if (resp === null) {
             this.msg1 = 'Erro: Email já se encontra registado.';
           } else {
-            console.log("ola");
             this.accountApi.loginUserNg(resp.email, resp.password).subscribe(
               (res: any) => {
                 if (res !== null) {
@@ -43,24 +48,17 @@ export class RegisterComponent implements OnInit {
 
                   if (res.admin) {
                     this.router.navigate(['admin']);
-                    // this.isAdmin = true;
-                    // this.isLogged = true;
                   } else {
                     this.router.navigate(['user']);
-                    // this.isLogged = true;
                   }
                 }
               }
             );
-
-
           }
         }
       );
     } else {
       this.msg1 = 'Erro: todos os campos são de preenchimento obrigatório.';
     }
-
   }
-
 }

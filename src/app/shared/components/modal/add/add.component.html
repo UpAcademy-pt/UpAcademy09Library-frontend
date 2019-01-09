@@ -1,39 +1,40 @@
-<button type="button" class="btn btn-primary" (click)="openModal(template)" tooltip="Adicionar Livro" placement="top">Add Books</button>
+<button type="button" class="btn btn-primary" (click)="openModal(template)" tooltip="Adicionar Livro" placement="top">Add
+  Books</button>
 
 <ng-template #template>
   <div class="modal-header">
-    <h4 class="modal-title pull-left">Add Books</h4>
-    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+    <h4 class="modal-title pull-left">Adicionar livros</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide(); onClose();">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
   <div class="modal-body">
-    <form>
+    <form #f="ngForm" (ngSubmit)="onSubmit()">
       <div class="form-group">
-        <label for="title">Title</label>
-        <input type="text" class="form-control" name="title"  [(ngModel)] = "catalog.title" required>
+        <label for="title">Título</label>
+        <input type="text" class="form-control" name="title" [(ngModel)]="catalog.title" required>
       </div>
       <div class="form-group">
-        <label for="description">description</label>
-        <input type="text" class="form-control" name="description"  [(ngModel)] = "catalog.description" required>
+        <label for="description">Descriçāo</label>
+        <input type="text" class="form-control" name="description" [(ngModel)]="catalog.description" required>
       </div>
       <div class="form-group">
-        <label for="author">author</label>
-        <input type="text" class="form-control" name="author" [(ngModel)] = "catalog.author" required>
+        <label for="author">Autor</label>
+        <input type="text" class="form-control" name="author" [(ngModel)]="catalog.author" required>
       </div>
       <div class="form-group">
-          <label for="author">topic</label>
-          <input type="text" class="form-control" name="topic" [(ngModel)] = "catalog.topic" required>
-        </div>
-        <div class="form-group">
-            <label for="author">location</label>
-            <input type="text" class="form-control" name="location" [(ngModel)] = "catalog.location" required>
-          </div>
-          <div class="form-group">
-              <label for="author">isbn</label>
-              <input type="text" class="form-control" name="isbn" [(ngModel)] = "catalog.isbn" required>
-            </div>
-      <button type="button" (click)="onSubmit()" (click)="modalRef.hide()" class="btn btn-success">Submit</button>
+        <label for="author">Tema</label>
+        <input type="text" class="form-control" name="topic" [(ngModel)]="catalog.topic" required>
+      </div>
+      <div class="form-group">
+        <label for="author">Localizaçāo</label>
+        <input type="text" class="form-control" name="location" [(ngModel)]="catalog.location" required>
+      </div>
+      <div class="form-group">
+        <label for="author">ISBN</label>
+        <input type="number" class="form-control" name="isbn" [(ngModel)]="catalog.isbn" required >
+      </div>
+      <button type="button" (click)="onSubmit()" (keyup.enter)="onSubmit()" (click)="modalRef.hide()" [disabled]="f.invalid" class="btn btn-success">Submit</button>
     </form>
   </div>
 </ng-template>

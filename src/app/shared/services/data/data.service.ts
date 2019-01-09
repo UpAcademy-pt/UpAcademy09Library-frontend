@@ -21,12 +21,15 @@ export class DataService {
   private catalog: any
   // object of add and remove favorites
   public objectToSend: Object;
+  //
+  public search$: ReplaySubject<any[]> = new ReplaySubject(1);
+  public search:any;
 
 
   constructor(private catalogApi: CatalogApiService, private acountApi: AcountApiService, private historyApi: HistoryApiService) {
     this.getCatalog();
     this.getUsers();
-
+    console.log(this.queryUserIDServices(1));
   }
 
   /* BOOKS DATA LOGIC*/
@@ -45,7 +48,7 @@ export class DataService {
         console.log("OK");
         this.getCatalog();
       },
-      error => { console.error(error) });
+      error => { console.error(error); });
   }
   public updateCatalog(catalog) {
     console.log(catalog);
@@ -57,7 +60,7 @@ export class DataService {
         console.log("OK");
         this.getCatalog();
       },
-      error => { console.error(error) });
+      error => { console.error(error); });
   }
   // Está função não está em uso --- ver se está, senão modificar
   public getCatalogById(id) {
@@ -73,7 +76,14 @@ export class DataService {
   }
   //Find book keyword
   public getCatalogByKeywordService(keyword) {
-    return this.catalogApi.getCatalogByKeyword(keyword);
+    this.catalogApi.getCatalogByKeyword(keyword).subscribe(
+      (res: any) => {
+        this.search = res;
+        this.search$.next(res);
+      }
+    );
+    console.log(this.search$);
+    return this.search$;
   }
   //Find by title
   public getCatalogByTitleService(title) {
@@ -100,7 +110,7 @@ export class DataService {
 
   public getUserById(id){
     for (const item of this.users) {
-      if(item.id === id) {
+      if (item.id === id) {
         return item;
       }
     }
@@ -118,7 +128,7 @@ export class DataService {
 
   //create users
   public createUser(user) {
-    return this.acountApi.createUser(user)
+    return this.acountApi.createUser(user);
   }
 
   // update user
@@ -145,7 +155,7 @@ export class DataService {
 
   // add to Favorite -- TESTAR COM URGÊNCIA --- é a maneira que encontrei para enviar dois objectos
   public addFavoritesServices(userID: number, bookID: number) {
-    this.acountApi.addBookToFavourites(userID,bookID);
+    this.acountApi.addBookToFavourites(userID, bookID);
   }
 
   // remove from favorite
@@ -158,8 +168,14 @@ export class DataService {
   }
   //Find By Id ???
   public queryUserIDServices(userID) {
-    return this.acountApi.queryUserID(userID);
-
+    this.acountApi.queryUserID(userID).subscribe(
+      (res: any) => {
+        console.log("OK");
+        this.user$.next(res);
+        console.log(this.user$);
+      }
+    );
+    
   }
 
   //Find By Name
@@ -179,7 +195,7 @@ export class DataService {
 
   // Reserve a Book
   public reserveBookService(reserve: History) {
-    return this.historyApi.reserveBookHistory(reserve)
+    return this.historyApi.reserveBookHistory(reserve);
   }
   // Pickup book
   public pickupBookService(bookToPickUp: Catalog) {

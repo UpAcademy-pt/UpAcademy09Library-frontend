@@ -1,40 +1,44 @@
-<div class="table-responsive">
-  <div class="search">
-    <div class="container mb-3">
+<div>
+ <div class="search">
+    <div class="container mb-3 shadow">
       <div class="row justify-content-md-left">
         <div class="input-group">
-        <select (change)=" selectChangeHandler($event)">
-          <option value="keyword">Palavra-Chave</option>
-          <option value="title">Título</option>
-          <option value="author">Autor</option>
-          <option value="description">descrição</option>
-          <option value="isbn">isbn</option>
-          <option value="topic">topico</option>
+          <select (change)=" selectChangeHandler($event)">
+            <option value="keyword">Palavra-Chave</option>
+            <option value="title">Título</option>
+            <option value="author">Autor</option>
+            <option value="description">descrição</option>
+            <option value="isbn">isbn</option>
+            <option value="topic">topico</option>
           </select>
           <input class="form-control" type="text" name="search" [(ngModel)]="queryString" autocomplete="off"
-            placeholder="Procurar por {{selectedTypeSearch}}">
+            placeholder="Procurar por {{selectedTypeSearchOutput}}">
         </div>
       </div>
     </div>
-    <br>
-    <table class="table" [ngClass]='theme'>
-      <thead>
-        <tr>
-          <th *ngFor="let col of header">
-            {{col}}
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let row of catalog$ | async | FilterPipe: queryString: searchableList">
-          <td *ngFor="let col of header">
-            {{row[col]}}
-          </td>
-          <td>
-            <app-update [row]='row'></app-update>
-            <button (click)="deleteCatalog(row.id)" class="btn btn-info" tooltip="Eliminar Livro" placement="top"><img src="/assets/icons8-close-window-16.png" ></button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
   </div>
+  <br>
+  <table class="table table-hover" [ngClass]='theme'>
+    <thead>
+      <tr>
+        <th *ngFor="let col of header">
+          {{col}}
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let row of catalog$ | async | FilterPipe: queryString: searchableList | paginate: { itemsPerPage: 5, currentPage: p }">
+        <td *ngFor="let col of header">
+          {{row[col]}}
+        </td>
+        <td>
+          <app-update [row]='row'></app-update>
+          <button (click)="deleteCatalog(row.id)" class="btn btn-info" tooltip="Eliminar Livro" placement="top"><img
+              src="/assets/icons8-close-window-16.png"></button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <pagination-controls class="my-pagination" (pageChange)=" p = $event" previousLabel="Anterior" nextLabel="Próximo"
+    maxSize="7"></pagination-controls>
+</div>

@@ -21,7 +21,7 @@ import { TabsModule } from 'ngx-bootstrap';
 import { FilterUserPipe } from '../shared/components/filter/filter-user.pipe';
 import { PersonalComponent } from './personal/personal.component';
 import { SearchComponent } from '../shared/components/search/search.component';
-
+import {NgxPaginationModule} from 'ngx-pagination';
 
 
 
@@ -50,7 +50,8 @@ import { SearchComponent } from '../shared/components/search/search.component';
     RegisterComponent,
     FilterPipe,
     FilterUserPipe,
-    PersonalComponent
+    PersonalComponent,
+    SearchComponent
   
   ],
 
@@ -66,6 +67,7 @@ import { SearchComponent } from '../shared/components/search/search.component';
     // tabs
     TabsModule.forRoot(),
     // pagination
+    NgxPaginationModule, //npm install ngx-pagination --save
     PaginationModule.forRoot(),
     // tooltip
     TooltipModule.forRoot()
