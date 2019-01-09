@@ -36,6 +36,6 @@
   </div>
   
 
-  <button type="button" (click)="onSubmit()" class="btn btn-success" [disabled]="f.invalid">Registar</button>
+  <button type="button" (click)="onSubmit()" (keydown.enter)="onSubmit()" class="btn btn-success" [disabled]="f.invalid">Registar</button>
   <div *ngIf="msg1!=undefined" class="alert alert-danger" role="alert"> {{msg1}} </div>
 </form>

@@ -13,6 +13,7 @@ export class AddComponent implements OnInit {
 
   modalRef: BsModalRef;
   catalog: Catalog = new Catalog();
+  
 
   constructor(private modalService: BsModalService, private dataService: DataService) { }
 
@@ -25,5 +26,14 @@ export class AddComponent implements OnInit {
   onSubmit() {
   console.log(this.catalog);
   this.dataService.createCatalog(this.catalog);
+  }
+
+  onClose() {
+    this.catalog.title = '';
+    this.catalog.description = '';
+    this.catalog.author = '';
+    this.catalog.topic = '';
+    this.catalog.location = '';
+    this.catalog.isbn = '';
   }
  }

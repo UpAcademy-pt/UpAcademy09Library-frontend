@@ -48,7 +48,7 @@ export class DataService {
         console.log("OK");
         this.getCatalog();
       },
-      error => { console.error(error) });
+      error => { console.error(error); });
   }
   public updateCatalog(catalog) {
     console.log(catalog);
@@ -60,7 +60,7 @@ export class DataService {
         console.log("OK");
         this.getCatalog();
       },
-      error => { console.error(error) });
+      error => { console.error(error); });
   }
   // Está função não está em uso --- ver se está, senão modificar
   public getCatalogById(id) {
@@ -110,7 +110,7 @@ export class DataService {
 
   public getUserById(id){
     for (const item of this.users) {
-      if(item.id === id) {
+      if (item.id === id) {
         return item;
       }
     }
@@ -127,7 +127,7 @@ export class DataService {
 
   //create users
   public createUser(user) {
-    return this.acountApi.createUser(user)
+    return this.acountApi.createUser(user);
   }
 
   // update user
@@ -154,7 +154,7 @@ export class DataService {
 
   // add to Favorite -- TESTAR COM URGÊNCIA --- é a maneira que encontrei para enviar dois objectos
   public addFavoritesServices(userID: number, bookID: number) {
-    this.acountApi.addBookToFavourites(userID,bookID);
+    this.acountApi.addBookToFavourites(userID, bookID);
   }
 
   // remove from favorite
@@ -194,7 +194,7 @@ export class DataService {
 
   // Reserve a Book
   public reserveBookService(reserve: History) {
-    return this.historyApi.reserveBookHistory(reserve)
+    return this.historyApi.reserveBookHistory(reserve);
   }
   // Pickup book
   public pickupBookService(bookToPickUp: Catalog) {

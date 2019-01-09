@@ -7,15 +7,6 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav ml-auto">
-        <!-- <li class="nav-item active">
-          <a class="nav-item nav-link active" href="#" [routerLinkActive]="['active']" routerLink="/home">Home <span class="sr-only">(current)</span></a>
-        </li> -->
-        <!-- <li class="nav-item">
-          <a class="nav-item nav-link" href="#" [routerLinkActive]="['active']" routerLink="/about">sobre</a>
-        </li> -->
-        <!-- <li class="nav-item">
-          <a class="nav-item nav-link" href="#" [routerLinkActive]="['active']" routerLink="/contact">contactos</a>
-        </li> -->
         <li class="nav-item" *ngIf="(currentUser$ | async)?.id && ((currentUser$ | async)?.admin === false)">
           <a class="nav-item nav-link" href="#" [routerLinkActive]="['active']" routerLink="/user">{{account.name}}</a>
         </li>
@@ -43,7 +34,7 @@
 <ng-template  #login>
   <div  class="modal-header">
     <h4 class="modal-title pull-left">Login</h4>
-    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide(); onClose();">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
@@ -59,12 +50,12 @@
      
       <div class="form-group">
         <label for="password">Palavra-passe</label>
-        <input #password="ngModel" ngModel placeholder="Introduza a palavra-passe correcta" type="password" class="form-control" name="password"  [(ngModel)] = "account.password" required>
+        <input #password="ngModel" ngModel placeholder="Introduza a palavra-passe" type="password" class="form-control" name="password"  [(ngModel)] = "account.password" required>
       </div>
       <div *ngIf="msg!=undefined" class="alert alert-danger" role="alert">
         {{msg}}
       </div>
-      <button type="submit" (click)="loginUserNg()" class="btn btn-success" [disabled]="f.invalid">Login</button>
+      <button type="submit" (keyup.enter)="loginUserNg()" (click)="loginUserNg()" class="btn btn-success" [disabled]="f.invalid">Login</button>
     </form>
   </div>
 </ng-template>
