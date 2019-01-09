@@ -8,7 +8,7 @@
     </button>
   </div>
   <div class="modal-body">
-    <form>
+    <form #f="ngForm" (ngSubmit)="onSubmit()">
       <div class="form-group">
         <label for="title">Título</label>
         <input type="text" class="form-control" name="title" [(ngModel)]="catalog.title" required>
@@ -33,7 +33,7 @@
         <label for="isbn">ISBN</label>
         <input type="number" class="form-control" name="isbn" [(ngModel)]="catalog.isbn" required>
       </div>
-      <button type="button" (click)="onSubmit()" (click)="modalRef.hide()" class="btn btn-success">Submit</button>
+      <button type="button" (click)="onSubmit()" (click)="modalRef.hide()" class="btn btn-success">Gravar</button>
     </form>
   </div>
 </ng-template>
