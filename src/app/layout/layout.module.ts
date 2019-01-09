@@ -23,6 +23,7 @@ import { PersonalComponent } from './personal/personal.component';
 import { SearchComponent } from '../shared/components/search/search.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { BookDetailsAdminComponent } from './book-details-admin/book-details-admin.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 
 
@@ -72,6 +73,8 @@ import { BookDetailsAdminComponent } from './book-details-admin/book-details-adm
     PaginationModule.forRoot(),
     // tooltip
     TooltipModule.forRoot()
+    //translate
+    TranslateModule,
   ]
 })
 export class LayoutModule { }
