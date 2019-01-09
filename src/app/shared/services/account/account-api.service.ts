@@ -61,36 +61,36 @@ export class AcountApiService {
 
   // get all users
   public getUsersDB() {
-    return this.http.get(apiUrl + "/getall");
+    return this.http.get(apiUrl + '/getall');
   }
 
   // create user
   public createUser(user: User) {
-    return this.http.post(apiUrl, user)
+    return this.http.post(apiUrl, user);
   }
 
   // update user
   public updateUser(id: number, user: User) {
-    console.log("service id: " + id);
-    this.http.put(apiUrl + "/update/" + id, user).subscribe(
-      (res) => { console.log("OK") },
-      error => { console.error(error) });
+    console.log('service id: ' + id);
+    this.http.put(apiUrl + '/update/' + id, user).subscribe(
+      (res) => { console.log('OK'); },
+      error => { console.error(error); });
   }
 
   // Change user to admin --- um put precisa sempre de body, nem que seja null
   public changePrivilegesUser(id) {
-    console.log("service id: " + id);
-    this.http.put(apiUrl + "/changetoadmin/" + id, null).subscribe(
-      (res) => { console.log("OK") },
-      error => { console.error(error) });
+    console.log('service id: ' + id);
+    this.http.put(apiUrl + '/changetoadmin/' + id, null).subscribe(
+      (res) => { console.log('OK'); },
+      error => { console.error(error); });
   }
 
   // Disable User
   public disableUser(id) {
-    console.log("service id: " + id);
-    this.http.put(apiUrl + "/disable/" + id, null).subscribe(
-      (res) => { console.log("disable") },
-      error => { console.error(error) });
+    console.log('service id: ' + id);
+    this.http.put(apiUrl + '/disable/' + id, null).subscribe(
+      (res) => { console.log('disable'); },
+      error => { console.error(error); });
   }
   // Reactive User
   public reactivateUser(id) {
@@ -101,38 +101,37 @@ export class AcountApiService {
   }
 
   // add to Favorite ---- TESTAR COM URGÊNCIA --- é a maneira que encontrei para enviar dois objectos --- SENÃO DER É PRECISO QUERYPARAM?
-  
   public addBookToFavourites(userID: number, bookID: number) {
     return this.http.post(apiUrl + '/addfavourite?userId=' + userID + '&bookId=' + bookID, null);
   }
 
   // remove from favorite
-  public removeFavourite(userID: number, bookID: number){
+  public removeFavourite(userID: number, bookID: number) {
     return this.http.delete(apiUrl + '/removefavourite?userId=' + userID + '&bookId=' + bookID, null);
   }
   // get all favorites
-  public getAllFavourites(userID: number){
-    return this.http.get(apiUrl + "/getallfavourites/" + userID);
+  public getAllFavourites(userID: number) {
+    return this.http.get(apiUrl + '/getallfavourites/' + userID);
   }
 
   /* QUERYS */
 
-  //Find By Id ???
-  public queryUserID(id: number){
-    return this.http.get(apiUrl + "/" + id);
+  // Find By Id ???
+  public queryUserID(id: number) {
+    return this.http.get(apiUrl + '/' + id);
   }
 
-  //Find By Name
-  public queryUserName(name: string){
-    return this.http.get(apiUrl + "/findby/name/" + name);
+  // Find By Name
+  public queryUserName(name: string) {
+    return this.http.get(apiUrl + '/findby/name/' + name);
   }
-  //Find by Nip
-  public queryUserNip(nip: string){
-    return this.http.get(apiUrl + "/findby/nip/" + nip);
+  // Find by Nip
+  public queryUserNip(nip: string) {
+    return this.http.get(apiUrl + '/findby/nip/' + nip);
   }
-   //Find by Nip
-   public queryUserEmail(email: string){
-    return  this.http.get(apiUrl + "/findby/email/" + email);
+  // Find by Nip
+  public queryUserEmail(email: string) {
+    return this.http.get(apiUrl + '/findby/email/' + email);
   }
 
 

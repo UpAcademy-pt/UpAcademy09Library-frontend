@@ -21,21 +21,21 @@ export class CatalogApiService {
 
   // POST create a book to catalog
   public createBook(book: Catalog) {
-    console.log("book : ", book);
-    return this.http.post(apiUrl, book)
+    console.log('book : ', book);
+    return this.http.post(apiUrl, book);
   }
 
   // PUT update book
   public updateBook(book: Catalog) {
-    console.log("book : ", book);
+    console.log('book : ', book);
     this.http.put(apiUrl, book).subscribe(
-      (res) => { console.log("OK") },
-      error => { console.error(error) });
+      (res) => { console.log('OK'); },
+      error => { console.error(error); });
   }
 
   // DELETE Book by id
   public deleteBook(id) {
-    return this.http.delete(apiUrl + id)
+    return this.http.delete(apiUrl + id);
   }
 
   /* QUERYS */
@@ -45,32 +45,32 @@ export class CatalogApiService {
   public getCatalogById(id: number) {
     return this.http.get(apiUrl + id);
   }
-  //Find book keyword
-  public getCatalogByKeyword(string: string) {
-    return this.http.get(apiUrl + "generalresearch/" + string);
+  // Find book keyword
+  public getCatalogByKeyword(keyword: string) {
+    return this.http.get(apiUrl + 'generalresearch/?keyExpression=' + keyword);
   }
 
-  //Find by title
+  // Find by title
   public getCatalogByTitle(string: string) {
     return this.http.get(apiUrl + "researchbytitle/" + string);
   }
 
-  //Find by Description
+  // Find by Description
   public getCatalogByDescription(string: string) {
     return this.http.get(apiUrl + "researchbydescription/" + string);
   }
 
-  //Find by author
+  // Find by author
   public getCatalogByAuthor(string: string) {
     return this.http.get(apiUrl + "researchbyauthor/" + string);
   }
 
-  //Find by topic
+  // Find by topic
   public getCatalogByTopic(string: string) {
     return this.http.get(apiUrl + "researchbytopic/" + string);
   }
 
-  //Get all available books
+  // Get all available books
   public getAvailableBooks() {
     return this.http.get(apiUrl + "getallavailablebooks");
   }  
