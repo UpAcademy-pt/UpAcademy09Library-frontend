@@ -56,22 +56,18 @@ export class HeaderComponent implements OnInit {
         if (res !== null) {
           this.accountApi.setCurrentUser(res);
           this.modalRef.hide();
-          this.loginForm.reset();
           this.account = res;
           if (res.admin) {
             this.router.navigate(['admin']);
             this.isAdmin = true;
             this.isLogged = true;
-            this.loginForm.reset();
           } else {
             this.router.navigate(['user']);
             this.isLogged = true;
-            this.loginForm.reset();
           }
         } else {
           // tslint:disable-next-line:max-line-length
           this.msg = 'O par e-mail/password está incorrecto. Por favor tente novamente ou contacte o administrador para recuperar a sua password';
-          this.loginForm.reset();
         }
       }
     );
