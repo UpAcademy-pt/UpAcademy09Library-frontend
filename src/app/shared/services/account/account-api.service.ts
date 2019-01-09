@@ -119,7 +119,7 @@ export class AcountApiService {
 
   //Find By Id ???
   public queryUserID(id: number){
-    this.http.get(apiUrl + "/" + id);
+   return this.http.get(apiUrl + "/" + id);
   }
 
   //Find By Name
