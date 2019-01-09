@@ -133,7 +133,7 @@ export class DataService {
 
   // update user
   public updateUserServices(id, user) {
-    this.acountApi.updateUser(id, user);
+    return this.acountApi.updateUser(id, user);
   }
 
   // change privileges

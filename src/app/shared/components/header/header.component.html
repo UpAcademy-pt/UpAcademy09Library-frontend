@@ -39,7 +39,7 @@
     </button>
   </div>
   <div class="modal-body">
-    <form #f="ngForm" (ngSubmit)="loginUserNg()">
+    <form #f="ngForm" (keydown.enter)="loginUserNg()" (ngSubmit)="loginUserNg()">
       <div class="form-group">
         <label for="email">E-mail</label>
         <input #email="ngModel" placeholder="Introduza e-mail válido" ngModel email type="text" class="form-control" name="email"  [(ngModel)] = "account.email" required>
@@ -55,7 +55,7 @@
       <div *ngIf="msg!=undefined" class="alert alert-danger" role="alert">
         {{msg}}
       </div>
-      <button type="submit" (keyup.enter)="loginUserNg()" (click)="loginUserNg()" class="btn btn-success" [disabled]="f.invalid">Login</button>
+      <button type="submit" (keydown.enter)="loginUserNg()" (click)="loginUserNg()" class="btn btn-success" [disabled]="f.invalid">Login</button>
     </form>
   </div>
 </ng-template>

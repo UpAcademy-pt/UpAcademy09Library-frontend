@@ -1,6 +1,6 @@
 <tabset>
     <tab heading="Alterar os meus dados">
-            <form novalidate>
+            <form #f="ngForm" (ngSubmit)="onSubmit()" novalidate>
                     <fieldset>
                       <div class="form-group">
                         <label>Nome </label>
@@ -9,41 +9,52 @@
                       </div>
                   
                       <div class="form-group">
-                        <label>Numero de identificação pessoal</label>
+                        <label>Número de identificação pessoal</label>
                         <input type="text"
                                class="form-control" required name="nip" [(ngModel)]="user.nip">
                       </div>
                     </fieldset>
                   
                     <div class="form-group">
-                      <label>Email</label>
-                      <input type="text"
+                      <label>E-mail</label>
+                      <input type="email"
                              class="form-control" required name="email" [(ngModel)]="user.email">
                     </div>
                   
-                    <!-- <div class="form-group">
-                      <label>Password</label>
-                      <input type="password"
-                             class="form-control" required  name="password" [(ngModel)]="user.password">
+                    <button type="submit" (click)="onSubmit()" class="btn btn-dark">Alterar Dados Pessoais</button>
+                    <div *ngIf="alterouDados" (ngSubmit)="onClose()" class="alert alert-success mt-3" role="alert">
+                      Dados alterados com sucesso.
                     </div>
-                     -->
-                  
-                    <button type="button" (click)="onSubmit()" class="btn btn-dark">Alterar</button>
-                  
-                    <div>{{msg1}}</div>
+                    <br>
+                    <div *ngIf="!alterouDados && submitedFormDados" (ngSubmit)="onClose()" class="alert alert-danger mt-3" role="alert">
+                      Erro na alteraçāo de dados. Por favor tente novamente. 
+                    </div>
+                    <br>
+                    <hr> <br>
                   </form>
-                <form>
+                <form #f1="ngForm" (ngSubmit)="onSubmit()">
                      <div class="form-group">
-                      <label>Nova Password</label>
+                      <label>Nova Palavra-Passe</label>
                       <input type="password"
-                             class="form-control"   name="password1" [(ngModel)]="confirmPassword" >
+                             class="form-control" #confirmPasswordHtml="ngModel"   name="password1" [(ngModel)]="confirmPassword" >
                     </div>
                     <div class="form-group">
-                      <label> Repita Password</label>
+                      <label> Confirme a Palavra-Passe</label>
                       <input type="password"
-                             class="form-control"   name="password" [(ngModel)]="password">
+                             class="form-control" #passwordHtml="ngModel"   name="password" [(ngModel)]="password">
                     </div>
-                    <button type="button" (click)="NewPass(password2)" class="btn btn-dark" [disabled]="password!==confirmPassword">Alterar</button>
+                    <div *ngIf="password!==confirmPassword && passwordHtml.touched && confirmPasswordHtml.touched" (ngSubmit)="onClose()" class="alert alert-danger" role="alert">
+                      As Palavras-passe introduzidas nāo sāo coincidentes. Por favor introduza novamente.
+                    </div>
+                    <button type="submit" (click)="NewPass(password2)" class="btn btn-dark" [disabled]="password!==confirmPassword">Alterar Password</button>
+                    <div *ngIf="alterouPassword" (ngSubmit)="onClose()" class="alert alert-success mt-3" role="alert">
+                      Palavra-Passe alterada com sucesso.
+                    </div>
+                    <br>
+                    <div *ngIf="!alterouPassword && submitedFormPassword" (ngSubmit)="onClose()" class="alert alert-danger mt-3" role="alert">
+                      Erro na alteraçāo da Palavra-passe. Por favor tente novamente. 
+                    </div>
+                    <br>
                   </form>
         <br>
 

@@ -44,8 +44,8 @@ export class HeaderComponent implements OnInit {
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
   }
-  
-  onClose(){
+
+  onClose() {
   this.account.email = '';
   this.account.password = '';
 }

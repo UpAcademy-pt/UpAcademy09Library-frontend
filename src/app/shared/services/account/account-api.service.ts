@@ -72,9 +72,7 @@ export class AcountApiService {
   // update user
   public updateUser(id: number, user: User) {
     console.log('service id: ' + id);
-    this.http.put(apiUrl + '/update/' + id, user).subscribe(
-      (res) => { console.log('OK'); },
-      error => { console.error(error); });
+    return this.http.put(apiUrl + '/update/' + id, user);
   }
 
   // Change user to admin --- um put precisa sempre de body, nem que seja null

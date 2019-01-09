@@ -25,7 +25,7 @@ const routes: Routes = [
             { path: 'about', component: AboutComponent },
             { path: 'contact', component: ContactComponent },
             { path: 'log in', component: LoginComponent},
-            { path: 'personal/:id', component: PersonalComponent},
+            { path: 'personal/:id', component: PersonalComponent,  canActivate: [AuthGuard]},
             { path: 'register', component: RegisterComponent},
             { path: 'notfound', component: NotfoundComponent },
             { path: 'bookdetails/:id', component: BookDetailsComponent },

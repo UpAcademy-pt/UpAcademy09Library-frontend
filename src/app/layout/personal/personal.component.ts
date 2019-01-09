@@ -17,6 +17,10 @@ export class PersonalComponent implements OnInit {
   account: any;
   password:string='';
   confirmPassword:string;
+  alterouDados: Boolean;
+  submitedFormDados: Boolean;
+  alterouPassword: Boolean;
+  submitedFormPassword: Boolean;
   constructor(
     private dataService: DataService,
     private route: ActivatedRoute
@@ -38,11 +42,36 @@ this.id=this.route.snapshot.paramMap.get('id');
  
   }
 onSubmit(){
-  this.dataService.updateUserServices(Number(this.id), this.user);
+
+  var result = this.dataService.updateUserServices(Number(this.id), this.user).subscribe(
+    (res) => { console.log('OK');
+    this.alterouDados = true;
+    this.submitedFormDados = true;
+  },
+    error => {
+      console.error(error);
+      this.alterouDados = false;
+      this.submitedFormDados = true;
+    });
 }
 
-NewPass(){
- this.user.password=this.password;
- this.dataService.updateUserServices(Number(this.id), this.user);
+onClose() {
+  this.account.password = '';
+  this.account.confirmPassword = '';
+}
+
+NewPass() {
+
+ this.user.password = this.password;
+ this.dataService.updateUserServices(Number(this.id), this.user).subscribe(
+  (res) => { console.log('OK');
+  this.alterouPassword = true;
+  this.submitedFormPassword = true;
+},
+  error => {
+    console.error(error);
+    this.alterouPassword = false;
+    this.submitedFormPassword = true;
+  });
 }
 }
