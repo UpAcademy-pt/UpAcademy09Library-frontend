@@ -17,7 +17,7 @@ export class DataService {
   // observable hisotry
   public history$: ReplaySubject<any[]> = new ReplaySubject(1);
   // 
-  private users:any[]=[];
+  private users: any []=[]
   private catalog: any
   // object of add and remove favorites
   public objectToSend: Object;
@@ -120,6 +120,7 @@ export class DataService {
       (res: any) => {
         console.log("OK");
         this.user$.next(res);
+        this.users = res;
         console.log(this.user$);
       }
     );
