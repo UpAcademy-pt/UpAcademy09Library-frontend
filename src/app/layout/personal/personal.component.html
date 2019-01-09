@@ -3,7 +3,7 @@
             <form novalidate>
                     <fieldset>
                       <div class="form-group">
-                        <label>Nome</label>
+                        <label>Nome </label>
                         <input type="text"
                                class="form-control" required name="name" [(ngModel)]="user.name">
                       </div>
@@ -21,18 +21,33 @@
                              class="form-control" required name="email" [(ngModel)]="user.email">
                     </div>
                   
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                       <label>Password</label>
                       <input type="password"
                              class="form-control" required  name="password" [(ngModel)]="user.password">
                     </div>
-                    
+                     -->
                   
                     <button type="button" (click)="onSubmit()" class="btn btn-dark">Alterar</button>
                   
                     <div>{{msg1}}</div>
                   </form>
+                <form>
+                     <div class="form-group">
+                      <label>Nova Password</label>
+                      <input type="password"
+                             class="form-control"   name="password1" [(ngModel)]="confirmPassword" >
+                    </div>
+                    <div class="form-group">
+                      <label> Repita Password</label>
+                      <input type="password"
+                             class="form-control"   name="password" [(ngModel)]="password">
+                    </div>
+                    <button type="button" (click)="NewPass(password2)" class="btn btn-dark" [disabled]="password!==confirmPassword">Alterar</button>
+                  </form>
         <br>
+
+        
     </tab>
     <tab heading="Ver historico">
         <br>
