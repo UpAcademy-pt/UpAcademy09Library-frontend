@@ -12,7 +12,7 @@ import { Catalog } from 'src/app/shared/models';
 })
 export class UpdateComponent implements OnInit {
 
-  @Input() row: any;
+  @Input() catalogdetail: any;
 
   modalRef: BsModalRef;
   public catalog: Catalog = new Catalog();
@@ -21,7 +21,7 @@ export class UpdateComponent implements OnInit {
   constructor(private modalService: BsModalService, private dataService: DataService) {}
 
   ngOnInit() {
-    this.catalog = this.row;
+    this.catalog = this.catalogdetail;
   }
 
   openModal(template: TemplateRef<any>) {

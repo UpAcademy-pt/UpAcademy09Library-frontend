@@ -7,9 +7,9 @@
             <option value="keyword">Palavra-Chave</option>
             <option value="title">Título</option>
             <option value="author">Autor</option>
-            <option value="description">descrição</option>
-            <option value="isbn">isbn</option>
-            <option value="topic">topico</option>
+            <option value="description">Descrição</option>
+            <option value="isbn">Isbn</option>
+            <option value="topic">Tópico</option>
           </select>
           <input class="form-control" type="text" name="search" [(ngModel)]="queryString" autocomplete="off"
             placeholder="Procurar por {{selectedTypeSearchOutput}}">
@@ -27,14 +27,9 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let row of catalog$ | async | FilterPipe: queryString: searchableList | paginate: { itemsPerPage: 5, currentPage: p }">
+      <tr *ngFor="let row of catalog$ | async | FilterPipe: queryString: searchableList | paginate: { itemsPerPage: 5, currentPage: p }" (click)="clickItem(row)">
         <td *ngFor="let col of header">
           {{row[col]}}
-        </td>
-        <td>
-          <app-update [row]='row'></app-update>
-          <button (click)="deleteCatalog(row.id)" class="btn btn-info" tooltip="Eliminar Livro" placement="top"><img
-              src="/assets/icons8-close-window-16.png"></button>
         </td>
       </tr>
     </tbody>

@@ -12,6 +12,7 @@ import { RegisterComponent } from './register/register.component';
 import { BookDetailsComponent } from './book-details/book-details.component';
 import { AuthGuard } from '../shared/guards';
 import { PersonalComponent } from './personal/personal.component';
+import { BookDetailsAdminComponent } from './book-details-admin/book-details-admin.component';
 
 const routes: Routes = [
     {
@@ -29,6 +30,7 @@ const routes: Routes = [
             { path: 'register', component: RegisterComponent},
             { path: 'notfound', component: NotfoundComponent },
             { path: 'bookdetails/:id', component: BookDetailsComponent },
+            { path: 'bookdetailsadmin/:id', component: BookDetailsAdminComponent },
             { path: '**', redirectTo: 'notfound' }
 
         ]
