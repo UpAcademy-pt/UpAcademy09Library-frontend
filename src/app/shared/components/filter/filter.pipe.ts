@@ -11,7 +11,7 @@ export class FilterPipe implements PipeTransform {
     if (input && searchableList) {
       input = input.toLowerCase();
       return value.filter((catalog: any) => {
-        var isTrue = false;
+         let isTrue = false;
         switch (searchableList) {
           case 'keyword':
             console.log(searchableList);
@@ -36,7 +36,7 @@ export class FilterPipe implements PipeTransform {
             }
             break;
         }
-      })
+      });
     }
     return value;
   }

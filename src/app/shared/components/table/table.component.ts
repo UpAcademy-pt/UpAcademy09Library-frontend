@@ -1,45 +1,80 @@
-import { Component, OnInit, Input, SimpleChange } from '@angular/core';
-import { Router, RouterLinkWithHref } from '@angular/router';
+import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { DataService } from '../../services/data/data.service';
-import { Catalog } from '../../models';
-import { PageChangedEvent } from 'ngx-bootstrap';
-import { ResourceLoader } from '@angular/compiler';
-
 
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
-  styleUrls: ['./table.component.css']
+  styleUrls: ['./table.component.css'],
+
+
 })
 export class TableComponent implements OnInit {
 
   @Input() header: any;
   @Input() catalog$: any;
-  @Input() theme = 'table-dark';
+  @Input() theme = 'table-light';
   @Input() isBook = true;
 
-  // filter var
-  selectedTypeSearch: string = 'keyword';
-  searchableList: string;
+  // pagination
+  p = 1;
 
+  // filter var
+  selectedTypeSearch = 'keyword';
+  searchableList: string;
+  selectedTypeSearchOutput = 'Palavra-Chave';
 
   constructor(public router: Router, private dataService: DataService) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   // delete
   deleteCatalog(id) {
     console.log(id);
     this.dataService.deleteCatalogService(id);
-    console.log("delete in table ok")
+    console.log('delete in table ok');
   }
 
   // search type
   selectChangeHandler(event: any) {
     // search selected
     this.selectedTypeSearch = event.target.value;
+    // translate
+    this.translatePlaceholder(this.selectedTypeSearch);
     // search Type to FilterPipe
     return this.searchableList = this.selectedTypeSearch;
   }
+  translatePlaceholder(selectedTypeSearch) {
+    switch (selectedTypeSearch) {
+      case 'keyword':
+        return this.selectedTypeSearchOutput = 'Palavra-Chave';
+        console.log(this.selectedTypeSearchOutput);
+        break;
+      case 'title':
+        return this.selectedTypeSearchOutput = 'Título';
+        console.log(this.selectedTypeSearchOutput);
+        break;
+      case 'author':
+        return this.selectedTypeSearchOutput = 'Autor';
+        console.log(this.selectedTypeSearchOutput);
+        break;
+      case 'description':
+        return this.selectedTypeSearchOutput = 'descrição';
+        console.log(this.selectedTypeSearchOutput);
+        break;
+      case 'isbn':
+        return this.selectedTypeSearchOutput = 'isbn';
+        console.log(this.selectedTypeSearchOutput);
+        break;
+      case 'topic':
+        return this.selectedTypeSearchOutput = 'topico';
+        console.log(this.selectedTypeSearchOutput);
+        break;
+      default:
+        console.log('erro');
+        break;
+    }
+    return this.selectedTypeSearchOutput;
+  }
+
 }
