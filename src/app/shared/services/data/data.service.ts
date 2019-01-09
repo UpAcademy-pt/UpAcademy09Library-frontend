@@ -4,7 +4,7 @@ import { ReplaySubject } from 'rxjs';
 import { NgForm } from '@angular/forms';
 import { AcountApiService } from '../account/account-api.service';
 import { HistoryApiService } from '../history/history-api.service';
-import { Catalog } from '../../models';
+import { Catalog, History } from '../../models';
 
 @Injectable({
   providedIn: 'root'
@@ -17,13 +17,13 @@ export class DataService {
   // observable hisotry
   public history$: ReplaySubject<any[]> = new ReplaySubject(1);
   // 
-  private users: any []=[]
+  private users: any[] = []
   private catalog: any
   // object of add and remove favorites
   public objectToSend: Object;
   //
   public search$: ReplaySubject<any[]> = new ReplaySubject(1);
-  public search:any;
+  public search: any;
 
 
   constructor(private catalogApi: CatalogApiService, private acountApi: AcountApiService, private historyApi: HistoryApiService) {
@@ -108,7 +108,7 @@ export class DataService {
   // getusers
 
 
-  public getUserById(id){
+  public getUserById(id) {
     for (const item of this.users) {
       if (item.id === id) {
         return item;
@@ -175,7 +175,7 @@ export class DataService {
         console.log(this.user$);
       }
     );
-    
+
   }
 
   //Find By Name
@@ -194,7 +194,7 @@ export class DataService {
   /* HISTORY DATA LOGIC*/
 
   // Reserve a Book
-  public reserveBookService(reserve: History) {
+  public reserveBookService(reserve: any) {
     return this.historyApi.reserveBookHistory(reserve);
   }
   // Pickup book

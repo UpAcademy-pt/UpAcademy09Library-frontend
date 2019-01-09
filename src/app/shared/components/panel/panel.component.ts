@@ -1,7 +1,9 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { DataService } from '../../services';
+import { DataService, AcountApiService } from '../../services';
 import { ReplaySubject } from 'rxjs';
 import { Router } from '@angular/router';
+import { User, History } from '../../models';
+
 
 @Component({
   selector: 'app-panel',
@@ -10,19 +12,30 @@ import { Router } from '@angular/router';
 })
 export class PanelComponent implements OnInit {
   public catalog$: ReplaySubject<any[]> = new ReplaySubject(1);
+  public user$: ReplaySubject<any[]> = new ReplaySubject(1);
+  public history$: ReplaySubject<any[]> = new ReplaySubject(1);
+  user: User = new User();
+  userid:string;
+  history: History= new History();
+  
+
+
   // filter var
   selectedTypeSearch: string = '';
   searchableList: string;
 
   constructor(
     private dataservice: DataService,
+    private acountApi: AcountApiService,
     private router: Router
   ) {
     this.catalog$ = this.dataservice.catalog$;
    }
 
   ngOnInit() {
+    this.userid=this.acountApi.getCurrentId();
   }
+
 
  // search type
  selectChangeHandler(event: any) {
@@ -35,8 +48,27 @@ export class PanelComponent implements OnInit {
     this.router.navigate(['bookdetails', item.id]);
   }
 
-  changeImg(image:any){
+  // changeImg(image:any){
    
-    image.src='/assets/bookFull.png';
-  }
+  //   image.src='/assets/bookFull.png';
+
+    
+  // }
+//changeImg()
+reservar(item){
+  console.log("userId="+this.userid);
+   this.user.id=Number(this.userid);
+  console.log(this.user);
+  console.log("historybook="+item.id);
+  this.history.historyBook=item;
+  this.history.historyUser=this.user;
+  console.log(this.history);
+
+
+  var h = {historyBook:{id:item.id},historyUser:{id:this.user.id}}
+  this.dataservice.reserveBookService(h).subscribe(
+    (res) => { console.log("OK") },
+    error => { console.error(error) });
+};
+
 }
