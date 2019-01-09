@@ -28,12 +28,7 @@ export class TableComponent implements OnInit {
 
   ngOnInit() { }
 
-  // delete
-  deleteCatalog(id) {
-    console.log(id);
-    this.dataService.deleteCatalogService(id);
-    console.log('delete in table ok');
-  }
+ 
 
   // search type
   selectChangeHandler(event: any) {
@@ -44,6 +39,16 @@ export class TableComponent implements OnInit {
     // search Type to FilterPipe
     return this.searchableList = this.selectedTypeSearch;
   }
+
+
+  clickItem(item) {
+    this.router.navigate(['bookdetailsadmin', item.id]);
+  }
+
+  changeImg(image: any) {
+    image.src = '/assets/bookFull.png';
+  }
+
   translatePlaceholder(selectedTypeSearch) {
     switch (selectedTypeSearch) {
       case 'keyword':
@@ -59,15 +64,15 @@ export class TableComponent implements OnInit {
         console.log(this.selectedTypeSearchOutput);
         break;
       case 'description':
-        return this.selectedTypeSearchOutput = 'descrição';
+        return this.selectedTypeSearchOutput = 'Descrição';
         console.log(this.selectedTypeSearchOutput);
         break;
       case 'isbn':
-        return this.selectedTypeSearchOutput = 'isbn';
+        return this.selectedTypeSearchOutput = 'Isbn';
         console.log(this.selectedTypeSearchOutput);
         break;
       case 'topic':
-        return this.selectedTypeSearchOutput = 'topico';
+        return this.selectedTypeSearchOutput = 'Tópico';
         console.log(this.selectedTypeSearchOutput);
         break;
       default:

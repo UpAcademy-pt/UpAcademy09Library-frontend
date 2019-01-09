@@ -1,0 +1,22 @@
+<h2>Detalhes do livro</h2>
+
+<div class="card">
+  <div class="card-body">
+    <div class="row ">
+      <div class="col-md-4 text-center">
+        <img src="/assets/nocoverplaceholder.jpg">
+      </div>
+      <div class="col-md-8">
+        <h4 class="card-text">{{catalog.title}}, {{catalog.author}}</h4>
+        <p class="card-text">Categoria: {{catalog.topic}}</p>
+        <p class="card-text">Descrição: {{catalog.description}} </p>
+        <p class="card-text">Localização: {{catalog.location}} </p>
+        <p class="card-text">ISBN: {{catalog.isbn}} </p>
+        <p class="card-text">Estado: {{catalog.state}}</p>
+      </div>
+    </div>
+  </div>
+  <app-update [catalogdetail]='catalog'></app-update>
+  <button (click)="deleteCatalog(catalog.id)" class="btn btn-info" tooltip="Eliminar Livro" placement="top"><img src="/assets/icons8-close-window-16.png"></button>
+  <a><img class="back" src="/assets/back.png" (click)="cancel()"></a>
+</div>
