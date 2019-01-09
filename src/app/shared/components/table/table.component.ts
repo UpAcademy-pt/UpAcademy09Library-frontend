@@ -1,15 +1,13 @@
-import { Component, OnInit, Input, SimpleChange } from '@angular/core';
-import { Router, RouterLinkWithHref } from '@angular/router';
+import { Component, OnInit, Input} from '@angular/core';
+import { Router} from '@angular/router';
 import { DataService } from '../../services/data/data.service';
-import { Catalog } from '../../models';
-import { PageChangedEvent } from 'ngx-bootstrap';
-import { ResourceLoader } from '@angular/compiler';
-
 
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
-  styleUrls: ['./table.component.css']
+  styleUrls: ['./table.component.css'],
+
+
 })
 export class TableComponent implements OnInit {
 
@@ -18,15 +16,17 @@ export class TableComponent implements OnInit {
   @Input() theme = 'table-dark';
   @Input() isBook = true;
 
+  // pagination
+  p: number = 1;
+
   // filter var
   selectedTypeSearch: string = 'keyword';
   searchableList: string;
 
-
   constructor(public router: Router, private dataService: DataService) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
+ 
 
   // delete
   deleteCatalog(id) {
