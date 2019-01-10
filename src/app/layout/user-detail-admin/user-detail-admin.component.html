@@ -1,0 +1,27 @@
+<h2>Detalhes do Utilizador</h2>
+
+<div class="card">
+  <div class="card-body">
+    <div class="row">
+      <div class="col-md-4 text-center">
+        <img src="/assets/nocoverplaceholder.jpg">
+      </div>
+      <div class="col-md-8">
+        <h4 class="card-text">{{user.name}}</h4>
+        <p class="card-text">Email: {{user.email}}</p>
+        <p class="card-text">Numero de identificação pessoal: {{user.nip}} </p>
+        <p class="card-text">Privilégios Administrativos: {{user.admin}} </p>
+        <p class="card-text">Estado do Utilizador: {{user.active}} </p>
+    
+      </div>
+    </div>
+  </div>
+  <!-- <button class="btn btn-info" tooltip="Entregar livro ao utilizador" placement="top">Entregar livro ao utilizador</button> -->
+  <!-- <button class="btn btn-info" tooltip="Receber livro do utilizador" placement="top">Receber livro do utilizador</button>
+  <button class="btn btn-info" tooltip="Desactivar o utilizador" placement="top">disable</button> -->
+  <button (click)="changePrivileges(user.id)" class="btn btn-info" tooltip="Conceder Privilégios Administrativos"
+    placement="top">admin privileges</button>
+  <button (click)="disable(user.id)" class="btn btn-info" tooltip="Desactivar o utilizador" placement="top">disable</button>
+  <button (click)="reactivate(user.id)" class="btn btn-info" tooltip="Reactivar o utilizador" placement="top">reactivate</button>
+  <a><img class="back" src="/assets/back.png" (click)="cancel()"></a>
+</div>

@@ -18,13 +18,17 @@ export class AdminManagementComponent implements OnInit {
   @Input() user$: any;
   @Input() theme = 'table-dark';
   // filter var
-  selectedTypeSearch: string = 'keyword';
+  selectedTypeSearch = 'email';
   searchableListUser: string;
-  
 
   constructor(public router: Router, private dataService: DataService) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
+
+  clickItem(item) {
+    this.router.navigate(['userdetailadmin', item.id]);
+  }
+
   // search type
   selectChangeHandler(event: any) {
     // search selected
@@ -33,18 +37,7 @@ export class AdminManagementComponent implements OnInit {
     return this.searchableListUser = this.selectedTypeSearch;
   }
 
-  public changePrivileges(id) {
-    console.log(id);
-    this.dataService.changePrivilegesServices(id);
-  }
 
-  public disable(id) {
-    this.dataService.disableServices(id);
-  }
-
-  public reactivate(id) {
-    this.dataService.reactivateServices(id);
-  }
 
 }
 
