@@ -1,5 +1,5 @@
 .card:hover{cursor: pointer}
 .card-footer:hover{background-color: rgba(224, 224, 224, 0.76)}
 
-.reservar{ text-align: right;}
+
 .reservar:hover{ src:"/assets/bookFull.png";} 

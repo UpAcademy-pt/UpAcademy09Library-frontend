@@ -61,23 +61,37 @@
         
     </tab>
     <tab heading="Ver historico">
-        <br>
-        <table>
+<br>
+<table class="table table-hover" [ngClass]='theme'>
           <thead>
               <th>Titulo</th>
               <th>Autor</th>
               <th>Estado</th>
-              <th>Data</th>
+              <th>Data de reserva</th>
+              <th>Data de levantamento</th>
+              <th>Data de entrega</th>
           </thead>
           <tbody>
-              <tr *ngFor="let entrada of historico">
-                  <td></td>
+              <tr *ngFor="let entrada of history | async">
+                  <td>{{entrada.historyBook.title}}</td>
+                  <td>{{entrada.historyBook.author}}</td>
+                  <td>{{entrada.historyBook.state}}</td>
+                  <td>{{entrada.reservationDate | date:"M/d/yy, h:mm a"}}</td>
+                  <td>{{entrada.pickupDate | date:"M/d/yy, h:mm a"}}</td>
+                  <td>{{entrada.deliveryDate | date:"M/d/yy, h:mm a"}}</td>
               </tr>
           </tbody>
       </table>
     </tab>
     <tab heading="Livros guardados">
         <br>
-       
+        <div class="card mb-3"  *ngFor="let entrada of history | async">
+  <!--  -->
+          <div class="card-body" >
+            <h5 class="card-title"> {{entrada.historyBook.title}}, {{entrada.historyBook.author}}</h5>
+            <p class="card-text">Descrição: {{entrada.historyBook.description}} </p>
+            <p class="card-text ">Estado: {{entrada.historyBook.state}} </p> 
+          </div>
+          </div>
     </tab>
 </tabset>

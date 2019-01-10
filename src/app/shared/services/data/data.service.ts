@@ -14,7 +14,7 @@ export class DataService {
   public catalog$: ReplaySubject<any[]> = new ReplaySubject(1);
   // observable users
   public user$: ReplaySubject<any[]> = new ReplaySubject(1);
-  // observable hisotry
+  // observable history
   public history$: ReplaySubject<any[]> = new ReplaySubject(1);
   // 
   private users: any[] = [];
@@ -22,7 +22,7 @@ export class DataService {
   // ---- se alguma coisa com os users estiver a dar erro pode ser daqui
   private user: any;
   private catalog: any;
-  public history: any;
+  public history: any[];
   // object of add and remove favorites
   public objectToSend: Object;
   //
@@ -213,13 +213,13 @@ export class DataService {
   }
   // User History
   public getUserHistoryService(userID: number) {
-    this.historyApi.getUserHistory(userID).subscribe(
+    return this.historyApi.getUserHistory(userID).subscribe(
       (res: any) => {
-        this.history = res;
         this.history$.next(res);
+        this.history = res;
+        console.log(res);
       }
     );
-    return this.history$;
   }
   // User with Book
   public getUserWithBookService(bookID: number) {
