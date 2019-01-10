@@ -46,7 +46,7 @@
                     <div *ngIf="password!==confirmPassword && passwordHtml.touched && confirmPasswordHtml.touched" (ngSubmit)="onClose()" class="alert alert-danger" role="alert">
                       As Palavras-passe introduzidas nāo sāo coincidentes. Por favor introduza novamente.
                     </div>
-                    <button type="submit" (click)="NewPass(password2)" class="btn btn-dark" [disabled]="password!==confirmPassword">Alterar Password</button>
+                    <button type="submit" (click)="NewPass(password2)" class="btn btn-dark" [disabled]="password!==confirmPassword">Alterar Palavra-passe</button>
                     <div *ngIf="alterouPassword" (ngSubmit)="onClose()" class="alert alert-success mt-3" role="alert">
                       Palavra-Passe alterada com sucesso.
                     </div>
@@ -62,7 +62,19 @@
     </tab>
     <tab heading="Ver historico">
         <br>
-       
+        <table>
+          <thead>
+              <th>Titulo</th>
+              <th>Autor</th>
+              <th>Estado</th>
+              <th>Data</th>
+          </thead>
+          <tbody>
+              <tr *ngFor="let entrada of historico">
+                  <td></td>
+              </tr>
+          </tbody>
+      </table>
     </tab>
     <tab heading="Livros guardados">
         <br>

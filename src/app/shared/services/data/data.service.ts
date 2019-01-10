@@ -17,19 +17,23 @@ export class DataService {
   // observable hisotry
   public history$: ReplaySubject<any[]> = new ReplaySubject(1);
   // 
-  private users: any[] = []
-  private catalog: any
+  private users: any[] = [];
+  // adicionei isto deixou de dar erro, na consola relativo ao admin management ----
+  // ---- se alguma coisa com os users estiver a dar erro pode ser daqui
+  private user: any;
+  private catalog: any;
+  public history: any;
   // object of add and remove favorites
   public objectToSend: Object;
   //
   public search$: ReplaySubject<any[]> = new ReplaySubject(1);
   public search: any;
+ 
 
 
   constructor(private catalogApi: CatalogApiService, private acountApi: AcountApiService, private historyApi: HistoryApiService) {
     this.getCatalog();
     this.getUsers();
-    console.log(this.queryUserIDServices(1));
   }
 
   /* BOOKS DATA LOGIC*/
@@ -115,12 +119,14 @@ export class DataService {
       }
     }
   }
+ 
   public getUsers() {
     this.acountApi.getUsersDB().subscribe(
       (res: any) => {
         console.log("OK");
         this.user$.next(res);
         this.users = res;
+        this.user = res;
         console.log(this.user$);
       }
     );
@@ -155,7 +161,7 @@ export class DataService {
 
   // add to Favorite -- TESTAR COM URGÊNCIA --- é a maneira que encontrei para enviar dois objectos
   public addFavoritesServices(userID: number, bookID: number) {
-    this.acountApi.addBookToFavourites(userID, bookID);
+   return this.acountApi.addBookToFavourites(userID, bookID);
   }
 
   // remove from favorite
@@ -207,7 +213,13 @@ export class DataService {
   }
   // User History
   public getUserHistoryService(userID: number) {
-    return this.historyApi.getUserHistory(userID);
+    this.historyApi.getUserHistory(userID).subscribe(
+      (res: any) => {
+        this.history = res;
+        this.history$.next(res);
+      }
+    );
+    return this.history$;
   }
   // User with Book
   public getUserWithBookService(bookID: number) {

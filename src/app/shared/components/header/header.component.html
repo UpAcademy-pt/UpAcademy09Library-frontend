@@ -41,7 +41,7 @@
   <div class="modal-body">
     <form #f="ngForm" (keydown.enter)="loginUserNg()" (ngSubmit)="loginUserNg()">
       <div class="form-group">
-        <label for="email">E-mail</label>
+        <label class="required" for="email">E-mail</label>
         <input #email="ngModel" placeholder="Introduza e-mail válido" ngModel email type="text" class="form-control" name="email"  [(ngModel)] = "account.email" required>
       </div>
       <div *ngIf="email.invalid && email.touched" class="alert alert-danger" role="alert">
@@ -49,7 +49,7 @@
       </div>
      
       <div class="form-group">
-        <label for="password">Palavra-passe</label>
+        <label class="required" for="password">Palavra-passe</label>
         <input #password="ngModel" ngModel placeholder="Introduza a palavra-passe" type="password" class="form-control" name="password"  [(ngModel)] = "account.password" required>
       </div>
       <div *ngIf="msg!=undefined" class="alert alert-danger" role="alert">

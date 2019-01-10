@@ -1,7 +1,7 @@
 <form #f="ngForm" (ngSubmit)="onSubmit()" novalidate>
   <fieldset>
     <div class="form-group">
-      <label>Nome</label>
+      <label class="required">Nome</label>
       <input type="text"
       #name="ngModel" 
       class="form-control" required name="name" [(ngModel)]="user.name"
@@ -9,7 +9,7 @@
     </div>
 
     <div class="form-group">
-      <label>Numero de identificação pessoal</label>
+      <label class="required">Numero de identificação pessoal</label>
       <input type="text"
              class="form-control" required name="nip" [(ngModel)]="user.nip"
              placeholder="Introduza número de identificação pessoal válido. (Ex. Nr cartāo do cidadāo)">
@@ -18,7 +18,7 @@
 
 
     <div class="form-group">
-      <label for="email">Email</label>
+      <label class="required" for="email">Email</label>
       <input #email="ngModel" ngModel email name="email"  [(ngModel)] = "user.email" required
       type="text" 
       class="form-control" 
@@ -29,7 +29,7 @@
     </div>
 
   <div class="form-group">
-    <label>Palavra-passe</label>
+    <label class="required">Palavra-passe</label>
     <input type="password"
            class="form-control" required  name="password" [(ngModel)]="user.password"
            placeholder="Introduza a palavra-passe escolhida">
