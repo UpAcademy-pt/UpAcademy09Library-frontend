@@ -12,8 +12,10 @@ import { ReplaySubject } from 'rxjs';
 export class PersonalComponent implements OnInit {
   // public catalog$: ReplaySubject<any[]> = new ReplaySubject(1);
   public user$: ReplaySubject<any[]> = new ReplaySubject(1);
+  public history$: ReplaySubject<any[]> = new ReplaySubject(1);
   user: User = new User();
    id:string;
+   history:any;
   account: any;
   password:string='';
   confirmPassword:string;
@@ -21,6 +23,7 @@ export class PersonalComponent implements OnInit {
   submitedFormDados: Boolean;
   alterouPassword: Boolean;
   submitedFormPassword: Boolean;
+  historyUser: Object;
   constructor(
     private dataService: DataService,
     private route: ActivatedRoute
@@ -28,16 +31,18 @@ export class PersonalComponent implements OnInit {
     this.route.params.subscribe(
       params => {
         this.user = this.dataService.getUserById(Number(params.id));
-        console.log(this.user);
+     
+  
       });
-    
+     
     // this.user = this.dataService.getUserById(Number(this.id));
   }
 
   ngOnInit() {
 this.id=this.route.snapshot.paramMap.get('id');
-  
-   console.log(this.user);
+ var historia=this.dataService.getUserHistoryService(Number(this.id)).subscribe((data)=>{this.history=data;});
+
+   console.log(historia);
   console.log(this.id);
  
   }
@@ -74,4 +79,6 @@ NewPass() {
     this.submitedFormPassword = true;
   });
 }
+
+
 }

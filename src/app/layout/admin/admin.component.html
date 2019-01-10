@@ -1,13 +1,13 @@
 <tabset>
     <tab id="users-admin" heading="Gestão de Utilizadores">
         <br>
-        <app-admin-management [headerUsers]='["name","email","nip","admin","active"]' [user$]='user$' [theme]='"table-bordered" '></app-admin-management>
+        <app-admin-management [headerUsers]='["name","email","nip","admin","active"]' [user$]='user$' [theme]='"table-light"'></app-admin-management>
     </tab>
     <tab id="books-admin" heading="Gestão de Livros">
         <br>
         <app-add></app-add>
         <app-table [isBook]="true" [header]='["title","description","author","isbn","topic","state"]' [catalog$]='catalog$'
-            [theme]='"table-bordered" '></app-table>
+            [theme]='"table-light"'></app-table>
         
     </tab>
 </tabset>

@@ -23,6 +23,7 @@ import { PersonalComponent } from './personal/personal.component';
 import { SearchComponent } from '../shared/components/search/search.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { BookDetailsAdminComponent } from './book-details-admin/book-details-admin.component';
+import { UserDetailAdminComponent } from './user-detail-admin/user-detail-admin.component';
 
 
 
@@ -53,7 +54,8 @@ import { BookDetailsAdminComponent } from './book-details-admin/book-details-adm
     FilterUserPipe,
     PersonalComponent,
     SearchComponent,
-    BookDetailsAdminComponent
+    BookDetailsAdminComponent,
+    UserDetailAdminComponent
   ],
 
   imports: [

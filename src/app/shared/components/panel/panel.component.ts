@@ -17,7 +17,7 @@ export class PanelComponent implements OnInit {
   user: User = new User();
   userid:string;
   history: History= new History();
-  
+
 
 
   // filter var
@@ -29,11 +29,15 @@ export class PanelComponent implements OnInit {
     private acountApi: AcountApiService,
     private router: Router
   ) {
+
+       
     this.catalog$ = this.dataservice.catalog$;
    }
 
   ngOnInit() {
+ 
     this.userid=this.acountApi.getCurrentId();
+   
   }
 
 
@@ -46,6 +50,7 @@ export class PanelComponent implements OnInit {
 
   clickItem(item) {
     this.router.navigate(['bookdetails', item.id]);
+    
   }
 
   // changeImg(image:any){
@@ -55,6 +60,7 @@ export class PanelComponent implements OnInit {
     
   // }
 //changeImg()
+
 reservar(item){
   console.log("userId="+this.userid);
    this.user.id=Number(this.userid);
@@ -70,5 +76,14 @@ reservar(item){
     (res) => { console.log("OK") },
     error => { console.error(error) });
 };
+
+addFav(item){
+ var user2=Number(this.userid);
+var bookId=item.id;
+  this.dataservice.addFavoritesServices(user2, bookId).subscribe(
+    (res) => { console.log("OK") },
+    error => { console.error(error) });
+}
+
 
 }
