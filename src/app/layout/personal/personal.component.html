@@ -62,7 +62,19 @@
     </tab>
     <tab heading="Ver historico">
         <br>
-       
+        <table>
+          <thead>
+              <th>Titulo</th>
+              <th>Autor</th>
+              <th>Estado</th>
+              <th>Data</th>
+          </thead>
+          <tbody>
+              <tr *ngFor="let entrada of historico">
+                  <td></td>
+              </tr>
+          </tbody>
+      </table>
     </tab>
     <tab heading="Livros guardados">
         <br>

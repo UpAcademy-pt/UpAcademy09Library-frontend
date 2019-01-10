@@ -161,7 +161,7 @@ export class DataService {
 
   // add to Favorite -- TESTAR COM URGÊNCIA --- é a maneira que encontrei para enviar dois objectos
   public addFavoritesServices(userID: number, bookID: number) {
-    this.acountApi.addBookToFavourites(userID, bookID);
+   return this.acountApi.addBookToFavourites(userID, bookID);
   }
 
   // remove from favorite
