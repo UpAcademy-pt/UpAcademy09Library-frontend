@@ -12,7 +12,6 @@ import { ReplaySubject } from 'rxjs';
 export class PersonalComponent implements OnInit {
   // public catalog$: ReplaySubject<any[]> = new ReplaySubject(1);
   public user$: ReplaySubject<any[]> = new ReplaySubject(1);
-  public history$: ReplaySubject<any[]> = new ReplaySubject(1);
   user: User = new User();
    id:string;
    history:any;
@@ -28,6 +27,8 @@ export class PersonalComponent implements OnInit {
     private dataService: DataService,
     private route: ActivatedRoute
   ) {
+    this.history = dataService.history$;
+
     this.route.params.subscribe(
       params => {
         this.user = this.dataService.getUserById(Number(params.id));
@@ -39,10 +40,10 @@ export class PersonalComponent implements OnInit {
   }
 
   ngOnInit() {
-this.id=this.route.snapshot.paramMap.get('id');
- var historia=this.dataService.getUserHistoryService(Number(this.id)).subscribe((data)=>{this.history=data;});
+ this.id=this.route.snapshot.paramMap.get('id');
+ this.dataService.getUserHistoryService(Number(this.id));
 
-   console.log(historia);
+   
   console.log(this.id);
  
   }
