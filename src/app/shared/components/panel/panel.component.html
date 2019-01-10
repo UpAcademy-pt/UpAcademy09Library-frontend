@@ -32,6 +32,6 @@
       <div col-6></div>
     <div col-2 *ngIf="item.state==='availiable'"><img class="reservar" (click)="reservar(item)" style="float:right" src="/assets/bookEmpty.png" ></div>
     <div col-2 *ngIf="item.state==='reserved'"><img class="reservar" (click)="reservar(item)" style="float:right" src="/assets/bookFull.png" ></div>
-    <div col-2 *ngIf="item.state==='reserved'"><img class="reservar"style="float:right" src="/assets/heartfull.png" ></div>
+    <div col-2 *ngIf="item.state==='reserved'"><img class="reservar"(click)="addFav(item)" src="/assets/heartfull.png" ></div>
 </div>
   </div>

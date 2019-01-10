@@ -156,7 +156,7 @@ export class DataService {
 
   // add to Favorite -- TESTAR COM URGÊNCIA --- é a maneira que encontrei para enviar dois objectos
   public addFavoritesServices(userID: number, bookID: number) {
-    this.acountApi.addBookToFavourites(userID, bookID);
+   return this.acountApi.addBookToFavourites(userID, bookID);
   }
 
   // remove from favorite
@@ -212,8 +212,11 @@ export class DataService {
       (res: any) => {
         this.history=res;
         this.history$.next(res);
+        
+       
       }
-     );
+      
+     ); return  this.history$;
   }
   // User with Book
   public getUserWithBookService(bookID: number) {

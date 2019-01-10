@@ -15,6 +15,7 @@ export class PersonalComponent implements OnInit {
   public history$: ReplaySubject<any[]> = new ReplaySubject(1);
   user: User = new User();
    id:string;
+   history:any;
   account: any;
   password:string='';
   confirmPassword:string;
@@ -39,7 +40,7 @@ export class PersonalComponent implements OnInit {
 
   ngOnInit() {
 this.id=this.route.snapshot.paramMap.get('id');
-  var historia=this.dataService.getUserHistoryService(Number(this.id));
+ var historia=this.dataService.getUserHistoryService(Number(this.id)).subscribe((data)=>{this.history=data;});
 
    console.log(historia);
   console.log(this.id);
