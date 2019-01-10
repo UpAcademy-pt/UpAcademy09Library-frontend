@@ -19,6 +19,7 @@ export class DataService {
   // 
   private users: any[] = []
   private catalog: any
+  private history: any
   // object of add and remove favorites
   public objectToSend: Object;
   //
@@ -207,7 +208,12 @@ export class DataService {
   }
   // User History
   public getUserHistoryService(userID: number) {
-    return this.historyApi.getUserHistory(userID);
+     this.historyApi.getUserHistory(userID).subscribe(
+      (res: any) => {
+        this.history=res;
+        this.history$.next(res);
+      }
+     );
   }
   // User with Book
   public getUserWithBookService(bookID: number) {

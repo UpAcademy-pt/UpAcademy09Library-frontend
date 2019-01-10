@@ -17,7 +17,7 @@ export class PanelComponent implements OnInit {
   user: User = new User();
   userid:string;
   history: History= new History();
-  
+
 
 
   // filter var
@@ -29,11 +29,15 @@ export class PanelComponent implements OnInit {
     private acountApi: AcountApiService,
     private router: Router
   ) {
+
+       
     this.catalog$ = this.dataservice.catalog$;
    }
 
   ngOnInit() {
+ 
     this.userid=this.acountApi.getCurrentId();
+   
   }
 
 
@@ -46,6 +50,7 @@ export class PanelComponent implements OnInit {
 
   clickItem(item) {
     this.router.navigate(['bookdetails', item.id]);
+    
   }
 
   // changeImg(image:any){
@@ -70,5 +75,7 @@ reservar(item){
     (res) => { console.log("OK") },
     error => { console.error(error) });
 };
+
+
 
 }
