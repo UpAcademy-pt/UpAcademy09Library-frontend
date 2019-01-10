@@ -19,6 +19,7 @@ export class UserDetailAdminComponent implements OnInit, OnDestroy {
   subscription: Subscription;
 
 
+
   constructor(private _location: Location, private dataService: DataService, private route: ActivatedRoute) {
     this.route.params.subscribe(
       params => {
@@ -30,7 +31,7 @@ export class UserDetailAdminComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.subscription = this.dataService.getUserHistoryService(this.user.id).subscribe((data) => {
       this.history = data;
-      console.log(this.history);
+      console.log(this.history[0].historyBook.id);
     });
   }
 
@@ -39,6 +40,9 @@ export class UserDetailAdminComponent implements OnInit, OnDestroy {
   }
 
   public pickUpBook(bookToPickup) {
+    const bookId = history[0].historyBook.id;
+    bookToPickup = {id: bookId};
+    console.log(bookToPickup);
     this.dataService.pickupBookService(bookToPickup);
   }
 
