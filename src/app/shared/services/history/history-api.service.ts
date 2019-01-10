@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Catalog, History } from '../../models';
-
+import { map } from 'rxjs/operators'
 const apiUrl = "http://localhost:8080/libraryManagmentApp/api/historys";
 
 @Injectable({
@@ -19,13 +19,13 @@ export class HistoryApiService {
     console.log(reserve);
     console.log(apiUrl + '/reservebook');
     return this.http.post(apiUrl + '/reservebook', reserve)
-   
 
-   
+
+
 
   }
   // PUT  Pickup book --- está função é o que??? a entrega do livro pelo admin ao utilizador?
-  public pickupBook(bookToPickUp: Catalog) {
+  public pickupBook(bookToPickUp: any) {
     console.log("pickupBook : ", bookToPickUp);
     this.http.put(apiUrl + '/pickupbook', bookToPickUp).subscribe(
       (res) => { console.log("OK") },
@@ -33,7 +33,7 @@ export class HistoryApiService {
   }
 
   // PUT  Deliver book --- o mesmo que cima?
-  public deliverBook(bookToDeliver: Catalog) {
+  public deliverBook(bookToDeliver: any) {
     console.log("pickupBook : ", bookToDeliver);
     this.http.put(apiUrl + '/deliverbook', bookToDeliver).subscribe(
       (res) => { console.log("OK") },
@@ -43,6 +43,11 @@ export class HistoryApiService {
   // GET  User History
   public getUserHistory(userID: number) {
     return this.http.get(apiUrl + '/userhistory/' + userID);
+    // return this.http.get(apiUrl + '/userhistory/' + userID).pipe(map((response)=> {
+    //   console.log(response)
+    //   response.nuno=23;
+    //   return response
+    // }));
   }
 
   // GET  User with Book

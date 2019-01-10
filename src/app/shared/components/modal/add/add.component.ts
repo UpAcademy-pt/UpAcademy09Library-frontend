@@ -24,7 +24,6 @@ export class AddComponent implements OnInit {
   }
 
   onSubmit() {
-  console.log(this.catalog);
   this.dataService.createCatalog(this.catalog);
   }
 
