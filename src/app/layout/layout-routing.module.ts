@@ -13,6 +13,7 @@ import { BookDetailsComponent } from './book-details/book-details.component';
 import { AuthGuard } from '../shared/guards';
 import { PersonalComponent } from './personal/personal.component';
 import { BookDetailsAdminComponent } from './book-details-admin/book-details-admin.component';
+import { UserDetailAdminComponent } from './user-detail-admin/user-detail-admin.component';
 
 const routes: Routes = [
     {
@@ -31,6 +32,7 @@ const routes: Routes = [
             { path: 'notfound', component: NotfoundComponent },
             { path: 'bookdetails/:id', component: BookDetailsComponent },
             { path: 'bookdetailsadmin/:id', component: BookDetailsAdminComponent },
+            { path: 'userdetailadmin/:id', component: UserDetailAdminComponent },
             { path: '**', redirectTo: 'notfound' }
 
         ]
@@ -40,5 +42,5 @@ const routes: Routes = [
     imports: [RouterModule.forChild(routes)],
     exports: [RouterModule]
 })
-export class LayoutRoutingModule { };
+export class LayoutRoutingModule { }
 
