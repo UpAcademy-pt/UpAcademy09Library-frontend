@@ -21,18 +21,16 @@ export class UserDetailAdminComponent implements OnInit, OnDestroy {
 
 
   constructor(private _location: Location, private dataService: DataService, private route: ActivatedRoute) {
+    this.history = dataService.history$;
     this.route.params.subscribe(
       params => {
         this.user = this.dataService.getUserById(Number(params.id));
-        console.log(this.user.id);
       });
   }
 
   ngOnInit() {
-    this.subscription = this.dataService.getUserHistoryService(this.user.id).subscribe((data) => {
-      this.history = data;
-      console.log(this.history[0].historyBook.id);
-    });
+    this.dataService.getUserHistoryService(this.user.id);
+    console.log(history);
   }
 
   ngOnDestroy() {
@@ -42,7 +40,7 @@ export class UserDetailAdminComponent implements OnInit, OnDestroy {
   public pickUpBook(bookToPickup) {
     const bookId = history[0].historyBook.id;
     bookToPickup = {id: bookId};
-    console.log(bookToPickup);
+    console.log(bookToPickup.toString());
     this.dataService.pickupBookService(bookToPickup);
   }
 

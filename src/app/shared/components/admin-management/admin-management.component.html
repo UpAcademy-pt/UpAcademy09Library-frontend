@@ -26,7 +26,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let row of user$ | async | FilterUser: queryStringUser: searchableListUser | paginate: { itemsPerPage: 5, currentPage: p }" (click)="clickItem(row)">
+          <tr *ngFor="let row of user$ | async | FilterUser: queryStringUser: searchableListUser " (click)="clickItem(row)">
             <td *ngFor="let col of headerUsers">
               {{row[col]}}
             </td>

@@ -218,6 +218,7 @@ export class DataService {
         this.history$.next(res);
         this.history = res;
         console.log(res);
+        return this.history$;
       }
     );
   }

@@ -12,11 +12,11 @@
         <p class="card-text">Numero de identificação pessoal: {{user.nip}} </p>
         <p class="card-text">Privilégios Administrativos: {{user.admin}} </p>
         <p class="card-text">Estado do Utilizador: {{user.active}} </p>
-        <p class="card-text">Reservas do utilizador: {{history[0].historyBook.id}} </p>
+        <p class="card-text">Reservas do utilizador: {{history[0].historyBook.title}} </p>
       </div>
     </div>
   </div>
-  <button (click)="pickUpBook(history[0])" class="btn btn-info" tooltip="Entregar livro ao utilizador" placement="top">Entregar livro ao utilizador</button>
+  <!-- <button (click)="pickUpBook(history[0])" class="btn btn-info" tooltip="Entregar livro ao utilizador" placement="top">Entregar livro ao utilizador</button> -->
   <!-- <button class="btn btn-info" tooltip="Receber livro do utilizador" placement="top">Receber livro do utilizador</button>
   <button class="btn btn-info" tooltip="Desactivar o utilizador" placement="top">disable</button> -->
   <button (click)="changePrivileges(user.id)" class="btn btn-info" tooltip="Conceder Privilégios Administrativos"

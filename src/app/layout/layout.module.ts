@@ -74,8 +74,6 @@ import { UserDetailAdminComponent } from './user-detail-admin/user-detail-admin.
     PaginationModule.forRoot(),
     // tooltip
     TooltipModule.forRoot()
-    //translate
-    TranslateModule,
   ]
 })
 export class LayoutModule { }
