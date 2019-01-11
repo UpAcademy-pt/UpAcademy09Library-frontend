@@ -15,6 +15,9 @@
               <a class="nav-item nav-link" href="#" [routerLinkActive]="['active']" routerLink="/register">Registe-se</a>
           </li>
         <div class="btn-group" *ngIf="(currentUser$ | async)?.id && ((currentUser$ | async)?.admin === false)"dropdown>
+            <li class="nav-item">
+                <a class="nav-item nav-link mr-2 catalogo" href="#" [routerLinkActive]="['active']" routerLink="/user">Catálogo</a>
+              </li>
             <li id="button-menu-dividers" href="#" dropdownToggle data-toggle="dropdown" class="nav-item nav-link btn btn-outline-secondary dropdown-toggle dropdown-toggle-split"
                     aria-controls="dropdown-menu-dividers">
                     <img src="assets/avatar.png" alt="Avatar" class="avatar">

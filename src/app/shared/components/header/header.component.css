@@ -9,3 +9,8 @@ input.ng-invalid.ng-touched{
   .btn-outline-secondary{
       border: 0px;
   }
+
+.catalogo{
+    color:rgba(255,255,255,.5)!important;
+}
+  
