@@ -29,27 +29,25 @@ export class UserDetailAdminComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.dataService.getUserHistoryService(this.user.id);
-    console.log(history);
+    this.subscription = this.dataService.getUserHistoryService(this.user.id).subscribe((data) => {
+      this.history = data;
+    });
+    return history;
   }
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
-
-  public pickUpBook(bookToPickup) {
-    const bookId = history[0].historyBook.id;
-    bookToPickup = {id: bookId};
-    console.log(bookToPickup.toString());
-    this.dataService.pickupBookService(bookToPickup);
+  // Give Book to User
+  public pickUpBook(history) {
+    this.dataService.pickupBookService(history.historyBook);
   }
-
-  public deliverBook(bookToDeliver) {
-    this.dataService.deliverBookService(bookToDeliver);
+  // receive Book from User
+  public deliverBook(history) {
+    this.dataService.deliverBookService(history.historyBook);
   }
 
   public changePrivileges(id) {
-    console.log(id);
     this.dataService.changePrivilegesServices(id);
   }
 

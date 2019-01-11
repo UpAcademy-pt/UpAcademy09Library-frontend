@@ -24,20 +24,20 @@ export class HistoryApiService {
 
 
   }
-  // PUT  Pickup book --- está função é o que??? a entrega do livro pelo admin ao utilizador?
+  // PUT  Pickup book
   public pickupBook(bookToPickUp: any) {
     console.log("pickupBook : ", bookToPickUp);
-    this.http.put(apiUrl + '/pickupbook', bookToPickUp).subscribe(
-      (res) => { console.log("OK") },
-      error => { console.error(error) });
+    return this.http.put(apiUrl + '/pickupbook', bookToPickUp).subscribe(
+      (res) => { console.log('OK'); },
+      error => { console.error(error); });
   }
 
-  // PUT  Deliver book --- o mesmo que cima?
+  // PUT  Deliver book
   public deliverBook(bookToDeliver: any) {
-    console.log("pickupBook : ", bookToDeliver);
-    this.http.put(apiUrl + '/deliverbook', bookToDeliver).subscribe(
-      (res) => { console.log("OK") },
-      error => { console.error(error) });
+    console.log('deliverBook : ', bookToDeliver);
+   return this.http.put(apiUrl + '/deliverbook', bookToDeliver).subscribe(
+      (res) => { console.log('OK'); },
+      error => { console.error(error); });
   }
 
   // GET  User History
