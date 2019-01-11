@@ -27,13 +27,13 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let row of catalog$ | async | FilterPipe: queryString: searchableList | paginate: { itemsPerPage: 5, currentPage: p }" (click)="clickItem(row)">
+      <tr *ngFor="let row of catalog$ | async | FilterPipe: queryString: searchableList | paginate: { id: 'bookAdminPagination', itemsPerPage: 5, currentPage: p }" (click)="clickItem(row)">
         <td *ngFor="let col of header">
           {{row[col]}}
         </td>
       </tr>
     </tbody>
   </table>
-  <pagination-controls class="my-pagination" (pageChange)=" p = $event" previousLabel="Anterior" nextLabel="Próximo"
+  <pagination-controls id="bookAdminPagination" class="my-pagination" (pageChange)=" p = $event" previousLabel="Anterior" nextLabel="Próximo"
     maxSize="7"></pagination-controls>
 </div>

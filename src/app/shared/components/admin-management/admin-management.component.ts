@@ -5,6 +5,7 @@ import { MatSort, MatTableDataSource } from '@angular/material';
 import { User } from '../../models';
 
 
+
 @Component({
   selector: 'app-admin-management',
   templateUrl: './admin-management.component.html',
@@ -20,6 +21,8 @@ export class AdminManagementComponent implements OnInit {
   // filter var
   selectedTypeSearch = 'email';
   searchableListUser: string;
+   // pagination
+   page = 1;
 
   constructor(public router: Router, private dataService: DataService) { }
 

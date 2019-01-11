@@ -16,7 +16,12 @@
       </div>
     </div>
   </div>
+  <div class="row  align-self-center  ">
+  <div class="col-md-12">
   <app-update [catalogdetail]='catalog'></app-update>
-  <button (click)="deleteCatalog(catalog.id)" class="btn btn-info" tooltip="Eliminar Livro" placement="top"><img src="/assets/icons8-close-window-16.png"></button>
+  <a (click)="deleteCatalog(catalog.id)" class="btn" tooltip="Eliminar Livro" placement="top"><img src="/assets/delete.png"></a>
+</div>
+</div>
   <a><img class="back" src="/assets/back.png" (click)="cancel()"></a>
+
 </div>
