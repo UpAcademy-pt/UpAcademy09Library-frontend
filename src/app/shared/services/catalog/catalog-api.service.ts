@@ -70,6 +70,11 @@ export class CatalogApiService {
     return this.http.get(apiUrl + "researchbytopic/" + string);
   }
 
+  //Find by isbn
+  public getCatalogByIsbn(string: string) {
+    return this.http.get(apiUrl + "researchbyisbn/" + string)
+  }
+
   // Get all available books
   public getAvailableBooks() {
     return this.http.get(apiUrl + "getallavailablebooks");
