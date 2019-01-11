@@ -204,23 +204,23 @@ export class DataService {
     return this.historyApi.reserveBookHistory(reserve);
   }
   // Pickup book
-  public pickupBookService(bookToPickUp: Catalog) {
+  public pickupBookService(bookToPickUp: any) {
     return this.historyApi.pickupBook(bookToPickUp);
   }
   // Deliver book
-  public deliverBookService(bookToDeliver: Catalog) {
+  public deliverBookService(bookToDeliver: any) {
     return this.historyApi.deliverBook(bookToDeliver);
   }
   // User History
   public getUserHistoryService(userID: number) {
-    return this.historyApi.getUserHistory(userID).subscribe(
+    this.historyApi.getUserHistory(userID).subscribe(
       (res: any) => {
         this.history$.next(res);
         this.history = res;
         console.log(res);
-        return this.history$;
       }
     );
+    return this.history$;
   }
   // User with Book
   public getUserWithBookService(bookID: number) {

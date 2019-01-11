@@ -34,7 +34,7 @@
         <label class="required" for="author">ISBN</label>
         <input type="number" class="form-control" name="isbn"  [(ngModel)]="catalog.isbn" required >
       </div>
-      <button type="submit" (ngSubmit)="onSubmit()" (click)="modalRef.hide()" [disabled]="f.invalid" class="btn btn-success">Adicionar</button>
+      <button type="submit" (click)="onSubmit()" (click)="modalRef.hide()" [disabled]="f.invalid" class="btn btn-success">Adicionar</button>
     </form>
   </div>
 </ng-template>
