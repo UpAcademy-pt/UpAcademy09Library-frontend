@@ -1,27 +1,51 @@
 <h2>Detalhes do Utilizador</h2>
-
+<br>
 <div class="card">
   <div class="card-body">
     <div class="row">
       <div class="col-md-4 text-center">
-        <img src="/assets/nocoverplaceholder.jpg">
+        <img class="avatarUserAdmin" src="assets/adminViewAvatar-128.png">
       </div>
       <div class="col-md-8">
         <h4 class="card-text">{{user.name}}</h4>
         <p class="card-text">Email: {{user.email}}</p>
         <p class="card-text">Numero de identificação pessoal: {{user.nip}} </p>
-        <p class="card-text">Privilégios Administrativos: {{user.admin}} </p>
-        <p class="card-text">Estado do Utilizador: {{user.active}} </p>
-        <p class="card-text">Reservas do utilizador: {{history[0].historyBook.title}} </p>
+        <div *ngIf="user.admin">
+          <p class="card-text">Privilégios Administrativos: <img src="/assets/admin.png"></p>
+        </div>
+        <div *ngIf="!user.active">
+        <p class="card-text">Estado do Utilizador: <img src="/assets/user-inactive.png"></p>
+      </div>
+      <div *ngIf="user.active">
+        <p class="card-text">Estado do Utilizador: <img src="/assets/user-active.png"></p>
+      </div>
+        <br>
+        <table class="table-bordered">
+          <thead>
+            <th>Reservas do utilizador: </th>
+          </thead>
+          <tbody>
+            <tr *ngFor="let book of history">
+              <!-- <td *ngIf="book.deliveryDate != null">Não tem Reservas</td> -->
+              <td *ngIf="book.deliveryDate === null">{{book.historyBook.title}}</td>
+              <td *ngIf="book.deliveryDate === null">{{book.historyBook.author}}</td>
+              <td *ngIf="book.historyBook.state ==='reserved' && book.deliveryDate === null"><a (click)="pickUpBook(book)"
+                  class="btn" tooltip="Entregar livro ao utilizador" placement="top"> <img src="/assets/give.png"></a></td>
+              <td *ngIf="book.historyBook.state ==='inUse' && book.deliveryDate === null"><a (click)="deliverBook(book)"
+                  class="btn" tooltip="Receber livro do utilizador" placement="top"><img src="/assets/receive.png"></a></td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>
-  <!-- <button (click)="pickUpBook(history[0])" class="btn btn-info" tooltip="Entregar livro ao utilizador" placement="top">Entregar livro ao utilizador</button> -->
-  <!-- <button class="btn btn-info" tooltip="Receber livro do utilizador" placement="top">Receber livro do utilizador</button>
-  <button class="btn btn-info" tooltip="Desactivar o utilizador" placement="top">disable</button> -->
-  <button (click)="changePrivileges(user.id)" class="btn btn-info" tooltip="Conceder Privilégios Administrativos"
-    placement="top">admin privileges</button>
-  <button (click)="disable(user.id)" class="btn btn-info" tooltip="Desactivar o utilizador" placement="top">disable</button>
-  <button (click)="reactivate(user.id)" class="btn btn-info" tooltip="Reactivar o utilizador" placement="top">reactivate</button>
+  <div class="row  align-self-center  ">
+    <div class="col-md-12">
+      <a (click)="changePrivileges(user.id)" class="btn" tooltip="Conceder Privilégios Administrativos" placement="top"><img
+          src="/assets/admin.png"></a>
+      <a (click)="disable(user.id)" class="btn" tooltip="Desactivar o utilizador" placement="top"><img src="/assets/user-inactive.png"></a>
+      <a (click)="reactivate(user.id)" class="btn" tooltip="Reactivar o utilizador" placement="top"><img src="/assets/user-active.png"></a>
+    </div>
+  </div>
   <a><img class="back" src="/assets/back.png" (click)="cancel()"></a>
 </div>

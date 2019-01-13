@@ -25,10 +25,10 @@ export class BookDetailsAdminComponent implements OnInit {
 
    // delete
    deleteCatalog(id) {
-
     console.log(id);
     this.dataService.deleteCatalogService(id);
     console.log('delete in table ok');
+    this.cancel();
   }
 
   // falta por a ir para a última tab
