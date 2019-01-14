@@ -23,6 +23,8 @@ export class PersonalComponent implements OnInit {
   alterouPassword: Boolean;
   submitedFormPassword: Boolean;
   historyUser: Object;
+ fav;
+  
   constructor(
     private dataService: DataService,
     private route: ActivatedRoute
@@ -42,9 +44,9 @@ export class PersonalComponent implements OnInit {
   ngOnInit() {
  this.id=this.route.snapshot.paramMap.get('id');
  this.dataService.getUserHistoryService(Number(this.id));
-
+this.fav=this.dataService.getAllFavoritesServices(Number(this.id));
    
-  console.log(this.id);
+  console.log(this.fav);
  
   }
 onSubmit(){
