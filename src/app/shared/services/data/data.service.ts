@@ -111,7 +111,8 @@ export class DataService {
   }
 
   public getBookInfoGogleApi(insertedTitle) {
-    return this.catalogApi.getBookInfoGogleApi(insertedTitle);
+    var resultado=this.catalogApi.getBookInfoGogleApi(insertedTitle);
+    return resultado;
   }
 
 

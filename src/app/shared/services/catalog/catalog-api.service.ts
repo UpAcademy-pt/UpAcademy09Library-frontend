@@ -11,7 +11,7 @@ const apiUrl = "http://localhost:8080/libraryManagmentApp/api/books/";
 })
 export class CatalogApiService {
 
-  
+
   // HttpClient required to CRUD
   constructor(private http: HttpClient) { }
 
@@ -83,10 +83,10 @@ export class CatalogApiService {
 
   // Get remaining book info from google API
   public getBookInfoGogleApi(insertedTitle: string) {
-    return this.http.get("https://www.googleapis.com/books/v1/volumes?q=intitle:"+insertedTitle);
+    return this.http.get("https://www.googleapis.com/books/v1/volumes?q=intitle:" + insertedTitle)
   }
 
-  
+
 }
 
 
