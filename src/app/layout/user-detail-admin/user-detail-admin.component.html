@@ -27,12 +27,8 @@
           <tbody>
             <tr *ngFor="let book of history">
               <!-- <td *ngIf="book.deliveryDate != null">Não tem Reservas</td> -->
-              <td *ngIf="book.deliveryDate === null">{{book.historyBook.title}}</td>
-              <td *ngIf="book.deliveryDate === null">{{book.historyBook.author}}</td>
-              <td *ngIf="book.historyBook.state ==='reserved' && book.deliveryDate === null"><a (click)="pickUpBook(book)"
-                  class="btn" tooltip="Entregar livro ao utilizador" placement="top"> <img src="/assets/give.png"></a></td>
-              <td *ngIf="book.historyBook.state ==='inUse' && book.deliveryDate === null"><a (click)="deliverBook(book)"
-                  class="btn" tooltip="Receber livro do utilizador" placement="top"><img src="/assets/receive.png"></a></td>
+              <td *ngIf="!book.deliveryDate">{{book.historyBook.title}}</td>
+              <td *ngIf="!book.deliveryDate">{{book.historyBook.author}}</td>
             </tr>
           </tbody>
         </table>

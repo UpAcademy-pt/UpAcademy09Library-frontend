@@ -13,12 +13,12 @@ import { Router } from '@angular/router';
 export class SearchComponent implements OnInit {
 
   public search$: ReplaySubject<any[]> = new ReplaySubject(1);
-  private search: any
+  private search: any;
   // filter var
-  selectedTypeSearch: string = 'keyword';
+  selectedTypeSearch = 'keyword';
   searchableList: string;
-  input:string;
-  constructor(public router: Router,private dataService: DataService) { }
+  input: string;
+  constructor(public router: Router, private dataService: DataService) { }
 
   ngOnInit() {
 
@@ -31,7 +31,7 @@ export class SearchComponent implements OnInit {
     // search Type to FilterPipe
     console.log(this.selectedTypeSearch);
     return this.searchableList = this.selectedTypeSearch;
-   
+
   }
 
   public searchMethod(input, searchableList) {
@@ -43,36 +43,35 @@ export class SearchComponent implements OnInit {
       case 'keyword':
         console.log(searchableList);
         this.search$.subscribe(this.search.searchKeyword(input));
-        console.log(this.search$)
+        console.log(this.search$);
         break;
       case 'title':
-      console.log(searchableList);
-      this.search$ = this.search.searchTitle(input);
+        console.log(searchableList);
+        this.search$ = this.search.searchTitle(input);
         break;
       case 'author':
-      console.log(searchableList);
-      this.search$ = this.search.searchAuthor(input);
+        console.log(searchableList);
+        this.search$ = this.search.searchAuthor(input);
         break;
       case 'description':
-      console.log(searchableList);
-      this.search$ = this.search.searchDescription(input);
+        console.log(searchableList);
+        this.search$ = this.search.searchDescription(input);
         break;
       case 'topic':
-      console.log(searchableList);
-      this.search$ = this.search.searchTopic(input);
-     
+        console.log(searchableList);
+        this.search$ = this.search.searchTopic(input);
         break;
       default:
-        console.log("erro no search");
+        console.log('erro no search');
         break;
     }
-    console.log(this.search$)
+    console.log(this.search$);
     return this.search$;
   }
 
   /* Query Books */
 
-  //Find book keyword
+  // Find book keyword
   public searchKeyword(keyword) {
     this.dataService.getCatalogByKeywordService(keyword).subscribe(
       (res: any) => {
@@ -82,7 +81,7 @@ export class SearchComponent implements OnInit {
       }
     );
   }
-  //Find by title
+  // Find by title
   public searchTitle(title) {
     this.dataService.getCatalogByTitleService(title).subscribe(
       (res: any) => {
@@ -92,7 +91,7 @@ export class SearchComponent implements OnInit {
     );
   }
 
-  //Find by Description
+  // Find by Description
   public searchDescription(description) {
     this.dataService.getCatalogByDescriptionService(description).subscribe(
       (res: any) => {
@@ -102,7 +101,7 @@ export class SearchComponent implements OnInit {
     );
   }
 
-  //Find by author
+  // Find by author
   public searchAuthor(author) {
     this.dataService.getCatalogByAuthorService(author).subscribe(
       (res: any) => {
@@ -112,7 +111,7 @@ export class SearchComponent implements OnInit {
     );
   }
 
-  //Find by topic
+  // Find by topic
   public searchTopic(topic) {
     this.dataService.getCatalogByTopicService(topic).subscribe(
       (res: any) => {
@@ -124,7 +123,7 @@ export class SearchComponent implements OnInit {
 
   /* Query Users */
 
-  //Find By Name
+  // Find By Name
   public searchName(name) {
     this.dataService.queryUserNameServices(name).subscribe(
       (res: any) => {
@@ -133,7 +132,7 @@ export class SearchComponent implements OnInit {
       }
     );
   }
-  //Find by Nip
+  // Find by Nip
   public searchNIP(nip) {
     this.dataService.queryUserNipServices(nip).subscribe(
       (res: any) => {
@@ -142,7 +141,7 @@ export class SearchComponent implements OnInit {
       }
     );
   }
-  //Find by email
+  // Find by email
   public searchEmail(email) {
     this.dataService.queryUserEmailServices(email).subscribe(
       (res: any) => {

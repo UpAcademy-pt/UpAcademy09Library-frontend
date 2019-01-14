@@ -8,7 +8,7 @@ import { LayoutComponent } from './layout.component';
 import { LayoutRoutingModule } from './layout-routing.module';
 import { HomeComponent } from './home/home.component';
 import { NotfoundComponent } from './notfound/notfound.component';
-import { HeaderComponent, FooterComponent, TableComponent, AddComponent, UpdateComponent, AdminManagementComponent } from '../shared';
+import { HeaderComponent, FooterComponent, TableComponent, AddComponent, UpdateComponent, AdminManagementComponent, AdminHistoryComponent } from '../shared';
 import { FormsModule } from '@angular/forms';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { LoginComponent } from './login/login.component';
@@ -24,6 +24,7 @@ import { SearchComponent } from '../shared/components/search/search.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { BookDetailsAdminComponent } from './book-details-admin/book-details-admin.component';
 import { UserDetailAdminComponent } from './user-detail-admin/user-detail-admin.component';
+import {NgxPrintModule} from 'ngx-print';
 
 
 
@@ -55,7 +56,8 @@ import { UserDetailAdminComponent } from './user-detail-admin/user-detail-admin.
     PersonalComponent,
     SearchComponent,
     BookDetailsAdminComponent,
-    UserDetailAdminComponent
+    UserDetailAdminComponent,
+    AdminHistoryComponent
   ],
 
   imports: [
@@ -73,7 +75,9 @@ import { UserDetailAdminComponent } from './user-detail-admin/user-detail-admin.
     NgxPaginationModule, //npm install ngx-pagination --save
     PaginationModule.forRoot(),
     // tooltip
-    TooltipModule.forRoot()
+    TooltipModule.forRoot(),
+    // print
+    NgxPrintModule
   ]
 })
 export class LayoutModule { }

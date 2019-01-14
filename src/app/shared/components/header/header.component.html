@@ -9,7 +9,7 @@
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav ml-auto">
           <li class="nav-item" *ngIf="!(currentUser$ | async)?.id">
-              <a class="nav-item nav-link" (click)="openModal(login)">Login</a>
+              <a class="nav-item nav-link btn" (click)="openModal(login)">Login</a>
             </li>
             <li class="nav-item" *ngIf="!(currentUser$ | async)?.id">
               <a class="nav-item nav-link" href="#" [routerLinkActive]="['active']" routerLink="/register">Registe-se</a>

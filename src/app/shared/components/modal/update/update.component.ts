@@ -16,7 +16,7 @@ export class UpdateComponent implements OnInit {
 
   modalRef: BsModalRef;
   public catalog: Catalog = new Catalog();
- 
+
 
   constructor(private modalService: BsModalService, private dataService: DataService) {}
 
