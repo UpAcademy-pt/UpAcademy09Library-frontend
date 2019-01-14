@@ -17,6 +17,7 @@ export class PanelComponent implements OnInit {
   user: User = new User();
   userid:string;
   history: History= new History();
+  livrosIguais;
 
 
 
@@ -37,6 +38,8 @@ export class PanelComponent implements OnInit {
   ngOnInit() {
  
     this.userid=this.acountApi.getCurrentId();
+
+    
    
   }
 
@@ -77,12 +80,17 @@ reservar(item){
     error => { console.error(error) });
 };
 
+
+
 addFav(item){
+  
  var user2=Number(this.userid);
 var bookId=item.id;
   this.dataservice.addFavoritesServices(user2, bookId).subscribe(
     (res) => { console.log("OK") },
     error => { console.error(error) });
+
+    console.log(this.user);
 }
 
 
