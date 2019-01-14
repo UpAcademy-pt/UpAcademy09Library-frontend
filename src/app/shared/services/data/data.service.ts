@@ -106,6 +106,10 @@ export class DataService {
     return this.catalogApi.getCatalogByTopic(topic);
   }
 
+  public getCatalogByIsbnService(isbn) {
+    return this.catalogApi.getCatalogByIsbn(isbn);
+  }
+
 
   /* USERS DATA LOGIC*/
 
