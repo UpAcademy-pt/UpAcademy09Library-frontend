@@ -11,6 +11,7 @@ const apiUrl = "http://localhost:8080/libraryManagmentApp/api/books/";
 })
 export class CatalogApiService {
 
+  
   // HttpClient required to CRUD
   constructor(private http: HttpClient) { }
 
@@ -70,10 +71,22 @@ export class CatalogApiService {
     return this.http.get(apiUrl + "researchbytopic/" + string);
   }
 
+  //Find by isbn
+  public getCatalogByIsbn(string: string) {
+    return this.http.get(apiUrl + "researchbyisbn/" + string)
+  }
+
   // Get all available books
   public getAvailableBooks() {
     return this.http.get(apiUrl + "getallavailablebooks");
-  }  
+  }
+
+  // Get remaining book info from google API
+  public getBookInfoGogleApi(insertedTitle: string) {
+    return this.http.get("https://www.googleapis.com/books/v1/volumes?q=intitle:"+insertedTitle);
+  }
+
+  
 }
 
 

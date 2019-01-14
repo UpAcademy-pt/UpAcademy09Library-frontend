@@ -121,6 +121,16 @@ export class SearchComponent implements OnInit {
     );
   }
 
+  //Find by isbn
+  public searchIsbn(author) {
+    this.dataService.getCatalogByIsbnService(author).subscribe(
+      (res: any) => {
+        this.search = res;
+        this.search$.next(res);
+      }
+    );
+  }
+
   /* Query Users */
 
   // Find By Name

@@ -106,6 +106,14 @@ export class DataService {
     return this.catalogApi.getCatalogByTopic(topic);
   }
 
+  public getCatalogByIsbnService(isbn) {
+    return this.catalogApi.getCatalogByIsbn(isbn);
+  }
+
+  public getBookInfoGogleApi(insertedTitle) {
+    return this.catalogApi.getBookInfoGogleApi(insertedTitle);
+  }
+
 
   /* USERS DATA LOGIC*/
 
