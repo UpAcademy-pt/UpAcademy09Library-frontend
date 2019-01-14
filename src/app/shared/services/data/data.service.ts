@@ -110,6 +110,10 @@ export class DataService {
     return this.catalogApi.getCatalogByIsbn(isbn);
   }
 
+  public getBookInfoGogleApi(insertedTitle) {
+    return this.catalogApi.getBookInfoGogleApi(insertedTitle);
+  }
+
 
   /* USERS DATA LOGIC*/
 

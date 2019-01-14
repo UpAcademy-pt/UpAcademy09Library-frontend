@@ -35,4 +35,6 @@ export class AddComponent implements OnInit {
     this.catalog.location = '';
     this.catalog.isbn = '';
   }
+
+ //POR AQUI FUNÇÃO QUE PROCURE OS DADOS DO LIVRO PARA O QUAL SE INSERIU o TITULO
  }
