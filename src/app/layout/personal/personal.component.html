@@ -89,15 +89,9 @@
         <div class="card mb-3"  *ngFor="let entrada of fav | async">
   <!--  -->
           <div class="card-body" >
-<<<<<<< HEAD
-            <h5 class="card-title"> {{entrada.historyBook.title}}, {{entrada.historyBook.author}}</h5>
-            <p class="card-text">{{ 'descriçāo' | translate }}: {{entrada.historyBook.description}} </p>
-            <p class="card-text ">{{ 'estado' | translate }}: {{entrada.historyBook.state}} </p> 
-=======
             <h5 class="card-title"> {{entrada.title}}, {{entrada.author}}</h5>
             <p class="card-text">Descrição: {{entrada.description}} </p>
             <p class="card-text ">Estado: {{entrada.state}} </p> 
->>>>>>> 49a70407ee71dcf52ff1ff57e814414e58970552
           </div>
           </div>
     </tab>

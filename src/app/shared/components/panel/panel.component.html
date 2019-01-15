@@ -23,11 +23,6 @@
   <div class="card mb-3" *ngFor="let item of catalog$ | async | FilterPipe: queryString: searchableList">
 
     <div class="card-body" (click)="clickItem(item)">
-<<<<<<< HEAD
-      <h5 class="card-title"> {{item.title}}, {{item.author}}</h5>
-      <p class="card-text">{{ 'descriçāo' | translate }}: {{item.description}} </p>
-      <p class="card-text ">{{ 'estado' | translate }}: {{item.state}} </p> 
-=======
       <h5 class="card-title"><b>{{item.title}}</b>, {{item.author}}</h5>
       <p class="card-text"><b>Descrição:</b> {{item.description}}
         <div [ngSwitch]="item.state">
@@ -73,6 +68,5 @@
       <!-- <div  *ngIf="item.state==='available'"><img class="reservar" (click)="reservar(item)" src="/assets/bookEmpty.png" ></div>
          <div *ngIf="item.state==='reserved'"><img class="reservar float-right" (click)="reservar(item)" style="float:right" src="/assets/bookFull.png" ></div>
         <div *ngIf="item.state==='reserved'"><img  (mouseover)="hover=true" class="reservar float-right"(click)="addFav(item)" src="/assets/heartfull.png" ></div> -->
->>>>>>> 49a70407ee71dcf52ff1ff57e814414e58970552
     </div>
   </div>

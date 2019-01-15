@@ -8,6 +8,7 @@ import { LayoutComponent } from './layout.component';
 import { LayoutRoutingModule } from './layout-routing.module';
 import { HomeComponent } from './home/home.component';
 import { NotfoundComponent } from './notfound/notfound.component';
+// tslint:disable-next-line:max-line-length
 import { HeaderComponent, FooterComponent, TableComponent, AddComponent, UpdateComponent, AdminManagementComponent, AdminHistoryComponent } from '../shared';
 import { FormsModule } from '@angular/forms';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
@@ -24,17 +25,14 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import { BookDetailsAdminComponent } from './book-details-admin/book-details-admin.component';
 import { UserDetailAdminComponent } from './user-detail-admin/user-detail-admin.component';
 import {NgxPrintModule} from 'ngx-print';
-<<<<<<< HEAD
 import { TranslateModule } from '@ngx-translate/core';
 
-=======
 import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
->>>>>>> 49a70407ee71dcf52ff1ff57e814414e58970552
 
 
 @NgModule({
   declarations: [
-    //layout
+    // layout
     ContactComponent,
     AboutComponent,
     AdminComponent,
@@ -43,13 +41,13 @@ import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
     HomeComponent,
     NotfoundComponent,
     BookDetailsComponent,
-    //shared components
+    // shared components
     HeaderComponent,
     FooterComponent,
     TableComponent,
     PanelComponent,
     AdminManagementComponent,
-    //shared modal
+    // shared modal
     AddComponent,
     UpdateComponent,
     LoginComponent,
@@ -74,12 +72,12 @@ import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
     // tabs
     TabsModule.forRoot(),
     // pagination
-    NgxPaginationModule, //npm install ngx-pagination --save
+    NgxPaginationModule, // npm install ngx-pagination --save
     PaginationModule.forRoot(),
     // tooltip
     TooltipModule.forRoot(),
     TypeaheadModule.forRoot(),
-    
+
     // print
     NgxPrintModule,
     TranslateModule

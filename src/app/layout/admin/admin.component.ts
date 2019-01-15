@@ -19,13 +19,10 @@ export class AdminComponent implements OnInit {
   // observable
   public catalog$: ReplaySubject<any[]> = new ReplaySubject(1);
   public user$: ReplaySubject<any[]> = new ReplaySubject(1);
-<<<<<<< HEAD
   public search$: ReplaySubject<any[]> = new ReplaySubject(1);
   public headers = ['Name', 'E-mail', 'NIP'];
-=======
   public searchCatalog$: ReplaySubject<any[]> = new ReplaySubject(1);
   public searchUser$: ReplaySubject<any[]> = new ReplaySubject(1);
->>>>>>> 49a70407ee71dcf52ff1ff57e814414e58970552
 
   constructor(
     private dataService: DataService
@@ -37,8 +34,6 @@ export class AdminComponent implements OnInit {
   }
 
   ngOnInit() {}
-<<<<<<< HEAD
-=======
 
   onChangeInput() {
     this.searchCatalog$ = this.dataService.queryCatalog(this.selectedTypeSearchCatalog, this.input);
@@ -50,5 +45,4 @@ export class AdminComponent implements OnInit {
     this.selectedTypeSearchUser = event.target.value;
   }
 
->>>>>>> 49a70407ee71dcf52ff1ff57e814414e58970552
 }
