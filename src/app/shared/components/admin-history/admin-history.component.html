@@ -9,7 +9,7 @@
         <th>Data de reserva</th>
         <th></th>
       </thead>
-      <tbody *ngFor="let book of history">
+      <tbody *ngFor="let book of array(history)">
         <tr *ngIf="!book.pickupDate">
           <td><a class="btn" (click)="clickBook(book.historyBook)">{{book.historyBook.title}}</a></td>
           <td><a class="btn" (click)="clickBook(book.historyBook)">{{book.historyBook.author}}</a></td>
@@ -43,7 +43,7 @@
         <th>Data de levantamento</th>
         <th></th>
       </thead>
-      <tbody *ngFor="let book of history">
+      <tbody *ngFor="let book of  array(history)">
         <tr *ngIf="!book.deliveryDate && book.pickupDate">
           <td><a class="btn" (click)="clickBook(book.historyBook)">{{book.historyBook.title}}</a></td>
           <td><a class="btn" (click)="clickBook(book.historyBook)">{{book.historyBook.author}}</a></td>
@@ -67,8 +67,6 @@
       </tbody>
     </table>
   </tab>
-  <!-- Tentar colocar quantos livros devemos receber hoje e entregar! explorar estatistica -->
-  <!-- passar isto para duas tabelas uma de livros a entregar com a localização deles e outra de livros a receber-->
   <tab heading="Movimentos Previstos">
     <br>
     <div class="container">
@@ -80,7 +78,7 @@
                 <th>Livros a recolher</th>
                 <th>Localização</th>
               </thead>
-              <tbody *ngFor="let book of history">
+              <tbody *ngFor="let book of array(history)">
                 <tr *ngIf="book.reservationDate && !book.deliveryDate">
                   <td><a class="btn" (click)="clickBook(book.historyBook)">{{book.historyBook.title}}</a></td>
                   <td><a class="btn" (click)="clickBook(book.historyBook)">{{book.historyBook.location}}</a></td>
@@ -97,21 +95,9 @@
                 <thead>
                   <th>Livros mais reservados</th>
                 </thead>
-                <tbody>
-                  <tr>
-                    <td><a class="btn" (click)="clickBook(book.historyBook)">{{bookMoreRead[0]}}</a></td>
-                  </tr>
-                  <tr>
-                    <td><a class="btn" (click)="clickBook(book.historyBook)">{{bookMoreRead[1]}}</a></td>
-                  </tr>
-                  <tr>
-                    <td><a class="btn" (click)="clickBook(book.historyBook)">{{bookMoreRead[2]}}</a></td>
-                  </tr>
-                  <tr>
-                    <td><a class="btn" (click)="clickBook(book.historyBook)">{{bookMoreRead[3]}}</a></td>
-                  </tr>
-                  <tr>
-                    <td><a class="btn" (click)="clickBook(book.historyBook)">{{bookMoreRead[4]}}</a></td>
+                <tbody *ngFor="let bookId of mostRead; let i = index">
+                  <tr *ngIf="i<5">
+                    <td><a class="btn">{{bookId}}</a></td>
                   </tr>
                 </tbody>
               </table>

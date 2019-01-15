@@ -50,6 +50,12 @@ export class HistoryApiService {
     // }));
   }
 
+  // GET All History
+  public getHistory() {
+    return this.http.get(apiUrl);
+  }
+
+
   // GET  User with Book
   public getUserWithBook(bookID: number) {
     return this.http.get(apiUrl + '/getuserwithbook/' + bookID);
