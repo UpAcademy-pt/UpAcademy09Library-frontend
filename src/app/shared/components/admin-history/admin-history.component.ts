@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, TemplateRef } from '@angular/core';
+import { Component, OnInit, OnDestroy, TemplateRef, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DataService } from '../../services';
 import { Subscription } from 'rxjs';
@@ -10,44 +10,51 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap';
   styleUrls: ['./admin-history.component.css']
 })
 export class AdminHistoryComponent implements OnInit, OnDestroy {
+  @Input() catalog$: any;
+
   user: any;
   history: any;
   bookToPickup: History;
   bookToDeliver: History;
   subscription: Subscription;
   modalRef: BsModalRef;
-  bookMoreRead: any;
-  highest = {};
-  highestOutput = [];
+  mostRead: any;
+ 
+
   constructor(private modalService: BsModalService, private dataService: DataService, public router: Router) {
     this.history = dataService.history$;
-
-
   }
 
   ngOnInit() {
     // mudar isto quando houver query geral
-    this.subscription = this.dataService.getUserHistoryService(2).subscribe((data) => {
+    this.subscription = this.dataService.getHistoryService().subscribe((data) => {
       this.history = data;
-      // const highest = [this.history.map(a => a.historyBook)];
-      this.bookMoreRead = this.getHighest();
+      this.mostRead = this.getHighest();
     });
-    return history;
+    return history ;
   }
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
+  }z
+  // para não dar erro na consola porcausa dos ngfor
+  public array(val) {
+    return Array.from(val);
   }
-
+  /* MUDAR PARA ISBN */
   public getHighest() {
+    const highest = {};
     this.history.forEach(history => {
-      this.highest[history.historyBook.id] = (this.highest[history.historyBook.id] || 0) + 1;
+      highest[history.historyBook.id] = (highest[history.historyBook.id] || 0) + 1;
     });
-
-    
-    console.log(Object.entries(this.highest).slice(0));
-    return Object.keys(this.highest);
+    console.log(highest);
+    return Object.keys(highest);
   }
+
+  // public getBook(item) {
+  //   console.log(this.dataService.getCatalogId(item));
+  //   this.dataService.getCatalogId(item);
+  // }
 
   // Give Book to User
   public pickUpBook(history) {
@@ -63,6 +70,9 @@ export class AdminHistoryComponent implements OnInit, OnDestroy {
   }
   clickBook(item) {
     this.router.navigate(['bookdetailsadmin', item.id]);
+  }
+  clickBookMustRead(book) {
+    this.router.navigate(['bookdetailsadmin', book]);
   }
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);

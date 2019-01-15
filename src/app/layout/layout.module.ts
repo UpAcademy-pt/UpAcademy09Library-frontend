@@ -20,13 +20,16 @@ import { BookDetailsComponent } from './book-details/book-details.component';
 import { TabsModule } from 'ngx-bootstrap';
 import { FilterUserPipe } from '../shared/components/filter/filter-user.pipe';
 import { PersonalComponent } from './personal/personal.component';
-import { SearchComponent } from '../shared/components/search/search.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { BookDetailsAdminComponent } from './book-details-admin/book-details-admin.component';
 import { UserDetailAdminComponent } from './user-detail-admin/user-detail-admin.component';
 import {NgxPrintModule} from 'ngx-print';
+<<<<<<< HEAD
 import { TranslateModule } from '@ngx-translate/core';
 
+=======
+import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
+>>>>>>> 49a70407ee71dcf52ff1ff57e814414e58970552
 
 
 @NgModule({
@@ -46,7 +49,6 @@ import { TranslateModule } from '@ngx-translate/core';
     TableComponent,
     PanelComponent,
     AdminManagementComponent,
-    SearchComponent,
     //shared modal
     AddComponent,
     UpdateComponent,
@@ -55,7 +57,6 @@ import { TranslateModule } from '@ngx-translate/core';
     FilterPipe,
     FilterUserPipe,
     PersonalComponent,
-    SearchComponent,
     BookDetailsAdminComponent,
     UserDetailAdminComponent,
     AdminHistoryComponent
@@ -77,6 +78,8 @@ import { TranslateModule } from '@ngx-translate/core';
     PaginationModule.forRoot(),
     // tooltip
     TooltipModule.forRoot(),
+    TypeaheadModule.forRoot(),
+    
     // print
     NgxPrintModule,
     TranslateModule

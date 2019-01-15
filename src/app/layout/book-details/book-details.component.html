@@ -3,18 +3,30 @@
 <div class="card">
     <div class="card-body">
         <div class="row ">
-         <div class="col-md-4 text-center">
+         <div *ngIf="catalog.photoLink==null" class="col-md-4 text-center">
              <img src="/assets/nocoverplaceholder.jpg">
          </div>
+         <div  *ngIf="catalog.photoLink!==null" class="col-md-4 text-center">
+            <img src="{{catalog.photoLink}}">
+        </div>
 
             <div class="col-md-8">
 
+<<<<<<< HEAD
                 <h4 class="card-text">{{catalog.title}}, {{catalog.author}}</h4>
                 <p class="card-text">{{ 'categoria' | translate }}: {{catalog.topic}}</p>
                 <p class="card-text">{{ 'descricao' | translate }}: {{catalog.description}} </p>
                 <p class="card-text">{{ 'localizacao' | translate }}: {{catalog.location}} </p>
                 <p class="card-text">ISBN: {{catalog.isbn}} </p>
                 <p class="card-text">{{ 'estado' | translate }}: {{catalog.state}}</p>
+=======
+                <h4 class="card-text"> <b>{{catalog.title}}</b>, {{catalog.author}}</h4>
+                <p class="card-text"><b>Categoria:</b> {{catalog.topic}}</p>
+                <p class="card-text"><b>Descrição:</b> {{catalog.description}} </p>
+                <p class="card-text"><b>Localização:</b> {{catalog.location}} </p>
+                <p class="card-text"><b>ISBN:</b> {{catalog.isbn}} </p>
+                <p class="card-text"><b>Estado:</b> {{catalog.state}}</p>
+>>>>>>> 49a70407ee71dcf52ff1ff57e814414e58970552
             </div>
 
         </div>

@@ -105,7 +105,7 @@ export class AcountApiService {
 
   // remove from favorite
   public removeFavourite(userID: number, bookID: number) {
-    return this.http.delete(apiUrl + '/removefavourite?userId=' + userID + '&bookId=' + bookID, null);
+    return this.http.delete(apiUrl + '/removefavourite?userId=' + userID + '&bookId=' + bookID);
   }
   // get all favorites
   public getAllFavourites(userID: number) {
@@ -121,16 +121,17 @@ export class AcountApiService {
 
   // Find By Name
   public queryUserName(name: string) {
-    return this.http.get(apiUrl + '/findby/name/' + name);
+    return this.http.get(apiUrl + '/findby/name/?name=' + name);
   }
   // Find by Nip
   public queryUserNip(nip: string) {
-    return this.http.get(apiUrl + '/findby/nip/' + nip);
+    return this.http.get(apiUrl + '/findby/nip/?nip=' + nip);
   }
   // Find by Nip
   public queryUserEmail(email: string) {
-    return this.http.get(apiUrl + '/findby/email/' + email);
+    return this.http.get(apiUrl + '/findby/email/?email=' + email);
   }
 
 
+ 
 }

@@ -1,4 +1,5 @@
 <div class="table-responsive">
+<<<<<<< HEAD
   <div class="search">
     <div class="container mb-3">
       <div class="row justify-content-md-left">
@@ -42,3 +43,29 @@
       <pagination-controls id="userAdminPagination" class="my-paginationUser" (pageChange)=" page = $event"
         previousLabel="{{ 'anterior' | translate }}" nextLabel="{{ 'próximo' | translate }}" maxSize="7"></pagination-controls>
     </div>
+=======
+  <table class="table" [ngClass]='theme'>
+    <thead>
+      <tr>
+        <th *ngFor="let col of headerUsers">
+          {{col}}
+        </th>
+        <th>Estado</th>
+        <th>Administrador</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let row of user$ | async | paginate: { id: 'userAdminPagination', itemsPerPage: 5, currentPage: page } "
+        (click)="clickItem(row)">
+        <td *ngFor="let col of headerUsers">
+          {{row[col]}}
+        </td>
+        <td *ngIf="!row.active"><img src="/assets/user-inactive.png"></td>
+        <td *ngIf="row.active"><img src="/assets/user-active.png"></td>
+        <td *ngIf="row.admin"><img src="/assets/admin.png"></td>
+      </tr>
+    </tbody>
+  </table>
+  <pagination-controls id="userAdminPagination" class="my-paginationUser" (pageChange)=" page = $event" previousLabel="Anterior"
+    nextLabel="Próximo" maxSize="7"></pagination-controls>
+>>>>>>> 49a70407ee71dcf52ff1ff57e814414e58970552

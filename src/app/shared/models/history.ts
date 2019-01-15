@@ -3,7 +3,7 @@ import { Catalog } from './catalog';
 
 declare var Object: any;
 export class History {
-
+    id?:number;
     reservationDate?: Date;
     pickupDate?: Date;
     deliveryDate?: Date;

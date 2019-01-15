@@ -13,11 +13,19 @@
         <div *ngIf="user.admin">
           <p class="card-text" translate>Privilégios Administrativos: <img src="/assets/admin.png"></p>
         </div>
+<<<<<<< HEAD
         <div *ngIf="!user.active">
         <p class="card-text" translate>Estado do Utilizador: <img src="/assets/user-inactive.png"></p>
       </div>
       <div *ngIf="user.active">
         <p class="card-text" translate>Estado do Utilizador: <img src="/assets/user-active.png"></p>
+=======
+        <div *ngIf="!user.active" >
+        <p class="card-text">Estado do Utilizador: <img src="/assets/user-inactive.png"></p>
+      </div>
+      <div *ngIf="user.active" >
+        <p class="card-text">Estado do Utilizador: <img src="/assets/user-active.png"></p>
+>>>>>>> 49a70407ee71dcf52ff1ff57e814414e58970552
       </div>
         <br>
         <table class="table-bordered">
@@ -40,8 +48,8 @@
       <a (click)="changePrivileges(user.id)" class="btn" tooltip="Conceder Privilégios Administrativos" placement="top"><img
           src="/assets/admin.png"></a>
       <a (click)="disable(user.id)" class="btn" tooltip="Desactivar o utilizador" placement="top"><img src="/assets/user-inactive.png"></a>
-      <a (click)="reactivate(user.id)" class="btn" tooltip="Reactivar o utilizador" placement="top"><img src="/assets/user-active.png"></a>
+      <a (click)="reactivate(user.id)" class="btn"  tooltip="Reactivar o utilizador" placement="top"><img src="/assets/user-active.png"></a>
     </div>
   </div>
-  <a><img class="back" src="/assets/back.png" (click)="cancel()"></a>
+  <a><img class="back" src="/assets/back.png"(change)="onChangeInput()" (click)="cancel()"></a>
 </div>

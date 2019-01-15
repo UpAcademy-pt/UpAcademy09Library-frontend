@@ -29,7 +29,8 @@ export class DataService {
   public search$: ReplaySubject<any[]> = new ReplaySubject(1);
   public search: any;
  
-
+  public searchCatalog$: ReplaySubject<any[]> = new ReplaySubject(1);
+  public searchUser$: ReplaySubject<any[]> = new ReplaySubject(1);
 
   constructor(private catalogApi: CatalogApiService, private acountApi: AcountApiService, private historyApi: HistoryApiService) {
     this.getCatalog();
@@ -74,38 +75,65 @@ export class DataService {
       }
     }
   }
+
+  public getCatalogId(id) {
+    this.catalogApi.getCatalogById(id).subscribe(
+      (res: any) => {
+        this.catalog = res;
+      }
+    );
+  }
+
   //Get all available books
   public getAvailableBooksService() {
     return this.catalogApi.getAvailableBooks();
   }
-  //Find book keyword
-  public getCatalogByKeywordService(keyword) {
-    this.catalogApi.getCatalogByKeyword(keyword).subscribe(
-      (res: any) => {
-        this.search = res;
-        this.search$.next(res);
-      }
-    );
-    console.log(this.search$);
-    return this.search$;
-  }
-  //Find by title
-  public getCatalogByTitleService(title) {
-    return this.catalogApi.getCatalogByTitle(title);
-  }
-  //Find by Description
-  public getCatalogByDescriptionService(description) {
-    return this.catalogApi.getCatalogByDescription(description);
-  }
-  //Find by author
-  public getCatalogByAuthorService(author) {
-    return this.catalogApi.getCatalogByAuthor(author);
-  }
-  //Find by topic
-  public getCatalogByTopicService(topic) {
-    return this.catalogApi.getCatalogByTopic(topic);
-  }
 
+  // Switch Search
+  public queryCatalog(searchableList, input) {
+    switch (searchableList) {
+      case 'keyword': this.catalogApi.getCatalogByKeyword(input).subscribe(
+        (res: any) => {
+          return this.searchCatalog$.next(res);
+        }
+      );
+        break;
+      case 'title': this.catalogApi.getCatalogByTitle(input).subscribe(
+        (res: any) => {
+          return this.searchCatalog$.next(res);
+        }
+      );
+        break;
+      case 'author': this.catalogApi.getCatalogByAuthor(input).subscribe(
+        (res: any) => {
+          return this.searchCatalog$.next(res);
+        }
+      );
+        break;
+      case 'description': this.catalogApi.getCatalogByDescription(input).subscribe(
+        (res: any) => {
+          return this.searchCatalog$.next(res);
+        }
+      );
+        break;
+      case 'isbn': this.catalogApi.getCatalogByIsbn(input).subscribe(
+        (res: any) => {
+          return this.searchCatalog$.next(res);
+        }
+      );
+        break;
+      case 'topic': this.catalogApi.getCatalogByTopic(input).subscribe(
+        (res: any) => {
+          return this.searchCatalog$.next(res);
+        }
+      );
+        break;
+      default:
+        console.error('Erro!');
+        break;
+    }
+    return this.searchCatalog$;
+  }
   public getCatalogByIsbnService(isbn) {
     return this.catalogApi.getCatalogByIsbn(isbn);
   }
@@ -113,7 +141,6 @@ export class DataService {
   public getBookInfoGogleApi(insertedTitle) {
     return this.catalogApi.getBookInfoGogleApi(insertedTitle);
   }
-
 
   /* USERS DATA LOGIC*/
 
@@ -127,7 +154,7 @@ export class DataService {
       }
     }
   }
- 
+
   public getUsers() {
     this.acountApi.getUsersDB().subscribe(
       (res: any) => {
@@ -169,12 +196,12 @@ export class DataService {
 
   // add to Favorite -- TESTAR COM URGÊNCIA --- é a maneira que encontrei para enviar dois objectos
   public addFavoritesServices(userID: number, bookID: number) {
-   return this.acountApi.addBookToFavourites(userID, bookID);
+    return this.acountApi.addBookToFavourites(userID, bookID);
   }
 
   // remove from favorite
-  public removeFavoritesServices(userID, bookID) {
-    this.acountApi.removeFavourite(userID, bookID);
+  public removeFavoritesServices(userID: number, bookID: number) {
+    return  this.acountApi.removeFavourite(userID, bookID);
   }
   // get all favorites
   public getAllFavoritesServices(userID: number) {
@@ -192,18 +219,36 @@ export class DataService {
 
   }
 
-  //Find By Name
-  public queryUserNameServices(name) {
-    return this.acountApi.queryUserName(name);
+  // Switch Search
+  public queryUser(searchableList, input) {
+    console.log('tipo:' + searchableList + 'input:' + input);
+    switch (searchableList) {
+      case 'name': this.acountApi.queryUserName(input).subscribe(
+        (res: any) => {
+          return this.searchUser$.next(res);
+        }
+      );
+        break;
+      case 'nip': this.acountApi.queryUserNip(input).subscribe(
+        (res: any) => {
+          return this.searchUser$.next(res);
+        }
+      );
+        break;
+      case 'email': this.acountApi.queryUserEmail(input).subscribe(
+        (res: any) => {
+          return this.searchUser$.next(res);
+        }
+      );
+        break;
+      default:
+        console.error('Erro!');
+        break;
+    }
+    return this.searchUser$;
   }
-  //Find by Nip
-  public queryUserNipServices(nip) {
-    return this.acountApi.queryUserNip(nip);
-  }
-  //Find by Nip
-  public queryUserEmailServices(email) {
-    return this.acountApi.queryUserEmail(email);
-  }
+
+
 
   /* HISTORY DATA LOGIC*/
 
@@ -211,6 +256,12 @@ export class DataService {
   public reserveBookService(reserve: any) {
     return this.historyApi.reserveBookHistory(reserve);
   }
+
+  // cancel book reserve
+  public cancelReserveBookService(reserve: any) {
+    return this.historyApi.cancelReservation(reserve);
+  }
+
   // Pickup book
   public pickupBookService(bookToPickUp: any) {
     return this.historyApi.pickupBook(bookToPickUp);
@@ -230,6 +281,18 @@ export class DataService {
     );
     return this.history$;
   }
+
+  // All History
+  public getHistoryService() {
+    this.historyApi.getHistory().subscribe(
+      (res: any) => {
+        this.history$.next(res);
+        this.history = res;
+        console.log(res);
+      }
+    );
+    return this.history$;
+  }
   // User with Book
   public getUserWithBookService(bookID: number) {
     return this.historyApi.getUserWithBook(bookID);
@@ -239,4 +302,3 @@ export class DataService {
     return this.historyApi.getBooksWithUser(userID);
   }
 }
-

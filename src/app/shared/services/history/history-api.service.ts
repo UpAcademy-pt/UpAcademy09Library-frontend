@@ -24,6 +24,13 @@ export class HistoryApiService {
 
 
   }
+ // PUT  cancel reservation
+  public cancelReservation(reserve: any){
+
+    return this.http.put(apiUrl + '/cancelreservation', reserve)
+  }
+
+
   // PUT  Pickup book
   public pickupBook(bookToPickUp: any) {
     console.log("pickupBook : ", bookToPickUp);
@@ -49,6 +56,12 @@ export class HistoryApiService {
     //   return response
     // }));
   }
+
+  // GET All History
+  public getHistory() {
+    return this.http.get(apiUrl);
+  }
+
 
   // GET  User with Book
   public getUserWithBook(bookID: number) {
