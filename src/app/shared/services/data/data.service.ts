@@ -200,8 +200,8 @@ export class DataService {
   }
 
   // remove from favorite
-  public removeFavoritesServices(userID, bookID) {
-    this.acountApi.removeFavourite(userID, bookID);
+  public removeFavoritesServices(userID: number, bookID: number) {
+    return  this.acountApi.removeFavourite(userID, bookID);
   }
   // get all favorites
   public getAllFavoritesServices(userID: number) {
@@ -256,6 +256,12 @@ export class DataService {
   public reserveBookService(reserve: any) {
     return this.historyApi.reserveBookHistory(reserve);
   }
+
+  // cancel book reserve
+  public cancelReserveBookService(reserve: any) {
+    return this.historyApi.cancelReservation(reserve);
+  }
+
   // Pickup book
   public pickupBookService(bookToPickUp: any) {
     return this.historyApi.pickupBook(bookToPickUp);
