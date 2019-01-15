@@ -37,8 +37,10 @@ export class AddComponent implements OnInit {
     this.typeaheadSelected = true;
     console.log('Selected value: ', e);
     this.catalog.description = e.item.description;
-    this.catalog.author = e.item.authors;
-    this.catalog.topic = e.item.categories;
+    // this.catalog.author = e.item.authors;
+    this.catalog.author = e.item.authors[0];
+    
+    this.catalog.topic = e.item.categories[0];
     if (e.item.industryIdentifiers[1])
       this.catalog.isbn = e.item.industryIdentifiers[1].identifier;
   }
