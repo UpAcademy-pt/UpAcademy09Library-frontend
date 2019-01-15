@@ -3,16 +3,16 @@
     <div class="row justify-content-md-left">
       <div class="input-group">
         <select (change)="selectChangeHandler($event)">
-          <option value="keyword">Palavra-Chave</option>
-          <option value="title">Título</option>
-          <option value="author">Autor</option>
-          <option value="description">descrição</option>
-          <option value="isbn">isbn</option>
-          <option value="topic">topico</option>
+          <option value="keyword" translate>Palavra-Chave</option>
+          <option value="title" translate>Título</option>
+          <option value="author" translate>Autor</option>
+          <option value="description" translate>descrição</option>
+          <option value="isbn">ISBN</option>
+          <option value="topic" translate>topico</option>
         </select>
 
 
-        <input class="form-control" type="text" name="search" [(ngModel)]="queryString" autocomplete="off" placeholder="Procurar por {{selectedTypeSearch}}">
+        <input class="form-control" type="text" name="search" [(ngModel)]="queryString" autocomplete="off" placeholder="{{'Procurar por' | translate}} {{selectedTypeSearch}}">
       </div>
     </div>
   </div>
@@ -24,8 +24,8 @@
     
     <div class="card-body" (click)="clickItem(item)">
       <h5 class="card-title"> {{item.title}}, {{item.author}}</h5>
-      <p class="card-text">Descrição: {{item.description}} </p>
-      <p class="card-text ">Estado: {{item.state}} </p> 
+      <p class="card-text">{{ 'descriçāo' | translate }}: {{item.description}} </p>
+      <p class="card-text ">{{ 'estado' | translate }}: {{item.state}} </p> 
     </div>
     
     <div class="text-right">

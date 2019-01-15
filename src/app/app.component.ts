@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 
 
 @Component({
@@ -8,4 +9,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'angularlibrary';
+
+  constructor( translate: TranslateService ) {
+    translate.addLangs( ['en', 'pt']);
+    translate.setDefaultLang('pt');
+  }
 }

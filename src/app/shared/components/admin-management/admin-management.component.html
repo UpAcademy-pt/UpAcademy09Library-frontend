@@ -4,14 +4,14 @@
       <div class="row justify-content-md-left">
         <div class="input-group">
           <select class="btnSearch" (change)=" selectChangeHandler($event)">
-            <option value="email">Email</option>
-            <option value="name">Nome</option>
-            <option value="nip">NIP</option>
-            <option value="admin">admin</option>
-            <option value="active">active</option>
+            <option value="email">E-mail</option>
+            <option value="name" translate>Name</option>
+            <option value="nip" translate>NIP</option>
+            <option value="admin" translate> admin</option>
+            <option value="active" translate>active</option>
           </select>
           <input class="form-control" type="text" name="search" [(ngModel)]="queryStringUser" autocomplete="off"
-            placeholder="Procurar por {{selectedTypeSearch}}">
+            placeholder="{{ 'Procurar por' | translate }} {{selectedTypeSearch}}">
         </div>
       </div>
     </div>
@@ -20,15 +20,16 @@
       <table class="table" [ngClass]='theme'>
         <thead>
           <tr>
-            <th *ngFor="let col of headerUsers">
-              {{col}}
-            </th>
-            <th>Estado</th>
-            <th>Administrador</th>
+            <th translate>Name</th>
+            <th translate>Email</th>
+            <th translate>NIP</th>
+            <th translate>Estado</th>
+            <th translate>Administrador</th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let row of user$ | async | FilterUser: queryStringUser: searchableListUser | paginate: { id: 'userAdminPagination', itemsPerPage: 5, currentPage: page } " (click)="clickItem(row)">
+          <tr *ngFor="let row of user$ | async | FilterUser: queryStringUser: searchableListUser | paginate: { id: 'userAdminPagination', itemsPerPage: 5, currentPage: page } "
+            (click)="clickItem(row)">
             <td *ngFor="let col of headerUsers">
               {{row[col]}}
             </td>
@@ -38,6 +39,6 @@
           </tr>
         </tbody>
       </table>
-      <pagination-controls id="userAdminPagination" class="my-paginationUser" (pageChange)=" page = $event" previousLabel="Anterior" nextLabel="Próximo"
-      maxSize="7"></pagination-controls>
+      <pagination-controls id="userAdminPagination" class="my-paginationUser" (pageChange)=" page = $event"
+        previousLabel="{{ 'anterior' | translate }}" nextLabel="{{ 'próximo' | translate }}" maxSize="7"></pagination-controls>
     </div>

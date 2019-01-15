@@ -13,4 +13,8 @@ input.ng-invalid.ng-touched{
 .catalogo{
     color:rgba(255,255,255,.5)!important;
 }
+
+img {
+    height: 1.5rem;
+}
   

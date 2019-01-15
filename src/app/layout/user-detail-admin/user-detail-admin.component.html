@@ -1,4 +1,4 @@
-<h2>Detalhes do Utilizador</h2>
+<h2>{{ 'detalhesUser' | translate }}</h2>
 <br>
 <div class="card">
   <div class="card-body">
@@ -9,20 +9,20 @@
       <div class="col-md-8">
         <h4 class="card-text">{{user.name}}</h4>
         <p class="card-text">Email: {{user.email}}</p>
-        <p class="card-text">Numero de identificação pessoal: {{user.nip}} </p>
+        <p class="card-text" translate>Nip: {{user.nip}} </p>
         <div *ngIf="user.admin">
-          <p class="card-text">Privilégios Administrativos: <img src="/assets/admin.png"></p>
+          <p class="card-text" translate>Privilégios Administrativos: <img src="/assets/admin.png"></p>
         </div>
         <div *ngIf="!user.active">
-        <p class="card-text">Estado do Utilizador: <img src="/assets/user-inactive.png"></p>
+        <p class="card-text" translate>Estado do Utilizador: <img src="/assets/user-inactive.png"></p>
       </div>
       <div *ngIf="user.active">
-        <p class="card-text">Estado do Utilizador: <img src="/assets/user-active.png"></p>
+        <p class="card-text" translate>Estado do Utilizador: <img src="/assets/user-active.png"></p>
       </div>
         <br>
         <table class="table-bordered">
           <thead>
-            <th>Reservas do utilizador: </th>
+            <th translate>Reservas do utilizador: </th>
           </thead>
           <tbody>
             <tr *ngFor="let book of history">

@@ -7,6 +7,7 @@ import { AcountApiService } from '../../services';
 import { ReplaySubject } from 'rxjs';
 import { longStackSupport } from 'q';
 import { NgForm } from '@angular/forms';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-header',
@@ -27,7 +28,8 @@ export class HeaderComponent implements OnInit {
   constructor(
     private router: Router,
     private modalService: BsModalService,
-    private accountApi: AcountApiService
+    private accountApi: AcountApiService,
+    private translate: TranslateService
   ) {
     this.currentUser$ = this.accountApi.currentUser$;
 
@@ -39,6 +41,10 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
 
+  }
+
+  changeLang(lang:string){
+    this.translate.use(lang);
   }
 
   openModal(template: TemplateRef<any>) {
@@ -67,7 +73,9 @@ export class HeaderComponent implements OnInit {
           }
         } else {
           // tslint:disable-next-line:max-line-length
-          this.msg = 'O par e-mail/password está incorrecto. Por favor tente novamente ou contacte o administrador para recuperar a sua password';
+          this.translate.get('O par e-mail/password está incorrecto Por favor tente novamente ou contacte o administrador para recuperar a sua password').subscribe((res: string) => {
+            this.msg = res;
+          });
         }
       }
     );

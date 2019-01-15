@@ -25,6 +25,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import { BookDetailsAdminComponent } from './book-details-admin/book-details-admin.component';
 import { UserDetailAdminComponent } from './user-detail-admin/user-detail-admin.component';
 import {NgxPrintModule} from 'ngx-print';
+import { TranslateModule } from '@ngx-translate/core';
 
 
 
@@ -77,7 +78,8 @@ import {NgxPrintModule} from 'ngx-print';
     // tooltip
     TooltipModule.forRoot(),
     // print
-    NgxPrintModule
+    NgxPrintModule,
+    TranslateModule
   ]
 })
 export class LayoutModule { }

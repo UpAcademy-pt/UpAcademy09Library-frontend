@@ -1,13 +1,13 @@
 <tabset>
-    <tab heading="Gestão de Requisições">
+    <tab heading="{{ 'admin.tab1' | translate }}">
         <br>
         <app-admin-history></app-admin-history>
     </tab>
-    <tab id="users-admin" heading="Gestão de Utilizadores">
+    <tab id="users-admin" heading="{{ 'admin.tab2' | translate }}">
         <br>
-        <app-admin-management [headerUsers]='["name","email","nip"]' [user$]='user$' [theme]='"table-light"'></app-admin-management>
+        <app-admin-management [headerUsers]='["name","E-mail","NIP"]' [user$]='user$' [theme]='"table-light"'></app-admin-management>
     </tab>
-    <tab id="books-admin" heading="Gestão de Livros">
+    <tab id="books-admin" heading="{{ 'admin.tab3' | translate }}">
         <br>
         <app-table [isBook]="true" [header]='["title","author","isbn","topic","location","state"]' [catalog$]='catalog$'
             [theme]='"table-light"'></app-table>

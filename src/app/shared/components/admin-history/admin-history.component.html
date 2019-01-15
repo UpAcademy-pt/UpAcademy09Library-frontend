@@ -1,12 +1,12 @@
 <tabset>
-  <tab id="users-admin" heading="Livros a Entregar">
+  <tab id="users-admin" heading="{{ 'adminHistory.H2' | translate }}">
     <br>
     <table class="table table-hover" [ngClass]='theme'>
       <thead>
-        <th>Titulo</th>
-        <th>Autor</th>
-        <th>Utilizador</th>
-        <th>Data de reserva</th>
+        <th translate>Titulo</th>
+        <th translate>Autor</th>
+        <th translate>Utilizador</th>
+        <th translate>Data de reserva</th>
         <th></th>
       </thead>
       <tbody *ngFor="let book of history">
@@ -19,11 +19,11 @@
         </tr>
         <ng-template class="modal" #deliver>
           <div class="modal-header">
-            <p class="modal-title">Confirmar entrega</p>
+            <p class="modal-title" translate>Confirmar entrega</p>
           </div>
           <div class="modal-body">
-            <p class="btn" (click)="clickBook(book.historyBook)">Livro: {{book.historyBook.title}}</p>
-            <p class="btn" (click)="clickUser(book.historyUser)">Utilizador: {{book.historyUser.email}}</p>
+            <p class="btn" (click)="clickBook(book.historyBook)">{{ 'livro' | translate }}: {{book.historyBook.title}}</p>
+            <p class="btn" (click)="clickUser(book.historyUser)">{{ 'User' | translate }}: {{book.historyUser.email}}</p>
           </div>
           <div>
             <a class="btn" (click)="pickUpBook(book)" (click)="modalRef.hide()"><img src="assets/give.png"></a>
@@ -33,14 +33,14 @@
       </tbody>
     </table>
   </tab>
-  <tab id="users-admin" heading="Livros a Receber">
+  <tab id="users-admin" heading="{{ 'adminHistory.H1' | translate }}">
     <br>
     <table class="table table-hover" [ngClass]='theme'>
       <thead>
-        <th>Titulo</th>
-        <th>Autor</th>
-        <th>Utilizador</th>
-        <th>Data de levantamento</th>
+        <th translate>Titulo</th>
+        <th translate>Autor</th>
+        <th translate>Utilizador</th>
+        <th translate>Data de levantamento</th>
         <th></th>
       </thead>
       <tbody *ngFor="let book of history">
@@ -53,11 +53,11 @@
         </tr>
         <ng-template class="modal rounded-0" #receive>
           <div class="modal-header">
-            <p class="modal-title">Confirmar devolução:</p>
+            <p class="modal-title" translate>Confirmar devolução:</p>
           </div>
           <div class="modal-body">
-            <p class="btn" (click)="clickBook(book.historyBook)">Livro: {{book.historyBook.title}}</p>
-            <p class="btn" (click)="clickUser(book.historyUser)">Utilizador: {{book.historyUser.email}}</p>
+            <p class="btn" (click)="clickBook(book.historyBook)">{{ 'livro' | translate }}: {{book.historyBook.title}}</p>
+            <p class="btn" (click)="clickUser(book.historyUser)">{{ 'User' | translate }}: {{book.historyUser.email}}</p>
           </div>
           <div>
             <a class="btn" (click)="deliverBook(book)" (click)="modalRef.hide()"><img src="assets/give.png"></a>
@@ -69,7 +69,7 @@
   </tab>
   <!-- Tentar colocar quantos livros devemos receber hoje e entregar! explorar estatistica -->
   <!-- passar isto para duas tabelas uma de livros a entregar com a localização deles e outra de livros a receber-->
-  <tab heading="Movimentos Previstos">
+  <tab heading="{{ 'adminHistory.H3' | translate }}">
     <br>
     <div class="container">
       <div class="row">
@@ -77,8 +77,8 @@
           <div id="print-section">
             <table class="table table-hover" [ngClass]='theme'>
               <thead>
-                <th>Livros a recolher</th>
-                <th>Localização</th>
+                <th translate>Livros a recolher</th>
+                <th translate>Localização</th>
               </thead>
               <tbody *ngFor="let book of history">
                 <tr *ngIf="book.reservationDate && !book.deliveryDate">
@@ -88,14 +88,14 @@
               </tbody>
             </table>
           </div>
-          <button printSectionId="print-section" ngxPrint>Imprimir</button>
+          <button printSectionId="print-section" ngxPrint>{{ 'imprimir' | translate }}</button>
         </div>
         <div class="col">
           <div class="tm-bg-primary-dark tm-block">
             <div>
               <table class="table table-hover" [ngClass]='theme'>
                 <thead>
-                  <th>Livros mais reservados</th>
+                  <th translate>Livros mais reservados</th>
                 </thead>
                 <tbody>
                   <tr>

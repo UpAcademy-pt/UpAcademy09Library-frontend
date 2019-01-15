@@ -3,7 +3,7 @@
 
 <ng-template #template>
   <div class="modal-header">
-    <h4 class="modal-title pull-left">Adicionar livros</h4>
+    <h4 class="modal-title pull-left" translate>Adicionar livros</h4>
     <button type="button" class="close pull-right" aria-label="Close" required (click)="modalRef.hide(); onClose();">
       <span aria-hidden="true">&times;</span>
     </button>
@@ -11,31 +11,31 @@
   <div class="modal-body">
     <form #f="ngForm" >
       <div class="form-group">
-        <label class="required" for="title">Título</label>
+        <label class="required" for="title" translate>Título</label>
         <input type="text" class="form-control" name="title" [(ngModel)]="catalog.title" required>
         <!--POR AQUI UM DROPDOWN COM AS VARIAS POSSIBILIDADES DE TITULO-->
       </div>
       <div class="form-group">
-        <label class="required" for="description">Descriçāo</label>
+        <label class="required" for="description" translate>Descriçāo</label>
         <textarea type="input"class="form-control" name="description" [(ngModel)]="catalog.description" required></textarea>
       </div>
       <div class="form-group">
-        <label class="required" for="author">Autor</label>
+        <label class="required" for="author" translate>Autor</label>
         <input type="text" class="form-control" name="author"  [(ngModel)]="catalog.author" required>
       </div>
       <div class="form-group">
-        <label class="required" for="author">Tema</label>
+        <label class="required" for="author" translate>Tema</label>
         <input type="text" class="form-control" name="topic"  [(ngModel)]="catalog.topic" required>
       </div>
       <div class="form-group">
-        <label class="required" for="author">Localizaçāo</label>
+        <label class="required" for="author" translate>Localizaçāo</label>
         <input type="text" class="form-control" name="location"  [(ngModel)]="catalog.location" required>
       </div>
       <div class="form-group">
         <label class="required" for="author">ISBN</label>
         <input type="number" class="form-control" name="isbn"  [(ngModel)]="catalog.isbn" required >
       </div>
-      <button type="submit" (click)="onSubmit()" (click)="modalRef.hide()" [disabled]="f.invalid" class="btn btn-success">Adicionar</button>
+      <button type="submit" (click)="onSubmit()" (click)="modalRef.hide()" [disabled]="f.invalid" class="btn btn-success" translate>Adicionar</button>
     </form>
   </div>
 </ng-template>

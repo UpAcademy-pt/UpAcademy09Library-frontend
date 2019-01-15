@@ -1,18 +1,18 @@
 <form #f="ngForm" novalidate>
   <fieldset>
     <div class="form-group">
-      <label class="required">Nome</label>
+      <label class="required" translate>Name</label>
       <input type="text"
       #name="ngModel" 
       class="form-control" required name="name" [(ngModel)]="user.name"
-      placeholder="Introduza nome">
+      placeholder="{{ 'Introduza um nome' | translate }}">
     </div>
 
     <div class="form-group">
-      <label class="required">Numero de identificação pessoal</label>
+      <label class="required" translate>Nip</label>
       <input type="text"
              class="form-control" required name="nip" [(ngModel)]="user.nip"
-             placeholder="Introduza número de identificação pessoal válido. (Ex. Nr cartāo do cidadāo)">
+             placeholder="{{ 'register.p11' | translate }}">
     </div>
   </fieldset>
 
@@ -22,20 +22,20 @@
       <input #email="ngModel" ngModel email name="email"  [(ngModel)] = "user.email" required
       type="text" 
       class="form-control" 
-      placeholder="Introduza e-mail válido">
+      placeholder="{{ 'Introduza e-mail válido' | translate }}">
     </div>
     <div *ngIf="email.invalid && email.touched" class="alert alert-danger" role="alert">
-      O e-mail introduzido é inválido. Por favor introduza um e-mail correcto.
+        {{ 'register.p1' | translate }}
     </div>
 
   <div class="form-group">
-    <label class="required">Palavra-passe</label>
+    <label class="required" translate>Palavra-passe</label>
     <input type="password"
            class="form-control" required  name="password" [(ngModel)]="user.password"
-           placeholder="Introduza a palavra-passe escolhida">
+           placeholder="{{ 'Introduza a palavra-passe escolhida' | translate }}">
   </div>
   
 
-  <button type="submit" (click)="onSubmit()" class="btn btn-success" [disabled]="f.invalid">Registar</button>
+  <button type="submit" (click)="onSubmit()" class="btn btn-success" [disabled]="f.invalid" translate>Registar</button>
   <div *ngIf="msg1!=undefined" class="alert alert-danger" role="alert"> {{msg1}} </div>
 </form>

@@ -1,0 +1,116 @@
+{
+	"A sua Biblioteca": "qwe",
+	"Actualizar": "Update",
+	"Adicionar": "Add",
+	"Adicionar livros": "Add Books",
+	"Administrador": "Administrator",
+	"Anterior": "Previous",
+	"Autor": "Author",
+	"Confirmar devolução:": "Confirm return",
+	"Confirmar entrega": "Confirm delivery",
+	"Confirme a Palavra-Passe": "Confirm password",
+	"Contactos": "Contacts",
+	"Data de entrega": "",
+	"Data de levantamento": "Pick-up date",
+	"Data de reserva": "Reservation date",
+	"Descrição": "Description",
+	"Descriçāo": "Description",
+	"Email": "E-mail",
+	"Erro: Email já se encontra registado": "Error: E-mail already registered",
+	"Estado": "Status",
+	"Estado do Utilizador:": "User status",
+	"Gravar": "Save",
+	"Introduza Palavra-passe": "",
+	"Introduza a palavra-passe escolhida": "",
+	"Introduza e-mail válido": "",
+	"Introduza um nome": "",
+	"Livros a recolher": "Book's to collect",
+	"Livros mais reservados": "Most reserved books",
+	"Localização": "Location",
+	"Localizaçāo": "Location",
+	"Morada": "Address",
+	"NIP": "Identification Number",
+	"Name": "Name",
+	"Nip": "Identification Number",
+	"Nip: {{user": {
+		"nip}}": ""
+	},
+	"Nova Palavra-Passe": "New Password",
+	"O par e-mail/password está incorrecto Por favor tente novamente ou contacte o administrador para recuperar a sua password": "The pair e-mail/password is incorrect. Please try again or contact the page administrator to retrieve your password.",
+	"Palavra-Chave": "Keyword",
+	"Palavra-passe": "Password",
+	"Privilégios Administrativos:": "Administrative privileges",
+	"Procurar por": "Search by",
+	"Próximo": "Next",
+	"Registar": "Register",
+	"Regulamento": "",
+	"Regulamento de Permissões Administrativas, Taxas e Outras Receitas, onde se inclui as Bibliotecas\n      Municipais, Subseção II, artigo 857º (página 101)\n      [Regulamento n": {
+		"º 364/2012, Diário da República, 2": {
+			"ª série, de 14/08]": ""
+		}
+	},
+	"Reservas do utilizador:": "User's reservations",
+	"Telefone": "Phone Number",
+	"Tema": "Topic",
+	"Titulo": "Title",
+	"Título": "Title",
+	"Tópico": "Topic",
+	"User": "User",
+	"Utilizador": "User",
+	"active": "Active",
+	"admin": "Administrator",
+	"adminHistory": {
+		"H1": "Book's to receive",
+		"H2": "Book's to deliver",
+		"H3": "Planned Movements"
+	},
+	"alterarDados": "Update Details",
+	"alterarDadosP": "Update Personal Details",
+	"alterarPW": {
+		"p1": "The passwords aren't coincidents. Please insert again.",
+		"p2": "Password changed successfully.",
+		"p3": "Error changing your password. Please try again.",
+		"p4": "Change password"
+	},
+	"anterior": "Previous",
+	"areaPessoal": "Personal Area",
+	"catalogo": "Catalog",
+	"categoria": "Category",
+	"contactos": {
+		"p1": "Please contact us by phone to solve or clarify any questions related to the Library.",
+		"p2": "Ask general or more specialized questions to the Library."
+	},
+	"descricao": "Description",
+	"descrição": "Description",
+	"descriçāo": "Description",
+	"detalheLivros": {
+		"p1": "Book Details"
+	},
+	"detalhesUser": "User Details",
+	"estado": "Status",
+	"home": {
+		"p1": "p1",
+		"subtitle": "sub",
+		"title": "title"
+	},
+	"imprimir": "Print",
+	"livro": "Book",
+	"livros guardados": "Favorite Books",
+	"localizacao": "Location",
+	"login": {
+		"p1": "The e-mail insirted is not valid. Please insert a correct e-mail."
+	},
+	"próximo": "Next",
+	"registe-se": "Register Here",
+	"register": {
+		"p1": "Register",
+		"p11": "Please insert here a valid identification number (Eg. Cartāo do cidadāo) "
+	},
+	"sair": "Logout",
+	"submeter": "Submit",
+	"topico": "Topic",
+	"verHistorico": "History",
+	"{{ 'home": {
+		"p1' | translate }}": ""
+	}
+}

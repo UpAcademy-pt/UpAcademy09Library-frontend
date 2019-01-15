@@ -1,0 +1,116 @@
+{
+	"A sua Biblioteca": "teste",
+	"Actualizar": "Actualizar",
+	"Adicionar": "Adicionar",
+	"Adicionar livros": "Adicionar livros",
+	"Administrador": "Administrador",
+	"Anterior": "Anterior",
+	"Autor": "Autor",
+	"Confirmar devolução:": "Confirmar devolução:",
+	"Confirmar entrega": "Confirmar entrega",
+	"Confirme a Palavra-Passe": "Confirme a Palavra-Passe",
+	"Contactos": "Contactos",
+	"Data de entrega": "Data de entrega",
+	"Data de levantamento": "Data de levantamento",
+	"Data de reserva": "Data de reserva",
+	"Descrição": "Descrição",
+	"Descriçāo": "Descrição",
+	"Email": "E-mail",
+	"Erro: Email já se encontra registado": "Erro: Email já se encontra registado.",
+	"Estado": "Estado",
+	"Estado do Utilizador:": "Estado do Utilizador:",
+	"Gravar": "Gravar",
+	"Introduza Palavra-passe": "Introduza Palavra-passe",
+	"Introduza a palavra-passe escolhida": "Introduza a palavra-passe escolhida",
+	"Introduza e-mail válido": "Introduza e-mail válido",
+	"Introduza um nome": "Introduza um nome",
+	"Livros a recolher": "Livros a recolher",
+	"Livros mais reservados": "Livros mais reservados",
+	"Localização": "Localização",
+	"Localizaçāo": "Localizaçāo",
+	"Morada": "Morada",
+	"NIP": "Número de identificação pessoal",
+	"Name": "Nome",
+	"Nip": "Número de identificação pessoal",
+	"Nip: {{user": {
+		"nip}}": ""
+	},
+	"Nova Palavra-Passe": "Nova Palavra-Passe",
+	"O par e-mail/password está incorrecto Por favor tente novamente ou contacte o administrador para recuperar a sua password": "O par e-mail/password está incorrecto. Por favor tente novamente ou contacte o administrador para recuperar a sua password",
+	"Palavra-Chave": "Palavra-Chave",
+	"Palavra-passe": "Palavra-Passe",
+	"Privilégios Administrativos:": "Privilégios Administrativos:",
+	"Procurar por": "Procurar por",
+	"Próximo": "Próximo",
+	"Registar": "Registar",
+	"Regulamento": "Regulamento",
+	"Regulamento de Permissões Administrativas, Taxas e Outras Receitas, onde se inclui as Bibliotecas\n      Municipais, Subseção II, artigo 857º (página 101)\n      [Regulamento n": {
+		"º 364/2012, Diário da República, 2": {
+			"ª série, de 14/08]": ""
+		}
+	},
+	"Reservas do utilizador:": "Reservas do utilizador:",
+	"Telefone": "Telefone",
+	"Tema": "Tópico",
+	"Titulo": "Título",
+	"Título": "Título",
+	"Tópico": "Tópico",
+	"User": "Utilizador",
+	"Utilizador": "Utilizador",
+	"active": "Activo",
+	"admin": "Administrador",
+	"adminHistory": {
+		"H1": "Livros a receber",
+		"H2": "Livros a Entregar",
+		"H3": "Movimentos previstos "
+	},
+	"alterarDados": "Alterar Dados",
+	"alterarDadosP": "Alterar dados pessoais",
+	"alterarPW": {
+		"p1": "As Palavras-passe introduzidas nāo sāo coincidentes. Por favor introduza novamente.",
+		"p2": "Palavra-Passe alterada com sucesso.",
+		"p3": "Erro na alteraçāo da Palavra-passe. Por favor tente novamente.",
+		"p4": "Alterar Palavra-passe"
+	},
+	"anterior": "Anterior",
+	"areaPessoal": "Área Pessoal",
+	"catalogo": "Catálogo",
+	"categoria": "Categoria",
+	"contactos": {
+		"p1": "Pode contactar-nos por telefone para colocar ou resolver qualquer questão relacionada com a Biblioteca.",
+		"p2": "Coloque as suas dúvidas de natureza geral ou mais especializada junto da Biblioteca."
+	},
+	"descricao": "Descrição",
+	"descrição": "Descrição",
+	"descriçāo": "Descrição",
+	"detalheLivros": {
+		"p1": "Detalhes do livro"
+	},
+	"detalhesUser": "Detalhes de utilizador",
+	"estado": "Estado",
+	"home": {
+		"p1": "A Biblioteca Bocage (BB) tem como principal missão assegurar a todos os utentes o acesso gratuito a fundos documentais, a serviços de difusão documental, a programas de promoção da leitura e a programas de formação na área da literacia da informação.",
+		"subtitle": "Mais conteúdos à sua disposição",
+		"title": "A sua Biblioteca"
+	},
+	"imprimir": "Imprimir",
+	"livro": "Livro",
+	"livros guardados": "Livros Favoritos",
+	"localizacao": "Localizaçāo",
+	"login": {
+		"p1": "O e-mail introduzido é inválido. Por favor introduza um e-mail correcto."
+	},
+	"próximo": "Próximo",
+	"registe-se": "Registe-se",
+	"register": {
+		"p1": "Registar",
+		"p11": "Introduza número de identificação pessoal válido. (Ex. Nr cartāo do cidadāo)"
+	},
+	"sair": "Sair",
+	"submeter": "Submeter",
+	"topico": "Tópico",
+	"verHistorico": "Ver histórico",
+	"{{ 'home": {
+		"p1' | translate }}": ""
+	}
+}

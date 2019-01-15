@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/shared/models/user';
 import { DataService, AcountApiService } from 'src/app/shared/services';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-register',
@@ -16,7 +17,8 @@ export class RegisterComponent implements OnInit {
   constructor(
     private dataService: DataService,
     private accountApi: AcountApiService,
-    private router: Router
+    private router: Router,
+    private translate: TranslateService
   ) { }
 
   ngOnInit() {
@@ -25,9 +27,9 @@ export class RegisterComponent implements OnInit {
 
   onClose() {
     this.user.name = '';
-      this.user.email = '';
-      this.user.nip = '';
-      this.user.password = '';
+    this.user.email = '';
+    this.user.nip = '';
+    this.user.password = '';
   }
   onSubmit() {
     if (
@@ -39,7 +41,9 @@ export class RegisterComponent implements OnInit {
       this.dataService.createUser(this.user).subscribe(
         (resp: any) => {
           if (resp === null) {
-            this.msg1 = 'Erro: Email já se encontra registado.';
+            this.translate.get('Erro: Email já se encontra registado').subscribe((res: string) => {
+              this.msg1 = res;
+            });
           } else {
             this.accountApi.loginUserNg(resp.email, resp.password).subscribe(
               (res: any) => {

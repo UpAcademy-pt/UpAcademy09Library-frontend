@@ -4,15 +4,15 @@
       <div class="row justify-content-md-left">
         <div class="input-group">
           <select (change)=" selectChangeHandler($event)">
-            <option value="keyword">Palavra-Chave</option>
-            <option value="title">Título</option>
-            <option value="author">Autor</option>
-            <option value="description">Descrição</option>
-            <option value="isbn">Isbn</option>
-            <option value="topic">Tópico</option>
+            <option value="keyword" translate>Palavra-Chave</option>
+            <option value="title" translate>Título</option>
+            <option value="author" translate>Autor</option>
+            <option value="description" translate>Descrição</option>
+            <option value="isbn">ISBN</option>
+            <option value="topic" translate>Tópico</option>
           </select>
           <input class="form-control" type="text" name="search" [(ngModel)]="queryString" autocomplete="off"
-            placeholder="Procurar por {{selectedTypeSearchOutput}}">
+            placeholder="{{ 'Procurar por' | translate }} {{selectedTypeSearchOutput}}">
         </div>
       </div>
     </div>
@@ -34,6 +34,6 @@
       </tr>
     </tbody>
   </table>
-  <pagination-controls id="bookAdminPagination" class="my-pagination" (pageChange)=" p = $event" previousLabel="Anterior" nextLabel="Próximo"
+  <pagination-controls id="bookAdminPagination" class="my-pagination" (pageChange)=" p = $event" previousLabel="{{ 'Anterior' | translate }}" nextLabel="{{ 'Próximo' | translate }}"
     maxSize="7"></pagination-controls>
 </div>
