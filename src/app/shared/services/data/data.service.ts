@@ -26,10 +26,8 @@ export class DataService {
   // object of add and remove favorites
   public objectToSend: Object;
   //
-  public search$: ReplaySubject<any[]> = new ReplaySubject(1);
-  public search: any;
- 
-
+  public searchCatalog$: ReplaySubject<any[]> = new ReplaySubject(1);
+  public searchUser$: ReplaySubject<any[]> = new ReplaySubject(1);
 
   constructor(private catalogApi: CatalogApiService, private acountApi: AcountApiService, private historyApi: HistoryApiService) {
     this.getCatalog();
@@ -87,42 +85,52 @@ export class DataService {
   public getAvailableBooksService() {
     return this.catalogApi.getAvailableBooks();
   }
-  //Find book keyword
-  public getCatalogByKeywordService(keyword) {
-    this.catalogApi.getCatalogByKeyword(keyword).subscribe(
-      (res: any) => {
-        this.search = res;
-        this.search$.next(res);
-      }
-    );
-    console.log(this.search$);
-    return this.search$;
-  }
-  //Find by title
-  public getCatalogByTitleService(title) {
-    return this.catalogApi.getCatalogByTitle(title);
-  }
-  //Find by Description
-  public getCatalogByDescriptionService(description) {
-    return this.catalogApi.getCatalogByDescription(description);
-  }
-  //Find by author
-  public getCatalogByAuthorService(author) {
-    return this.catalogApi.getCatalogByAuthor(author);
-  }
-  //Find by topic
-  public getCatalogByTopicService(topic) {
-    return this.catalogApi.getCatalogByTopic(topic);
-  }
 
-  public getCatalogByIsbnService(isbn) {
-    return this.catalogApi.getCatalogByIsbn(isbn);
+  // Switch Search
+  public queryCatalog(searchableList, input) {
+    switch (searchableList) {
+      case 'keyword': this.catalogApi.getCatalogByKeyword(input).subscribe(
+        (res: any) => {
+          return this.searchCatalog$.next(res);
+        }
+      );
+        break;
+      case 'title': this.catalogApi.getCatalogByTitle(input).subscribe(
+        (res: any) => {
+          return this.searchCatalog$.next(res);
+        }
+      );
+        break;
+      case 'author': this.catalogApi.getCatalogByAuthor(input).subscribe(
+        (res: any) => {
+          return this.searchCatalog$.next(res);
+        }
+      );
+        break;
+      case 'description': this.catalogApi.getCatalogByDescription(input).subscribe(
+        (res: any) => {
+          return this.searchCatalog$.next(res);
+        }
+      );
+        break;
+      case 'isbn': this.catalogApi.getCatalogByIsbn(input).subscribe(
+        (res: any) => {
+          return this.searchCatalog$.next(res);
+        }
+      );
+        break;
+      case 'topic': this.catalogApi.getCatalogByTopic(input).subscribe(
+        (res: any) => {
+          return this.searchCatalog$.next(res);
+        }
+      );
+        break;
+      default:
+        console.error('Erro!');
+        break;
+    }
+    return this.searchCatalog$;
   }
-
-  public getBookInfoGogleApi(insertedTitle) {
-    return this.catalogApi.getBookInfoGogleApi(insertedTitle);
-  }
-
 
   /* USERS DATA LOGIC*/
 
@@ -136,7 +144,7 @@ export class DataService {
       }
     }
   }
- 
+
   public getUsers() {
     this.acountApi.getUsersDB().subscribe(
       (res: any) => {
@@ -178,7 +186,7 @@ export class DataService {
 
   // add to Favorite -- TESTAR COM URGÊNCIA --- é a maneira que encontrei para enviar dois objectos
   public addFavoritesServices(userID: number, bookID: number) {
-   return this.acountApi.addBookToFavourites(userID, bookID);
+    return this.acountApi.addBookToFavourites(userID, bookID);
   }
 
   // remove from favorite
@@ -201,18 +209,36 @@ export class DataService {
 
   }
 
-  //Find By Name
-  public queryUserNameServices(name) {
-    return this.acountApi.queryUserName(name);
+  // Switch Search
+  public queryUser(searchableList, input) {
+    console.log('tipo:' + searchableList + 'input:' + input);
+    switch (searchableList) {
+      case 'name': this.acountApi.queryUserName(input).subscribe(
+        (res: any) => {
+          return this.searchUser$.next(res);
+        }
+      );
+        break;
+      case 'nip': this.acountApi.queryUserNip(input).subscribe(
+        (res: any) => {
+          return this.searchUser$.next(res);
+        }
+      );
+        break;
+      case 'email': this.acountApi.queryUserEmail(input).subscribe(
+        (res: any) => {
+          return this.searchUser$.next(res);
+        }
+      );
+        break;
+      default:
+        console.error('Erro!');
+        break;
+    }
+    return this.searchUser$;
   }
-  //Find by Nip
-  public queryUserNipServices(nip) {
-    return this.acountApi.queryUserNip(nip);
-  }
-  //Find by Nip
-  public queryUserEmailServices(email) {
-    return this.acountApi.queryUserEmail(email);
-  }
+
+
 
   /* HISTORY DATA LOGIC*/
 

@@ -20,7 +20,6 @@ import { BookDetailsComponent } from './book-details/book-details.component';
 import { TabsModule } from 'ngx-bootstrap';
 import { FilterUserPipe } from '../shared/components/filter/filter-user.pipe';
 import { PersonalComponent } from './personal/personal.component';
-import { SearchComponent } from '../shared/components/search/search.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { BookDetailsAdminComponent } from './book-details-admin/book-details-admin.component';
 import { UserDetailAdminComponent } from './user-detail-admin/user-detail-admin.component';
@@ -45,7 +44,6 @@ import {NgxPrintModule} from 'ngx-print';
     TableComponent,
     PanelComponent,
     AdminManagementComponent,
-    SearchComponent,
     //shared modal
     AddComponent,
     UpdateComponent,
@@ -54,7 +52,6 @@ import {NgxPrintModule} from 'ngx-print';
     FilterPipe,
     FilterUserPipe,
     PersonalComponent,
-    SearchComponent,
     BookDetailsAdminComponent,
     UserDetailAdminComponent,
     AdminHistoryComponent
