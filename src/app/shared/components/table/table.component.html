@@ -1,23 +1,4 @@
-<div>
- <div class="search">
-    <div class="container mb-3 shadow">
-      <div class="row justify-content-md-left">
-        <div class="input-group">
-          <select (change)=" selectChangeHandler($event)">
-            <option value="keyword">Palavra-Chave</option>
-            <option value="title">Título</option>
-            <option value="author">Autor</option>
-            <option value="description">Descrição</option>
-            <option value="isbn">Isbn</option>
-            <option value="topic">Tópico</option>
-          </select>
-          <input class="form-control" type="text" name="search" [(ngModel)]="queryString" autocomplete="off"
-            placeholder="Procurar por {{selectedTypeSearchOutput}}">
-        </div>
-      </div>
-    </div>
-  </div>
-  <br>
+ <br>
   <table class="table table-hover" [ngClass]='theme'>
     <thead>
       <tr>
@@ -27,7 +8,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let row of catalog$ | async | FilterPipe: queryString: searchableList | paginate: { id: 'bookAdminPagination', itemsPerPage: 5, currentPage: p }" (click)="clickItem(row)">
+      <tr *ngFor="let row of catalog$ | async | paginate: { id: 'bookAdminPagination', itemsPerPage: 5, currentPage: p }" (click)="clickItem(row)">
         <td *ngFor="let col of header">
           {{row[col]}}
         </td>
@@ -36,4 +17,4 @@
   </table>
   <pagination-controls id="bookAdminPagination" class="my-pagination" (pageChange)=" p = $event" previousLabel="Anterior" nextLabel="Próximo"
     maxSize="7"></pagination-controls>
-</div>
+<!-- </div> -->

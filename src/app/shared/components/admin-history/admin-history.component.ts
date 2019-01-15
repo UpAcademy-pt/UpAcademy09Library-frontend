@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, TemplateRef } from '@angular/core';
+import { Component, OnInit, OnDestroy, TemplateRef, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DataService } from '../../services';
 import { Subscription } from 'rxjs';
@@ -10,6 +10,8 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap';
   styleUrls: ['./admin-history.component.css']
 })
 export class AdminHistoryComponent implements OnInit, OnDestroy {
+  @Input() catalog$: any;
+
   user: any;
   history: any;
   bookToPickup: History;
@@ -34,12 +36,12 @@ export class AdminHistoryComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
-  }
+  }z
   // para não dar erro na consola porcausa dos ngfor
   public array(val) {
     return Array.from(val);
   }
-
+  /* MUDAR PARA ISBN */
   public getHighest() {
     const highest = {};
     this.history.forEach(history => {
@@ -49,9 +51,10 @@ export class AdminHistoryComponent implements OnInit, OnDestroy {
     return Object.keys(highest);
   }
 
-  public getBook(id) {
-    this.dataService.getCatalogId(id);
-  }
+  // public getBook(item) {
+  //   console.log(this.dataService.getCatalogId(item));
+  //   this.dataService.getCatalogId(item);
+  // }
 
   // Give Book to User
   public pickUpBook(history) {
@@ -67,6 +70,9 @@ export class AdminHistoryComponent implements OnInit, OnDestroy {
   }
   clickBook(item) {
     this.router.navigate(['bookdetailsadmin', item.id]);
+  }
+  clickBookMustRead(book) {
+    this.router.navigate(['bookdetailsadmin', book]);
   }
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);

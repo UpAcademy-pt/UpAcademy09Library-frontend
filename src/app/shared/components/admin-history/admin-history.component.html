@@ -97,7 +97,7 @@
                 </thead>
                 <tbody *ngFor="let bookId of mostRead; let i = index">
                   <tr *ngIf="i<5">
-                    <td><a class="btn">{{bookId}}</a></td>
+                    <td><a class="btn" (click)="clickBookMustRead(bookId)"> {{bookId}}</a></td>
                   </tr>
                 </tbody>
               </table>
