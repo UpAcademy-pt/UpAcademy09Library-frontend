@@ -17,7 +17,7 @@ export class PanelComponent implements OnInit {
   user: User = new User();
   userid: string;
   history: History = new History();
-  livrosIguais;
+
   set = false;
   selR = false;
 
@@ -66,15 +66,13 @@ export class PanelComponent implements OnInit {
     return result.length > 0 ? true : false;
   }
 
-  // public getHighest() {
-  //   const highest = {};
-  //   this.history.forEach(history => {
-  //     highest[history.historyBook.id] = (highest[history.historyBook.id] || 0) + 1;
-  //   });
-  //   console.log(highest);
-  //   return Object.keys(highest);
-  // }
 
+  
+  public getBooksSameIsbn(){
+   
+    // this.dataservice.getCatalogByIsbnService(isbn);
+
+  }
 
   // search type
   selectChangeHandler(event: any) {
