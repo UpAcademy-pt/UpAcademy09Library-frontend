@@ -3,9 +3,12 @@
 <div class="card">
     <div class="card-body">
         <div class="row ">
-         <div class="col-md-4 text-center">
+         <div *ngIf="catalog.photoLink==null" class="col-md-4 text-center">
              <img src="/assets/nocoverplaceholder.jpg">
          </div>
+         <div  *ngIf="catalog.photoLink!==null" class="col-md-4 text-center">
+            <img src="{{catalog.photoLink}}">
+        </div>
 
             <div class="col-md-8">
 

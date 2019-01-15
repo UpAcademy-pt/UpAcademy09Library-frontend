@@ -105,7 +105,7 @@ export class AcountApiService {
 
   // remove from favorite
   public removeFavourite(userID: number, bookID: number) {
-    return this.http.delete(apiUrl + '/removefavourite?userId=' + userID + '&bookId=' + bookID, null);
+    return this.http.delete(apiUrl + '/removefavourite?userId=' + userID + '&bookId=' + bookID);
   }
   // get all favorites
   public getAllFavourites(userID: number) {
@@ -133,4 +133,5 @@ export class AcountApiService {
   }
 
 
+ 
 }

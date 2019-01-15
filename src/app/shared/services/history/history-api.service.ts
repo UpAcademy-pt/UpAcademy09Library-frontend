@@ -24,6 +24,13 @@ export class HistoryApiService {
 
 
   }
+ // PUT  cancel reservation
+  public cancelReservation(reserve: any){
+
+    return this.http.put(apiUrl + '/cancelreservation', reserve)
+  }
+
+
   // PUT  Pickup book
   public pickupBook(bookToPickUp: any) {
     console.log("pickupBook : ", bookToPickUp);

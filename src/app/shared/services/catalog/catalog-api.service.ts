@@ -73,7 +73,7 @@ export class CatalogApiService {
 
   //Find by isbn
   public getCatalogByIsbn(string: string) {
-    return this.http.get(apiUrl + "researchbyisbn/" + string)
+    return this.http.get(apiUrl + "researchbyisbn?" + string)
   }
 
   // Get all available books
