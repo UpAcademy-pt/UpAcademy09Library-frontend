@@ -16,37 +16,41 @@ export class AdminHistoryComponent implements OnInit, OnDestroy {
   bookToDeliver: History;
   subscription: Subscription;
   modalRef: BsModalRef;
-  bookMoreRead: any;
-  highest = {};
-  highestOutput = [];
+  mostRead: any;
+ 
+
   constructor(private modalService: BsModalService, private dataService: DataService, public router: Router) {
     this.history = dataService.history$;
-
-
   }
 
   ngOnInit() {
     // mudar isto quando houver query geral
-    this.subscription = this.dataService.getUserHistoryService(2).subscribe((data) => {
+    this.subscription = this.dataService.getHistoryService().subscribe((data) => {
       this.history = data;
-      // const highest = [this.history.map(a => a.historyBook)];
-      this.bookMoreRead = this.getHighest();
+      this.mostRead = this.getHighest();
     });
-    return history;
+    return history ;
   }
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
+  // para não dar erro na consola porcausa dos ngfor
+  public array(val) {
+    return Array.from(val);
+  }
 
   public getHighest() {
+    const highest = {};
     this.history.forEach(history => {
-      this.highest[history.historyBook.id] = (this.highest[history.historyBook.id] || 0) + 1;
+      highest[history.historyBook.id] = (highest[history.historyBook.id] || 0) + 1;
     });
+    console.log(highest);
+    return Object.keys(highest);
+  }
 
-    
-    console.log(Object.entries(this.highest).slice(0));
-    return Object.keys(this.highest);
+  public getBook(id) {
+    this.dataService.getCatalogId(id);
   }
 
   // Give Book to User

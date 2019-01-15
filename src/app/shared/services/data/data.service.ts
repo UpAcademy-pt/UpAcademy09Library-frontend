@@ -74,6 +74,15 @@ export class DataService {
       }
     }
   }
+
+  public getCatalogId(id) {
+    this.catalogApi.getCatalogById(id).subscribe(
+      (res: any) => {
+        this.catalog = res;
+      }
+    );
+  }
+
   //Get all available books
   public getAvailableBooksService() {
     return this.catalogApi.getAvailableBooks();
@@ -222,6 +231,18 @@ export class DataService {
   // User History
   public getUserHistoryService(userID: number) {
     this.historyApi.getUserHistory(userID).subscribe(
+      (res: any) => {
+        this.history$.next(res);
+        this.history = res;
+        console.log(res);
+      }
+    );
+    return this.history$;
+  }
+
+  // All History
+  public getHistoryService() {
+    this.historyApi.getHistory().subscribe(
       (res: any) => {
         this.history$.next(res);
         this.history = res;
