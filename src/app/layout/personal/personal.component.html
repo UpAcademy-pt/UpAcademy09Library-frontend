@@ -86,12 +86,12 @@
     </tab>
     <tab heading="Livros guardados">
         <br>
-        <div class="card mb-3"  *ngFor="let entrada of history | async">
+        <div class="card mb-3"  *ngFor="let entrada of fav | async">
   <!--  -->
           <div class="card-body" >
-            <h5 class="card-title"> {{entrada.historyBook.title}}, {{entrada.historyBook.author}}</h5>
-            <p class="card-text">Descrição: {{entrada.historyBook.description}} </p>
-            <p class="card-text ">Estado: {{entrada.historyBook.state}} </p> 
+            <h5 class="card-title"> {{entrada.title}}, {{entrada.author}}</h5>
+            <p class="card-text">Descrição: {{entrada.description}} </p>
+            <p class="card-text ">Estado: {{entrada.state}} </p> 
           </div>
           </div>
     </tab>
