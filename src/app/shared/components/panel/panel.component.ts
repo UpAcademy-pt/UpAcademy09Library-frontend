@@ -18,7 +18,8 @@ export class PanelComponent implements OnInit {
   userid:string;
   history: History= new History();
   livrosIguais;
-
+set=false;
+selR=false;
 
 
   // filter var
@@ -63,7 +64,8 @@ export class PanelComponent implements OnInit {
     
   // }
 //changeImg()
-
+css(){this.set=true;}
+css2(){this.selR=true;}
 reservar(item){
   console.log("userId="+this.userid);
    this.user.id=Number(this.userid);
