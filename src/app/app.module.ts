@@ -17,6 +17,7 @@ import { FilterUserPipe } from './shared/components/filter/filter-user.pipe';
     AppRoutingModule,
     HttpClientModule,
     ModalModule.forRoot()
+
   ],
   providers: [],
   bootstrap: [AppComponent]

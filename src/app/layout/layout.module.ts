@@ -25,7 +25,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import { BookDetailsAdminComponent } from './book-details-admin/book-details-admin.component';
 import { UserDetailAdminComponent } from './user-detail-admin/user-detail-admin.component';
 import {NgxPrintModule} from 'ngx-print';
-
+import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
 
 
 @NgModule({
@@ -76,6 +76,8 @@ import {NgxPrintModule} from 'ngx-print';
     PaginationModule.forRoot(),
     // tooltip
     TooltipModule.forRoot(),
+    TypeaheadModule.forRoot(),
+    
     // print
     NgxPrintModule
   ]

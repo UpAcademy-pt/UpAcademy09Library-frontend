@@ -12,7 +12,9 @@
     <form #f="ngForm" >
       <div class="form-group">
         <label class="required" for="title">Título</label>
-        <input type="text" class="form-control" name="title" (input)="getBookInfoGogleApi()" [(ngModel)]="catalog.title" required>
+        <input type="text" class="form-control"  typeaheadOptionField="title" [typeaheadAsync]="true" [typeahead]="dataSource" name="title" (typeaheadOnSelect)="typeaheadOnSelect($event)"  (input)="getBookInfoGoogleApi()" [(ngModel)]="catalog.title" required>
+        <select *ngFor="let row of title$ | async " (click)="clickItem(row)">
+        </select>
       </div>
       <div class="form-group">
         <label class="required" for="description">Descriçāo</label>
