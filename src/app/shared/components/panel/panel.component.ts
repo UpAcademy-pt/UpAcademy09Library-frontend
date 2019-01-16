@@ -17,10 +17,10 @@ export class PanelComponent implements OnInit {
   user: User = new User();
   userid: string;
   history: History = new History();
-
+  livros: any;
   set = false;
   selR = false;
-
+  
 
   // filter var
   selectedTypeSearch: string = '';
@@ -39,6 +39,7 @@ export class PanelComponent implements OnInit {
   ngOnInit() {
     this.updateData();
     this.updateUser();
+
     this.userid = this.acountApi.getCurrentId();
     this.acountApi.getAllFavourites(+this.userid).subscribe((favoritos: any[]) => {
       this.favoritos = favoritos;
@@ -47,14 +48,19 @@ export class PanelComponent implements OnInit {
 
     })
 
-    this.catalog$.subscribe((a)=> console.log(a));
+    this.catalog$.subscribe((a: any[]) => {
+      this.livros = a;
+    }, (error) => {
+      console.log(error);
+
+    })
   }
 
   updateData() {
     this.dataservice.getCatalog();
   }
 
-  updateUser(){
+  updateUser() {
     this.acountApi.getAllFavourites(+this.userid);
   }
 
@@ -66,11 +72,27 @@ export class PanelComponent implements OnInit {
     return result.length > 0 ? true : false;
   }
 
+ 
+  public getBooksSameIsbn(item) {
+    var resultAux=[]
+    var result={stateAvailable:[],stateOthers:[]}
+    var stateAvailable=[]
+    var stateOthers=[]
 
-  
-  public getBooksSameIsbn(){
-   
-    // this.dataservice.getCatalogByIsbnService(isbn);
+    resultAux = this.livros.filter((livro) => {
+      return item.isbn === livro.isbn
+    })
+
+    resultAux.map((livro) => {
+      if (livro.state==='available') {
+        stateAvailable.push(livro)
+      }else{
+        stateOthers.push(livro)
+      }
+    })
+    result.stateAvailable=stateAvailable;
+    result.stateOthers=stateOthers;
+    return result;
 
   }
 
@@ -83,8 +105,8 @@ export class PanelComponent implements OnInit {
   }
 
   clickItem(item) {
-    this.router.navigate(['bookdetails', item.id]);
-
+  
+this.router.navigate(['bookdetails', item.id]);
   }
 
   // changeImg(image:any){
@@ -109,9 +131,9 @@ export class PanelComponent implements OnInit {
 
     var h = { historyBook: { id: item.id }, historyUser: { id: this.user.id } }
     this.dataservice.reserveBookService(h).subscribe(
-      (res) => { 
+      (res) => {
         this.updateData();
-        console.log("OK") 
+        console.log("OK")
       },
       error => { console.error(error) });
   };
@@ -129,8 +151,10 @@ export class PanelComponent implements OnInit {
 
     var h = { historyBook: { id: item.id }, historyUser: { id: this.user.id } }
     this.dataservice.cancelReserveBookService(h).subscribe(
-      (res) => { this.updateData();
-        console.log("OK") },
+      (res) => {
+        this.updateData();
+        console.log("OK")
+      },
       error => { console.error(error) });
   };
 
@@ -141,8 +165,10 @@ export class PanelComponent implements OnInit {
     var user2 = Number(this.userid);
     var bookId = item.id;
     this.dataservice.addFavoritesServices(user2, bookId).subscribe(
-      (res) => {this.updateUser();
-         console.log("OK") },
+      (res) => {
+        this.updateUser();
+        console.log("OK")
+      },
       error => { console.error(error) });
 
     console.log(this.user);
@@ -152,9 +178,11 @@ export class PanelComponent implements OnInit {
     var user2 = Number(this.userid);
     var bookId = item.id;
     this.dataservice.removeFavoritesServices(user2, bookId).subscribe(
- 
-    (res) => {this.updateUser();
-         console.log("OK") },
+
+      (res) => {
+        this.updateUser();
+        console.log("OK")
+      },
       error => { console.error(error) });
     console.log(user2);
 
