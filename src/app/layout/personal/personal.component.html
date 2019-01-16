@@ -76,7 +76,9 @@
               <tr *ngFor="let entrada of history | async">
                   <td>{{entrada.historyBook.title}}</td>
                   <td>{{entrada.historyBook.author}}</td>
-                  <td>{{entrada.historyBook.state}}</td>
+                  <td *ngIf="entrada.historyBook.state==='reserved'">Reservado</td>
+                  <td *ngIf="entrada.historyBook.state==='inUse'">Em uso</td>
+                  <td *ngIf="entrada.historyBook.state==='available'">Disponivel</td>
                   <td>{{entrada.reservationDate | date:"M/d/yy, h:mm a"}}</td>
                   <td>{{entrada.pickupDate | date:"M/d/yy, h:mm a"}}</td>
                   <td>{{entrada.deliveryDate | date:"M/d/yy, h:mm a"}}</td>
@@ -91,7 +93,11 @@
           <div class="card-body" >
             <h5 class="card-title"> {{entrada.title}}, {{entrada.author}}</h5>
             <p class="card-text">Descrição: {{entrada.description}} </p>
-            <p class="card-text ">Estado: {{entrada.state}} </p> 
+            <div [ngSwitch]="entrada.state">
+                <p *ngSwitchCase="'available'" class="card-text">{{ 'estado' | translate }}: Disponivel</p>
+                <p *ngSwitchCase="'reserved'" class="card-text ">{{ 'estado' | translate }}: Indisponivel</p>
+                <p *ngSwitchCase="'inUse'" class="card-text ">{{ 'estado' | translate }}: Em uso</p> 
+             </div>
           </div>
           </div>
     </tab>
