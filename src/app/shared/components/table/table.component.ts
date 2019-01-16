@@ -11,9 +11,7 @@ import { DataService } from '../../services/data/data.service';
 })
 export class TableComponent implements OnInit {
 
-  @Input() header: any;
   @Input() catalog$: any;
-  @Input() theme = 'table-light';
   @Input() isBook = true;
 
   // pagination
@@ -30,38 +28,5 @@ export class TableComponent implements OnInit {
   changeImg(image: any) {
     image.src = '/assets/bookFull.png';
   }
-
-  // translatePlaceholder(selectedTypeSearch) {
-  //   switch (selectedTypeSearch) {
-  //     case 'keyword':
-  //       return this.selectedTypeSearchOutput = 'Palavra-Chave';
-  //       console.log(this.selectedTypeSearchOutput);
-  //       break;
-  //     case 'title':
-  //       return this.selectedTypeSearchOutput = 'Título';
-  //       console.log(this.selectedTypeSearchOutput);
-  //       break;
-  //     case 'author':
-  //       return this.selectedTypeSearchOutput = 'Autor';
-  //       console.log(this.selectedTypeSearchOutput);
-  //       break;
-  //     case 'description':
-  //       return this.selectedTypeSearchOutput = 'Descrição';
-  //       console.log(this.selectedTypeSearchOutput);
-  //       break;
-  //     case 'isbn':
-  //       return this.selectedTypeSearchOutput = 'Isbn';
-  //       console.log(this.selectedTypeSearchOutput);
-  //       break;
-  //     case 'topic':
-  //       return this.selectedTypeSearchOutput = 'Tópico';
-  //       console.log(this.selectedTypeSearchOutput);
-  //       break;
-  //     default:
-  //       console.log('erro');
-  //       break;
-  //   }
-  //   return this.selectedTypeSearchOutput;
-  // }
 
 }

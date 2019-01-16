@@ -1,20 +1,25 @@
- <br>
-  <table class="table table-hover" [ngClass]='theme'>
-    <thead>
-      <tr>
-        <th *ngFor="let col of header">
-          {{col}}
-        </th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let row of catalog$ | async | paginate: { id: 'bookAdminPagination', itemsPerPage: 5, currentPage: p }" (click)="clickItem(row)">
-        <td *ngFor="let col of header">
-          {{row[col]}}
-        </td>
-      </tr>
-    </tbody>
-  </table>
-  <pagination-controls id="bookAdminPagination" class="my-pagination" (pageChange)=" p = $event" previousLabel="{{ 'Anterior' | translate }}" nextLabel="{{ 'Próximo' | translate }}"
-    maxSize="7"></pagination-controls>
-<!-- </div> -->
+<table class="table table-hover" [ngClass]='theme'>
+  <thead>
+    <tr>
+      <th>Título</th>
+      <th>Autor</th>
+      <th>Isbn</th>
+      <th>Tópico</th>
+      <th>Localização</th>
+      <th>Estado</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let book of catalog$ | async | paginate: { id: 'bookAdminPagination', itemsPerPage: 5, currentPage: p }"
+      (click)="clickItem(book)">
+      <td>{{ book.title }}</td>
+      <td>{{ book.author }}</td>
+      <td>{{ book.isbn }}</td>
+      <td>{{ book.topic }}</td>
+      <td>{{ book.location }}</td>
+      <td>{{ book.state }}</td>
+    </tr>
+  </tbody>
+</table>
+<pagination-controls id="bookAdminPagination" class="my-pagination" (pageChange)=" p = $event" previousLabel="{{ 'Anterior' | translate }}"
+  nextLabel="{{ 'Próximo' | translate }}" maxSize="7"></pagination-controls>

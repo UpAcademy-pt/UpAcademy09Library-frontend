@@ -15,9 +15,7 @@ import { User } from '../../models';
 
 export class AdminManagementComponent implements OnInit {
 
-  @Input() headerUsers: any;
   @Input() user$: any;
-  @Input() theme = 'table-dark';
 
   // pagination
   page = 1;

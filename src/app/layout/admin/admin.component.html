@@ -1,54 +1,64 @@
 <tabset>
-    <tab heading="{{ 'admin.tab1' | translate }}">
-        <br>
-        <app-admin-history></app-admin-history>
-    </tab>
-    <tab id="users-admin" heading="{{ 'admin.tab2' | translate }}">
-        <br>
-        <div>
-            <div class="search">
-               <div class="container mb-3 shadow">
-                 <div class="row justify-content-md-left">
-                   <div class="input-group">
-                     <select (change)=" selectChangeHandler($event)">
-                        <option value="email">Email</option>
-                        <option value="name">Nome</option>
-                        <option value="nip">NIP</option>
-                     </select>
-                     <input class="form-control" type="text" name="search" [(ngModel)]="input" (input)="onChangeInput()" autocomplete="off"
-                       placeholder="Procurar por {{selectedTypeSearchUser}}">
-                   </div>
-                 </div>
-               </div>
-             </div>
-            </div>
-        <app-admin-management [headerUsers]='["name","email","nip"]' [user$]='searchUser$' [theme]='"table-light"'></app-admin-management>
-    </tab>
-    <tab id="books-admin" heading="{{ 'admin.tab3' | translate }}">
-        <br>
-        <div>
-            <div class="search">
-               <div class="container mb-3 shadow">
-                 <div class="row justify-content-md-left">
-                   <div class="input-group">
-                     <select (change)=" selectChangeHandler($event)">
-                       <option value="keyword">Palavra-Chave</option>
-                       <option value="title">Título</option>
-                       <option value="author">Autor</option>
-                       <option value="description">Descrição</option>
-                       <option value="isbn">Isbn</option>
-                       <option value="topic">Tópico</option>
-                     </select>
-                     <input class="form-control" type="text" name="search" [(ngModel)]="input" (input)="onChangeInput()" autocomplete="off"
-                       placeholder="Procurar por {{selectedTypeSearchOutput}}">
-                   </div>
-                 </div>
-               </div>
-             </div>
-            </div>
-        <app-table [isBook]="true" [header]='["title","author","isbn","topic","location","state"]' [catalog$]='searchCatalog$'
-            [theme]='"table-light"'></app-table>
-        <app-add></app-add>
-
-    </tab>
+  <tab heading="{{ 'admin.tab1' | translate }}">
+    <br>
+    <app-admin-history></app-admin-history>
+  </tab>
+  <tab id="users-admin" heading="{{ 'admin.tab2' | translate }}">
+    <br>
+    <div class="search">
+      <div class="container mb-3 shadow">
+        <div class="row justify-content-md-left">
+          <div class="input-group">
+            <select (change)=" selectChangeHandler($event)">
+              <option value="email">Email</option>
+              <option value="name">Nome</option>
+              <option value="nip">NIP</option>
+            </select>
+            <input class="form-control" type="text" name="search" [(ngModel)]="input" (input)="onChangeInput()"
+              autocomplete="off" placeholder="Procurar por {{selectedTypeSearchUser}}">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="(searchUser$ | async)?.length > 0; else notfound">
+      <app-admin-management [user$]='searchUser$'></app-admin-management>
+    </div>
+    <ng-template #notfound>
+      <div>
+        <p>A pesquisa por <span class="font-weight-bold">"{{input}}"</span> não obteve resultados. Por favor, faça nova
+          pesquisa.</p>
+      </div>
+    </ng-template>
+  </tab>
+  <tab id="books-admin" heading="{{ 'admin.tab3' | translate }}">
+    <br>
+    <div class="search">
+      <div class="container mb-3 shadow">
+        <div class="row justify-content-md-left">
+          <div class="input-group">
+            <select (change)=" selectChangeHandler($event)">
+              <option value="keyword">Palavra-Chave</option>
+              <option value="title">Título</option>
+              <option value="author">Autor</option>
+              <option value="description">Descrição</option>
+              <option value="isbn">Isbn</option>
+              <option value="topic">Tópico</option>
+            </select>
+            <input class="form-control" type="text" name="search" [(ngModel)]="input" (input)="onChangeInput()"
+              autocomplete="off" placeholder="Procurar por {{selectedTypeSearchOutput}}">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="(searchCatalog$ | async)?.length > 0; else notfound">
+      <app-table [isBook]="true" [catalog$]='searchCatalog$'></app-table>
+    </div>
+    <ng-template #notfound>
+      <div>
+        <p>A pesquisa por <span class="font-weight-bold">"{{input}}"</span> não obteve resultados. Por favor, faça nova
+          pesquisa.</p>
+      </div>
+    </ng-template>
+    <app-add></app-add>
+  </tab>
 </tabset>

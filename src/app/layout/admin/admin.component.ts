@@ -44,5 +44,4 @@ export class AdminComponent implements OnInit {
     this.selectedTypeSearchCatalog = event.target.value;
     this.selectedTypeSearchUser = event.target.value;
   }
-
 }
