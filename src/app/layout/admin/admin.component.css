@@ -1,0 +1,59 @@
+.input-group{
+    background-color: white;
+    border-style: none;
+    box-shadow: none;
+    border-right-width: 0;
+    border-color: #cccccc;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+.btn{
+    background-color: white;
+    border-style: none;
+    border-left-width: 0;
+    border-color: #cccccc;
+    left: -2px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+
+}
+.form-control{
+    border-style: none;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    border-color: #cccccc;
+}
+/* stop the glowing blue shadow */
+.form-control:focus {
+    border-style: none;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    border-color: #cccccc;
+}
+
+.row {
+    border-style: solid;
+    border-width: thin;
+    border-color: #cccccc;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+
+
+.select {
+    background-color: #EDEEEE;
+    color: #363a3f;
+    font-weight: bold;
+    border-style: solid;
+    border: thin;
+    border-color: #cccccc;
+    
+ }
+ select:focus{
+    border-style: none;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    border-color: #cccccc;
+ }
+ 
+ 

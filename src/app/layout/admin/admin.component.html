@@ -4,39 +4,41 @@
     <app-admin-history></app-admin-history>
   </tab>
   <tab id="users-admin" heading="{{ 'admin.tab2' | translate }}">
-    <br>
-    <div class="search">
-      <div class="container mb-3 shadow">
-        <div class="row justify-content-md-left">
-          <div class="input-group">
-            <select (change)=" selectChangeHandler($event)">
-              <option value="email">Email</option>
-              <option value="name">Nome</option>
-              <option value="nip">NIP</option>
-            </select>
-            <input class="form-control" type="text" name="search" [(ngModel)]="input" (input)="onChangeInput()"
-              autocomplete="off" placeholder="Procurar por {{selectedTypeSearchUser}}">
+      <br>
+      <div class="search content">
+        <div class="container mb-3">
+          <div class="row justify-content-md-left">
+            <div class="input-group">
+              <select class="select" (change)="selectChangeHandler($event)">
+                  <option value="email">Email</option>
+                  <option value="name">Nome</option>
+                  <option value="nip">NIP</option>
+              </select>
+              <input class="form-control" type="text" name="search1" [(ngModel)]="inputUser" (keydown.enter)="onChangeInputUser()" 
+                autocomplete="off" placeholder="Procurar por {{selectedTypeSearchUser}}">
+              <button class="btn" type="submit" (click)="onChangeInputUser()"><i class="fas fa-search"></i></button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <div *ngIf="(searchUser$ | async)?.length > 0; else notfound">
+      <br>
+    <div *ngIf="(searchUser$ | async)?.length > 0; else notfoundUser">
       <app-admin-management [user$]='searchUser$'></app-admin-management>
     </div>
-    <ng-template #notfound>
+    <ng-template #notfoundUser>
       <div>
-        <p>A pesquisa por <span class="font-weight-bold">"{{input}}"</span> não obteve resultados. Por favor, faça nova
+        <p>A pesquisa por <span class="font-weight-bold">"{{inputUser}}"</span> não obteve resultados. Por favor, faça nova
           pesquisa.</p>
       </div>
     </ng-template>
   </tab>
   <tab id="books-admin" heading="{{ 'admin.tab3' | translate }}">
     <br>
-    <div class="search">
-      <div class="container mb-3 shadow">
+    <div class="search content">
+      <div class="container mb-3">
         <div class="row justify-content-md-left">
           <div class="input-group">
-            <select (change)=" selectChangeHandler($event)">
+            <select class="select" (change)="selectChangeHandler($event)">
               <option value="keyword">Palavra-Chave</option>
               <option value="title">Título</option>
               <option value="author">Autor</option>
@@ -44,21 +46,23 @@
               <option value="isbn">Isbn</option>
               <option value="topic">Tópico</option>
             </select>
-            <input class="form-control" type="text" name="search" [(ngModel)]="input" (input)="onChangeInput()"
-              autocomplete="off" placeholder="Procurar por {{selectedTypeSearchOutput}}">
+            <input class="form-control" type="text" name="search2" [(ngModel)]="inputCatalog" (keydown.enter)="onChangeInputCatalog()" 
+              autocomplete="off" placeholder="Procurar por {{selectedTypeSearchCatalog}}">
+            <button class="btn" type="submit" (click)="onChangeInputCatalog()"><i class="fas fa-search"></i></button>
           </div>
         </div>
       </div>
     </div>
-    <div *ngIf="(searchCatalog$ | async)?.length > 0; else notfound">
+    <br>
+    <div *ngIf="(searchCatalog$ | async)?.length > 0; else notfoundCatalog">
       <app-table [isBook]="true" [catalog$]='searchCatalog$'></app-table>
+      <app-add></app-add>
     </div>
-    <ng-template #notfound>
+    <ng-template #notfoundCatalog>
       <div>
-        <p>A pesquisa por <span class="font-weight-bold">"{{input}}"</span> não obteve resultados. Por favor, faça nova
+        <p>A pesquisa por <span class="font-weight-bold">"{{inputCatalog}}"</span> não obteve resultados. Por favor, faça nova
           pesquisa.</p>
       </div>
     </ng-template>
-    <app-add></app-add>
   </tab>
 </tabset>

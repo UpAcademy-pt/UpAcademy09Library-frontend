@@ -36,7 +36,7 @@ export class AdminHistoryComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
-  }z
+  }
   // para não dar erro na consola porcausa dos ngfor
   public array(val) {
     return Array.from(val);

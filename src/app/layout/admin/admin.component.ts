@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { ReplaySubject } from 'rxjs';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { ReplaySubject, Observable, Subject } from 'rxjs';
 import { DataService } from 'src/app/shared';
 import { TranslateService } from '@ngx-translate/core';
+import { debounceTime } from 'rxjs/internal/operators/debounceTime';
+import { distinctUntilChanged } from 'rxjs/internal/operators/distinctUntilChanged';
 
 @Component({
   selector: 'app-admin',
@@ -14,7 +16,8 @@ export class AdminComponent implements OnInit {
   selectedTypeSearchCatalog = 'keyword';
   selectedTypeSearchUser = 'email';
   selectedTypeSearchOutput = 'Palavra-Chave';
-  input: any;
+  inputUser: any;
+  inputCatalog: any;
 
   // observable
   public catalog$: ReplaySubject<any[]> = new ReplaySubject(1);
@@ -23,6 +26,8 @@ export class AdminComponent implements OnInit {
   public headers = ['Name', 'E-mail', 'NIP'];
   public searchCatalog$: ReplaySubject<any[]> = new ReplaySubject(1);
   public searchUser$: ReplaySubject<any[]> = new ReplaySubject(1);
+ 
+
 
   constructor(
     private dataService: DataService
@@ -33,15 +38,22 @@ export class AdminComponent implements OnInit {
     this.searchUser$ = this.dataService.user$;
   }
 
-  ngOnInit() {}
-
-  onChangeInput() {
-    this.searchCatalog$ = this.dataService.queryCatalog(this.selectedTypeSearchCatalog, this.input);
-    this.searchUser$ = this.dataService.queryUser(this.selectedTypeSearchUser, this.input);
+  ngOnInit() {
   }
+
+  onChangeInputCatalog() {
+    this.searchCatalog$ = this.dataService.queryCatalog(this.selectedTypeSearchCatalog, this.inputCatalog);
+
+  }
+  onChangeInputUser() {
+    this.searchUser$ = this.dataService.queryUser(this.selectedTypeSearchUser, this.inputUser);
+  }
+  
+
   // search type
   selectChangeHandler(event: any) {
     this.selectedTypeSearchCatalog = event.target.value;
     this.selectedTypeSearchUser = event.target.value;
   }
+
 }
