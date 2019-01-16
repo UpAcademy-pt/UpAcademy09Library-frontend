@@ -55,13 +55,13 @@
       <div *ngIf="item.state==='available'" class="col-6">
         <button type="button" [ngClass]="{'selected': false }" id="like-button" class="" (click)="reservar(item)"
           (click)="css2()">
-          <svg class="heart-icon" viewBox=""></svg>
+          <svg class="heart-icon"></svg>
           Reservar
         </button>
       </div>
       <div *ngIf="item.state==='reserved'" class="col-6">
         <button type="button" [ngClass]="{'selected': true }" id="like-button" class="" (click)="cancelarReserva(item)">
-          <svg class="heart-icon" viewBox=""></svg>
+          <svg class="heart-icon" ></svg>
           Reservado
         </button>
       </div>
