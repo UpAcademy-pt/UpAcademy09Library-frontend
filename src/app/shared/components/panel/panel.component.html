@@ -61,7 +61,7 @@
       </button>
 
 
-      <button *ngIf="item.state==='reserved'" type="button" [ngClass]="{'selected': true }" tooltip="remover reserva" containerClass="customClass"
+      <button *ngIf="item.state==='reserved'" type="button" [ngClass]="{'selected': true }" tooltip="remover reserva" containerClass="customClass" placement="top"
         id="like-button" class="m-2" (click)="cancelarReserva(item)">
         <svg class="heart-icon"></svg>
         Reservado

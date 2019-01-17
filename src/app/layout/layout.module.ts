@@ -26,7 +26,7 @@ import { BookDetailsAdminComponent } from './book-details-admin/book-details-adm
 import { UserDetailAdminComponent } from './user-detail-admin/user-detail-admin.component';
 import {NgxPrintModule} from 'ngx-print';
 import { TranslateModule } from '@ngx-translate/core';
-
+import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
 import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
 
 
@@ -78,6 +78,8 @@ import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
     TooltipModule.forRoot(),
     TypeaheadModule.forRoot(),
 
+
+    ProgressbarModule.forRoot(),
     // print
     NgxPrintModule,
     TranslateModule

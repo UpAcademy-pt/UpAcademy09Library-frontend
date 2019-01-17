@@ -1,107 +1,134 @@
 <tabset>
     <tab heading="{{ 'alterarDados' | translate }}">
-            <form #f="ngForm" (ngSubmit)="onSubmit()" novalidate>
-                    <fieldset>
-                      <br>
-                      <div class="form-group">
-                        <label translate> Name </label>
-                        <input type="text"
-                               class="form-control" required name="name" [(ngModel)]="user.name">
-                      </div>
-                  
-                      <div class="form-group">
-                        <label translate>Nip</label>
-                        <input type="text"
-                               class="form-control" required name="nip" [(ngModel)]="user.nip">
-                      </div>
-                    </fieldset>
-                  
-                    <div class="form-group">
-                      <label>E-mail</label>
-                      <input type="email"
-                             class="form-control" required name="email" [(ngModel)]="user.email">
-                    </div>
-                  
-                    <button type="submit" (click)="onSubmit()" class="btn btn-dark">{{ 'alterarDadosP' | translate }}</button>
-                    <div *ngIf="alterouDados && submitedFormDados" (ngSubmit)="onClose()" class="alert alert-success mt-3" role="alert">
-                        {{ 'alterarDados.p1' | translate }}
-                    </div>
-                    <br>
-                    <div *ngIf="!alterouDados && submitedFormDados" (ngSubmit)="onClose()" class="alert alert-danger mt-3" role="alert">
-                        {{ 'alterarDados.p2' | translate }} Erro na alteraçāo de dados. Por favor tente novamente. 
-                    </div>
-                    <br>
-                    <hr> <br>
-                  </form>
-                <form #f1="ngForm" (ngSubmit)="NewPass()">
-                     <div class="form-group">
-                      <label translate>Nova Palavra-Passe</label>
-                      <input type="password"
-                             class="form-control" #confirmPasswordHtml="ngModel"   name="password1" [(ngModel)]="confirmPassword" >
-                    </div>
-                    <div class="form-group">
-                      <label translate> Confirme a Palavra-Passe</label>
-                      <input type="password"
-                             class="form-control" #passwordHtml="ngModel"   name="password" [(ngModel)]="password">
-                    </div>
-                    <div *ngIf="password!==confirmPassword && passwordHtml.touched && confirmPasswordHtml.touched" (ngSubmit)="onClose()" class="alert alert-danger" role="alert">
-                        {{ 'alterarPW.p1' | translate }}
-                    </div>
-                    <button type="submit" (click)="NewPass(password2)" class="btn btn-dark" [disabled]="password!==confirmPassword"> {{ 'alterarPW.p4' | translate }}</button>
-                    <div *ngIf="alterouPassword && submitedFormPassword" (ngSubmit)="onClose()" class="alert alert-success mt-3" role="alert">
-                        {{ 'alterarPW.p2' | translate }}
-                    </div>
-                    <br>
-                    <div *ngIf="!alterouPassword && submitedFormPassword" (ngSubmit)="onClose()" class="alert alert-danger mt-3" role="alert">
-                        {{ 'alterarPW.p3' | translate }}
-                    </div>
-                    <br>
-                  </form>
+        <form #f="ngForm" (ngSubmit)="onSubmit()" novalidate>
+            <fieldset>
+                <br>
+                <div class="form-group">
+                    <label translate> Name </label>
+                    <input type="text" class="form-control" required name="name" [(ngModel)]="user.name">
+                </div>
+
+                <div class="form-group">
+                    <label translate>Nip</label>
+                    <input type="text" class="form-control" required name="nip" [(ngModel)]="user.nip">
+                </div>
+            </fieldset>
+
+            <div class="form-group">
+                <label>E-mail</label>
+                <input type="email" class="form-control" required name="email" [(ngModel)]="user.email">
+            </div>
+
+            <button type="submit" (click)="onSubmit()" class="btn btn-dark">{{ 'alterarDadosP' | translate }}</button>
+            <div *ngIf="alterouDados && submitedFormDados" (ngSubmit)="onClose()" class="alert alert-success mt-3" role="alert">
+                {{ 'alterarDados.p1' | translate }}
+            </div>
+            <br>
+            <div *ngIf="!alterouDados && submitedFormDados" (ngSubmit)="onClose()" class="alert alert-danger mt-3" role="alert">
+                {{ 'alterarDados.p2' | translate }} Erro na alteraçāo de dados. Por favor tente novamente.
+            </div>
+            <br>
+            <hr> <br>
+        </form>
+        <form #f1="ngForm" (ngSubmit)="NewPass()">
+            <div class="form-group">
+                <label translate>Nova Palavra-Passe</label>
+                <input type="password" class="form-control" #confirmPasswordHtml="ngModel" name="password1" [(ngModel)]="confirmPassword">
+            </div>
+            <div class="form-group">
+                <label translate> Confirme a Palavra-Passe</label>
+                <input type="password" class="form-control" #passwordHtml="ngModel" name="password" [(ngModel)]="password">
+            </div>
+            <div *ngIf="password!==confirmPassword && passwordHtml.touched && confirmPasswordHtml.touched" (ngSubmit)="onClose()"
+                class="alert alert-danger" role="alert">
+                {{ 'alterarPW.p1' | translate }}
+            </div>
+            <button type="submit" (click)="NewPass(password2)" class="btn btn-dark" [disabled]="password!==confirmPassword">
+                {{ 'alterarPW.p4' | translate }}</button>
+            <div *ngIf="alterouPassword && submitedFormPassword" (ngSubmit)="onClose()" class="alert alert-success mt-3"
+                role="alert">
+                {{ 'alterarPW.p2' | translate }}
+            </div>
+            <br>
+            <div *ngIf="!alterouPassword && submitedFormPassword" (ngSubmit)="onClose()" class="alert alert-danger mt-3"
+                role="alert">
+                {{ 'alterarPW.p3' | translate }}
+            </div>
+            <br>
+        </form>
         <br>
 
-        
+
     </tab>
     <tab heading="{{ 'verHistorico' | translate }}">
-<br>
-<table class="table table-hover [ngClass]='theme'" >
-          <thead>
-              <th translate>Titulo</th>
-              <th translate>Autor</th>
-              <th translate>Estado</th>
-              <th translate>Data de reserva</th>
-              <th translate>Data de levantamento</th>
-              <th translate>Data de entrega</th>
-          </thead>
-          <tbody>
-              <tr *ngFor="let entrada of history | async | paginate:{ id: 'userPagination', itemsPerPage: 5, currentPage: page } ">
-                  <td>{{entrada.historyBook.title}}</td>
-                  <td>{{entrada.historyBook.author}}</td>
-                  <td *ngIf="entrada.historyBook.state==='reserved'">Reservado</td>
-                  <td *ngIf="entrada.historyBook.state==='inUse'">Em uso</td>
-                  <td *ngIf="entrada.historyBook.state==='available'">Disponivel</td>
-                
-                  <td>{{entrada.reservationDate | date:"M/d/yy, h:mm a"}}</td>
-                  <td>{{entrada.pickupDate | date:"M/d/yy, h:mm a"}}</td>
-                  <td>{{entrada.deliveryDate | date:"M/d/yy, h:mm a"}}</td>
-              </tr>
-          </tbody>
-      </table>
-      <pagination-controls id="userPagination" class="my-paginationUser" (pageChange)=" page = $event" previousLabel="Anterior"
-      nextLabel="Próximo" maxSize="7"></pagination-controls>
+        <br>
+        <table class="table table-hover [ngClass]='theme'">
+            <thead>
+                <th translate>Titulo</th>
+                <th translate>Autor</th>
+                <th translate>Estado</th>
+                <th translate>Data de reserva</th>
+                <th translate>Data de levantamento</th>
+                <th translate>Data de entrega</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let entrada of history | async | paginate:{ id: 'userPagination', itemsPerPage: 5, currentPage: page } ">
+                    <td>{{entrada.historyBook.title}}</td>
+                    <td>{{entrada.historyBook.author}}</td>
+                    <td *ngIf="entrada.historyBook.state==='reserved'">Reservado</td>
+                    <td *ngIf="entrada.historyBook.state==='inUse'">Em uso</td>
+                    <td *ngIf="entrada.historyBook.state==='available'">Disponivel</td>
+
+                    <td>{{entrada.reservationDate | date:"M/d/yy, h:mm a"}}</td>
+                    <td>{{entrada.pickupDate | date:"M/d/yy, h:mm a"}}</td>
+                    <td>{{entrada.deliveryDate | date:"M/d/yy, h:mm a"}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <pagination-controls id="userPagination" class="my-paginationUser" (pageChange)=" page = $event" previousLabel="Anterior"
+            nextLabel="Próximo" maxSize="7"></pagination-controls>
     </tab>
     <tab heading="{{ 'livros guardados' | translate }}">
         <br>
-        <div class="card mb-3"  *ngFor="let entrada of fav | async">
-  <!--  -->
-          <div class="card-body" >
-            <h5 class="card-title"> {{entrada.title}}, {{entrada.author}}</h5>
-            <p class="card-text">Descrição: {{entrada.description}} </p>
-            <div [ngSwitch]="entrada.state">
-                <p *ngSwitchCase="'available'" class="card-text">{{ 'estado' | translate }}: Disponivel</p>
-                <p *ngSwitchCase="'reserved'" class="card-text ">{{ 'estado' | translate }}: Reservado</p>
-                <p *ngSwitchCase="'inUse'" class="card-text ">{{ 'estado' | translate }}: Em uso</p> 
-             </div>
-          </div>
-          </div>
+        <div class="card mb-3" *ngFor="let entrada of fav | async">
+            <!--  -->
+            <div class="card-body">
+                <h5 class="card-title"> {{entrada.title}}, {{entrada.author}}</h5>
+                <p class="card-text">Descrição: {{entrada.description}} </p>
+                <div [ngSwitch]="entrada.state">
+                    <p *ngSwitchCase="'available'" class="card-text">{{ 'estado' | translate }}: Disponivel</p>
+                    <p *ngSwitchCase="'reserved'" class="card-text ">{{ 'estado' | translate }}: Reservado</p>
+                    <p *ngSwitchCase="'inUse'" class="card-text ">{{ 'estado' | translate }}: Em uso</p>
+                </div>
+            </div>
+        </div>
+    </tab>
+    <tab heading="{{ 'livros levantados' | translate }}">
+        <div class="mb-2">
+            <br>
+            <table class="table table-hover [ngClass]='theme'">
+                <thead>
+                    <th translate>Titulo</th>
+                    <th translate>Autor</th>
+                    <th translate>Estado</th>
+                    <th translate>Entrega prevista</th>
+                </thead>
+                <tbody>
+                        
+                    <tr  *ngFor="let livro of booksInUser | async">
+                        <td>{{livro.title}}</td>
+                        <td>{{livro.author}}</td>
+                        <td>
+                            <progressbar [max]="max" [value]="dynamic" style="height:20px">
+                                <span class="text-nowrap">{{dynamic}} / {{max}}</span>
+                            </progressbar>
+                        </td>
+                        <td>{{livro.reservationDate | date:"M/d/yy, h:mm a"}}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+
+        </div>
     </tab>
 </tabset>
