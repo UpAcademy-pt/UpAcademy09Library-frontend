@@ -258,8 +258,8 @@ export class DataService {
   }
 
   // cancel book reserve
-  public cancelReserveBookService(reserve: any) {
-    return this.historyApi.cancelReservation(reserve);
+  public cancelReserveBookService(userID: number, bookID: number) {
+    return this.historyApi.cancelReservation(userID,bookID);
   }
 
   // Pickup book

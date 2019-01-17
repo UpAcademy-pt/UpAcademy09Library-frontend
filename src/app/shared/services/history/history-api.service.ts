@@ -25,9 +25,9 @@ export class HistoryApiService {
 
   }
  // PUT  cancel reservation
-  public cancelReservation(reserve: any){
+  public cancelReservation(userID, bookID){
 
-    return this.http.put(apiUrl + '/cancelreservation', reserve)
+    return this.http.put(apiUrl + '/cancelreservation?userId=' +userID + '&bookId=' + bookID, null);
   }
 
 

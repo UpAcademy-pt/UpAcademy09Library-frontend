@@ -24,10 +24,12 @@ export class PersonalComponent implements OnInit {
   submitedFormPassword: Boolean;
   historyUser: Object;
  fav;
-  
+   // pagination
+   page = 1;
   constructor(
     private dataService: DataService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    public router: Router
   ) {
     this.history = dataService.history$;
 

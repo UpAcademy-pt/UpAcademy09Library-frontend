@@ -3,3 +3,30 @@ input.ng-invalid.ng-touched{
 }
 
 
+.my-paginationUser /deep/ .ngx-pagination .current {
+    background: #33444d;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1.2rem;
+  }
+  
+  .my-paginationUser /deep/ .ngx-pagination .container {
+    border: none;
+    color: black;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1.2rem;
+  }
+  
+  .my-paginationUser /deep/ .ngx-pagination .disabled {
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1.2rem;
+  }
+  
