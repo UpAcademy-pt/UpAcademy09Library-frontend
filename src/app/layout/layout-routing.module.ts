@@ -32,9 +32,9 @@ const routes: Routes = [
             { path: 'personal/:id', component: PersonalComponent,  canActivate: [AuthGuard]},
             { path: 'register', component: RegisterComponent},
             { path: 'notfound', component: NotfoundComponent },
-            { path: 'bookdetails/:id', component: BookDetailsComponent },
-            { path: 'bookadmin/:id', component: BookAdminComponent },
-            { path: 'useradmin/:id', component: UserDetailComponent },
+            { path: 'bookdetails/:id', component: BookDetailsComponent,  canActivate: [AuthGuard]},
+            { path: 'bookadmin/:id', component: BookAdminComponent, canActivate: [AuthGuard] },
+            { path: 'useradmin/:id', component: UserDetailComponent, canActivate: [AuthGuard] },
             { path: '**', redirectTo: 'notfound' }
 
         ]
