@@ -1,0 +1,20 @@
+<a (click)="openModal(disable)" class="btn" tooltip="Desactivar o utilizador" placement="top"><img src="/assets/user-inactive.png"></a>
+
+<ng-template #disable>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left" translate>Desactivar o utilizador: {{user.name}}</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="privilegesModal.hide();">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form #f="ngForm" (keydown.enter)="onSubmit();privilegesModal.hide()">
+      <div class="form-group">      
+          <button type="button" (click)="privilegesModal.hide();onSubmit()" class="btn btn-success"
+          translate>Sim</button>
+          <button type="button" (click)="privilegesModal.hide()" class="btn btn-danger"
+          translate>Não</button>
+      </div>
+    </form>
+  </div>
+</ng-template>

@@ -1,3 +1,32 @@
-<p>
-  request works!
-</p>
+<br>
+<table class="table table-hover" [ngClass]='theme'>
+  <thead>
+    <th translate>Titulo</th>
+    <th translate>Autor</th>
+    <th translate>Utilizador</th>
+    <th translate>Data de reserva</th>
+    <th></th>
+  </thead>
+  <tbody *ngFor="let book of array(history)">
+    <tr *ngIf="!book.pickupDate">
+      <td><a class="btn" (click)="clickBook(book.historyBook)">{{book.historyBook.title}}</a></td>
+      <td><a class="btn" (click)="clickBook(book.historyBook)">{{book.historyBook.author}}</a></td>
+      <td><a class="btn" (click)="clickUser(book.historyUser)">{{book.historyUser.email}}</a></td>
+      <td>{{book.reservationDate | date:"M/d/yy, h:mm a"}}</td>
+      <td class="btn" tooltip="Entregar livro ao utilizador" placement="top" (click)="openModal(deliver)"><img src="assets/deliver.png"></td>
+    </tr>
+    <ng-template class="modal" #deliver>
+      <div class="modal-header">
+        <p class="modal-title" translate>Confirmar entrega</p>
+      </div>
+      <div class="modal-body">
+        <p class="btn" (click)="clickBook(book.historyBook)">{{ 'livro' | translate }}: {{book.historyBook.title}}</p>
+        <p class="btn" (click)="clickUser(book.historyUser)">{{ 'User' | translate }}: {{book.historyUser.email}}</p>
+      </div>
+      <div>
+        <a class="btn" (click)="pickUpBook(book)" (click)="modalRef.hide()"><img src="assets/give.png"></a>
+        <a class="btn" (click)="modalRef.hide()"><img src="assets/delete.png"></a>
+      </div>
+    </ng-template>
+  </tbody>
+</table>

@@ -37,8 +37,10 @@ import { AnalyzeComponent } from './admin/history-admin/analyze/analyze.componen
 import { DevolutionComponent } from './admin/history-admin/devolution/devolution.component';
 import { RequestComponent } from './admin/history-admin/request/request.component';
 import { UserAdminComponent } from './admin/user-admin/user-admin.component';
-import { PrivilegesComponent } from './admin/user-admin/privileges/privileges.component';
 import { UserDetailComponent } from './admin/user-admin/user-detail/user-detail.component';
+import { DisableComponent } from './admin/user-admin/disable/disable.component';
+import { ReactiveComponent } from './admin/user-admin/reactive/reactive.component';
+import { AdminPrivilegesComponent } from './admin/user-admin/admin-privileges/admin-privileges.component';
 
 
 @NgModule({
@@ -78,8 +80,10 @@ import { UserDetailComponent } from './admin/user-admin/user-detail/user-detail.
     DevolutionComponent,
     RequestComponent,
     UserAdminComponent,
-    PrivilegesComponent,
-    UserDetailComponent
+    UserDetailComponent,
+    DisableComponent,
+    ReactiveComponent,
+    AdminPrivilegesComponent
   ],
 
   imports: [

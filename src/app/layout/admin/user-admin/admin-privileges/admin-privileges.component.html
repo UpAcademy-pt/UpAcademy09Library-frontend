@@ -1,0 +1,21 @@
+<!-- Button to change admin status -->
+<a (click)="openModal(admin)" class="btn" tooltip="Conceder Privilégios Administrativos" placement="top"><img src="/assets/admin.png"></a>
+
+<ng-template #admin>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left" translate>Conceder privilégios administrativos ao utilizador: {{user.name}}</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="privilegesModal.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form #f="ngForm">
+      <div class="form-group">
+        <p *ngIf="!user.active; else active" translate>O Utilizador <span class="font-weight-bold">"{{user.name}}"</span>
+          encontra-se desactivado, tem a certeza que quer conceder privilégios de administrador?</p>
+        <button type="button" (click)="privilegesModal.hide();onSubmit()" class="btn btn-success" translate>Sim</button>
+        <button type="button" (click)="privilegesModal.hide()" class="btn btn-danger" translate>Não</button>
+      </div>
+    </form>
+  </div>
+</ng-template>
