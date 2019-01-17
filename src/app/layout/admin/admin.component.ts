@@ -25,14 +25,15 @@ export class AdminComponent implements OnInit {
   public search$: ReplaySubject<any[]> = new ReplaySubject(1);
   public searchCatalog$: ReplaySubject<any[]> = new ReplaySubject(1);
   public searchUser$: ReplaySubject<any[]> = new ReplaySubject(1);
+  public history$: ReplaySubject<any[]> = new ReplaySubject(1);
 
-  constructor(
-    private dataService: DataService
-  ) {
+  constructor(private dataService: DataService) {
+
     this.catalog$ = this.dataService.catalog$;
     this.searchCatalog$ = this.dataService.catalog$;
     this.user$ = this.dataService.user$;
     this.searchUser$ = this.dataService.user$;
+    this.history$ = this.dataService.user$;
   }
 
   ngOnInit() {

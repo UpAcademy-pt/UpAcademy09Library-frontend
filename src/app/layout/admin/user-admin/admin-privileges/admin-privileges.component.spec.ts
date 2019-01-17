@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PrivilegesComponent } from './privileges.component';
+import { AdminPrivilegesComponent } from './admin-privileges.component';
 
-describe('PrivilegesComponent', () => {
-  let component: PrivilegesComponent;
-  let fixture: ComponentFixture<PrivilegesComponent>;
+describe('AdminPrivilegesComponent', () => {
+  let component: AdminPrivilegesComponent;
+  let fixture: ComponentFixture<AdminPrivilegesComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PrivilegesComponent ]
+      declarations: [ AdminPrivilegesComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PrivilegesComponent);
+    fixture = TestBed.createComponent(AdminPrivilegesComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

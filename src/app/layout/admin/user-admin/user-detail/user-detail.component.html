@@ -14,7 +14,7 @@
           <p class="card-text" translate>Privilégios Administrativos: <img src="/assets/admin.png"></p>
         </div>
         <div *ngIf="!user.active">
-          <p class="card-text" translate>Estado do Utilizador: <img src="/assets/user-inactive.png"></p>
+          <p class="card-text" translate>Estado do Utilizador:<img src="/assets/user-inactive.png"></p>
         </div>
         <div *ngIf="user.active">
           <p class="card-text" translate>Estado do Utilizador: <img src="/assets/user-active.png"></p>
@@ -37,7 +37,9 @@
   </div>
   <div class="row align-self-center  ">
     <div class="col-md-12">
-      <app-privileges [userPrivileges]='user'></app-privileges>
+      <app-admin-privileges [userPrivileges]='user'></app-admin-privileges>
+      <app-disable [userPrivileges]='user'></app-disable>
+      <app-reactive [userPrivileges]='user'></app-reactive>
     </div>
   </div>
   <a><img class="back" src="/assets/back.png" (change)="onChangeInput()" (click)="cancel()"></a>
