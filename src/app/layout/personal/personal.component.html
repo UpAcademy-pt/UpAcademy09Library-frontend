@@ -72,16 +72,18 @@
                 <th translate>Data de entrega</th>
             </thead>
             <tbody>
-                <tr *ngFor="let entrada of history | async | paginate:{ id: 'userPagination', itemsPerPage: 5, currentPage: page } ">
+            
+                <tr *ngFor="let entrada of history | async | paginate:{ id: 'userPagination', itemsPerPage: 5, currentPage: page } "
+                >
                     <td>{{entrada.historyBook.title}}</td>
                     <td>{{entrada.historyBook.author}}</td>
-                    <td *ngIf="entrada.historyBook.state==='reserved'">Reservado</td>
-                    <td *ngIf="entrada.historyBook.state==='inUse'">Em uso</td>
-                    <td *ngIf="entrada.historyBook.state==='available'">Disponivel</td>
+                    <td *ngIf="entrada.deliveryDate == null && entrada.pickupDate==null">Reservado</td>
+                    <td *ngIf="entrada.deliveryDate==null && entrada.pickupDate!=null">Em uso</td>
+                    <td *ngIf="entrada.deliveryDate==entrada.pickupDate&& entrada.pickupDate!=null">Reserva cancelada</td> 
 
-                    <td>{{entrada.reservationDate | date:"M/d/yy, h:mm a"}}</td>
-                    <td>{{entrada.pickupDate | date:"M/d/yy, h:mm a"}}</td>
-                    <td>{{entrada.deliveryDate | date:"M/d/yy, h:mm a"}}</td>
+                    <td>{{entrada.reservationDate | date:"d/MM/yy, h:mm "}}</td>
+                    <td>{{entrada.pickupDate | date:"d/MM/yy, h:mm "}}</td>
+                    <td>{{entrada.deliveryDate | date:"d/MM/yy, h:mm "}}</td>
                 </tr>
             </tbody>
         </table>
@@ -91,7 +93,7 @@
     <tab heading="{{ 'livros guardados' | translate }}">
         <br>
         <div class="card mb-3" *ngFor="let entrada of fav | async">
-            <!--  -->
+            
             <div class="card-body">
                 <h5 class="card-title"> {{entrada.title}}, {{entrada.author}}</h5>
                 <p class="card-text">Descrição: {{entrada.description}} </p>
