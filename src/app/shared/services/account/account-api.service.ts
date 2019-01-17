@@ -78,24 +78,18 @@ export class AcountApiService {
   // Change user to admin --- um put precisa sempre de body, nem que seja null
   public changePrivilegesUser(id) {
     console.log('service id: ' + id);
-    this.http.put(apiUrl + '/changetoadmin/' + id, null).subscribe(
-      (res) => { console.log('OK'); },
-      error => { console.error(error); });
+    this.http.put(apiUrl + '/changetoadmin/' + id, null);
   }
 
   // Disable User
   public disableUser(id) {
     console.log('service id: ' + id);
-    this.http.put(apiUrl + '/disable/' + id, null).subscribe(
-      (res) => { console.log('disable'); },
-      error => { console.error(error); });
+    return this.http.put(apiUrl + '/disable/' + id, null);
   }
   // Reactive User
   public reactivateUser(id) {
-    console.log("service id: " + id);
-    this.http.put(apiUrl + "/reactivateuser/" + id, null).subscribe(
-      (res) => { console.log("reactivate") },
-      error => { console.error(error) });
+    console.log('service id: ' + id);
+    return this.http.put(apiUrl + '/reactivateuser/' + id, null);
   }
 
   // add to Favorite ---- TESTAR COM URGÊNCIA --- é a maneira que encontrei para enviar dois objectos --- SENÃO DER É PRECISO QUERYPARAM?

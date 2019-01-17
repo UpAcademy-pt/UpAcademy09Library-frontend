@@ -1,9 +1,9 @@
 {
+	"A pesquisa por": "",
 	"A sua Biblioteca": "qwe",
 	"Actualizar": "Update",
 	"Adicionar": "Add",
 	"Adicionar livros": "Add Books",
-	"Administrador": "Administrator",
 	"Anterior": "Previous",
 	"Autor": "Author",
 	"Confirmar devolução:": "Confirm return",
@@ -15,7 +15,6 @@
 	"Data de reserva": "Reservation date",
 	"Descrição": "Description",
 	"Descriçāo": "Description",
-	"Email": "E-mail",
 	"Erro: Email já se encontra registado": "Error: E-mail already registered",
 	"Estado": "Status",
 	"Estado do Utilizador:": "User status",
@@ -24,6 +23,7 @@
 	"Introduza a palavra-passe escolhida": "",
 	"Introduza e-mail válido": "",
 	"Introduza um nome": "",
+	"Isbn": "",
 	"Livros a recolher": "Book's to collect",
 	"Livros mais reservados": "Most reserved books",
 	"Localização": "Location",
@@ -57,8 +57,6 @@
 	"Tópico": "Topic",
 	"User": "User",
 	"Utilizador": "User",
-	"active": "Active",
-	"admin": "Administrator",
 	"adminHistory": {
 		"H1": "Book's to receive",
 		"H2": "Book's to deliver",
@@ -72,7 +70,6 @@
 		"p3": "Error changing your password. Please try again.",
 		"p4": "Change password"
 	},
-	"anterior": "Previous",
 	"areaPessoal": "Personal Area",
 	"catalogo": "Catalog",
 	"categoria": "Category",
@@ -82,7 +79,6 @@
 	},
 	"descricao": "Description",
 	"descrição": "Description",
-	"descriçāo": "Description",
 	"detalheLivros": {
 		"p1": "Book Details"
 	},
@@ -94,13 +90,18 @@
 		"title": "title"
 	},
 	"imprimir": "Print",
+	"kkkk": "",
 	"livro": "Book",
 	"livros guardados": "Favorite Books",
 	"localizacao": "Location",
 	"login": {
 		"p1": "The e-mail insirted is not valid. Please insert a correct e-mail."
 	},
-	"próximo": "Next",
+	"não obteve resultados": {
+		" Por favor, faça nova\n          pesquisa": {
+			"0": ""
+		}
+	},
 	"registe-se": "Register Here",
 	"register": {
 		"p1": "Register",

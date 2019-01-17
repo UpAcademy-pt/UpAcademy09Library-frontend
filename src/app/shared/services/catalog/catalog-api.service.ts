@@ -42,8 +42,7 @@ export class CatalogApiService {
 
   /* QUERYS */
 
-  // Find Book by ID  ---- Não temos aplicado -- como podemos aplicar -- 
-  // dizemos que é como se fosse o código de barras que os livros costuma ter???
+  // Find Book by ID  ---- NÃO ESTÁ EM USO---
   public getCatalogById(id: number) {
     return this.http.get(apiUrl + id);
   }
@@ -72,7 +71,7 @@ export class CatalogApiService {
     return this.http.get(apiUrl + 'researchbytopic/?topicToTest=' + string);
   }
 
-  //Find by isbn
+  // Find by isbn
   public getCatalogByIsbn(string: string) {
     return this.http.get(apiUrl + 'researchbyisbn/?isbnToTest=' + string);
   }
@@ -84,7 +83,7 @@ export class CatalogApiService {
 
   // Get remaining book info from google API
   public getBookInfoGogleApi(insertedTitle: string) {
-    return this.http.get("https://www.googleapis.com/books/v1/volumes?q=intitle:" + insertedTitle)
+    return this.http.get('https://www.googleapis.com/books/v1/volumes?q=intitle:' + insertedTitle);
   }
 
 

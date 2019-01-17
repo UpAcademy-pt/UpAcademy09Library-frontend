@@ -23,11 +23,8 @@ export class AdminComponent implements OnInit {
   public catalog$: ReplaySubject<any[]> = new ReplaySubject(1);
   public user$: ReplaySubject<any[]> = new ReplaySubject(1);
   public search$: ReplaySubject<any[]> = new ReplaySubject(1);
-  public headers = ['Name', 'E-mail', 'NIP'];
   public searchCatalog$: ReplaySubject<any[]> = new ReplaySubject(1);
   public searchUser$: ReplaySubject<any[]> = new ReplaySubject(1);
- 
-
 
   constructor(
     private dataService: DataService
@@ -48,7 +45,7 @@ export class AdminComponent implements OnInit {
   onChangeInputUser() {
     this.searchUser$ = this.dataService.queryUser(this.selectedTypeSearchUser, this.inputUser);
   }
-  
+
 
   // search type
   selectChangeHandler(event: any) {
