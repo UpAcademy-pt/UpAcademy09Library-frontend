@@ -13,15 +13,6 @@ export class AuthGuard implements CanActivate {
   ) { }
 
   canActivate() {
-    //   if (this.accountApi.isAuthenticated() && this.accountApi.isAdmin()) {
-    //     this.router.navigate(['/admin']);
-    //     return true;
-    //   } else if (this.accountApi.isAuthenticated() && !this.accountApi.isAdmin()) {
-    //     this.router.navigate(['/user']);
-    //     return true;
-    //   } else {
-    //     this.router.navigate(['/home']);
-    //   }
     if (this.accountApi.isAuthenticated()) {
       return true;
     } else {

@@ -16,6 +16,7 @@ import { BookDetailsAdminComponent } from './book-details-admin/book-details-adm
 import { BookAdminComponent } from './admin/catalog-admin/book-admin/book-admin.component';
 import { UserAdminComponent } from './admin/user-admin/user-admin.component';
 import { UserDetailComponent } from './admin/user-admin/user-detail/user-detail.component';
+import { AdminGuard } from '../shared/guards/admin.guard';
 
 const routes: Routes = [
     {
@@ -33,8 +34,8 @@ const routes: Routes = [
             { path: 'register', component: RegisterComponent},
             { path: 'notfound', component: NotfoundComponent },
             { path: 'bookdetails/:id', component: BookDetailsComponent,  canActivate: [AuthGuard]},
-            { path: 'bookadmin/:id', component: BookAdminComponent, canActivate: [AuthGuard] },
-            { path: 'useradmin/:id', component: UserDetailComponent, canActivate: [AuthGuard] },
+            { path: 'bookadmin/:id', component: BookAdminComponent, canActivate: [AuthGuard, AdminGuard] },
+            { path: 'useradmin/:id', component: UserDetailComponent, canActivate: [AuthGuard, AdminGuard] },
             { path: '**', redirectTo: 'notfound' }
 
         ]
