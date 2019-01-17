@@ -20,7 +20,7 @@ export class DataService {
   private users: any[] = [];
   // adicionei isto deixou de dar erro, na consola relativo ao admin management ----
   // ---- se alguma coisa com os users estiver a dar erro pode ser daqui
-  private user: any;
+  public user: any;
   private catalog: any;
   public history: any[];
   // object of add and remove favorites
@@ -134,9 +134,6 @@ export class DataService {
     }
     return this.searchCatalog$;
   }
-  public getCatalogByIsbnService(isbn) {
-    return this.catalogApi.getCatalogByIsbn(isbn);
-  }
 
   public getBookInfoGogleApi(insertedTitle) {
     return this.catalogApi.getBookInfoGogleApi(insertedTitle);
@@ -155,14 +152,20 @@ export class DataService {
     }
   }
 
+  public getTheUser(id) {
+    this.acountApi.queryUserID(id).subscribe(
+      (res: any) => {
+        this.user.next(res);
+        console.log(res);
+      });
+  }
+
   public getUsers() {
     this.acountApi.getUsersDB().subscribe(
       (res: any) => {
-        console.log("OK");
         this.user$.next(res);
         this.users = res;
         this.user = res;
-        console.log(this.user$);
       }
     );
   }

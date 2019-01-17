@@ -1,9 +1,9 @@
 {
+	"A pesquisa por": "",
 	"A sua Biblioteca": "teste",
 	"Actualizar": "Actualizar",
 	"Adicionar": "Adicionar",
 	"Adicionar livros": "Adicionar livros",
-	"Administrador": "Administrador",
 	"Anterior": "Anterior",
 	"Autor": "Autor",
 	"Confirmar devolução:": "Confirmar devolução:",
@@ -15,7 +15,6 @@
 	"Data de reserva": "Data de reserva",
 	"Descrição": "Descrição",
 	"Descriçāo": "Descrição",
-	"Email": "E-mail",
 	"Erro: Email já se encontra registado": "Erro: Email já se encontra registado.",
 	"Estado": "Estado",
 	"Estado do Utilizador:": "Estado do Utilizador:",
@@ -24,6 +23,7 @@
 	"Introduza a palavra-passe escolhida": "Introduza a palavra-passe escolhida",
 	"Introduza e-mail válido": "Introduza e-mail válido",
 	"Introduza um nome": "Introduza um nome",
+	"Isbn": "",
 	"Livros a recolher": "Livros a recolher",
 	"Livros mais reservados": "Livros mais reservados",
 	"Localização": "Localização",
@@ -57,8 +57,6 @@
 	"Tópico": "Tópico",
 	"User": "Utilizador",
 	"Utilizador": "Utilizador",
-	"active": "Activo",
-	"admin": "Administrador",
 	"adminHistory": {
 		"H1": "Livros a receber",
 		"H2": "Livros a Entregar",
@@ -72,7 +70,6 @@
 		"p3": "Erro na alteraçāo da Palavra-passe. Por favor tente novamente.",
 		"p4": "Alterar Palavra-passe"
 	},
-	"anterior": "Anterior",
 	"areaPessoal": "Área Pessoal",
 	"catalogo": "Catálogo",
 	"categoria": "Categoria",
@@ -82,7 +79,6 @@
 	},
 	"descricao": "Descrição",
 	"descrição": "Descrição",
-	"descriçāo": "Descrição",
 	"detalheLivros": {
 		"p1": "Detalhes do livro"
 	},
@@ -94,13 +90,18 @@
 		"title": "A sua Biblioteca"
 	},
 	"imprimir": "Imprimir",
+	"kkkk": "Nome",
 	"livro": "Livro",
 	"livros guardados": "Livros Favoritos",
 	"localizacao": "Localizaçāo",
 	"login": {
 		"p1": "O e-mail introduzido é inválido. Por favor introduza um e-mail correcto."
 	},
-	"próximo": "Próximo",
+	"não obteve resultados": {
+		" Por favor, faça nova\n          pesquisa": {
+			"0": ""
+		}
+	},
 	"registe-se": "Registe-se",
 	"register": {
 		"p1": "Registar",

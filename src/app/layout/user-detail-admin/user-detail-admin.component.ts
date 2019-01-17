@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnDestroy } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { DataService } from 'src/app/shared';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
@@ -19,7 +19,6 @@ export class UserDetailAdminComponent implements OnInit, OnDestroy {
   subscription: Subscription;
 
 
-
   constructor(private _location: Location, private dataService: DataService, private route: ActivatedRoute) {
     this.history = dataService.history$;
     this.route.params.subscribe(
@@ -38,6 +37,7 @@ export class UserDetailAdminComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
+
   // Give Book to User
   public pickUpBook(history) {
     this.dataService.pickupBookService(history.historyBook);

@@ -1,9 +1,9 @@
 <tabset>
-  <tab heading="{{ 'admin.tab1' | translate }}">
+  <tab heading="Gestão de Requisições" translate>
     <br>
     <app-admin-history></app-admin-history>
   </tab>
-  <tab id="users-admin" heading="{{ 'admin.tab2' | translate }}">
+  <tab id="users-admin" heading="Gestão de Utilizadores" translate>
       <br>
       <div class="search content">
         <div class="container mb-3">
@@ -11,11 +11,11 @@
             <div class="input-group">
               <select class="select" (change)="selectChangeHandler($event)">
                   <option value="email">Email</option>
-                  <option value="name">Nome</option>
-                  <option value="nip">NIP</option>
+                  <option value="name" translate>Name</option>
+                  <option value="nip" translate>NIP</option>
               </select>
               <input class="form-control" type="text" name="search1" [(ngModel)]="inputUser" (keydown.enter)="onChangeInputUser()" 
-                autocomplete="off" placeholder="Procurar por {{selectedTypeSearchUser}}">
+                autocomplete="off" placeholder="{{'Procurar por' | translate}} {{selectedTypeSearchUser}}">
               <button class="btn" type="submit" (click)="onChangeInputUser()"><i class="fas fa-search"></i></button>
             </div>
           </div>
@@ -27,27 +27,27 @@
     </div>
     <ng-template #notfoundUser>
       <div>
-        <p>A pesquisa por <span class="font-weight-bold">"{{inputUser}}"</span> não obteve resultados. Por favor, faça nova
+        <p translate>A pesquisa por <span class="font-weight-bold">"{{inputUser}}"</span> não obteve resultados. Por favor, faça nova
           pesquisa.</p>
       </div>
     </ng-template>
   </tab>
-  <tab id="books-admin" heading="{{ 'admin.tab3' | translate }}">
+  <tab id="books-admin" heading="Gestão de Livros" translate>
     <br>
     <div class="search content">
       <div class="container mb-3">
         <div class="row justify-content-md-left">
           <div class="input-group">
             <select class="select" (change)="selectChangeHandler($event)">
-              <option value="keyword">Palavra-Chave</option>
-              <option value="title">Título</option>
-              <option value="author">Autor</option>
-              <option value="description">Descrição</option>
-              <option value="isbn">Isbn</option>
-              <option value="topic">Tópico</option>
+              <option value="keyword" translate>Palavra-Chave</option>
+              <option value="title" translate>Título</option>
+              <option value="author" translate>Autor</option>
+              <option value="description" translate>Descrição</option>
+              <option value="isbn" translate>Isbn</option>
+              <option value="topic" translate>Tópico</option>
             </select>
             <input class="form-control" type="text" name="search2" [(ngModel)]="inputCatalog" (keydown.enter)="onChangeInputCatalog()" 
-              autocomplete="off" placeholder="Procurar por {{selectedTypeSearchCatalog}}">
+              autocomplete="off" placeholder="{{'Procurar por' | translate}} {{selectedTypeSearchCatalog}}">
             <button class="btn" type="submit" (click)="onChangeInputCatalog()"><i class="fas fa-search"></i></button>
           </div>
         </div>
@@ -60,7 +60,7 @@
     </div>
     <ng-template #notfoundCatalog>
       <div>
-        <p>A pesquisa por <span class="font-weight-bold">"{{inputCatalog}}"</span> não obteve resultados. Por favor, faça nova
+        <p translate>A pesquisa por <span class="font-weight-bold">"{{inputCatalog}}"</span> não obteve resultados. Por favor, faça nova
           pesquisa.</p>
       </div>
     </ng-template>
