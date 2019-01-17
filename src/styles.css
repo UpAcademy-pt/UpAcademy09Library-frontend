@@ -2,3 +2,22 @@
 body{
     background-color: #fffdf8;
 }
+
+.tooltip.bottom .tooltip-arrow {
+
+ 
+    border: 1px solid #e0e0e0;
+  
+    width: 10px;
+    height: 10px;
+    border-bottom-color: white;
+    background-color: white;
+  }
+  
+
+  
+  .tooltip-inner {
+    border: 1px solid #ddd;
+    background-color: #fff;
+    color : #666;
+  }

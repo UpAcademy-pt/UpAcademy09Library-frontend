@@ -1,7 +1,7 @@
 .card:hover{cursor: pointer}
 .card-footer:hover{background-color: rgba(224, 224, 224, 0.76)}
 
-:reservar{ cursor: pointer;
+.reservar{ cursor: pointer;
     transition: color 150ms ease-in-out, background-color 150ms ease-in-out, transform 150ms ease-in-out;
     outline: 0;}
 .reservar:hover{ color:red;} 

@@ -148,9 +148,8 @@ this.router.navigate(['bookdetails', item.id]);
 
     console.log(this.history);
 
-
-    var h = { historyBook: { id: item.id }, historyUser: { id: this.user.id } }
-    this.dataservice.cancelReserveBookService(h).subscribe(
+  
+    this.dataservice.cancelReserveBookService(this.user.id, item.id).subscribe(
       (res) => {
         this.updateData();
         console.log("OK")

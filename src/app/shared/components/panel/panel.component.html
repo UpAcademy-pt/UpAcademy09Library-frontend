@@ -39,44 +39,41 @@
       <hr>
     </div>
 
-    <div class="row">
+    <div class=" text-center">
 
-      <div class="col-3"></div>
-      <div class="col-3" *ngIf="itemInFav(item)">
-        <button type="button" id="like-button" [ngClass]="{'selected': true}" (click)="delFav(item)">
-          <svg class="heart-icon " xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-            <path d="M91.6 13A28.7 28.7 0 0 0 51 13l-1 1-1-1A28.7 28.7 0 0 0 8.4 53.8l1 1L50 95.3l40.5-40.6 1-1a28.6 28.6 0 0 0 0-40.6z" /></svg>
-          Favorito
-        </button>
-      </div>
-      <div class="col-3" *ngIf="!itemInFav(item)">
-        <button type="button" id="like-button" [ngClass]="{'selected': false }" class="" (click)="addFav(item)">
-          <svg class="heart-icon " xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-            <path d="M91.6 13A28.7 28.7 0 0 0 51 13l-1 1-1-1A28.7 28.7 0 0 0 8.4 53.8l1 1L50 95.3l40.5-40.6 1-1a28.6 28.6 0 0 0 0-40.6z" /></svg>
-          Favoritos
-        </button>
-      </div>
-      <div *ngIf="item.state==='available'" class="col-6">
-        <button type="button" [ngClass]="{'selected': false }" id="like-button" class="" (click)="reservar(item)"
-          (click)="css2()">
-          <svg class="heart-icon"></svg>
-          Reservar
-        </button>
-      </div>
+      <button *ngIf="itemInFav(item)" type="button" id="like-button" [ngClass]="{'selected': true}" class="m-2" (click)="delFav(item)">
+        <svg class="heart-icon " xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+          <path d="M91.6 13A28.7 28.7 0 0 0 51 13l-1 1-1-1A28.7 28.7 0 0 0 8.4 53.8l1 1L50 95.3l40.5-40.6 1-1a28.6 28.6 0 0 0 0-40.6z" /></svg>
+        Favorito
+      </button>
 
-      <div *ngIf="item.state==='reserved'" class="col-6">
-        <button type="button" [ngClass]="{'selected': true }" id="like-button" class="" (click)="cancelarReserva(item)">
-          <svg class="heart-icon"></svg>
-          Reservado
-        </button>
+      <button *ngIf="!itemInFav(item)" type="button" id="like-button" [ngClass]="{'selected': false }" class="m-2" (click)="addFav(item)">
+        <svg class="heart-icon " xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+          <path d="M91.6 13A28.7 28.7 0 0 0 51 13l-1 1-1-1A28.7 28.7 0 0 0 8.4 53.8l1 1L50 95.3l40.5-40.6 1-1a28.6 28.6 0 0 0 0-40.6z" /></svg>
+        Favoritos
+      </button>
 
-      </div>
-      <div *ngIf="item.state==='inUse'" class="col-6">
-        <button type="button" [ngClass]="{'selected': true }" id="like-button" class="" (click)="cancelarReserva(item)">
-          <svg class="heart-icon"></svg>
-          Reservado
-        </button>
-      </div>
+
+      <button *ngIf="item.state==='available'" type="button" [ngClass]="{'selected': false }"  id="like-button" class="m-2"
+        (click)="reservar(item)" (click)="css2()">
+        <svg class="heart-icon"></svg>
+        Reservar
+      </button>
+
+
+      <button *ngIf="item.state==='reserved'" type="button" [ngClass]="{'selected': true }" tooltip="remover reserva" containerClass="customClass" placement="top"
+        id="like-button" class="m-2" (click)="cancelarReserva(item)">
+        <svg class="heart-icon"></svg>
+        Reservado
+      </button>
+
+
+      <button *ngIf="item.state==='inUse'" type="button" [ngClass]="{'selected': true }" id="like-button" class="m-2"
+        (click)="cancelarReserva(item)">
+        <svg class="heart-icon"></svg>
+        Reservado
+      </button>
+
       <!-- <div  *ngIf="item.state==='available'"><img class="reservar" (click)="reservar(item)" src="/assets/bookEmpty.png" ></div>
          <div *ngIf="item.state==='reserved'"><img class="reservar float-right" (click)="reservar(item)" style="float:right" src="/assets/bookFull.png" ></div>
         <div *ngIf="item.state==='reserved'"><img  (mouseover)="hover=true" class="reservar float-right"(click)="addFav(item)" src="/assets/heartfull.png" ></div> -->

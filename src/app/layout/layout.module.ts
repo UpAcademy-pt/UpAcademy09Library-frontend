@@ -25,7 +25,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import { BookDetailsAdminComponent } from './book-details-admin/book-details-admin.component';
 import {NgxPrintModule} from 'ngx-print';
 import { TranslateModule } from '@ngx-translate/core';
-
+import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
 import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
 import { BookAdminComponent } from './admin/catalog-admin/book-admin/book-admin.component';
 import { DeleteComponent } from './admin/catalog-admin/delete/delete.component';
@@ -101,6 +101,8 @@ import { UserDetailComponent } from './admin/user-admin/user-detail/user-detail.
     TooltipModule.forRoot(),
     TypeaheadModule.forRoot(),
 
+
+    ProgressbarModule.forRoot(),
     // print
     NgxPrintModule,
     TranslateModule

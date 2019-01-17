@@ -23,11 +23,21 @@ export class PersonalComponent implements OnInit {
   alterouPassword: Boolean;
   submitedFormPassword: Boolean;
   historyUser: Object;
+  booksInUser:any;
  fav;
+   // pagination
+   page = 1;
+
+
+   max: number = 8;
+   showWarning: boolean;
+   dynamic: number=1;
+   type: string;
   
   constructor(
     private dataService: DataService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    public router: Router
   ) {
     this.history = dataService.history$;
 
@@ -45,7 +55,7 @@ export class PersonalComponent implements OnInit {
  this.id=this.route.snapshot.paramMap.get('id');
  this.dataService.getUserHistoryService(Number(this.id));
 this.fav=this.dataService.getAllFavoritesServices(Number(this.id));
-   
+   this.booksInUser=this.dataService.getBookWithUserService(Number(this.id));
   console.log(this.fav);
  
   }
