@@ -13,7 +13,9 @@ import { BookDetailsComponent } from './book-details/book-details.component';
 import { AuthGuard } from '../shared/guards';
 import { PersonalComponent } from './personal/personal.component';
 import { BookDetailsAdminComponent } from './book-details-admin/book-details-admin.component';
-import { UserDetailAdminComponent } from './user-detail-admin/user-detail-admin.component';
+import { BookAdminComponent } from './admin/catalog-admin/book-admin/book-admin.component';
+import { UserAdminComponent } from './admin/user-admin/user-admin.component';
+import { UserDetailComponent } from './admin/user-admin/user-detail/user-detail.component';
 
 const routes: Routes = [
     {
@@ -31,8 +33,8 @@ const routes: Routes = [
             { path: 'register', component: RegisterComponent},
             { path: 'notfound', component: NotfoundComponent },
             { path: 'bookdetails/:id', component: BookDetailsComponent },
-            { path: 'bookdetailsadmin/:id', component: BookDetailsAdminComponent },
-            { path: 'userdetailadmin/:id', component: UserDetailAdminComponent },
+            { path: 'bookadmin/:id', component: BookAdminComponent },
+            { path: 'useradmin/:id', component: UserDetailComponent },
             { path: '**', redirectTo: 'notfound' }
 
         ]

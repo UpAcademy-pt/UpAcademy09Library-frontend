@@ -180,21 +180,25 @@ export class DataService {
     return this.acountApi.updateUser(id, user);
   }
 
+  /*PRIVILEGES OF USER --- Sem subscribe não funciona ---*/
+
   // change privileges
   public changePrivilegesServices(id) {
-    console.log("data id: " + id);
-    this.acountApi.changePrivilegesUser(id);
+    return this.acountApi.changePrivilegesUser(id).subscribe(
+      (res) => { console.log('OK'); },
+      error => { console.error(error); });
   }
-
   // disable user
   public disableServices(id) {
-    console.log("data id: " + id);
-    this.acountApi.disableUser(id);
+    return this.acountApi.disableUser(id).subscribe(
+      (res) => { console.log('OK'); },
+      error => { console.error(error); });
   }
   // reactive user
   public reactivateServices(id) {
-    console.log("data id: " + id);
-    this.acountApi.reactivateUser(id);
+    return this.acountApi.reactivateUser(id).subscribe(
+      (res) => { console.log('OK'); },
+      error => { console.error(error); });
   }
 
   // add to Favorite -- TESTAR COM URGÊNCIA --- é a maneira que encontrei para enviar dois objectos

@@ -14,7 +14,7 @@ import { FormsModule } from '@angular/forms';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-import { BsDropdownModule, PaginationModule, TooltipModule } from 'ngx-bootstrap';
+import { BsDropdownModule, PaginationModule, TooltipModule, ModalModule } from 'ngx-bootstrap';
 import { FilterPipe } from '../shared/components/filter/filter.pipe';
 import { PanelComponent } from '../shared/components/panel/panel.component';
 import { BookDetailsComponent } from './book-details/book-details.component';
@@ -23,11 +23,22 @@ import { FilterUserPipe } from '../shared/components/filter/filter-user.pipe';
 import { PersonalComponent } from './personal/personal.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { BookDetailsAdminComponent } from './book-details-admin/book-details-admin.component';
-import { UserDetailAdminComponent } from './user-detail-admin/user-detail-admin.component';
 import {NgxPrintModule} from 'ngx-print';
 import { TranslateModule } from '@ngx-translate/core';
 
 import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
+import { BookAdminComponent } from './admin/catalog-admin/book-admin/book-admin.component';
+import { DeleteComponent } from './admin/catalog-admin/delete/delete.component';
+import { CatalogAdminComponent } from './admin/catalog-admin/catalog-admin.component';
+import { AddBookComponent } from './admin/catalog-admin/add-book/add-book.component';
+import { UpdateBookComponent } from './admin/catalog-admin/update-book/update-book.component';
+import { HistoryAdminComponent } from './admin/history-admin/history-admin.component';
+import { AnalyzeComponent } from './admin/history-admin/analyze/analyze.component';
+import { DevolutionComponent } from './admin/history-admin/devolution/devolution.component';
+import { RequestComponent } from './admin/history-admin/request/request.component';
+import { UserAdminComponent } from './admin/user-admin/user-admin.component';
+import { PrivilegesComponent } from './admin/user-admin/privileges/privileges.component';
+import { UserDetailComponent } from './admin/user-admin/user-detail/user-detail.component';
 
 
 @NgModule({
@@ -56,8 +67,19 @@ import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
     FilterUserPipe,
     PersonalComponent,
     BookDetailsAdminComponent,
-    UserDetailAdminComponent,
-    AdminHistoryComponent
+    AdminHistoryComponent,
+    CatalogAdminComponent,
+    BookAdminComponent,
+    DeleteComponent,
+    AddBookComponent,
+    UpdateBookComponent,
+    HistoryAdminComponent,
+    AnalyzeComponent,
+    DevolutionComponent,
+    RequestComponent,
+    UserAdminComponent,
+    PrivilegesComponent,
+    UserDetailComponent
   ],
 
   imports: [
@@ -65,6 +87,7 @@ import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
     LayoutRoutingModule,
     // modal
     FormsModule,
+    ModalModule.forRoot(),
     // search
     Ng2SearchPipeModule,
     // dropdown

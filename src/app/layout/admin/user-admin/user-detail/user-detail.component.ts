@@ -1,15 +1,15 @@
-import { Component, OnInit, Input, OnDestroy, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { DataService } from 'src/app/shared';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
-import { Subscription } from 'rxjs';
 
 @Component({
-  selector: 'app-user-detail-admin',
-  templateUrl: './user-detail-admin.component.html',
-  styleUrls: ['./user-detail-admin.component.css']
+  selector: 'app-user-detail',
+  templateUrl: './user-detail.component.html',
+  styleUrls: ['./user-detail.component.css']
 })
-export class UserDetailAdminComponent implements OnInit, OnDestroy {
+export class UserDetailComponent implements OnInit, OnDestroy {
 
   // Variables
   user: any;
@@ -36,27 +36,6 @@ export class UserDetailAdminComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
-  }
-
-  // Give Book to User
-  public pickUpBook(history) {
-    this.dataService.pickupBookService(history.historyBook);
-  }
-  // receive Book from User
-  public deliverBook(history) {
-    this.dataService.deliverBookService(history.historyBook);
-  }
-
-  public changePrivileges(id) {
-    this.dataService.changePrivilegesServices(id);
-  }
-
-  public disable(id) {
-    this.dataService.disableServices(id);
-  }
-
-  public reactivate(id) {
-    this.dataService.reactivateServices(id);
   }
 
   // falta por a ir para a última tab

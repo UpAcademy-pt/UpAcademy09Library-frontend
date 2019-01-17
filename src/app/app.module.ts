@@ -21,7 +21,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ModalModule.forRoot(),
     HttpClientModule,
     TranslateModule.forRoot({
       loader: {

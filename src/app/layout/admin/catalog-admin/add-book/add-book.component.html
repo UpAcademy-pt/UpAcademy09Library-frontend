@@ -1,0 +1,44 @@
+<a class="btn" (click)="openModal(template)" tooltip="Adicionar Livro" placement="top"><img src="/assets/addBooks.png"></a>
+
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left" translate>Adicionar livros</h4>
+    <button type="button" class="close pull-right" aria-label="Close" required (click)="modalRef.hide(); onClose();">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form #f="ngForm">
+      <div class="form-group">
+        <label class="required" for="title" translate>Título</label>
+        <input type="text" class="form-control" typeaheadOptionField="title" [typeaheadAsync]="true" [typeahead]="dataSource"
+          name="title" (typeaheadOnSelect)="typeaheadOnSelect($event)" (input)="getBookInfoGoogleApi()" [(ngModel)]="catalog.title"
+          required>
+        <select *ngFor="let row of title$ | async " (click)="clickItem(row)">
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="required" for="description" translate>Descriçāo</label>
+        <textarea type="input" class="form-control" name="description" [(ngModel)]="catalog.description" required></textarea>
+      </div>
+      <div class="form-group">
+        <label class="required" for="author" translate>Autor</label>
+        <input type="text" class="form-control" name="author" [(ngModel)]="catalog.author" required>
+      </div>
+      <div class="form-group">
+        <label class="required" for="author" translate>Tema</label>
+        <input type="text" class="form-control" name="topic" [(ngModel)]="catalog.topic" required>
+      </div>
+      <div class="form-group">
+        <label class="required" for="author" translate>Localizaçāo</label>
+        <input type="text" class="form-control" name="location" [(ngModel)]="catalog.location" required>
+      </div>
+      <div class="form-group">
+        <label class="required" for="author">ISBN</label>
+        <input type="number" class="form-control" name="isbn" [(ngModel)]="catalog.isbn" required>
+      </div>
+      <button type="submit" (click)="onSubmit()" (click)="modalRef.hide()" [disabled]="f.invalid" class="btn btn-success"
+        translate>Adicionar</button>
+    </form>
+  </div>
+</ng-template>

@@ -1,5 +1,4 @@
 <h2>{{ 'detalheLivros.p1' | translate }}</h2>
-
 <div class="card">
   <div class="card-body">
     <div class="row ">
@@ -18,7 +17,7 @@
   </div>
   <div class="row  align-self-center">
     <div class="col-md-12">
-      <app-update [catalogdetail]='catalog'></app-update>
+      <app-update-book [catalogdetail]='catalog'></app-update-book>
       <a (click)="deleteCatalog(catalog.id)" class="btn" tooltip="Eliminar Livro" placement="top"><img src="/assets/delete.png"></a>
     </div>
   </div>

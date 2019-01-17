@@ -1,7 +1,7 @@
 <tabset>
   <tab heading="Gestão de Requisições" translate>
     <br>
-    <app-admin-history></app-admin-history>
+    <app-history-admin></app-history-admin>
   </tab>
   <tab id="users-admin" heading="Gestão de Utilizadores" translate>
       <br>
@@ -23,7 +23,7 @@
       </div>
       <br>
     <div *ngIf="(searchUser$ | async)?.length > 0; else notfoundUser">
-      <app-admin-management [user$]='searchUser$'></app-admin-management>
+      <app-user-admin [user$]='searchUser$'></app-user-admin>
     </div>
     <ng-template #notfoundUser>
       <div>
@@ -55,8 +55,8 @@
     </div>
     <br>
     <div *ngIf="(searchCatalog$ | async)?.length > 0; else notfoundCatalog">
-      <app-table [isBook]="true" [catalog$]='searchCatalog$'></app-table>
-      <app-add></app-add>
+      <app-catalog-admin [catalog$]='searchCatalog$'></app-catalog-admin>
+      <app-add-book></app-add-book>
     </div>
     <ng-template #notfoundCatalog>
       <div>

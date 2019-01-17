@@ -1,0 +1,37 @@
+table {
+    width: 100%;
+  }
+  .mat-sort-header-container {
+    align-items: center;
+  }
+
+  /* https://foundation.zurb.com/sites/docs/pagination.html */
+
+/*https://github.com/michaelbromley/ngx-pagination*/
+
+.my-paginationUser /deep/ .ngx-pagination .current {
+  background: #33444d;
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 1.2rem;
+}
+
+.my-paginationUser /deep/ .ngx-pagination .container {
+  border: none;
+  color: black;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 1.2rem;
+}
+
+.my-paginationUser /deep/ .ngx-pagination .disabled {
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 1.2rem;
+}
