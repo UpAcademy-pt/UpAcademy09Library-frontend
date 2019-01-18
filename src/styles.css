@@ -21,3 +21,10 @@ body{
     background-color: #fff;
     color : #666;
   }
+
+  * {
+    font-family: 'Montserrat', sans-serif; 
+    font-family: 'Slabo 27px', serif;
+    font-family: 'Muli', sans-serif;
+    font-family: 'Nunito', sans-serif;
+   }

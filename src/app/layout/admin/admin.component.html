@@ -14,7 +14,7 @@
                   <option value="nip" translate>NIP</option>
               </select>
               <input class="form-control" type="text" name="search1" [(ngModel)]="inputUser" (keydown.enter)="onChangeInputUser()" 
-                autocomplete="off" placeholder="{{'Procurar por' | translate}} {{selectedTypeSearchUser}}">
+                autocomplete="off" placeholder="{{'Procurar por' | translate}} {{selectedTypeSearchUser}}" (ngModelChange)="loadUserAfterSearch($event)">
               <button class="btn" type="submit" (click)="onChangeInputUser()"><i class="fas fa-search"></i></button>
             </div>
           </div>
@@ -25,7 +25,7 @@
       <app-user-admin [user$]='searchUser$'></app-user-admin>
     </div>
     <ng-template #notfoundUser>
-      <div>
+      <div *ngIf="inputUser !== ''">
         <p translate>A pesquisa por <span class="font-weight-bold">"{{inputUser}}"</span> não obteve resultados. Por favor, faça nova
           pesquisa.</p>
       </div>
