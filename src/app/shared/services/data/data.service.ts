@@ -76,12 +76,8 @@ export class DataService {
     }
   }
 
-  public getCatalogId(id) {
-    this.catalogApi.getCatalogById(id).subscribe(
-      (res: any) => {
-        this.catalog = res;
-      }
-    );
+  public getCatalogIdService(id) {
+    return this.catalogApi.getCatalogById(id);
   }
 
   // Get all available books

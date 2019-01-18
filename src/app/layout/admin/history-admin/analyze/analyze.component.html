@@ -7,8 +7,8 @@
             <th translate>Livros a recolher</th>
             <th translate>Localização</th>
           </thead>
-          <tbody *ngFor="let book of array(history)">
-            <tr *ngIf="book.reservationDate && !book.deliveryDate">
+          <tbody *ngFor="let book of historyRequest$ | async">
+            <tr *ngIf="book.reservationDate && !book.pickupDate">
               <td><a class="btn" (click)="clickBook(book.historyBook)">{{book.historyBook.title}}</a></td>
               <td><a class="btn" (click)="clickBook(book.historyBook)">{{book.historyBook.location}}</a></td>
             </tr>
@@ -24,9 +24,9 @@
             <thead>
               <th translate>Livros mais reservados</th>
             </thead>
-            <tbody *ngFor="let bookId of mostRead; let i = index">
-              <tr *ngIf="i<5">
-                <td><a class="btn" (click)="clickBookMustRead(bookId)"> {{bookId}}</a></td>
+            <tbody *ngFor="let book of highestToReturn$ | async">
+              <tr>
+                <td><a class="btn" (click)="clickBook(book)">{{book.title}}</a></td>
               </tr>
             </tbody>
           </table>

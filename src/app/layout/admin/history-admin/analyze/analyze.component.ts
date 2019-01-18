@@ -1,8 +1,7 @@
-import { Component, OnInit, Input, TemplateRef, OnDestroy } from '@angular/core';
-import { BsModalRef, BsModalService } from 'ngx-bootstrap';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { DataService } from 'src/app/shared';
 import { Router } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { Subscription, ReplaySubject } from 'rxjs';
 
 @Component({
   selector: 'app-analyze',
@@ -10,58 +9,60 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./analyze.component.css']
 })
 export class AnalyzeComponent implements OnInit, OnDestroy {
-
-  @Input() catalog$: any;
-  user: any;
+  @Input() historyRequest$: any;
   history: any;
   subscription: Subscription;
-  modalRef: BsModalRef;
-  mostRead: any;
+  highestToReturn$: ReplaySubject<any[]> = new ReplaySubject(1);
 
 
-  constructor(private modalService: BsModalService, private dataService: DataService, public router: Router) {
-    this.history = dataService.history$;
-  }
+  constructor(private dataService: DataService, public router: Router) { }
 
   ngOnInit() {
-    // mudar isto quando houver query geral
-    this.subscription = this.dataService.getHistoryService().subscribe((data) => {
-      this.history = data;
-      this.mostRead = this.getHighest();
-    });
-    return history;
+    // se eu não subsescrever ao data service aqui , o resto do código do history não funciona
+    this.subscription = this.dataService.getHistoryService().subscribe(
+      (res) => {
+        this.history = res;
+        this.getHighest();
+      },
+      error => { console.error(error); });
   }
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
-  // para não dar erro na consola porcausa dos ngfor
-  public array(val) {
-    return Array.from(val);
-  }
+
   /* MUDAR PARA ISBN */
   public getHighest() {
     const highest = {};
+    const highestToReturn = [];
     this.history.forEach(history => {
       highest[history.historyBook.id] = (highest[history.historyBook.id] || 0) + 1;
     });
-    console.log(highest);
-    return Object.keys(highest);
+    const highestToReturnMax = Object.keys(highest);
+    let index = 0;
+    while (index < 5) {
+      this.getBook(Number(highestToReturnMax[index])).subscribe(
+        (res) => {
+          highestToReturn.push(res);
+        }
+      );
+      index++;
+    }
+    setTimeout(() => {
+      console.log('highestToReturn : ', highestToReturn, typeof highestToReturn);
+      this.highestToReturn$.next(highestToReturn);
+    }, 1000);
   }
 
-  // public getBook(item) {
-  //   console.log(this.dataService.getCatalogId(item));
-  //   this.dataService.getCatalogId(item);
-  // }
+  public getBook(item) {
+    return this.dataService.getCatalogIdService(item);
+  }
 
   clickBook(item) {
     this.router.navigate(['bookadmin', item.id]);
   }
   // este book é o id -- porque as keys ho highest são os id's dos livros
   clickBookMustRead(book) {
-    this.router.navigate(['bookadmin', book]);
-  }
-  openModal(template: TemplateRef<any>) {
-    this.modalRef = this.modalService.show(template);
+    this.router.navigate(['bookadmin', book.id]);
   }
 }
