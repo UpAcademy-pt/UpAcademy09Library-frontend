@@ -14,6 +14,15 @@ export class PanelComponent implements OnInit {
   public catalog$: ReplaySubject<any[]> = new ReplaySubject(1);
   public user$: ReplaySubject<any[]> = new ReplaySubject(1);
   public history$: ReplaySubject<any[]> = new ReplaySubject(1);
+  public searchCatalog$: ReplaySubject<any[]> = new ReplaySubject(1);
+
+
+  selectedTypeSearchCatalog = 'keyword';
+
+  selectedTypeSearchOutput = 'Palavra-Chave';
+
+  inputCatalog: any;
+
   user: User = new User();
   userid: string;
   history: History = new History();
@@ -22,10 +31,12 @@ export class PanelComponent implements OnInit {
   selR = false;
   
 
-  // filter var
-  selectedTypeSearch: string = '';
-  searchableList: string;
+
+  
+ 
   favoritos: any[] = []
+
+
   constructor(
     private dataservice: DataService,
     private acountApi: AcountApiService,
@@ -33,13 +44,13 @@ export class PanelComponent implements OnInit {
   ) {
 
 
-    this.catalog$ = this.dataservice.catalog$;
+    this.searchCatalog$ = this.dataservice.catalog$;
   }
 
   ngOnInit() {
     this.updateData();
     this.updateUser();
-
+   
     this.userid = this.acountApi.getCurrentId();
     this.acountApi.getAllFavourites(+this.userid).subscribe((favoritos: any[]) => {
       this.favoritos = favoritos;
@@ -48,7 +59,7 @@ export class PanelComponent implements OnInit {
 
     })
 
-    this.catalog$.subscribe((a: any[]) => {
+    this.searchCatalog$.subscribe((a: any[]) => {
       this.livros = a;
     }, (error) => {
       console.log(error);
@@ -72,7 +83,17 @@ export class PanelComponent implements OnInit {
     return result.length > 0 ? true : false;
   }
 
- 
+  onChangeInputCatalog() {
+    this.searchCatalog$ = this.dataservice.queryCatalog(this.selectedTypeSearchCatalog, this.inputCatalog);
+console.log(this.inputCatalog);
+console.log(this.selectedTypeSearchCatalog);
+  }
+
+     // search type
+     selectChangeHandler(event: any) {
+      this.selectedTypeSearchCatalog = event.target.value;
+    
+    }
   public getBooksSameIsbn(item) {
     var resultAux=[]
     var result={stateAvailable:[],stateOthers:[]}
@@ -96,14 +117,9 @@ export class PanelComponent implements OnInit {
 
   }
 
-  // search type
-  selectChangeHandler(event: any) {
-    // search selected
-    this.selectedTypeSearch = event.target.value;
-    // search Type to FilterPipe
-    return this.searchableList = this.selectedTypeSearch;
-  }
 
+
+ 
   clickItem(item) {
   
 this.router.navigate(['bookdetails', item.id]);
@@ -187,6 +203,7 @@ this.router.navigate(['bookdetails', item.id]);
 
 
   }
+
 
 
 }
