@@ -87,6 +87,12 @@ export class CatalogApiService {
   }
 
 
+
+  
+  // GET Catalog by isbn
+  public getCatalogIsbn() {
+    return this.http.get(apiUrl + 'getallbooksbyisbn');
+  }
 }
 
 

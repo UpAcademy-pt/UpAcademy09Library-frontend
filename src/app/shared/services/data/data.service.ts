@@ -33,8 +33,9 @@ export class DataService {
   public searchUser$: ReplaySubject<any[]> = new ReplaySubject(1);
 
   constructor(private catalogApi: CatalogApiService, private acountApi: AcountApiService, private historyApi: HistoryApiService) {
-    this.getCatalog();
+    this.getCatalogByIsbn();
     this.getUsers();
+    console.log( this.getCatalogByIsbn());
   }
 
   /* BOOKS DATA LOGIC*/
@@ -47,6 +48,16 @@ export class DataService {
       }
     );
   }
+  public getCatalogByIsbn() {
+    this.catalogApi.getCatalogIsbn().subscribe(
+      (res: any) => {
+        this.catalog = res;
+        this.catalog$.next(res);
+      }
+    );return this.catalog$;
+  }
+
+ 
   public createCatalog(catalog) {
     this.catalogApi.createBook(catalog).subscribe(
       (res) => {

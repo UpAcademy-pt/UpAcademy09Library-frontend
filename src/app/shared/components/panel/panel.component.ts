@@ -44,7 +44,7 @@ export class PanelComponent implements OnInit {
   ) {
 
 
-    this.searchCatalog$ = this.dataservice.catalog$;
+    this.searchCatalog$ = this.dataservice.getCatalogByIsbn();
   }
 
   ngOnInit() {
@@ -68,7 +68,7 @@ export class PanelComponent implements OnInit {
   }
 
   updateData() {
-    this.dataservice.getCatalog();
+    this.dataservice.getCatalogByIsbn();
   }
 
   updateUser() {

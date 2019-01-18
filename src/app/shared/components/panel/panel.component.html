@@ -24,18 +24,18 @@
 <div class="card mb-3" *ngFor="let item of searchCatalog$ | async ">
 
   <div class="card-body" (click)="clickItem(item)">
-    <h5 class="card-title"><b>{{item.title}}</b>, {{item.author}}</h5>
-    <p class="card-text"><b>Descrição:</b> {{item.description}}</p>
-    <div [ngSwitch]="item.state">
-      <p *ngSwitchCase="'available'" class="card-text "><b>Estado:</b>Disponivel</p>
-      <p *ngSwitchCase="'reserved'" class="card-text "><b>Estado:</b>Indisponivel</p>
-      <p *ngSwitchCase="'inUse'" class="card-text "><b>Estado:</b>Indisponivel</p>
-
+    <div *ngIf="item.availableBooksWithThisIsbn.length >0">
+        <h5 class="card-title"><b>{{item.availableBooksWithThisIsbn[0].title}}</b>, {{item.availableBooksWithThisIsbn[0].author}}</h5>
+        <p class="card-text"><b>Descrição:</b> {{item.availableBooksWithThisIsbn[0].description}}</p>
+    
+    </div>
+    <div *ngIf="item.availableBooksWithThisIsbn.length == 0">
+        <h5 class="card-title"><b>{{item.unavailableBooksWithThisIsbn[0].title}}</b>, {{item.unavailableBooksWithThisIsbn[0].author}}</h5>
+        <p class="card-text"><b>Descrição:</b> {{item.unavailableBooksWithThisIsbn[0].description}}</p>    
     </div>
     <div>
-      <img *ngFor="let item of getBooksSameIsbn(item).stateOthers" src="/assets/indis.png" style="margin-right:-1.2vw;">
-
-      <img *ngFor="let item of getBooksSameIsbn(item).stateAvailable" src="/assets/dis.png" style="margin-right:-1.2vw;">
+      <img *ngFor="let item of item.unavailableBooksWithThisIsbn" src="/assets/indis.png" style="margin-right:-1.2vw;">
+      <img *ngFor="let item of item.availableBooksWithThisIsbn" src="/assets/dis.png" style="margin-right:-1.2vw;">
     </div>
     <hr>
   </div>
@@ -56,8 +56,8 @@
     </button>
 
 
-    <button *ngIf="item.state==='available'" type="button" [ngClass]="{'selected': false }" id="like-button" class="m-2"
-      (click)="reservar(item)" (click)="css2()">
+    <button *ngIf="item.availableBooksWithThisIsbn.length >0" type="button" [ngClass]="{'selected': false }" id="like-button" class="m-2"
+      (click)="reservar(item.availableBooksWithThisIsbn[0])" (click)="css2()">
       <svg class="heart-icon"></svg>
       Reservar
     </button>
