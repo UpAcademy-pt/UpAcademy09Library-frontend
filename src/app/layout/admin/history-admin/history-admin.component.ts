@@ -1,6 +1,4 @@
-import { Component, OnInit, Input} from '@angular/core';
-import { Subscription } from 'rxjs';
-import { DataService } from 'src/app/shared';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -9,14 +7,15 @@ import { Router } from '@angular/router';
   styleUrls: ['./history-admin.component.css']
 })
 export class HistoryAdminComponent implements OnInit {
-  // Injection
+
   @Input() history$: any;
-  // Variables
   history: any;
-  subscription: Subscription;
 
-  constructor(private dataService: DataService, public router: Router) {}
+  constructor(public router: Router) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.history = this.history$;
+    return this.history;
+  }
 
 }

@@ -1,32 +1,31 @@
-<br>
-      <table class="table table-hover" [ngClass]='theme'>
-        <thead>
-          <th translate>Titulo</th>
-          <th translate>Autor</th>
-          <th translate>Utilizador</th>
-          <th translate>Data de levantamento</th>
-          <th></th>
-        </thead>
-        <tbody *ngFor="let book of history">
-          <tr *ngIf="!book.deliveryDate && book.pickupDate">
-            <td><a class="btn" (click)="clickBook(book.historyBook)">{{book.historyBook.title}}</a></td>
-            <td><a class="btn" (click)="clickBook(book.historyBook)">{{book.historyBook.author}}</a></td>
-            <td><a class="btn" (click)="clickUser(book.historyUser)">{{book.historyUser.email}}</a></td>
-            <td>{{book.pickupDate | date:"M/d/yy, h:mm a"}}</td>
-            <td class="btn" tooltip="Receber livro do utilizador" placement="top" (click)="openModal(receive)"><img src="/assets/receive.png"></td>
-          </tr>
-          <ng-template class="modal rounded-0" #receive>
-            <div class="modal-header">
-              <p class="modal-title" translate>Confirmar devolução:</p>
-            </div>
-            <div class="modal-body">
-              <p class="btn" (click)="clickBook(book.historyBook)">{{ 'livro' | translate }}: {{book.historyBook.title}}</p>
-              <p class="btn" (click)="clickUser(book.historyUser)">{{ 'User' | translate }}: {{book.historyUser.email}}</p>
-            </div>
-            <div>
-              <a class="btn" (click)="deliverBook(book)" (click)="modalRef.hide()"><img src="assets/give.png"></a>
-              <a class="btn" (click)="modalRef.hide()"><img src="assets/delete.png"></a>
-            </div>
-          </ng-template>
-        </tbody>
-      </table>
+<table class="table table-hover" [ngClass]='theme'>
+  <thead>
+    <th translate>Titulo</th>
+    <th translate>Autor</th>
+    <th translate>Utilizador</th>
+    <th translate>Data de levantamento</th>
+    <th></th>
+  </thead>
+  <tbody *ngFor="let book of historyRequest$ | async">
+    <tr *ngIf="!book.deliveryDate && book.pickupDate">
+      <td><a class="btn" (click)="clickBook(book.historyBook)">{{book.historyBook.title}}</a></td>
+      <td><a class="btn" (click)="clickBook(book.historyBook)">{{book.historyBook.author}}</a></td>
+      <td><a class="btn" (click)="clickUser(book.historyUser)">{{book.historyUser.email}}</a></td>
+      <td>{{book.pickupDate | date:"M/d/yy, h:mm a"}}</td>
+      <td class="btn" tooltip="Receber livro do utilizador" placement="top" (click)="openModal(receive)"><img src="/assets/receive.png"></td>
+    </tr>
+    <ng-template class="modal rounded-0" #receive>
+      <div class="modal-header">
+        <p class="modal-title" translate>Confirmar devolução:</p>
+      </div>
+      <div class="modal-body">
+        <p class="btn" (click)="clickBook(book.historyBook)">{{ 'livro' | translate }}: {{book.historyBook.title}}</p>
+        <p class="btn" (click)="clickUser(book.historyUser)">{{ 'User' | translate }}: {{book.historyUser.email}}</p>
+      </div>
+      <div>
+        <a class="btn" (keydown.enter)="onSubmit(book);modalRef.hide()" (click)="modalRef.hide();onSubmit(book)"><img src="assets/give.png"></a>
+        <a class="btn" (click)="modalRef.hide()"><img src="assets/delete.png"></a>
+      </div>
+    </ng-template>
+  </tbody>
+</table>

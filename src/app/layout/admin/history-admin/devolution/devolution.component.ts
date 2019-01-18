@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, TemplateRef } from '@angular/core';
+import { Component, OnInit, TemplateRef, Input } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap';
 import { DataService } from 'src/app/shared';
@@ -10,23 +10,29 @@ import { Router } from '@angular/router';
   styleUrls: ['./devolution.component.css']
 })
 export class DevolutionComponent implements OnInit {
-  // Injection
-  @Input() historyInjection: any;
-  // Variables
+  @Input() historyRequest$: any;
   history: any;
   bookToDeliver: History;
   subscription: Subscription;
   modalRef: BsModalRef;
 
-  constructor(private modalService: BsModalService, private dataService: DataService, public router: Router) { }
+  constructor(private modalService: BsModalService, private dataService: DataService, public router: Router) {}
 
-  ngOnInit() {
-    this.history = this.historyInjection;
+  ngOnInit() {}
+
+  onSubmit(history) {
+    console.log(history);
+    this.deliverBook(history);
   }
 
-  // receive Book from User
+  // Give Book to User
   public deliverBook(history) {
-    this.dataService.deliverBookService(history.historyBook);
+    this.dataService.deliverBookService(history.historyBook).subscribe(
+      (res) => {
+        this.historyRequest$ = this.dataService.getHistoryService();
+        console.log(res);
+      },
+      error => { console.error(error); });
   }
 
   clickUser(item) {
@@ -35,11 +41,8 @@ export class DevolutionComponent implements OnInit {
   clickBook(item) {
     this.router.navigate(['bookadmin', item.id]);
   }
-  clickBookMustRead(book) {
-    this.router.navigate(['bookadmin', book]);
-  }
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
   }
-
 }
+

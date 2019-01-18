@@ -1,6 +1,14 @@
-<tabset>
-  <tab id="request" heading="{{ 'adminHistory.H2' | translate }}"><app-request [historyInjection]='history$'></app-request></tab>
-  <!-- <tab id="devolution" heading="{{ 'adminHistory.H1' | translate }}"><app-devolution [historyInjection]='history'></app-devolution></tab> -->
-  <!-- Tentar colocar quantos livros devemos receber hoje e entregar! explorar estatistica -->
-  <!-- <tab id="analyze"heading="{{ 'adminHistory.H3' | translate }}"><app-analyze [historyInjection]='history'></app-analyze></tab> -->
+<tabset >
+  <tab id="request" heading="{{ 'adminHistory.H2' | translate }}">
+    <br>
+    <app-request [historyRequest$]='history'></app-request>
+  </tab>
+  <tab id="devolution" heading="{{ 'adminHistory.H1' | translate }}">
+    <br>
+    <app-devolution [historyRequest$]='history'></app-devolution>
+  </tab>
+  <tab id="analyze" heading="{{ 'adminHistory.H3' | translate }}">
+    <br>
+    <app-analyze></app-analyze>
+  </tab>
 </tabset>

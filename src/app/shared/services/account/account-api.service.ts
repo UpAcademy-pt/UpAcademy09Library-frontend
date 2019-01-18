@@ -92,7 +92,7 @@ export class AcountApiService {
    return this.http.put(apiUrl + '/reactivateuser/' + id, null);
   }
 
-  // add to Favorite ---- TESTAR COM URGÊNCIA --- é a maneira que encontrei para enviar dois objectos --- SENÃO DER É PRECISO QUERYPARAM?
+  // add to Favorite
   public addBookToFavourites(userID: number, bookID: number) {
     return this.http.post(apiUrl + '/addfavourite?userId=' + userID + '&bookId=' + bookID, null);
   }
@@ -126,6 +126,4 @@ export class AcountApiService {
     return this.http.get(apiUrl + '/findby/email/?email=' + email);
   }
 
-
- 
 }

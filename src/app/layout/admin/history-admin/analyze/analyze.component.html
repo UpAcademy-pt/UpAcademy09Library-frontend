@@ -1,4 +1,3 @@
-<br>
 <div class="container">
   <div class="row">
     <div class="col">
@@ -8,7 +7,7 @@
             <th translate>Livros a recolher</th>
             <th translate>Localização</th>
           </thead>
-          <tbody *ngFor="let book of history">
+          <tbody *ngFor="let book of array(history)">
             <tr *ngIf="book.reservationDate && !book.deliveryDate">
               <td><a class="btn" (click)="clickBook(book.historyBook)">{{book.historyBook.title}}</a></td>
               <td><a class="btn" (click)="clickBook(book.historyBook)">{{book.historyBook.location}}</a></td>

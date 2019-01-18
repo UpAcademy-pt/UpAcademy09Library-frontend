@@ -33,7 +33,7 @@ export class AdminComponent implements OnInit {
     this.searchCatalog$ = this.dataService.catalog$;
     this.user$ = this.dataService.user$;
     this.searchUser$ = this.dataService.user$;
-    this.history$ = this.dataService.user$;
+    this.history$ = this.dataService.history$;
   }
 
   ngOnInit() {

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, TemplateRef } from '@angular/core';
+import { Component, OnInit, Input, TemplateRef} from '@angular/core';
 import { Subscription } from 'rxjs';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap';
 import { DataService } from 'src/app/shared';
@@ -10,48 +10,39 @@ import { Router } from '@angular/router';
   templateUrl: './request.component.html',
   styleUrls: ['./request.component.css']
 })
-export class RequestComponent implements OnInit {
 
-  // Injection
-  @Input() historyInjection: any;
-  // Variables
+export class RequestComponent implements OnInit {
+  @Input() historyRequest$: any;
   history: any;
   bookToPickup: History;
   subscription: Subscription;
   modalRef: BsModalRef;
 
+  constructor(private modalService: BsModalService, private dataService: DataService, public router: Router) { }
 
-  constructor(private modalService: BsModalService, private dataService: DataService, public router: Router) {  }
+  ngOnInit() {}
 
-  ngOnInit() {
-    this.history = this.historyInjection.subscribe((data) => {
-      this.history = data;
-    });
-    return history;
-  }
-
-   // para não dar erro na consola porcausa dos ngfor
-   public array(val) {
-    return Array.from(val);
+  onSubmit(history) {
+    console.log(history);
+    this.pickUpBook(history);
   }
 
   // Give Book to User
   public pickUpBook(history) {
-    this.dataService.pickupBookService(history.historyBook);
+    this.dataService.pickupBookService(history.historyBook).subscribe(
+      (res) => {
+        this.historyRequest$ = this.dataService.getHistoryService();
+        console.log(res);
+      },
+      error => { console.error(error); });
   }
-
   clickUser(item) {
     this.router.navigate(['useradmin', item.id]);
   }
   clickBook(item) {
     this.router.navigate(['bookadmin', item.id]);
   }
-  clickBookMustRead(book) {
-    this.router.navigate(['bookadmin', book]);
+  openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template);
   }
-
-  openModal(modal: TemplateRef<any>) {
-    this.modalRef = this.modalService.show(modal);
-  }
-
 }

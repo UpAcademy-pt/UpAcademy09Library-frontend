@@ -2,10 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ContactComponent } from './contact/contact.component';
 import { AboutComponent } from './about/about.component';
-import { AdminComponent } from './admin/admin.component';
 import { UserComponent } from './user/user.component';
 import { LayoutComponent } from './layout.component';
-import { LayoutRoutingModule } from './layout-routing.module';
+import { LayoutRoutingModule, ADMIN_COMPONENTS } from './layout-routing.module';
 import { HomeComponent } from './home/home.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 // tslint:disable-next-line:max-line-length
@@ -27,28 +26,14 @@ import {NgxPrintModule} from 'ngx-print';
 import { TranslateModule } from '@ngx-translate/core';
 import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
 import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
-import { BookAdminComponent } from './admin/catalog-admin/book-admin/book-admin.component';
-import { DeleteComponent } from './admin/catalog-admin/delete/delete.component';
-import { CatalogAdminComponent } from './admin/catalog-admin/catalog-admin.component';
-import { AddBookComponent } from './admin/catalog-admin/add-book/add-book.component';
-import { UpdateBookComponent } from './admin/catalog-admin/update-book/update-book.component';
-import { HistoryAdminComponent } from './admin/history-admin/history-admin.component';
-import { AnalyzeComponent } from './admin/history-admin/analyze/analyze.component';
-import { DevolutionComponent } from './admin/history-admin/devolution/devolution.component';
-import { RequestComponent } from './admin/history-admin/request/request.component';
-import { UserAdminComponent } from './admin/user-admin/user-admin.component';
-import { UserDetailComponent } from './admin/user-admin/user-detail/user-detail.component';
-import { DisableComponent } from './admin/user-admin/disable/disable.component';
-import { ReactiveComponent } from './admin/user-admin/reactive/reactive.component';
-import { AdminPrivilegesComponent } from './admin/user-admin/admin-privileges/admin-privileges.component';
 
 
 @NgModule({
   declarations: [
+    ...ADMIN_COMPONENTS,
     // layout
     ContactComponent,
     AboutComponent,
-    AdminComponent,
     UserComponent,
     LayoutComponent,
     HomeComponent,
@@ -70,20 +55,6 @@ import { AdminPrivilegesComponent } from './admin/user-admin/admin-privileges/ad
     PersonalComponent,
     BookDetailsAdminComponent,
     AdminHistoryComponent,
-    CatalogAdminComponent,
-    BookAdminComponent,
-    DeleteComponent,
-    AddBookComponent,
-    UpdateBookComponent,
-    HistoryAdminComponent,
-    AnalyzeComponent,
-    DevolutionComponent,
-    RequestComponent,
-    UserAdminComponent,
-    UserDetailComponent,
-    DisableComponent,
-    ReactiveComponent,
-    AdminPrivilegesComponent
   ],
 
   imports: [
@@ -104,8 +75,6 @@ import { AdminPrivilegesComponent } from './admin/user-admin/admin-privileges/ad
     // tooltip
     TooltipModule.forRoot(),
     TypeaheadModule.forRoot(),
-
-
     ProgressbarModule.forRoot(),
     // print
     NgxPrintModule,
@@ -113,3 +82,5 @@ import { AdminPrivilegesComponent } from './admin/user-admin/admin-privileges/ad
   ]
 })
 export class LayoutModule { }
+
+

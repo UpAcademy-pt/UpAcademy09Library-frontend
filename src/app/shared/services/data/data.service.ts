@@ -84,7 +84,7 @@ export class DataService {
     );
   }
 
-  //Get all available books
+  // Get all available books
   public getAvailableBooksService() {
     return this.catalogApi.getAvailableBooks();
   }
@@ -170,7 +170,7 @@ export class DataService {
     );
   }
 
-  //create users
+  // create users
   public createUser(user) {
     return this.acountApi.createUser(user);
   }
@@ -195,7 +195,7 @@ export class DataService {
     return this.acountApi.reactivateUser(id);
   }
 
-  // add to Favorite -- TESTAR COM URGÊNCIA --- é a maneira que encontrei para enviar dois objectos
+  // add to Favorite
   public addFavoritesServices(userID: number, bookID: number) {
     return this.acountApi.addBookToFavourites(userID, bookID);
   }
@@ -208,11 +208,11 @@ export class DataService {
   public getAllFavoritesServices(userID: number) {
     return this.acountApi.getAllFavourites(userID);
   }
-  //Find By Id ???
+  // Find By Id ???
   public queryUserIDServices(userID) {
     this.acountApi.queryUserID(userID).subscribe(
       (res: any) => {
-        console.log("OK");
+        console.log('OK');
         this.user$.next(res);
         console.log(this.user$);
       }
@@ -260,7 +260,7 @@ export class DataService {
 
   // cancel book reserve
   public cancelReserveBookService(userID: number, bookID: number) {
-    return this.historyApi.cancelReservation(userID,bookID);
+    return this.historyApi.cancelReservation(userID, bookID);
   }
 
   // Pickup book
