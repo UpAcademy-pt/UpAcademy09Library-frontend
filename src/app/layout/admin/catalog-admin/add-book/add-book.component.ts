@@ -27,6 +27,7 @@ export class AddBookComponent implements OnInit {
     this.modalRef = this.modalService.show(template);
   }
 
+  // Persist the book in Database
   onSubmit() {
     this.dataService.createCatalog(this.catalog);
   }
@@ -43,6 +44,7 @@ export class AddBookComponent implements OnInit {
     }
   }
 
+  // Create the book
   onClose() {
     this.catalog.title = '';
     this.catalog.description = '';
@@ -52,6 +54,7 @@ export class AddBookComponent implements OnInit {
     this.catalog.isbn = '';
   }
 
+  // Get from google Api
   public getBookInfoGoogleApi() {
     console.log(this.catalog.title);
     console.log(this.typeaheadSelected);

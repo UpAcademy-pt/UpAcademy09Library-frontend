@@ -49,7 +49,6 @@ export class AnalyzeComponent implements OnInit, OnDestroy {
       index++;
     }
     setTimeout(() => {
-      console.log('highestToReturn : ', highestToReturn, typeof highestToReturn);
       this.highestToReturn$.next(highestToReturn);
     }, 1000);
   }
