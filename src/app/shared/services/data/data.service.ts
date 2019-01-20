@@ -142,9 +142,17 @@ export class DataService {
     return this.searchCatalog$;
   }
 
-  public getBookInfoGogleApi(insertedTitle) {
-    return this.catalogApi.getBookInfoGogleApi(insertedTitle);
+  public getBookInfoGoogleApi(insertedTitle) {
+    return this.catalogApi.getBookInfoGoogleApi(insertedTitle);
   }
+
+  public getBookIsbnGoogleApi(isbn) {
+    return this.catalogApi.getBookIsbnGoogleApi(isbn);
+  }
+  public getBookAuthorGoogleApi(isbn) {
+    return this.catalogApi.getBookAuthorGoogleApi(String(isbn));
+  }
+
 
   /* USERS DATA LOGIC*/
 

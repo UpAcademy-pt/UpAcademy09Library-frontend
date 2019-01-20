@@ -81,11 +81,20 @@ export class CatalogApiService {
     return this.http.get(apiUrl + 'getallavailablebooks');
   }
 
-  // Get remaining book info from google API
-  public getBookInfoGogleApi(insertedTitle: string) {
-    return this.http.get('https://www.googleapis.com/books/v1/volumes?q=intitle:' + insertedTitle);
+  // Get remaining book info from google API by Title
+  public getBookInfoGoogleApi(insertedTitle: string) {
+    return this.http.get('https://www.googleapis.com/books/v1/volumes?q=intitle:' + insertedTitle + '&orderBy=relevance');
+  }
+  // Get remaining book info from google API by ISBN
+  public getBookIsbnGoogleApi(isbn: number) {
+    return this.http.get('https://www.googleapis.com/books/v1/volumes?q=isbn:' + isbn);
+  }
+   // Get remaining book info from google API by Author
+   public getBookAuthorGoogleApi(author: string) {
+    return this.http.get('https://www.googleapis.com/books/v1/volumes?q=inauthor:' + author + '&orderBy=relevance');
   }
 
+  
 
 
   

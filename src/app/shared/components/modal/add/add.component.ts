@@ -24,58 +24,58 @@ export class AddComponent implements OnInit {
 
   ngOnInit() { }
 
-  openModal(template: TemplateRef<any>) {
-    this.modalRef = this.modalService.show(template);
-  }
+  // openModal(template: TemplateRef<any>) {
+  //   this.modalRef = this.modalService.show(template);
+  // }
 
-  onSubmit() {
-    this.dataService.createCatalog(this.catalog);
-  }
+  // onSubmit() {
+  //   this.dataService.createCatalog(this.catalog);
+  // }
 
 
-  typeaheadOnSelect(e: TypeaheadMatch): void {
-    this.typeaheadSelected = true;
-    console.log('Selected value: ', e);
-    this.catalog.description = e.item.description;
-    // this.catalog.author = e.item.authors;
-    this.catalog.author = e.item.authors[0];
+  // typeaheadOnSelect(e: TypeaheadMatch): void {
+  //   this.typeaheadSelected = true;
+  //   console.log('Selected value: ', e);
+  //   this.catalog.description = e.item.description;
+  //   // this.catalog.author = e.item.authors;
+  //   this.catalog.author = e.item.authors[0];
     
-    this.catalog.topic = e.item.categories[0];
-    if (e.item.industryIdentifiers[1])
-      this.catalog.isbn = e.item.industryIdentifiers[1].identifier;
-  }
+  //   this.catalog.topic = e.item.categories[0];
+  //   if (e.item.industryIdentifiers[1])
+  //     this.catalog.isbn = e.item.industryIdentifiers[1].identifier;
+  // }
 
-  onClose() {
-    this.catalog.title = '';
-    this.catalog.description = '';
-    this.catalog.author = '';
-    this.catalog.topic = '';
-    this.catalog.location = '';
-    this.catalog.isbn = '';
-  }
+  // onClose() {
+  //   this.catalog.title = '';
+  //   this.catalog.description = '';
+  //   this.catalog.author = '';
+  //   this.catalog.topic = '';
+  //   this.catalog.location = '';
+  //   this.catalog.isbn = '';
+  // }
 
-  public getBookInfoGoogleApi() {
-    console.log(this.catalog.title);
-    console.log(this.typeaheadSelected);
+  // public getBookInfoGoogleApi() {
+  //   console.log(this.catalog.title);
+  //   console.log(this.typeaheadSelected);
 
-      this.dataService.getBookInfoGogleApi(this.catalog.title).subscribe(
-        (res: any) => {
-          var bookList = [];
-          for (let i = 0; i < res.items.length; i++) {
-            console.log("ola");
-            bookList.push(res.items[i].volumeInfo)
-          }
-          this.livrosInput = bookList
-          this.dataSource.next(bookList);
-        },
-        error => {
-          console.error(error);
-        });
-  }
+  //     this.dataService.getBookInfoGoogleApi(this.catalog.title).subscribe(
+  //       (res: any) => {
+  //         var bookList = [];
+  //         for (let i = 0; i < res.items.length; i++) {
+  //           console.log("ola");
+  //           bookList.push(res.items[i].volumeInfo)
+  //         }
+  //         this.livrosInput = bookList
+  //         this.dataSource.next(bookList);
+  //       },
+  //       error => {
+  //         console.error(error);
+  //       });
+  // }
 
 
-  public clickItem() {
+  // public clickItem() {
 
-  }
-  //POR AQUI FUNÇÃO QUE PROCURE OS DADOS DO LIVRO PARA O QUAL SE INSERIU o TITULO
+  // }
+  // //POR AQUI FUNÇÃO QUE PROCURE OS DADOS DO LIVRO PARA O QUAL SE INSERIU o TITULO
 }
