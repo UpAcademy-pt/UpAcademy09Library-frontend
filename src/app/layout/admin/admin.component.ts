@@ -49,14 +49,10 @@ export class AdminComponent implements OnInit {
     this.selectedTypeSearchUser = event.target.value;
   }
 
-  loadUserAfterSearch(input: string) {
-    if (input === '') {
-      this.onChangeInputUser();
-    }
+  loadUserAfterSearch() {
+    this.searchUser$ = this.user$;
   }
-  loadCatalogAfterSearch(input: string) {
-    if (input === '') {
-      this.searchCatalog$ = this.catalog$;
-    }
-  }
+  loadCatalogAfterSearch() {
+        this.searchCatalog$ = this.catalog$;
+}
 }
