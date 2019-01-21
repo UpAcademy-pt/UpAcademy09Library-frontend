@@ -5,6 +5,10 @@ input.ng-invalid.ng-touched{
 .required:after {
     content:' *'; 
     color: red;
-  }
+}
+
+.container {
+    padding-top: 10vh;
+}
 
   

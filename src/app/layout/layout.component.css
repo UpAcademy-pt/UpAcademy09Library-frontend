@@ -1,5 +1,4 @@
-.container {
-    padding-top: 10vh;
-    padding-bottom: 10vh;
-    min-height: 81vh;
+.fullH {
+    padding-top: 1rem;
+    min-height: 100vh;
 }

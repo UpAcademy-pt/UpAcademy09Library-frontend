@@ -1,4 +1,4 @@
-import { UserComponent } from './user/user.component';
+
 import { AdminComponent } from './admin/admin.component';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
@@ -27,6 +27,7 @@ import { RequestComponent } from './admin/history-admin/request/request.componen
 import { DisableComponent } from './admin/user-admin/disable/disable.component';
 import { ReactiveComponent } from './admin/user-admin/reactive/reactive.component';
 import { AdminPrivilegesComponent } from './admin/user-admin/admin-privileges/admin-privileges.component';
+import { AuthenticatedComponent } from './authenticated/authenticated.component';
 
 const routes: Routes = [
     {
@@ -35,7 +36,7 @@ const routes: Routes = [
         children: [
             { path: '', redirectTo: 'home' },
             { path: 'home', component: HomeComponent },
-            { path: 'user', component: UserComponent, canActivate: [AuthGuard] },
+            { path: 'user', component: AuthenticatedComponent, canActivate: [AuthGuard] },
             { path: 'admin', component: AdminComponent, canActivate: [AuthGuard] },
             { path: 'about', component: AboutComponent },
             { path: 'contact', component: ContactComponent },
