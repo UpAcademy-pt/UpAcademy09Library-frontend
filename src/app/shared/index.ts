@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { HeaderComponent, FooterComponent, TableComponent, AddComponent, UpdateComponent, AdminManagementComponent } from './components';
+import { HeaderComponent, FooterComponent } from './components';
 import { DataService, CatalogApiService, AcountApiService, HistoryApiService } from './services';
 
 
@@ -13,10 +13,6 @@ export class SharedModule {
                 //component
                 HeaderComponent,
                 FooterComponent,
-                TableComponent,
-                AddComponent,
-                UpdateComponent,
-                AdminManagementComponent,
                 //services
                 DataService,
                 CatalogApiService,

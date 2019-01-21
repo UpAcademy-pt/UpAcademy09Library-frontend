@@ -7,20 +7,17 @@ import { LayoutRoutingModule, ADMIN_COMPONENTS } from './layout-routing.module';
 import { HomeComponent } from './home/home.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 // tslint:disable-next-line:max-line-length
-import { HeaderComponent, FooterComponent, TableComponent, AddComponent, UpdateComponent, AdminManagementComponent, AdminHistoryComponent } from '../shared';
+import { HeaderComponent, FooterComponent } from '../shared';
 import { FormsModule } from '@angular/forms';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { BsDropdownModule, PaginationModule, TooltipModule, ModalModule, CollapseModule } from 'ngx-bootstrap';
-import { FilterPipe } from '../shared/components/filter/filter.pipe';
 
 import { BookDetailsComponent } from './book-details/book-details.component';
 import { TabsModule } from 'ngx-bootstrap';
-import { FilterUserPipe } from '../shared/components/filter/filter-user.pipe';
 import { PersonalComponent } from './personal/personal.component';
 import { NgxPaginationModule } from 'ngx-pagination';
-import { BookDetailsAdminComponent } from './book-details-admin/book-details-admin.component';
 import { NgxPrintModule } from 'ngx-print';
 import { TranslateModule } from '@ngx-translate/core';
 import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
@@ -45,22 +42,14 @@ import { AuthenticatedComponent } from './authenticated/authenticated.component'
     // shared components
     HeaderComponent,
     FooterComponent,
-    TableComponent,
-    AdminManagementComponent,
     // shared modal
-    AddComponent,
-    UpdateComponent,
     LoginComponent,
     RegisterComponent,
-    FilterPipe,
-    FilterUserPipe,
-    BookDetailsAdminComponent,
-    AdminHistoryComponent,
     SearchComponent,
     //
     // UserComponent,
     BookDetailsComponent,
-    //PanelComponent,
+    // PanelComponent,
     PersonalComponent,
     CardsComponent
   ],
@@ -92,5 +81,3 @@ import { AuthenticatedComponent } from './authenticated/authenticated.component'
   ]
 })
 export class LayoutModule { }
-
-
