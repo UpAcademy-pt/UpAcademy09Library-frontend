@@ -86,7 +86,13 @@ export class DataService {
       }
     }
   }
-
+  public getCatalogIsbn(isbn) {
+    for (const item of this.catalog) {
+      if (item.isbn === isbn) {
+        return item;
+      }
+    }
+  }
   public getCatalogIdService(id) {
     return this.catalogApi.getCatalogById(id);
   }
@@ -203,13 +209,13 @@ export class DataService {
   }
 
   // add to Favorite
-  public addFavoritesServices(userID: number, bookID: number) {
-    return this.acountApi.addBookToFavourites(userID, bookID);
+  public addFavoritesServices(userID: number, bookIsbn: any) {
+    return this.acountApi.addBookToFavourites(userID, bookIsbn);
   }
 
   // remove from favorite
-  public removeFavoritesServices(userID: number, bookID: number) {
-    return  this.acountApi.removeFavourite(userID, bookID);
+  public removeFavoritesServices(userID: number,  isbn: any) {
+    return  this.acountApi.removeFavourite(userID, isbn);
   }
   // get all favorites
   public getAllFavoritesServices(userID: number) {

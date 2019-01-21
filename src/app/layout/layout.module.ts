@@ -26,7 +26,7 @@ import {NgxPrintModule} from 'ngx-print';
 import { TranslateModule } from '@ngx-translate/core';
 import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
 import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
-
+import { RatingModule } from 'ngx-bootstrap/rating';
 
 @NgModule({
   declarations: [
@@ -76,6 +76,7 @@ import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
     TooltipModule.forRoot(),
     TypeaheadModule.forRoot(),
     ProgressbarModule.forRoot(),
+    RatingModule.forRoot(),
     // print
     NgxPrintModule,
     TranslateModule

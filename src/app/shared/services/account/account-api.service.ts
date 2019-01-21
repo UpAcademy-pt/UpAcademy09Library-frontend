@@ -93,13 +93,13 @@ export class AcountApiService {
   }
 
   // add to Favorite
-  public addBookToFavourites(userID: number, bookID: number) {
-    return this.http.post(apiUrl + '/addfavourite?userId=' + userID + '&bookId=' + bookID, null);
+  public addBookToFavourites(userID: number, bookIsbn: any) {
+    return this.http.post(apiUrl + '/addfavourite?userId=' + userID + '&bookIsbn=' + bookIsbn, null);
   }
 
   // remove from favorite
-  public removeFavourite(userID: number, bookID: number) {
-    return this.http.delete(apiUrl + '/removefavourite?userId=' + userID + '&bookId=' + bookID);
+  public removeFavourite(userID: number, isbn: any) {
+    return this.http.delete(apiUrl + '/removefavourite?userId=' + userID + '&isbn=' + isbn);
   }
   // get all favorites
   public getAllFavourites(userID: number) {

@@ -29,7 +29,7 @@ export class PanelComponent implements OnInit {
   livros: any;
   set = false;
   selR = false;
-  
+  livro:any;
 
 
   
@@ -78,7 +78,7 @@ export class PanelComponent implements OnInit {
   itemInFav(item) {
 
     var result = this.favoritos.filter((favorito) => {
-      return item.id === favorito.id
+      return item === favorito.isbn
     })
     return result.length > 0 ? true : false;
   }
@@ -122,7 +122,8 @@ console.log(this.selectedTypeSearchCatalog);
  
   clickItem(item) {
   
-this.router.navigate(['bookdetails', item.id]);
+this.router.navigate(['bookdetails', item.isbn]);
+console.log(item);
   }
 
   // changeImg(image:any){
@@ -178,21 +179,21 @@ this.router.navigate(['bookdetails', item.id]);
   addFav(item) {
 
     var user2 = Number(this.userid);
-    var bookId = item.id;
-    this.dataservice.addFavoritesServices(user2, bookId).subscribe(
+
+    this.dataservice.addFavoritesServices(user2, item).subscribe(
       (res) => {
         this.updateUser();
         console.log("OK")
       },
       error => { console.error(error) });
 
-    console.log(this.user);
+    console.log(item);
   }
   delFav(item) {
 
     var user2 = Number(this.userid);
     var bookId = item.id;
-    this.dataservice.removeFavoritesServices(user2, bookId).subscribe(
+    this.dataservice.removeFavoritesServices(user2, item).subscribe(
 
       (res) => {
         this.updateUser();
