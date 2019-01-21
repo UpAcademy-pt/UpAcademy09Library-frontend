@@ -12,7 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-import { BsDropdownModule, PaginationModule, TooltipModule, ModalModule } from 'ngx-bootstrap';
+import { BsDropdownModule, PaginationModule, TooltipModule, ModalModule, CollapseModule } from 'ngx-bootstrap';
 import { FilterPipe } from '../shared/components/filter/filter.pipe';
 
 import { BookDetailsComponent } from './book-details/book-details.component';
@@ -66,6 +66,7 @@ import { AuthenticatedComponent } from './authenticated/authenticated.component'
   ],
 
   imports: [
+    CollapseModule.forRoot(),
     CommonModule,
     LayoutRoutingModule,
     // modal

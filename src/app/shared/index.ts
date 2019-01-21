@@ -5,8 +5,8 @@ import { DataService, CatalogApiService, AcountApiService, HistoryApiService } f
 
 
 @NgModule({})
-export class SharedModule{
-    static forRoot(){
+export class SharedModule {
+    static forRoot() {
         return {
             NgModule: SharedModule,
             providers: [
@@ -23,7 +23,7 @@ export class SharedModule{
                 AcountApiService,
                 HistoryApiService
             ]
-        }
+        };
     }
 }
 
