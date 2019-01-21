@@ -2,6 +2,12 @@ input.ng-invalid.ng-touched{
     border: 1px solid red;
 }
 
+.container{
+
+  padding-top: 5vh;
+  padding-bottom: 10vh;
+
+}
 
 .my-paginationUser /deep/ .ngx-pagination .current {
   background: #33444d;

@@ -4,7 +4,12 @@
     .btn{margin-left: 0;
     margin-right: 0
 }
+.container{
 
+    padding-top: 5vh;
+    padding-bottom: 10vh;
+  
+  }
 img{
     max-width: 225px;
 }

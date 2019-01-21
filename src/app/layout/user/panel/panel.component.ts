@@ -1,8 +1,12 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { DataService, AcountApiService } from '../../services';
+import { Component, OnInit, Output, EventEmitter, TemplateRef } from '@angular/core';
+
 import { ReplaySubject } from 'rxjs';
 import { Router } from '@angular/router';
-import { User, History } from '../../models';
+
+import { BsModalService, BsModalRef } from 'ngx-bootstrap';
+import { User , History} from 'src/app/shared/models';
+import { DataService } from 'src/app/shared/services/data/data.service';
+import { AcountApiService } from 'src/app/shared/services/account/account-api.service';
 
 
 @Component({
@@ -36,11 +40,12 @@ export class PanelComponent implements OnInit {
  
   favoritos: any[] = []
 
-
+  resModal: BsModalRef;
   constructor(
     private dataservice: DataService,
     private acountApi: AcountApiService,
-    private router: Router
+    private router: Router,
+    private modalService: BsModalService
   ) {
 
 
@@ -66,6 +71,13 @@ export class PanelComponent implements OnInit {
 
     })
   }
+
+
+
+  openModal(template: TemplateRef<any>) {
+    this.resModal = this.modalService.show(template);
+  }
+
 
   updateData() {
     this.dataservice.getCatalogByIsbn();

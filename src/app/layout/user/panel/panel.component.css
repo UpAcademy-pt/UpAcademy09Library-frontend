@@ -7,7 +7,12 @@
 .reservar:hover{ color:red;} 
 
 
+.container{
 
+  padding-top: 5vh;
+  padding-bottom: 10vh;
+
+}
 
 #like-button {
   color: #888;
