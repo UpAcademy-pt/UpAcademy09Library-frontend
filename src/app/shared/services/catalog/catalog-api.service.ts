@@ -21,6 +21,7 @@ export class CatalogApiService {
     return this.http.get(apiUrl);
   }
 
+
   // POST create a book to catalog
   public createBook(book: Catalog) {
     console.log('book : ', book);

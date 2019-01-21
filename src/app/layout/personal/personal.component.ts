@@ -28,10 +28,12 @@ export class PersonalComponent implements OnInit {
   // pagination
   page = 1;
 
-
+  date: Date = new Date();
+  
+  
   max: number = 8;
   showWarning: boolean;
-  dynamic: number = 1;
+  dynamic: number = 7;
   type: string;
 
   constructor(
@@ -56,8 +58,9 @@ export class PersonalComponent implements OnInit {
     this.id = this.route.snapshot.paramMap.get('id');
     this.dataService.getUserHistoryService(Number(this.id));
     this.fav = this.dataService.getAllFavoritesServices(Number(this.id));
+    
     this.booksInUser = this.dataService.getBookWithUserService(Number(this.id));
-    console.log(this.fav);
+ 
 
   }
   onSubmit() {
@@ -96,5 +99,9 @@ export class PersonalComponent implements OnInit {
       });
   }
 
+  dataEntrega(){
+    
+    this.date.setDate( this.date.getDate() + 8 );
+  }
 
 }

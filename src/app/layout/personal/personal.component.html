@@ -118,14 +118,14 @@
                 <tbody>
                         
                     <tr  *ngFor="let livro of booksInUser | async">
-                        <td>{{livro.title}}</td>
-                        <td>{{livro.author}}</td>
+                        <td>{{livro.historyBook.title}}</td>
+                        <td>{{livro.historyBook.author}}</td>
                         <td>
                             <progressbar [max]="max" [value]="dynamic" style="height:20px">
                                 <span class="text-nowrap">{{dynamic}} / {{max}}</span>
                             </progressbar>
                         </td>
-                        <td>{{livro.reservationDate | date:"M/d/yy, h:mm a"}}</td>
+                        <td>{{livro.pickupDate | date:"M/d/yy, h:mm a"}}</td>
                     </tr>
                 </tbody>
             </table>

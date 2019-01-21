@@ -15,7 +15,7 @@ export class BookDetailsAdminComponent implements OnInit {
 
     this.route.params.subscribe(
       params => {
-        this.catalog = this.dataService.getCatalogById(Number(params.id));
+        this.catalog = this.dataService.getCatalogById((params.id));
         console.log(this.catalog);
       });
   }

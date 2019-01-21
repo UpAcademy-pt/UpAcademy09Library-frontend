@@ -2,36 +2,56 @@
 
 <div class="card">
     <div class="card-body">
-        <div class="row ">
-         <div *ngIf="catalog.photoLink==null" class="col-md-4 text-center">
-             <img src="/assets/nocoverplaceholder.jpg">
-         </div>
-         <div  *ngIf="catalog.photoLink!==null" class="col-md-4 text-center">
-            <img src="{{catalog.photoLink}}">
-        </div>
-
-            <div class="col-md-8">
-
-                <h4 class="card-text">{{catalog.title}}, {{catalog.author}}</h4>
-                <p class="card-text">{{ 'categoria' | translate }}: {{catalog.topic}}</p>
-                <p class="card-text">{{ 'descricao' | translate }}: {{catalog.description}} </p>
-                <p class="card-text">{{ 'localizacao' | translate }}: {{catalog.location}} </p>
-                <p class="card-text">ISBN: {{catalog.isbn}} </p>
-                <div [ngSwitch]="catalog.state">
-                <p *ngSwitchCase="'available'" class="card-text">{{ 'estado' | translate }}: Disponivel</p>
-                <p *ngSwitchCase="'reserved'" class="card-text ">{{ 'estado' | translate }}: Indisponivel</p>
-                <p *ngSwitchCase="'inUse'" class="card-text ">{{ 'estado' | translate }}: Em uso</p> 
-             </div>
+        <div *ngIf="catalog.availableBooksWithThisIsbn.length >0" class="row ">
+            <div *ngIf="catalog.availableBooksWithThisIsbn[0].photoLink==null" class="col-md-4 text-center">
+                <img src="/assets/nocoverplaceholder.jpg">
+            </div>
+            <div *ngIf="catalog.availableBooksWithThisIsbn[0].photoLink!==null" class="col-md-4 text-center">
+                <img src="{{catalog.photoLink}}">
             </div>
 
-        </div>
-    </div>
-    <!-- <div class="card-footer text-center">
-            <div class="row ">  
-        <div class="col-md-6 btn">Voltar </div>
-        <div class="col-md-6 btn">Reservar</div>
 
-    </div> -->
-        <!-- </div> -->
-       
-</div> <img class="back"  src="/assets/back.png" routerLink="/user">
+            <div *ngIf="catalog.availableBooksWithThisIsbn.length >0" class="col-md-8">
+
+                <h4 class="card-text">{{catalog.availableBooksWithThisIsbn[0].title}},
+                    {{catalog.availableBooksWithThisIsbn[0].author}}</h4>
+                <p class="card-text">{{ 'categoria' | translate }}: {{catalog.availableBooksWithThisIsbn[0].topic}}</p>
+                <p class="card-text">{{ 'descricao' | translate }}:
+                    {{catalog.availableBooksWithThisIsbn[0].description}} </p>
+                <p class="card-text">{{ 'localizacao' | translate }}:
+                    {{catalog.availableBooksWithThisIsbn[0].location}} </p>
+                <p class="card-text">ISBN: {{catalog.isbn}} </p>
+
+                <p>Rate:  <rating  [max]="max" [readonly]="isReadonly" [(ngModel)]="catalog.availableBooksWithThisIsbn[0].rating"></rating></p>
+               
+                
+            </div>
+
+
+        </div>
+        <div *ngIf="catalog.availableBooksWithThisIsbn.length ==0" class="row ">
+            <div *ngIf="catalog.unavailableBooksWithThisIsbn[0].photoLink==null" class="col-md-4 text-center">
+                <img src="/assets/nocoverplaceholder.jpg">
+            </div>
+            <div *ngIf="catalog.unavailableBooksWithThisIsbn[0].photoLink!==null" class="col-md-4 text-center">
+                <img src="{{catalog.photoLink}}">
+            </div>
+            <div *ngIf="catalog.availableBooksWithThisIsbn.length ==0" class="col-md-8">
+
+                <h4 class="card-text">{{catalog.unavailableBooksWithThisIsbn[0].title}},
+                    {{catalog.unavailableBooksWithThisIsbn[0].author}}</h4>
+                <p class="card-text">{{ 'categoria' | translate }}:
+                    {{catalog.unavailableBooksWithThisIsbn[0].topic}}</p>
+                <p class="card-text">{{ 'descricao' | translate }}:
+                    {{catalog.unavailableBooksWithThisIsbn[0].description}} </p>
+                <p class="card-text">{{ 'localizacao' | translate }}:
+                    {{catalog.unavailableBooksWithThisIsbn[0].location}} </p>
+                <p class="card-text">ISBN: {{catalog.isbn}} </p>
+
+                <p>Rate: <rating [(ngModel)]="catalog.unavailableBooksWithThisIsbn[0].rating" [max]="max" [readonly]="isReadonly"></rating></p>
+            </div>
+        </div>
+
+    </div>
+</div>
+<img class="back" src="/assets/back.png" routerLink="/user">

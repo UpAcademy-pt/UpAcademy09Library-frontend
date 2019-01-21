@@ -43,7 +43,7 @@ const routes: Routes = [
             { path: 'personal/:id', component: PersonalComponent, canActivate: [AuthGuard] },
             { path: 'register', component: RegisterComponent },
             { path: 'notfound', component: NotfoundComponent },
-            { path: 'bookdetails/:id', component: BookDetailsComponent, canActivate: [AuthGuard] },
+            { path: 'bookdetails/:isbn', component: BookDetailsComponent, canActivate: [AuthGuard] },
             { path: 'bookadmin/:id', component: BookAdminComponent, canActivate: [AuthGuard, AdminGuard] },
             { path: 'useradmin/:id', component: UserDetailComponent, canActivate: [AuthGuard, AdminGuard] },
             { path: '**', redirectTo: 'notfound' }
