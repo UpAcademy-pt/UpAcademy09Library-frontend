@@ -1,4 +1,30 @@
-.fullH {
+/* .container {
+    padding-top: 10vh;
+    padding-bottom: 10vh;
+    min-height: 81vh;
+} */
+body {
+   margin:0;
+   padding:0;
+   height:100%;
+}
+ #container {
+    min-height:100%;
+    position:relative;
+ }
+ /* #header {
+    padding:10px;
+ } */
+ /* #body {
+    padding-bottom:60px; 
+ } */
+ /* #footer {
+    position:absolute;
+    bottom:0;
+    width:100%;
+    height:60px; 
+ } */
+ .fullH {
     padding-top: 1rem;
     min-height: 100vh;
 }

@@ -1,5 +1,12 @@
-<app-header [isLogged]="test"></app-header>
+<nav class="fixed-top">
+<app-header id="header" class="container" [isLogged]="test"></app-header>
+</nav>
+<---<section id="body">--->
 <section class="fullH">
   <router-outlet></router-outlet>
 </section>
-<app-footer></app-footer>
+<footer class="fixed-bottom">
+    <app-footer id="footer"></app-footer>
+</footer>
+
+

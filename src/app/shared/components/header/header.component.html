@@ -1,58 +1,53 @@
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <!-- Logotipo -->
   <div class="container">
     <a class="navbar-brand" routerLink="/home">Biblioteca Bocage</a>
-    <button class="navbar-toggler" type="button" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-controls="navbarResponsive"
-      aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarResponsive" [collapse]="!isCollapsed">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive" [collapse]="!isCollapsed">
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item" *ngIf="!(currentUser$ | async)?.id">
-          <a class="nav-item nav-link btn" (click)="openModal(login)">Login</a>
+        <!-- Login -->
+        <li class="nav-item active" *ngIf="!(currentUser$ | async)?.id">
+          <a class="nav-item nav-link btn" (click)="openModal(login)">Entrar
+            <span class="sr-only">(current)</span>
+          </a>
         </li>
-        <li class="nav-item" *ngIf="!(currentUser$ | async)?.id">
-          <a class="nav-item nav-link btn" href="#" [routerLinkActive]="['active']" routerLink="/register">{{ 'registe-se' | translate }}</a>
-        </li>
+        <!-- User -->
         <div class="btn-group" *ngIf="(currentUser$ | async)?.id && ((currentUser$ | async)?.admin === false)" dropdown>
           <li class="nav-item">
-            <a class="nav-item nav-link mr-2 catalogo btn" href="#" [routerLinkActive]="['active']" routerLink="/user">{{ 'catalogo' | translate }}</a>
+            <a class="nav-item nav-link mr-2 catalogo" href="#" routerLink="/user">{{ 'catalogo' | translate }}</a>
           </li>
           <li id="button-menu-dividers" href="#" dropdownToggle data-toggle="dropdown" class="nav-item nav-link btn btn-outline-secondary dropdown-toggle dropdown-toggle-split"
             aria-controls="dropdown-menu-dividers">
-            <img src="assets/avatar.png" alt="Avatar" class="avatar">
-            {{account.name}} <span class="caret"></span>
+            <img src="assets/avatar.png" alt="Avatar" class="avatar"> {{account.name}} <span class="caret"></span>
           </li>
           <ul id="dropdown-menu-dividers" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-menu-dividers">
-            <li role="menuitem"><a class="dropdown-item" href="#" [routerLinkActive]="['active']" routerLink="/personal/{{account.id}}">{{ 'areaPessoal' | translate }}</a></li>
+            <li role="menuitem"><a class="dropdown-item" href="#" routerLink="/personal/{{account.id}}">{{
+                'areaPessoal' | translate }}</a></li>
             <li class="divider dropdown-divider"></li>
-            <li role="menuitem"><a class="dropdown-item" href="#" [routerLinkActive]="['active']" routerLink="/home"
-                (click)="logout()">{{ 'sair' | translate }}</a>
-            </li>
+            <li role="menuitem"><a class="dropdown-item" href="#" routerLink="/home" (click)="logout()">{{ 'sair' |
+                translate }}</a></li>
           </ul>
         </div>
-        <li class="nav-item" *ngIf="(currentUser$ | async)?.admin">
-          <a class="nav-item nav-link" href="#" [routerLinkActive]="['active']" routerLink="/admin">
-            <img src="assets/avatar.png" alt="Avatar" class="avatar"> 
-            {{account.name}}  <span class="caret"></span></a>
-        </li>
-        <li class="nav-item" *ngIf="(currentUser$ | async)?.admin">
-          <a class="nav-item nav-link btn" href="#" [routerLinkActive]="['active']" routerLink="/home" (click)="logout()">{{ 'sair' | translate }}</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-item nav-link" (click)="changeLang('pt')">
-            <img src="assets/imgs/pt.png" alt="pt">
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-item nav-link" (click)="changeLang('en')">
-            <img src="assets/imgs/en.png" alt="en">
-          </a>
-        </li>
-
-
-
-
+        <!-- Admin -->
+        <div class="btn-group" *ngIf="(currentUser$ | async)?.admin" dropdown>
+          <li id="button-menu-dividers" href="#" dropdownToggle data-toggle="dropdown" class="nav-item nav-link btn btn-outline-secondary dropdown-toggle dropdown-toggle-split"
+            aria-controls="dropdown-menu-dividers">
+            <img src="assets/avatar.png" alt="Avatar" class="avatar"> {{account.name}} <span class="caret"></span>
+          </li>
+          <ul id="dropdown-menu-dividers" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-menu-dividers">
+            <li role="menuitem"><a class="dropdown-item" href="#" routerLink="/home" (click)="logout()">{{ 'sair' |
+                translate }}</a></li>
+          </ul>
+        </div>
+        <!-- Translate -->
+        <div class="btn-group">
+          <a class="nav-item nav-link btn" (click)="changeLang('pt')"><img src="assets/imgs/pt.png" alt="pt"></a>
+          <a class="nav-item nav-link btn" (click)="changeLang('en')"><img src="assets/imgs/en.png" alt="en"></a>
+        </div>
+        <!-- End Translate -->
       </ul>
     </div>
   </div>
@@ -69,22 +64,24 @@
     <form #f="ngForm" (keydown.enter)="loginUserNg()" (ngSubmit)="loginUserNg()">
       <div class="form-group">
         <label class="required" for="email">E-mail</label>
-        <input #email="ngModel" placeholder="{{ 'Introduza e-mail válido' | translate }}" ngModel email type="text" class="form-control"
-          name="email" [(ngModel)]="account.email" required>
+        <input #email="ngModel" placeholder="{{ 'Introduza e-mail válido' | translate }}" ngModel email type="text"
+          class="form-control" name="email" [(ngModel)]="account.email" required>
       </div>
       <div *ngIf="email.invalid && email.touched" class="alert alert-danger" role="alert">
-          {{ 'login.p1' | translate }}
+        {{ 'login.p1' | translate }}
       </div>
-
       <div class="form-group">
         <label class="required" for="password" translate>Palavra-passe</label>
-        <input #password="ngModel" ngModel placeholder="{{ 'Introduza Palavra-passe' | translate }}" type="password" class="form-control"
-          name="password" [(ngModel)]="account.password" required>
+        <input #password="ngModel" ngModel placeholder="{{ 'Introduza Palavra-passe' | translate }}" type="password"
+          class="form-control" name="password" [(ngModel)]="account.password" required>
       </div>
       <div *ngIf="msg!=undefined" class="alert alert-danger" role="alert">
         {{msg}}
       </div>
-      <button type="submit" (keydown.enter)="loginUserNg()" (click)="loginUserNg()" class="btn btn-success" [disabled]="f.invalid" translate> submeter</button>
+        <a class="nav-item nav-link" href="#" routerLink="/register" (click)="modalRef.hide(); onClose()">{{ 'registe-se' |
+          translate }}</a>
+      <button type="submit" (keydown.enter)="loginUserNg()" (click)="loginUserNg()" class="btn btn-success" [disabled]="f.invalid"
+        translate> submeter</button>
     </form>
   </div>
 </ng-template>
