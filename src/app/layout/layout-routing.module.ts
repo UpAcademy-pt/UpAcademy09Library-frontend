@@ -14,8 +14,8 @@ import { AuthGuard } from '../shared/guards';
 import { PersonalComponent } from './personal/personal.component';
 import { BookAdminComponent } from './admin/catalog-admin/book-admin/book-admin.component';
 import { UserAdminComponent } from './admin/user-admin/user-admin.component';
-import { UserDetailComponent } from './admin/user-admin/user-detail/user-detail.component';
 import { AdminGuard } from '../shared/guards/admin.guard';
+import { UserDetailComponent } from './admin/user-admin/user-detail/user-detail.component';
 import { CatalogAdminComponent } from './admin/catalog-admin/catalog-admin.component';
 import { AddBookComponent } from './admin/catalog-admin/add-book/add-book.component';
 import { UpdateBookComponent } from './admin/catalog-admin/update-book/update-book.component';
@@ -27,6 +27,7 @@ import { RequestComponent } from './admin/history-admin/request/request.componen
 import { DisableComponent } from './admin/user-admin/disable/disable.component';
 import { ReactiveComponent } from './admin/user-admin/reactive/reactive.component';
 import { AdminPrivilegesComponent } from './admin/user-admin/admin-privileges/admin-privileges.component';
+
 
 const routes: Routes = [
     {
