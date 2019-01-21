@@ -34,8 +34,7 @@
           </ul>
         </div>
         <!-- Admin -->
-        <div *ngIf="(currentUser$ | async)?.admin">
-          <li class="nav-item">
+          <li class="nav-item" *ngIf="(currentUser$ | async)?.admin">
             <a class="nav-item nav-link" href="#" [routerLinkActive]="['active']" routerLink="/admin">
               <img src="assets/avatar.png" alt="Avatar" class="avatar">
               {{account.name}} <span class="caret"></span></a>
@@ -44,7 +43,6 @@
             <a class="nav-item nav-link" href="#" [routerLinkActive]="['active']" routerLink="/home" (click)="logout()">{{
               'sair' | translate }}</a>
           </li>
-        </div>
         <!-- Translate -->
         <div class="btn-group">
           <a class="nav-item nav-link btn" (click)="changeLang('pt')"><img src="assets/imgs/pt.png" alt="pt"></a>
