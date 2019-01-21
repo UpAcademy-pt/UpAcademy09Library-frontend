@@ -1,9 +1,10 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { BsModalRef, BsModalService, TypeaheadMatch } from 'ngx-bootstrap';
 import { Catalog } from 'src/app/shared/models';
-import { ReplaySubject } from 'rxjs';
+import { ReplaySubject, observable } from 'rxjs';
 import { DataService } from 'src/app/shared';
 import { isNumber } from 'util';
+import { debounceTime } from 'rxjs/internal/operators/';
 
 @Component({
   selector: 'app-add-book',
@@ -18,6 +19,8 @@ export class AddBookComponent implements OnInit {
   dataSource: ReplaySubject<any> = new ReplaySubject<any>();
   isbnSource: ReplaySubject<any> = new ReplaySubject<any>();
   typeaheadSelected = false;
+  count: number;
+  input: ReplaySubject<any> = new ReplaySubject<any>();
 
   constructor(private modalService: BsModalService, private dataService: DataService) { }
 
@@ -28,12 +31,16 @@ export class AddBookComponent implements OnInit {
   }
 
   // Persist the book in Database
-  onSubmit(count) {
+  onSubmit() {
     let i = 0;
-    while (i < count) {
-      this.dataService.createCatalog(this.catalog);
+    while (i < this.count) {
+    this.dataService.createCatalog(this.catalog);
       i++;
     }
+    this.loadData();
+  }
+  loadData() {
+    this.dataService.getCatalogGroupedByIsbn();
   }
 
   typeaheadOnSelect(e: TypeaheadMatch): void {
@@ -78,12 +85,18 @@ export class AddBookComponent implements OnInit {
     this.catalog.photoLink = '';
   }
 
-  /*colocar um debounce, senão a api do google dá 403*/
+  // aplicar um throtle ou um debounce -- perguntar ao joao/nuno
+  public debounce() {
+      setTimeout(() => {
+      this.getBookInfoGoogleApi();
+    }, 1000);
+  }
 
   // Get from google Api by Title
   public getBookInfoGoogleApi() {
-    this.dataService.getBookInfoGoogleApi(this.catalog.title).subscribe(
+     this.dataService.getBookInfoGoogleApi(this.catalog.title).subscribe(
       (res: any) => {
+        console.log(res);
         const bookList = [];
         for (let i = 0; i < res.items.length; i++) {
           bookList.push(res.items[i].volumeInfo);
@@ -93,11 +106,12 @@ export class AddBookComponent implements OnInit {
       error => {
         console.error(error);
       });
+      return this.dataSource;
   }
 
   // Get from google Api by Isbn
   public getBookIsbnGoogleApi() {
-    this.dataService.getBookIsbnGoogleApi(this.catalog.isbn).subscribe(
+    this.dataService.getBookIsbnGoogleApi(this.catalog.isbn).pipe(debounceTime(500)).subscribe(
       (res: any) => {
         const bookList = [];
         for (let i = 0; i < res.items.length; i++) {

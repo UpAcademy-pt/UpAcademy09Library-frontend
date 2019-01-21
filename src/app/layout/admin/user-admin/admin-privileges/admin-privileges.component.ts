@@ -36,9 +36,8 @@ export class AdminPrivilegesComponent implements OnInit {
   // Admin User
   public admin(user) {
     this.user.admin = true;
-    this.user.active = true;
-    this.dataService.updateUserServices(user.id, user).subscribe(
-      (res) => { console.log('OK'); },
+    this.dataService.changePrivilegesServices(user.id).subscribe(
+      (res) => { console.log(res); },
       error => { console.error(error); });
   }
 }

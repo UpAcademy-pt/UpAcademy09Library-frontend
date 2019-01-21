@@ -28,26 +28,21 @@ export class AdminComponent implements OnInit {
   public history$: ReplaySubject<any[]> = new ReplaySubject(1);
 
   constructor(private dataService: DataService) {
-
-    this.catalog$ = this.dataService.catalog$;
-    this.searchCatalog$ = this.dataService.catalog$;
+    this.catalog$ = this.dataService.getCatalogGroupedByIsbn();
+    this.searchCatalog$ = this.catalog$;
     this.user$ = this.dataService.user$;
     this.searchUser$ = this.dataService.user$;
     this.history$ = this.dataService.history$;
   }
-
   ngOnInit() {
   }
 
   onChangeInputCatalog() {
     this.searchCatalog$ = this.dataService.queryCatalog(this.selectedTypeSearchCatalog, this.inputCatalog);
-
   }
   onChangeInputUser() {
     this.searchUser$ = this.dataService.queryUser(this.selectedTypeSearchUser, this.inputUser);
   }
-
-
   // search type
   selectChangeHandler(event: any) {
     this.selectedTypeSearchCatalog = event.target.value;
@@ -59,5 +54,9 @@ export class AdminComponent implements OnInit {
       this.onChangeInputUser();
     }
   }
-
+  loadCatalogAfterSearch(input: string) {
+    if (input === '') {
+      this.searchCatalog$ = this.catalog$;
+    }
+  }
 }

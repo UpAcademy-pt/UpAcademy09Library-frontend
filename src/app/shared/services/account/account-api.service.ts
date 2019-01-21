@@ -78,7 +78,7 @@ export class AcountApiService {
   // Change user to admin --- um put precisa sempre de body, nem que seja null
   public changePrivilegesUser(id) {
     console.log('service id: ' + id);
-    return this.http.put(apiUrl + '/changetoadmin/' + id, null);
+    return this.http.put(apiUrl + '/changetoadmin/' + id, false);
   }
 
   // Disable User

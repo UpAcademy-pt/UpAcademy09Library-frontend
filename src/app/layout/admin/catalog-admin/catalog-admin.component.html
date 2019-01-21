@@ -10,15 +10,14 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let book of catalog$ | async | paginate: { id: 'bookAdminPagination', itemsPerPage: 5, currentPage: p }"
-      (click)="clickItem(book)">
-      <td>{{ book.title }}</td>
-      <td>{{ book.author }}</td>
-      <td>{{ book.isbn }}</td>
-      <td>{{ book.topic }}</td>
-      <td>{{ book.location }}</td>
-      <td>{{ book.state }}</td>
-    </tr>
+      <tr *ngFor="let book of catalog$ | async | paginate: { id: 'bookAdminPagination', itemsPerPage: 5, currentPage: p }" (click)="clickItem(book)">
+        <td>{{ book.title }}</td>
+        <td>{{ book.author }}</td>
+        <td>{{ book.isbn }}</td>
+        <td>{{ book.topic }}</td>
+        <td>{{ book.location }}</td>
+        <td>{{ book.state }}</td>
+      </tr>
   </tbody>
 </table>
 <pagination-controls id="bookAdminPagination" class="my-pagination" (pageChange)=" p = $event" previousLabel="{{ 'Anterior' | translate }}"

@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { DataService } from 'src/app/shared';
 
 @Component({
   selector: 'app-catalog-admin',
@@ -13,12 +14,12 @@ export class CatalogAdminComponent implements OnInit {
   // pagination
   p = 1;
 
-  constructor(public router: Router) { }
+  constructor(public router: Router, private dataService: DataService) {}
 
   ngOnInit() { }
 
-  clickItem(item) {
-    this.router.navigate(['bookadmin', item.id]);
+  clickItem(book) {
+    this.router.navigate(['bookadmin', book.id]);
   }
 
   changeImg(image: any) {

@@ -37,8 +37,8 @@ export class DisableComponent implements OnInit {
   public disable(user) {
     this.user.active = false;
     this.user.admin = false;
-    this.dataService.updateUserServices(user.id, user).subscribe(
-      (res) => { console.log('OK'); },
+    this.dataService.disableServices(user.id).subscribe(
+      (res) => { console.log(res); },
       error => { console.error(error); });
   }
 }

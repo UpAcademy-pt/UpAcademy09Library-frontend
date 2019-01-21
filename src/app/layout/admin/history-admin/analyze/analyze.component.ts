@@ -22,36 +22,41 @@ export class AnalyzeComponent implements OnInit, OnDestroy {
     this.subscription = this.dataService.getHistoryService().subscribe(
       (res) => {
         this.history = res;
-        this.getHighest();
       },
       error => { console.error(error); });
+       this.mostReadedBooks();
   }
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
 
-  /* MUDAR PARA ISBN */
-  public getHighest() {
-    const highest = {};
-    const highestToReturn = [];
-    this.history.forEach(history => {
-      highest[history.historyBook.id] = (highest[history.historyBook.id] || 0) + 1;
-    });
-    const highestToReturnMax = Object.keys(highest);
-    let index = 0;
-    while (index < 5) {
-      this.getBook(Number(highestToReturnMax[index])).subscribe(
-        (res) => {
-          highestToReturn.push(res);
-        }
-      );
-      index++;
-    }
-    setTimeout(() => {
-      this.highestToReturn$.next(highestToReturn);
-    }, 1000);
+  // Most Readed Books
+  public mostReadedBooks() {
+    this.highestToReturn$ = this.dataService.mostReadBook();
   }
+
+  // /* MUDAR PARA ISBN */
+  // public getHighest() {
+  //   const highest = {};
+  //   const highestToReturn = [];
+  //   this.history.forEach(history => {
+  //     highest[history.historyBook.id] = (highest[history.historyBook.id] || 0) + 1;
+  //   });
+  //   const highestToReturnMax = Object.keys(highest);
+  //   let index = 0;
+  //   while (index < 5) {
+  //     this.getBook(Number(highestToReturnMax[index])).subscribe(
+  //       (res) => {
+  //         highestToReturn.push(res);
+  //       }
+  //     );
+  //     index++;
+  //   }
+  //   setTimeout(() => {
+  //     this.highestToReturn$.next(highestToReturn);
+  //   }, 1000);
+  // }
 
   public getBook(item) {
     return this.dataService.getCatalogIdService(item);

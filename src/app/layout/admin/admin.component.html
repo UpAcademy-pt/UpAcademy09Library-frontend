@@ -1,4 +1,4 @@
-<tabset>
+<tabset class="container">
   <tab heading="Gestão de Requisições" translate>
     <app-history-admin [history$]='history$'></app-history-admin>
   </tab>
@@ -42,11 +42,11 @@
               <option value="title" translate>Título</option>
               <option value="author" translate>Autor</option>
               <option value="description" translate>Descrição</option>
-              <option value="isbn" translate>Isbn</option>
+              <option value="isbn">Isbn</option>
               <option value="topic" translate>Tópico</option>
             </select>
-            <input class="form-control" type="text" name="search2" [(ngModel)]="inputCatalog" (keydown.enter)="onChangeInputCatalog()" 
-              autocomplete="off" placeholder="{{'Procurar por' | translate}} {{selectedTypeSearchCatalog}}">
+            <input class="form-control" type="text" name="search2" [(ngModel)]="inputCatalog" (keydown.enter)="onChangeInputCatalog()"
+              autocomplete="off" placeholder="{{'Procurar por' | translate}} {{selectedTypeSearchCatalog}}" (ngModelChange)="loadCatalogAfterSearch($event)">
             <button class="btn" type="submit" (click)="onChangeInputCatalog()"><i class="fas fa-search"></i></button>
           </div>
         </div>
@@ -58,8 +58,9 @@
       <app-add-book></app-add-book>
     </div>
     <ng-template #notfoundCatalog>
-      <div>
-        <p translate>A pesquisa por <span class="font-weight-bold">"{{inputCatalog}}"</span> não obteve resultados. Por favor, faça nova
+      <div *ngIf="inputCatalog !== ''">
+        <p translate>A pesquisa por <span class="font-weight-bold">"{{inputCatalog}}"</span> não obteve resultados. Por
+          favor, faça nova
           pesquisa.</p>
       </div>
     </ng-template>
