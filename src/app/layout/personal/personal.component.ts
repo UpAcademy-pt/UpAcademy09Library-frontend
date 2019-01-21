@@ -10,7 +10,7 @@ import { ReplaySubject } from 'rxjs';
   styleUrls: ['./personal.component.css']
 })
 export class PersonalComponent implements OnInit {
-  // public catalog$: ReplaySubject<any[]> = new ReplaySubject(1);
+ 
   public user$: ReplaySubject<any[]> = new ReplaySubject(1);
   user: User = new User();
   id: string;
@@ -99,9 +99,17 @@ export class PersonalComponent implements OnInit {
       });
   }
 
-  dataEntrega(){
-    
-    this.date.setDate( this.date.getDate() + 8 );
+  dataEntrega(input: any){
+    let res = new Date(input)
+     return res.setDate(res.getDate() + 8); 
   }
 
+  diasEntrega(input: any){
+   
+    let res =this.dataEntrega(input);
+  
+    const dayNow = new Date().getTime();
+ 
+    return  Math.round(8-(res-dayNow)/86400000); 
+  }
 }

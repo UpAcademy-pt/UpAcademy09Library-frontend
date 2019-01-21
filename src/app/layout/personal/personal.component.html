@@ -121,11 +121,11 @@
                         <td>{{livro.historyBook.title}}</td>
                         <td>{{livro.historyBook.author}}</td>
                         <td>
-                            <progressbar [max]="max" [value]="dynamic" style="height:20px">
-                                <span class="text-nowrap">{{dynamic}} / {{max}}</span>
+                            <progressbar [max]="max" [value]="diasEntrega(livro.pickupDate)" style="height:20px">
+                                <span class="text-nowrap">{{diasEntrega(livro.pickupDate)}} / {{max}}</span>
                             </progressbar>
                         </td>
-                        <td>{{livro.pickupDate | date:"M/d/yy, h:mm a"}}</td>
+                        <td>{{dataEntrega(livro.pickupDate) | date:"M/d/yy, h:mm a"}}</td>
                     </tr>
                 </tbody>
             </table>
