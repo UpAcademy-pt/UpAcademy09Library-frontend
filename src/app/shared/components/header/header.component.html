@@ -3,10 +3,10 @@
   <!-- Logotipo -->
   <div class="container">
     <a class="navbar-brand" routerLink="/home">Biblioteca Bocage</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <div class="collapse navbar-collapse" id="navbarResponsive" [collapse]="!isCollapsed">
       <ul class="navbar-nav ml-auto">
         <!-- Login -->
         <li class="nav-item active" *ngIf="!(currentUser$ | async)?.id">
