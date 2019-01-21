@@ -3,10 +3,12 @@
   <!-- Logotipo -->
   <div class="container">
     <a class="navbar-brand" routerLink="/home">Biblioteca Bocage</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive" [collapse]="!isCollapsed">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" (click)="isCollapsed = !isCollapsed"
+      [attr.aria-expanded]="!isCollapsed" data-target="#navbarResponsive" aria-controls="navbarResponsive"
+      aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive" [collapse]="!isCollapsed">
       <ul class="navbar-nav ml-auto">
         <!-- Login -->
         <li class="nav-item active" *ngIf="!(currentUser$ | async)?.id">
@@ -32,15 +34,16 @@
           </ul>
         </div>
         <!-- Admin -->
-        <div class="btn-group" *ngIf="(currentUser$ | async)?.admin" dropdown>
-          <li id="button-menu-dividers" href="#" dropdownToggle data-toggle="dropdown" class="nav-item nav-link btn btn-outline-secondary dropdown-toggle dropdown-toggle-split"
-            aria-controls="dropdown-menu-dividers">
-            <img src="assets/avatar.png" alt="Avatar" class="avatar"> {{account.name}} <span class="caret"></span>
+        <div *ngIf="(currentUser$ | async)?.admin">
+          <li class="nav-item">
+            <a class="nav-item nav-link" href="#" [routerLinkActive]="['active']" routerLink="/admin">
+              <img src="assets/avatar.png" alt="Avatar" class="avatar">
+              {{account.name}} <span class="caret"></span></a>
           </li>
-          <ul id="dropdown-menu-dividers" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-menu-dividers">
-            <li role="menuitem"><a class="dropdown-item" href="#" routerLink="/home" (click)="logout()">{{ 'sair' |
-                translate }}</a></li>
-          </ul>
+          <li class="nav-item" *ngIf="(currentUser$ | async)?.admin">
+            <a class="nav-item nav-link" href="#" [routerLinkActive]="['active']" routerLink="/home" (click)="logout()">{{
+              'sair' | translate }}</a>
+          </li>
         </div>
         <!-- Translate -->
         <div class="btn-group">
@@ -78,8 +81,9 @@
       <div *ngIf="msg!=undefined" class="alert alert-danger" role="alert">
         {{msg}}
       </div>
-        <a class="nav-item nav-link" href="#" routerLink="/register" (click)="modalRef.hide(); onClose()">{{ 'registe-se' |
-          translate }}</a>
+      <a class="nav-item nav-link" href="#" routerLink="/register" (click)="modalRef.hide(); onClose()">{{ 'registe-se'
+        |
+        translate }}</a>
       <button type="submit" (keydown.enter)="loginUserNg()" (click)="loginUserNg()" class="btn btn-success" [disabled]="f.invalid"
         translate> submeter</button>
     </form>
