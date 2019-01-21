@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Catalog } from '../../models';
+import { debounceTime } from 'rxjs/internal/operators/debounceTime';
 
 
 
-const apiUrl = "http://localhost:8080/libraryManagmentApp/api/books/";
+const apiUrl = 'http://localhost:8080/libraryManagmentApp/api/books/';
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +20,11 @@ export class CatalogApiService {
   // GET Catalog
   public getCatalogDB() {
     return this.http.get(apiUrl);
+  }
+
+  // GET Catalog by isbn
+  public getCatalogIsbn() {
+    return this.http.get(apiUrl + 'getallbooksbyisbn');
   }
 
   // POST create a book to catalog
@@ -42,7 +48,7 @@ export class CatalogApiService {
 
   /* QUERYS */
 
-  // Find Book by ID  ---- NÃO ESTÁ EM USO---
+  // Find Book by ID 
   public getCatalogById(id: number) {
     return this.http.get(apiUrl + id);
   }
@@ -94,14 +100,6 @@ export class CatalogApiService {
     return this.http.get('https://www.googleapis.com/books/v1/volumes?q=inauthor:' + author + '&orderBy=relevance');
   }
 
-  
-
-
-  
-  // GET Catalog by isbn
-  public getCatalogIsbn() {
-    return this.http.get(apiUrl + 'getallbooksbyisbn');
-  }
 }
 
 

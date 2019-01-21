@@ -11,22 +11,26 @@ import { Location } from '@angular/common';
 export class BookAdminComponent implements OnInit {
 
   // variables
+  catalog$: any;
   catalog: any;
 
   constructor(private _location: Location, private dataService: DataService, private route: ActivatedRoute) {
 
     this.route.params.subscribe(
       params => {
-        this.catalog = this.dataService.getCatalogById(Number(params.id));
-        console.log(this.catalog);
+        this.catalog$ = this.dataService.getCatalogIdService(Number(params.id));
       });
   }
 
   ngOnInit() {
+    this.catalog$.subscribe((res: any) => {
+      this.catalog = res;
+      console.log(this.catalog);
+    });
   }
 
-   // delete book
-   deleteCatalog(id) {
+  // delete book
+  deleteCatalog(id) {
     console.log(id);
     this.dataService.deleteCatalogService(id);
     console.log('delete in table ok');

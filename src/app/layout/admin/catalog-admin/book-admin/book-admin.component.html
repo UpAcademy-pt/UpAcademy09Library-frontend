@@ -1,29 +1,29 @@
-<h2>{{ 'detalheLivros.p1' | translate }}</h2>
-<div class="card">
-  <div class="card-body">
-    <div class="row ">
-      <div class="containerbookCover" *ngIf="catalog.photoLink==null" class="col-md-4 text-center">
-        <img class="bookCover" src="/assets/nocoverplaceholder.jpg">
-    </div>
-    <div class="containerbookCover" *ngIf="catalog.photoLink!==null" class="col-md-4 text-center">
-       <img class="bookCover" src="{{catalog.photoLink}}">
-   </div>
-      <div class="col-md-8">
-        <h4 class="card-text">{{catalog.title}}, {{catalog.author}}</h4>
-        <p class="card-text">{{ 'categoria' | translate }}: {{catalog.topic}}</p>
-        <p class="card-text">{{ 'descricao' | translate }}: {{catalog.description}} </p>
-        <p class="card-text">{{ 'localizacao' | translate }}: {{catalog.location}} </p>
-        <p class="card-text">ISBN: {{catalog.isbn}} </p>
-        <p class="card-text">Rating: {{catalog.rating}} </p>
-        <p class="card-text">{{ 'estado' | translate }}: {{catalog.state}}</p>
+<div class="container">
+  <h2>{{ 'detalheLivros.p1' | translate }}</h2>
+  <div class="card">
+    <div class="card-body">
+      <div class="row">
+        <div class="containerbookCover" class="col-md-4 text-center">
+          <img *ngIf="catalog?.photoLink" class="bookCover" src="{{catalog.photoLink}}">
+          <img *ngIf="!catalog?.photoLink" class="bookCover" src="/assets/nocoverplaceholder.jpg">
+        </div>
+        <div class="col-md-8">
+          <h4 class="card-text">{{catalog?.title}}, {{catalog?.author}}</h4>
+          <p class="card-text">{{ 'categoria' | translate }}: {{catalog?.topic}}</p>
+          <p class="card-text">{{ 'descricao' | translate }}: {{catalog?.description}} </p>
+          <p class="card-text">{{ 'localizacao' | translate }}: {{catalog?.location}} </p>
+          <p class="card-text">ISBN: {{catalog?.isbn}} </p>
+          <p class="card-text">Rating: {{catalog?.rating}} </p>
+          <p class="card-text">{{ 'estado' | translate }}: {{catalog?.state}}</p>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="row  align-self-center">
-    <div class="col-md-12">
-      <app-update-book [catalogdetail]='catalog'></app-update-book>
-      <a (click)="deleteCatalog(catalog.id)" class="btn" tooltip="Eliminar Livro" placement="top"><img src="/assets/delete.png"></a>
+    <div class="row  align-self-center">
+      <div class="col-md-12">
+        <app-update-book [catalogDetail]='catalog'></app-update-book>
+        <a (click)="deleteCatalog(catalog.id)" class="btn" tooltip="Eliminar Livro" placement="top"><img src="/assets/delete.png"></a>
+      </div>
     </div>
+    <a><img class="back" src="/assets/back.png" (click)="cancel();"></a>
   </div>
-  <a><img class="back" src="/assets/back.png" (click)="cancel();"></a>
 </div>

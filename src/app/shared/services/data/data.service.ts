@@ -12,10 +12,13 @@ import { Catalog, History } from '../../models';
 export class DataService {
   // observable books
   public catalog$: ReplaySubject<any[]> = new ReplaySubject(1);
+  public book$: ReplaySubject<any[]> = new ReplaySubject(1);
+  public catalogGroupedISBN$: ReplaySubject<any[]> = new ReplaySubject(1);
   // observable users
   public user$: ReplaySubject<any[]> = new ReplaySubject(1);
   // observable history
   public history$: ReplaySubject<any[]> = new ReplaySubject(1);
+  public mostRead$: ReplaySubject<any[]> = new ReplaySubject(1);
   // 
   private users: any[] = [];
   // adicionei isto deixou de dar erro, na consola relativo ao admin management ----
@@ -28,14 +31,14 @@ export class DataService {
   //
   public search$: ReplaySubject<any[]> = new ReplaySubject(1);
   public search: any;
- 
+
   public searchCatalog$: ReplaySubject<any[]> = new ReplaySubject(1);
   public searchUser$: ReplaySubject<any[]> = new ReplaySubject(1);
 
   constructor(private catalogApi: CatalogApiService, private acountApi: AcountApiService, private historyApi: HistoryApiService) {
     this.getCatalogByIsbn();
+    console.log(this.getCatalogByIsbn());
     this.getUsers();
-    console.log( this.getCatalogByIsbn());
   }
 
   /* BOOKS DATA LOGIC*/
@@ -48,16 +51,36 @@ export class DataService {
       }
     );
   }
+
   public getCatalogByIsbn() {
     this.catalogApi.getCatalogIsbn().subscribe(
       (res: any) => {
         this.catalog = res;
         this.catalog$.next(res);
       }
-    );return this.catalog$;
+    );
+    return this.catalog$;
   }
 
- 
+  // a data chega ao html já selecionada para entrar no html
+  /* Get Catalog With Grouped Books by same Isbn*/
+  public getCatalogGroupedByIsbn() {
+    const data = [];
+    this.catalogApi.getCatalogIsbn().subscribe(
+      (res: any) => {
+        res.forEach(element => {
+          if (element.availableBooksWithThisIsbn[0]) {
+            data.push(element.availableBooksWithThisIsbn[0]);
+          } else {
+            data.push(element.unavailableBooksWithThisIsbn[0]);
+          }
+        });
+        this.catalogGroupedISBN$.next(data);
+      }
+    );
+    return this.catalogGroupedISBN$;
+  }
+
   public createCatalog(catalog) {
     this.catalogApi.createBook(catalog).subscribe(
       (res) => {
@@ -87,8 +110,11 @@ export class DataService {
     }
   }
 
-  public getCatalogIdService(id) {
-    return this.catalogApi.getCatalogById(id);
+  public getCatalogIdService(bookid) {
+    this.catalogApi.getCatalogById(bookid).subscribe((res: any) => {
+      this.book$.next(res);
+    });
+    return this.book$;
   }
 
   // Get all available books
@@ -96,14 +122,24 @@ export class DataService {
     return this.catalogApi.getAvailableBooks();
   }
 
+  /* aplicar o mesmo para os outros depois de fala com a debora*/
   // Switch Search
   public queryCatalog(searchableList, input) {
     switch (searchableList) {
-      case 'keyword': this.catalogApi.getCatalogByKeyword(input).subscribe(
-        (res: any) => {
-          return this.searchCatalog$.next(res);
-        }
-      );
+      case 'keyword':
+        const data = [];
+        this.catalogApi.getCatalogByKeyword(input).subscribe(
+          (res: any) => {
+            res.forEach(element => {
+              if (element.availableBooksWithThisIsbn[0]) {
+                data.push(element.availableBooksWithThisIsbn[0]);
+              } else {
+                data.push(element.unavailableBooksWithThisIsbn[0]);
+              }
+              this.searchCatalog$.next(data);
+            });
+            return this.searchCatalog$;
+          });
         break;
       case 'title': this.catalogApi.getCatalogByTitle(input).subscribe(
         (res: any) => {
@@ -217,7 +253,7 @@ export class DataService {
 
   // remove from favorite
   public removeFavoritesServices(userID: number, bookID: number) {
-    return  this.acountApi.removeFavourite(userID, bookID);
+    return this.acountApi.removeFavourite(userID, bookID);
   }
   // get all favorites
   public getAllFavoritesServices(userID: number) {
@@ -264,8 +300,6 @@ export class DataService {
     return this.searchUser$;
   }
 
-
-
   /* HISTORY DATA LOGIC*/
 
   // Reserve a Book
@@ -292,7 +326,6 @@ export class DataService {
       (res: any) => {
         this.history$.next(res);
         this.history = res;
-        console.log(res);
       }
     );
     return this.history$;
@@ -304,7 +337,6 @@ export class DataService {
       (res: any) => {
         this.history$.next(res);
         this.history = res;
-        console.log(res);
       }
     );
     return this.history$;
@@ -316,5 +348,22 @@ export class DataService {
   // Book with User
   public getBookWithUserService(userID: number) {
     return this.historyApi.getBooksWithUser(userID);
+  }
+  // Most Read Books
+  public mostReadBook() {
+    const data = [];
+    this.historyApi.getMoreReads().subscribe(
+      (res: any) => {
+        res.forEach(element => {
+          if (element.availableBooksWithThisIsbn[0]) {
+            data.push(element.availableBooksWithThisIsbn[0]);
+          } else {
+            data.push(element.unavailableBooksWithThisIsbn[0]);
+          }
+         return this.mostRead$.next(data);
+        });
+      }
+    );
+    return this.mostRead$;
   }
 }

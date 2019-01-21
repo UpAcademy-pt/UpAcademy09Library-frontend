@@ -11,8 +11,8 @@
     <form #f="ngForm">
       <div class="form-group">
         <label class="required" for="title" translate>Título</label>
-        <input id="title "type="text" class="form-control" typeaheadOptionField="title" typeaheadWaitMs="1000"[typeaheadAsync]="true" [typeahead]="dataSource"
-          name="title" (typeaheadOnSelect)="typeaheadOnSelect($event)" (input)="getBookInfoGoogleApi()" [(ngModel)]="catalog.title"
+        <input id="title "type="text" class="form-control" typeaheadOptionField="title" [typeaheadAsync]="true" [typeahead]="dataSource"
+          name="title" (typeaheadOnSelect)="typeaheadOnSelect($event)" (input)="debounce()" [(ngModel)]="catalog.title"
           required>
       </div>
       <div class="form-group">
@@ -21,7 +21,7 @@
       </div>
       <div class="form-group">
         <label class="required" for="author" translate>Autor</label>
-         <input id="title "type="text" class="form-control" typeaheadOptionField="title" typeaheadWaitMs="1000" [typeaheadAsync]="true" [typeahead]="dataSource"
+         <input id="title "type="text" class="form-control" typeaheadOptionField="title"  [typeaheadAsync]="true" [typeahead]="dataSource"
           name="author" (typeaheadOnSelect)="typeaheadOnSelect($event)" (input)="getBookAuthorGoogleApi()" [(ngModel)]="catalog.author"
           required>
       </div>
@@ -35,7 +35,7 @@
       </div>
       <div class="form-group">
         <label class="required" for="isbn">ISBN</label>
-        <input id="isbn"type="text" class="form-control" typeaheadOptionField="title" typeaheadWaitMs="1000"[typeaheadAsync]="true" [typeahead]="dataSource"
+        <input id="isbn"type="text" class="form-control" typeaheadOptionField="title" [typeaheadAsync]="true" [typeahead]="dataSource"
           name="isbn" (typeaheadOnSelect)="typeaheadOnSelect($event)" (input)="getBookIsbnGoogleApi()" [(ngModel)]="catalog.isbn" 
           required>
       </div>
@@ -54,7 +54,7 @@
         <label for="cover">Quantidade</label>
         <input type="number" class="form-control" name="quantity" [(ngModel)]="count">
       </div>
-      <button type="submit" (click)="onSubmit(count)" (click)="modalRef.hide()" [disabled]="f.invalid" class="btn btn-success"
+      <button type="submit" (click)="onSubmit(); modalRef.hide()" [disabled]="f.invalid" class="btn btn-success"
         translate>Adicionar</button>
     </form>
   </div>

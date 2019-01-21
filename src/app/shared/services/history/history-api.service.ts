@@ -57,4 +57,9 @@ export class HistoryApiService {
     return this.http.get(apiUrl + '/bookinusebyuser/' + userID);
   }
 
+  // GET More Read Books
+  public getMoreReads() {
+    return this.http.get(apiUrl + '/getfivemostreadbooks');
+  }
+
 }

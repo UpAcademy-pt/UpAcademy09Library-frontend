@@ -30,14 +30,15 @@ export class ReactiveComponent implements OnInit {
     this.reactive(this.user);
   }
 
+
   /* Os Endpoints especificios para mexer
      nos privilégios não estão a funcionar*/
 
   // Disable User
   public reactive(user) {
     this.user.active = true;
-    this.dataService.updateUserServices(user.id, user).subscribe(
-      (res) => { console.log('OK'); },
+    this.dataService.reactivateServices(user.id).subscribe(
+      (res) => { console.log(res); },
       error => { console.error(error); });
   }
 }

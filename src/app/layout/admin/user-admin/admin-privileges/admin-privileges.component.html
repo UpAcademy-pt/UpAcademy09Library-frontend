@@ -11,10 +11,16 @@
   <div class="modal-body">
     <form #f="ngForm">
       <div class="form-group">
-        <p *ngIf="!user.active; else active" translate>O Utilizador <span class="font-weight-bold">"{{user.name}}"</span>
-          encontra-se desactivado, tem a certeza que quer conceder privilégios de administrador?</p>
-        <button type="button" (click)="privilegesModal.hide();onSubmit()" class="btn btn-success" translate>Sim</button>
-        <button type="button" (click)="privilegesModal.hide()" class="btn btn-danger" translate>Não</button>
+        <div *ngIf="user.active">
+          <p translate>Tem a certeza que quer conceder privilégios de administrador ao Utilizador <span class="font-weight-bold">"{{user.name}}"</span></p>
+          <button type="button" (click)="privilegesModal.hide();onSubmit()" class="btn btn-success" translate>Sim</button>
+          <button type="button" (click)="privilegesModal.hide()" class="btn btn-danger" translate>Cancelar</button>
+        </div>
+        <div *ngIf="!user.active">
+          <p translate>O Utilizador <span class="font-weight-bold">"{{user.name}}"</span>
+            encontra-se desactivado, primeiro active o utilizador para conceder privilégios de administrador</p>
+          <button type="button" (click)="privilegesModal.hide()" class="btn btn-success" translate>Sair</button>
+        </div>
       </div>
     </form>
   </div>
