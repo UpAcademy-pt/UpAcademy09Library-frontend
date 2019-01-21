@@ -16,7 +16,8 @@ export class CatalogAdminComponent implements OnInit {
 
   constructor(public router: Router, private dataService: DataService) {}
 
-  ngOnInit() { }
+  ngOnInit() {}
+
 
   clickItem(book) {
     this.router.navigate(['bookadmin', book.id]);

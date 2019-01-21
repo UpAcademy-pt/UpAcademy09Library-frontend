@@ -1,68 +1,124 @@
-<tabset class="container">
-  <tab heading="Gestão de Requisições" translate>
-    <app-history-admin [history$]='history$'></app-history-admin>
-  </tab>
-  <tab id="users-admin" heading="Gestão de Utilizadores" translate>
-      <br>
-      <div class="search content">
-        <div class="container mb-3">
-          <div class="row justify-content-md-left">
-            <div class="input-group">
-              <select class="select" (change)="selectChangeHandler($event)">
-                  <option value="email">Email</option>
-                  <option value="name" translate>Name</option>
-                  <option value="nip" translate>NIP</option>
-              </select>
-              <input class="form-control" type="text" name="search1" [(ngModel)]="inputUser" (keydown.enter)="onChangeInputUser()" 
-                autocomplete="off" placeholder="{{'Procurar por' | translate}} {{selectedTypeSearchUser}}" (ngModelChange)="loadUserAfterSearch($event)">
-              <button class="btn" type="submit" (click)="onChangeInputUser()"><i class="fas fa-search"></i></button>
+<div class="wrapper ">
+
+  <!-- Sidebar -->
+  <nav id="sidebar">
+    <div class="sidebar-header">
+      <h3>Bootstrap Sidebar</h3>
+  </div>
+
+  <ul class="list-unstyled components">
+      <p>Dummy Heading</p>
+      <li class="active">
+          <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>
+          <ul class="collapse list-unstyled" id="homeSubmenu">
+              <li>
+                  <a href="#">Home 1</a>
+              </li>
+              <li>
+                  <a href="#">Home 2</a>
+              </li>
+              <li>
+                  <a href="#">Home 3</a>
+              </li>
+          </ul>
+      </li>
+      <li>
+          <a href="#">About</a>
+      </li>
+      <li>
+          <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pages</a>
+          <ul class="collapse list-unstyled" id="pageSubmenu">
+              <li>
+                  <a href="#">Page 1</a>
+              </li>
+              <li>
+                  <a href="#">Page 2</a>
+              </li>
+              <li>
+                  <a href="#">Page 3</a>
+              </li>
+          </ul>
+      </li>
+      <li>
+          <a href="#">Portfolio</a>
+      </li>
+      <li>
+          <a href="#">Contact</a>
+      </li>
+  </ul>
+</nav>
+
+
+  <!-- Page Content -->
+  <div id="container">
+    <tabset class="container">
+      <tab heading="Gestão de Requisições" translate>
+        <app-history-admin [history$]='history$'></app-history-admin>
+      </tab>
+      <tab id="users-admin" heading="Gestão de Utilizadores" translate>
+          <br>
+          <div class="search content">
+            <div class="container mb-3">
+              <div class="row justify-content-md-left">
+                <div class="input-group">
+                  <select class="select" (change)="selectChangeHandler($event)">
+                      <option value="email">Email</option>
+                      <option value="name" translate>Name</option>
+                      <option value="nip" translate>NIP</option>
+                  </select>
+                  <input class="form-control" type="text" name="search1" [(ngModel)]="inputUser" (keydown.enter)="onChangeInputUser()" 
+                    autocomplete="off" placeholder="{{'Procurar por' | translate}} {{selectedTypeSearchUser}}" (ngModelChange)="loadUserAfterSearch($event)">
+                  <button class="btn" type="submit" (click)="onChangeInputUser()"><i class="fas fa-search"></i></button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <br>
+        <div *ngIf="(searchUser$ | async)?.length > 0; else notfoundUser">
+          <app-user-admin [user$]='searchUser$'></app-user-admin>
+        </div>
+        <ng-template #notfoundUser>
+          <div *ngIf="inputUser !== ''">
+            <p translate>A pesquisa por <span class="font-weight-bold">"{{inputUser}}"</span> não obteve resultados. Por favor, faça nova
+              pesquisa.</p>
+          </div>
+        </ng-template>
+      </tab>
+      <tab id="books-admin" heading="Gestão de Livros" translate>
+        <br>
+        <div class="search content">
+          <div class="container mb-3">
+            <div class="row justify-content-md-left">
+              <div class="input-group">
+                <select class="select" (change)="selectChangeHandler($event)">
+                  <option value="keyword" translate>Palavra-Chave</option>
+                  <option value="title" translate>Título</option>
+                  <option value="author" translate>Autor</option>
+                  <option value="description" translate>Descrição</option>
+                  <option value="isbn">Isbn</option>
+                  <option value="topic" translate>Tópico</option>
+                </select>
+                <input class="form-control" type="text" name="search2" [(ngModel)]="inputCatalog" (keydown.enter)="onChangeInputCatalog()"
+                  autocomplete="off" placeholder="{{'Procurar por' | translate}} {{selectedTypeSearchCatalog}}" (ngModelChange)="loadCatalogAfterSearch($event)">
+                <button class="btn" type="submit" (click)="onChangeInputCatalog()"><i class="fas fa-search"></i></button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <br>
-    <div *ngIf="(searchUser$ | async)?.length > 0; else notfoundUser">
-      <app-user-admin [user$]='searchUser$'></app-user-admin>
-    </div>
-    <ng-template #notfoundUser>
-      <div *ngIf="inputUser !== ''">
-        <p translate>A pesquisa por <span class="font-weight-bold">"{{inputUser}}"</span> não obteve resultados. Por favor, faça nova
-          pesquisa.</p>
-      </div>
-    </ng-template>
-  </tab>
-  <tab id="books-admin" heading="Gestão de Livros" translate>
-    <br>
-    <div class="search content">
-      <div class="container mb-3">
-        <div class="row justify-content-md-left">
-          <div class="input-group">
-            <select class="select" (change)="selectChangeHandler($event)">
-              <option value="keyword" translate>Palavra-Chave</option>
-              <option value="title" translate>Título</option>
-              <option value="author" translate>Autor</option>
-              <option value="description" translate>Descrição</option>
-              <option value="isbn">Isbn</option>
-              <option value="topic" translate>Tópico</option>
-            </select>
-            <input class="form-control" type="text" name="search2" [(ngModel)]="inputCatalog" (keydown.enter)="onChangeInputCatalog()"
-              autocomplete="off" placeholder="{{'Procurar por' | translate}} {{selectedTypeSearchCatalog}}" (ngModelChange)="loadCatalogAfterSearch($event)">
-            <button class="btn" type="submit" (click)="onChangeInputCatalog()"><i class="fas fa-search"></i></button>
-          </div>
+        <br>
+        <div *ngIf="(searchCatalog$ | async)?.length > 0; else notfoundCatalog">
+          <app-catalog-admin [catalog$]='searchCatalog$'></app-catalog-admin>
+          <app-add-book></app-add-book>
         </div>
-      </div>
-    </div>
-    <br>
-    <div *ngIf="(searchCatalog$ | async)?.length > 0; else notfoundCatalog">
-      <app-catalog-admin [catalog$]='searchCatalog$'></app-catalog-admin>
-      <app-add-book></app-add-book>
-    </div>
-    <ng-template #notfoundCatalog>
-      <div *ngIf="inputCatalog !== ''">
-        <p translate>A pesquisa por <span class="font-weight-bold">"{{inputCatalog}}"</span> não obteve resultados. Por
-          favor, faça nova
-          pesquisa.</p>
-      </div>
-    </ng-template>
-  </tab>
-</tabset>
+        <ng-template #notfoundCatalog>
+          <div *ngIf="inputCatalog !== ''">
+            <p translate>A pesquisa por <span class="font-weight-bold">"{{inputCatalog}}"</span> não obteve resultados. Por
+              favor, faça nova
+              pesquisa.</p>
+          </div>
+        </ng-template>
+      </tab>
+    </tabset>
+  </div>
+
+</div>       

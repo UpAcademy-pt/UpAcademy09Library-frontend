@@ -3,7 +3,7 @@
 <ng-template #template>
   <div class="modal-header">
     <h4 class="modal-title pull-left" translate>Adicionar livros</h4>
-    <button type="button" class="close pull-right" aria-label="Close" required (click)="modalRef.hide(); onClose();">
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide(); onClose();">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
@@ -54,7 +54,7 @@
         <label for="cover">Quantidade</label>
         <input type="number" class="form-control" name="quantity" [(ngModel)]="count">
       </div>
-      <button type="submit" (click)="onSubmit(); modalRef.hide()" [disabled]="f.invalid" class="btn btn-success"
+      <button type="submit" (click)="onSubmit(); modalRef.hide(); loadData()" [disabled]="f.invalid" class="btn btn-success"
         translate>Adicionar</button>
     </form>
   </div>

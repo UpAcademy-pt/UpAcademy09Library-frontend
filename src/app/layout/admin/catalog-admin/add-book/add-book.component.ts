@@ -40,7 +40,7 @@ export class AddBookComponent implements OnInit {
     this.loadData();
   }
   loadData() {
-    this.dataService.getCatalogGroupedByIsbn();
+    return this.dataService.getCatalogGroupedByIsbn();
   }
 
   typeaheadOnSelect(e: TypeaheadMatch): void {
