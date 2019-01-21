@@ -120,7 +120,7 @@ export class DataService {
     return this.catalogApi.getCatalogById(id);
   }
 
-   public getCatalogIdService(bookid) {
+   public getCatalogId(bookid) {
     this.catalogApi.getCatalogById(bookid).subscribe((res: any) => {
       this.book$.next(res);
     });
