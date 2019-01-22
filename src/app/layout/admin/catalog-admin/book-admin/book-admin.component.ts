@@ -33,7 +33,7 @@ export class BookAdminComponent implements OnInit {
       console.log(this.catalog.isbn);
       this.getQuantity(this.catalog.isbn);
     });
-    
+    console.log(this.catalog.isbn);
   }
 
   getQuantity(catalog) {

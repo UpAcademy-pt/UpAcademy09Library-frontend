@@ -10,10 +10,10 @@
         <div class="col-md-8">
           <h4 class="card-text">{{catalog?.title}}, {{catalog?.author}}</h4>
           <p class="card-text">{{ 'categoria' | translate }}: {{catalog?.topic}}</p>
-          <p class="card-text">{{ 'descricao' | translate }}: {{catalog?.description}} </p>
+          <p class="card-text text-justify">{{ 'descricao' | translate }}: {{catalog?.description}} </p>
           <p class="card-text">{{ 'localizacao' | translate }}: {{catalog?.location}} </p>
           <p class="card-text">{{ 'isbn' | translate }}: {{catalog?.isbn}} </p>
-          <p class="card-text">{{ 'Quantidade' | translate }}: {{quantity}} </p>
+          <!-- <p class="card-text">{{ 'Quantidade' | translate }}: {{quantity}} </p> -->
           <p>Rating: <rating [(ngModel)]="catalog.rating" [max]="max" [readonly]="isReadonly"></rating></p>
           <p class="card-text">{{ 'estado' | translate }}: {{catalog?.state}}</p>
         </div>

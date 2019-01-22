@@ -3,7 +3,7 @@
     <div class="col-12">
 <div class="container">
   <div class="row">
-    <div class="col">
+    <div class="col text-center">
       <div id="print-section">
         <table class="table table-hover" [ngClass]='theme'>
           <thead>
@@ -18,9 +18,11 @@
           </tbody>
         </table>
       </div>
-      <button printSectionId="print-section" ngxPrint>{{ 'imprimir' | translate }}</button>
+      <button printSectionId="print-section"  printTitle="Livros" [printStyle]="{table : {'border-collapse': 'collapse'}, table: {'border': '1px solid black'}, td : {'border': '1px solid black'}, tr: {'border': '1px solid black'}}" ngxPrint>{{ 'imprimir' | translate }}</button>
     </div>
+    <br>
     <div class="col">
+      <br>
       <div class="tm-bg-primary-dark tm-block">
         <div>
           <table class="table table-hover" [ngClass]='theme'>
