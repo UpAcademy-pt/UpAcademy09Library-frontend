@@ -12,7 +12,7 @@
       <ul class="navbar-nav ml-auto">
         <!-- Login -->
         <li class="nav-item active" *ngIf="!(currentUser$ | async)?.id">
-          <a class="nav-item nav-link btn" (click)="openModal(login)">Entrar
+          <a class="nav-item nav-link btn" (click)="openModal(login)">{{ 'Entrar' | translate}}
             <span class="sr-only">(current)</span>
           </a>
         </li>
