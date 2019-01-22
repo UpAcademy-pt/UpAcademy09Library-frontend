@@ -9,7 +9,7 @@
                 <img src="/assets/nocoverplaceholder.jpg">
             </div>
             <div *ngIf="catalog.availableBooksWithThisIsbn[0].photoLink!==null" class="col-md-4 text-center">
-                <img src="{{catalog.photoLink}}">
+                <img src="{{catalog.availableBooksWithThisIsbn[0].photoLink}}">
             </div>
 
 
@@ -24,7 +24,7 @@
                     {{catalog.availableBooksWithThisIsbn[0].location}} </p>
                 <p class="card-text">ISBN: {{catalog.isbn}} </p>
 
-                <p>Rate:  <rating  [max]="max" [readonly]="isReadonly" [(ngModel)]="catalog.availableBooksWithThisIsbn[0].rating"></rating></p>
+                <p>Rating:  <rating  [max]="max" [readonly]="isReadonly" [(ngModel)]="catalog.availableBooksWithThisIsbn[0].rating"></rating></p>
                
                 
             </div>
@@ -36,7 +36,7 @@
                 <img src="/assets/nocoverplaceholder.jpg">
             </div>
             <div *ngIf="catalog.unavailableBooksWithThisIsbn[0].photoLink!==null" class="col-md-4 text-center">
-                <img src="{{catalog.photoLink}}">
+                <img src="{{catalog.unavailableBooksWithThisIsbn[0].photoLink}}">
             </div>
             <div *ngIf="catalog.availableBooksWithThisIsbn.length ==0" class="col-md-8">
 
@@ -50,7 +50,7 @@
                     {{catalog.unavailableBooksWithThisIsbn[0].location}} </p>
                 <p class="card-text">ISBN: {{catalog.isbn}} </p>
 
-                <p>Rate: <rating [(ngModel)]="catalog.unavailableBooksWithThisIsbn[0].rating" [max]="max" [readonly]="isReadonly"></rating></p>
+                <p>Rating: <rating [(ngModel)]="catalog.unavailableBooksWithThisIsbn[0].rating" [max]="max" [readonly]="isReadonly"></rating></p>
             </div>
         </div>
 
