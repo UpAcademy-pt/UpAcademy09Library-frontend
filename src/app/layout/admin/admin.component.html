@@ -63,8 +63,8 @@
         <!-- not found search -->
         <ng-template #notfoundCatalog>
           <div *ngIf="inputCatalog !== ''">
-            <p translate>A pesquisa por <span class="font-weight-bold">"{{inputCatalog}}"</span> não obteve resultados.
-              Por favor, faça nova pesquisa.</p>
+            <p> {{'A pesquisa por'| translate}} <span class="font-weight-bold">"{{inputCatalog}}"</span> {{'não obteve resultados.
+              Por favor, faça nova pesquisa'| translate}} </p>
           </div>
         </ng-template>
       </div>
@@ -93,10 +93,8 @@
         </div>
         <ng-template #notfoundUser>
           <div *ngIf="inputUser !== ''">
-            <p translate>A pesquisa por <span class="font-weight-bold">"{{inputUser}}"</span> não obteve resultados.
-              Por
-              favor, faça nova
-              pesquisa.</p>
+            <p> {{'A pesquisa por'| translate}} <span class="font-weight-bold">"{{inputUser}}"</span> {{'não obteve resultados.
+                Por favor, faça nova pesquisa'| translate}} </p>
           </div>
         </ng-template>
       </div>

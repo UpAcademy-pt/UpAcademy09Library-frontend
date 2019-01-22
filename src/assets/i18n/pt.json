@@ -83,7 +83,7 @@
 	"areaPessoal": "Área Pessoal",
 	"catalogo": "Catálogo",
 	"categoria": "Categoria",
-	"colocar titulo": "",
+	"colocar titulo": "Colocar título",
 	"contactos": {
 		"p1": "Pode contactar-nos por telefone para colocar ou resolver qualquer questão relacionada com a Biblioteca.",
 		"p2": "Coloque as suas dúvidas de natureza geral ou mais especializada junto da Biblioteca."
@@ -103,14 +103,6 @@
 	"localizacao": "Localizaçāo",
 	"login": {
 		"p1": "O e-mail introduzido é inválido. Por favor introduza um e-mail correcto."
-	},
-	"não obteve resultados": {
-		"\n              Por\n              favor, faça nova\n              pesquisa": {
-			"0": ""
-		},
-		"\n              Por favor, faça nova pesquisa": {
-			"0": ""
-		}
 	},
 	"registe-se": "Registe-se",
 	"register": {
