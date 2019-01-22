@@ -30,113 +30,180 @@ export class CardsComponent implements OnInit {
   livros: any;
   set = false;
   selR = false;
-  livro:any;
+  livro: any;
 
 
-  
- 
-  favoritos: any[] = []
 
- resModal: BsModalRef;
-  constructor( private dataservice: DataService,
+
+  favoritos: any[] = [];
+
+  resModal: BsModalRef;
+  constructor(private dataservice: DataService,
     private acountApi: AcountApiService,
     private router: Router,
     private modalService: BsModalService
-   ) 
-   { 
+  ) {
 
-      this.searchCatalog$ = this.dataservice.getCatalogByIsbn();
-    }
+    this.searchCatalog$ = this.dataservice.getCatalogByIsbn();
+  }
 
-    ngOnInit() {
-      this.updateData();
-      this.updateUser();
-     
-      this.userid = this.acountApi.getCurrentId();
-      this.acountApi.getAllFavourites(+this.userid).subscribe((favoritos: any[]) => {
-        this.favoritos = favoritos;
-      }, (error) => {
-        console.log(error);
-  
-      })
-  
-      this.searchCatalog$.subscribe((a: any[]) => {
-        this.livros = a;
-      }, (error) => {
-        console.log(error);
-  
-      })
-    }
-  
-  
-  
-    openModal(template: TemplateRef<any>) {
-      this.resModal = this.modalService.show(template);
-    }
-  
-  
-    updateData() {
-      this.dataservice.getCatalogByIsbn();
-    }
-  
-    updateUser() {
-      this.acountApi.getAllFavourites(+this.userid);
-    }
-  
-    itemInFav(item) {
-  
-      var result = this.favoritos.filter((favorito) => {
-        return item === favorito.isbn
-      })
-      return result.length > 0 ? true : false;
-    }
-  
-    onChangeInputCatalog() {
-      this.searchCatalog$ = this.dataservice.queryCatalog(this.selectedTypeSearchCatalog, this.inputCatalog);
-  console.log(this.inputCatalog);
-  console.log(this.selectedTypeSearchCatalog);
-    }
-  
-       // search type
-       selectChangeHandler(event: any) {
-        this.selectedTypeSearchCatalog = event.target.value;
-      
+  ngOnInit() {
+    this.updateData();
+    this.updateUser();
+
+    this.userid = this.acountApi.getCurrentId();
+    this.acountApi.getAllFavourites(+this.userid).subscribe((favoritos: any[]) => {
+      this.favoritos = favoritos;
+    }, (error) => {
+      console.log(error);
+
+    });
+
+    this.searchCatalog$.subscribe((a: any[]) => {
+      this.livros = a;
+    }, (error) => {
+      console.log(error);
+
+    });
+  }
+
+  openModal(template: TemplateRef<any>) {
+    this.resModal = this.modalService.show(template);
+  }
+
+
+  updateData() {
+    this.dataservice.getCatalogByIsbn();
+  }
+
+  updateUser() {
+    this.acountApi.getAllFavourites(+this.userid);
+  }
+
+  itemInFav(item) {
+
+    const result = this.favoritos.filter((favorito) => {
+      return item === favorito.isbn;
+    });
+    return result.length > 0 ? true : false;
+  }
+
+  onChangeInputCatalog() {
+    this.searchCatalog$ = this.dataservice.queryCatalog(this.selectedTypeSearchCatalog, this.inputCatalog);
+    console.log(this.inputCatalog);
+    console.log(this.selectedTypeSearchCatalog);
+  }
+
+  // search type
+  selectChangeHandler(event: any) {
+    this.selectedTypeSearchCatalog = event.target.value;
+
+  }
+  getBooksSameIsbn(item) {
+    let resultAux = [];
+    const result = { stateAvailable: [], stateOthers: [] };
+    const stateAvailable = [];
+    const stateOthers = [];
+
+    resultAux = this.livros.filter((livro) => {
+      return item.isbn === livro.isbn;
+    });
+
+    resultAux.map((livro) => {
+      if (livro.state === 'available') {
+        stateAvailable.push(livro);
+      } else {
+        stateOthers.push(livro);
       }
-    public getBooksSameIsbn(item) {
-      var resultAux=[]
-      var result={stateAvailable:[],stateOthers:[]}
-      var stateAvailable=[]
-      var stateOthers=[]
+    });
+    result.stateAvailable = stateAvailable;
+    result.stateOthers = stateOthers;
+    return result;
+
+
+
+
+  }
+
+ reservar(item) {
+    console.log('userId=' + this.userid);
+    this.user.id = Number(this.userid);
+    console.log(this.user);
+    console.log('historybook=' + item.id);
+    this.history.historyBook = item;
+    this.history.historyUser = this.user;
+    console.log(this.history);
+
+
+    const h = { historyBook: { id: item.id }, historyUser: { id: this.user.id } }
+    this.dataservice.reserveBookService(h).subscribe(
+      (res) => {
+        this.updateData();
+        console.log('ok')
+      },
+      error => { console.error(error)});
+  };
+
+  cancelarReserva(item) {
+    console.log('userId=' + this.userid);
+    this.user.id = Number(this.userid);
+    console.log(this.user);
+    console.log('historybook=' + item.id);
+    this.history.historyBook = item;
+    this.history.historyUser = this.user;
+
+    console.log(this.history);
+
   
-      resultAux = this.livros.filter((livro) => {
-        return item.isbn === livro.isbn
-      })
-  
-      resultAux.map((livro) => {
-        if (livro.state==='available') {
-          stateAvailable.push(livro)
-        }else{
-          stateOthers.push(livro)
-        }
-      })
-      result.stateAvailable=stateAvailable;
-      result.stateOthers=stateOthers;
-      return result;
-  
-    }
-  
-  
-  
-   
-    clickItem(item) {
-    
-  this.router.navigate(['bookdetails', item.isbn]);
-  console.log(item);
-    }
-  
-    
-    css() { this.set = true; }
-    css2() { this.selR = true; }
-  
+    this.dataservice.cancelReserveBookService(this.user.id, item.id).subscribe(
+      (res) => {
+        this.updateData();
+        console.log('OK');
+      },
+      error => { console.error(error)})
+  }
+
+
+
+  addFav(item) {
+
+    const user2 = Number(this.userid);
+
+    this.dataservice.addFavoritesServices(user2, item).subscribe(
+      (res) => {
+        this.updateUser();
+        console.log("OK")
+      },
+      error => { console.error(error) });
+
+    console.log(item);
+  }
+  delFav(item) {
+
+    let user2 = Number(this.userid);
+    let bookId = item.id;
+    this.dataservice.removeFavoritesServices(user2, item).subscribe(
+
+      (res) => {
+        this.updateUser();
+        console.log('OK')
+      },
+      error => { console.error(error)});
+    console.log(user2);
+
+
+  }
+
+  /*  */
+  clickItem(item) {
+
+    this.router.navigate(['bookdetails', item.isbn]);
+    console.log(item);
+  }
+
+
+  css() { this.set = true; }
+  css2() { this.selR = true; }
+
 
 }
