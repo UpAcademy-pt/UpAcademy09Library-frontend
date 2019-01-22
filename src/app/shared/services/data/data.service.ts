@@ -188,6 +188,53 @@ export class DataService {
     return this.searchCatalog$;
   }
 
+
+// query para os cards dos users/
+  public queryCatalogUsers(searchableList, input) {
+    switch (searchableList) {
+      case 'keyword':
+              this.catalogApi.getCatalogByKeyword(input).subscribe(
+          (res: any) => {
+            return this.searchCatalog$.next(res);
+          });
+        break;
+      case 'title': this.catalogApi.getCatalogByTitle(input).subscribe(
+        (res: any) => {
+          return this.searchCatalog$.next(res);
+        }
+      );
+        break;
+      case 'author': this.catalogApi.getCatalogByAuthor(input).subscribe(
+        (res: any) => {
+          return this.searchCatalog$.next(res);
+        }
+      );
+        break;
+      case 'description': this.catalogApi.getCatalogByDescription(input).subscribe(
+        (res: any) => {
+          return this.searchCatalog$.next(res);
+        }
+      );
+        break;
+      case 'isbn': this.catalogApi.getCatalogByIsbn(input).subscribe(
+        (res: any) => {
+          return this.searchCatalog$.next(res);
+        }
+      );
+        break;
+      case 'topic': this.catalogApi.getCatalogByTopic(input).subscribe(
+        (res: any) => {
+          return this.searchCatalog$.next(res);
+        }
+      );
+        break;
+      default:
+        console.error('Erro!');
+        break;
+    }
+    return this.searchCatalog$;
+  }
+
   public getBookInfoGoogleApi(insertedTitle) {
     return this.catalogApi.getBookInfoGoogleApi(insertedTitle);
   }

@@ -100,11 +100,15 @@
             <div class="card-body">
                 <h5 class="card-title"> {{entrada.title}}, {{entrada.author}}</h5>
                 <p class="card-text">Descrição: {{entrada.description}} </p>
-                <div [ngSwitch]="entrada.state">
-                    <p *ngSwitchCase="'available'" class="card-text">{{ 'estado' | translate }}: Disponivel</p>
-                    <p *ngSwitchCase="'reserved'" class="card-text ">{{ 'estado' | translate }}: Reservado</p>
-                    <p *ngSwitchCase="'inUse'" class="card-text ">{{ 'estado' | translate }}: Em uso</p>
-                </div>
+                <div class=" text-center">
+  
+                        <button  type="button" id="like-button" [ngClass]="{'selected': true}" class="m-2" (click)="delFav(entrada.isbn)">
+                          <svg class="heart-icon " xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+                            <path d="M91.6 13A28.7 28.7 0 0 0 51 13l-1 1-1-1A28.7 28.7 0 0 0 8.4 53.8l1 1L50 95.3l40.5-40.6 1-1a28.6 28.6 0 0 0 0-40.6z" /></svg>
+                          Retirar
+                        </button>
+
+                        </div>
             </div>
         </div>
     </tab>

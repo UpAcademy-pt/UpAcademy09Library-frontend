@@ -25,6 +25,13 @@
   <div class="card mb-3" *ngFor="let item of searchCatalog$ | async ">
   
     <div class="card-body" (click)="clickItem(item)">
+      
+      <div class="text-right">
+        <button *ngIf="!itemInFav(item.isbn)"  id="like-button" [ngClass]="{'selected': false }" class="m-2"
+        (click)="addFav(item.isbn)">
+        <svg class="heart-icon " xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+          <path d="M91.6 13A28.7 28.7 0 0 0 51 13l-1 1-1-1A28.7 28.7 0 0 0 8.4 53.8l1 1L50 95.3l40.5-40.6 1-1a28.6 28.6 0 0 0 0-40.6z" /></svg>
+        </button></div>
       <div *ngIf="item.availableBooksWithThisIsbn.length >0">
           <h5 class="card-title"><b>{{item.availableBooksWithThisIsbn[0].title}}</b>, {{item.availableBooksWithThisIsbn[0].author}}</h5>
           <p class="card-text"><b>Descrição:</b> {{item.availableBooksWithThisIsbn[0].description}}</p>
@@ -35,39 +42,33 @@
           <p class="card-text"><b>Descrição:</b> {{item.unavailableBooksWithThisIsbn[0].description}}</p>    
       </div>
       <div>
+        <br>
+          <p class="card-text"><b>Disponibilidade:</b>
         <img *ngFor="let item of item.unavailableBooksWithThisIsbn" src="/assets/indis.png" style="margin-right:-1.2vw;">
         <img *ngFor="let item of item.availableBooksWithThisIsbn" src="/assets/dis.png" style="margin-right:-1.2vw;">
-      </div>
+      </p></div>
       <hr>
     </div>
   
     <div class=" text-center">
   
-      <button *ngIf="itemInFav(item.isbn)" type="button" id="like-button" [ngClass]="{'selected': true}" class="m-2" (click)="delFav(item.isbn)">
+      <!-- <button *ngIf="itemInFav(item.isbn)" type="button" id="like-button" [ngClass]="{'selected': true}" class="m-2" (click)="delFav(item.isbn)">
         <svg class="heart-icon " xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
           <path d="M91.6 13A28.7 28.7 0 0 0 51 13l-1 1-1-1A28.7 28.7 0 0 0 8.4 53.8l1 1L50 95.3l40.5-40.6 1-1a28.6 28.6 0 0 0 0-40.6z" /></svg>
         Favorito
-      </button>
+      </button> -->
   
-      <button *ngIf="!itemInFav(item.isbn)" type="button" id="like-button" [ngClass]="{'selected': false }" class="m-2"
-        (click)="addFav(item.isbn)">
-        <svg class="heart-icon " xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-          <path d="M91.6 13A28.7 28.7 0 0 0 51 13l-1 1-1-1A28.7 28.7 0 0 0 8.4 53.8l1 1L50 95.3l40.5-40.6 1-1a28.6 28.6 0 0 0 0-40.6z" /></svg>
-        Favoritos
-      </button>
   
   
       <button *ngIf="item.availableBooksWithThisIsbn.length >0" type="button" [ngClass]="{'selected': false }" id="like-button" class="m-2"
         (click)="openModal(confReserva)" (click)="css2()">
-        <svg class="heart-icon"></svg>
         Reservar
       </button>
   
   
       <button  *ngIf="item.unavailableBooksWithThisIsbn.length>0" type="button" [ngClass]="{'selected': true }" tooltip="remover reserva"
         (click)="openModal(cancReserva)" containerClass="customClass" placement="top" id="like-button" class="m-2" >
-        <svg class="heart-icon"></svg>
-        Cancelar Reserva
+        Cancelar
       </button>
   
   
@@ -111,8 +112,8 @@
             <div *ngIf="item.unavailableBooksWithThisIsbn.length >0">
              
               <p translate>Deseja cancelar a reserva do livro <span class="font-weight-bold">{{item.unavailableBooksWithThisIsbn[0].title}} de {{item.unavailableBooksWithThisIsbn[0].author}}?</span></p>
-              <button type="button" (click)="resModal.hide(); cancelarReserva(item.unavailableBooksWithThisIsbn[0])" class="btn btn-success" translate>Sim</button>
-              <button type="button" (click)="resModal.hide()" class="btn btn-danger" translate>Cancelar</button>
+              <button type="button" (click)="resModal.hide(); cancelarReserva(item.unavailableBooksWithThisIsbn[0])" class="mod-button text-center" translate>Sim</button>
+              <button type="button" (click)="resModal.hide()" class="cancel-button text-center" translate>Cancelar</button>
               
            
             </div>
