@@ -38,7 +38,6 @@ export class DataService {
   constructor(private catalogApi: CatalogApiService, private acountApi: AcountApiService, private historyApi: HistoryApiService) {
     this.getCatalogByIsbn();
     this.getUsers();
-    console.log( this.getCatalogByIsbn());
   }
 
   /* BOOKS DATA LOGIC*/

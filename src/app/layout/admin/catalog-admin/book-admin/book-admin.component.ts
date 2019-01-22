@@ -13,6 +13,10 @@ export class BookAdminComponent implements OnInit {
   // variables
   catalog$: any;
   catalog: any;
+  quantity: any;
+  max = 5;
+  rate = 3;
+  isReadonly = false;
 
   constructor(private _location: Location, private dataService: DataService, private route: ActivatedRoute) {
 
@@ -20,13 +24,24 @@ export class BookAdminComponent implements OnInit {
       params => {
         this.catalog$ = this.dataService.getCatalogId(Number(params.id));
       });
+
   }
 
   ngOnInit() {
     this.catalog$.subscribe((res: any) => {
       this.catalog = res;
-      console.log(this.catalog);
+      console.log(this.catalog.isbn);
+      this.getQuantity(this.catalog.isbn);
     });
+    
+  }
+
+  getQuantity(catalog) {
+    this.dataService.getCatalogIsbn(catalog);
+    // .subscribe((res: any) => {
+    //   this.quantity = res;
+    //   console.log(res);
+    // });
   }
 
   // delete book
