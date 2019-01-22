@@ -89,7 +89,7 @@ export class CardsComponent implements OnInit {
   }
 
   onChangeInputCatalog() {
-    this.searchCatalog$ = this.dataservice.queryCatalog(this.selectedTypeSearchCatalog, this.inputCatalog);
+    this.searchCatalog$ = this.dataservice.queryCatalogUsers(this.selectedTypeSearchCatalog, this.inputCatalog);
     console.log(this.inputCatalog);
     console.log(this.selectedTypeSearchCatalog);
   }

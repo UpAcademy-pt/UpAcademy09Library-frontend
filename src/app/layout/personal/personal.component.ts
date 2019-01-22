@@ -30,10 +30,9 @@ export class PersonalComponent implements OnInit {
 
   date: Date = new Date();
   
-  
-  max: number = 8;
+  max = 8;
   showWarning: boolean;
-  dynamic: number = 7;
+  dynamic = 7;
   type: string;
 
   constructor(
@@ -42,7 +41,7 @@ export class PersonalComponent implements OnInit {
     public router: Router
   ) {
     this.history = dataService.history$;
-    this.history.subscribe((a)=> console.log(a));
+    this.history.subscribe((a) => console.log(a));
 
     this.route.params.subscribe(
       params => {
@@ -110,6 +109,22 @@ export class PersonalComponent implements OnInit {
   
     const dayNow = new Date().getTime();
  
-    return  Math.round(8-(res-dayNow)/86400000); 
+    return  Math.round(8 - (res - dayNow) / 86400000);
+  }
+
+
+  delFav(entrada) {
+
+    let user2 = Number(this.user.id);
+    let bookId = entrada.id;
+    this.dataService.removeFavoritesServices(user2, entrada).subscribe(
+
+      (res) => {
+              console.log('OK');
+      },
+      error => { console.error(error)});
+    console.log(user2);
+
+
   }
 }
