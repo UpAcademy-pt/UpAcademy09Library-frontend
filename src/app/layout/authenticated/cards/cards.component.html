@@ -34,12 +34,12 @@
         </button></div>
       <div *ngIf="item.availableBooksWithThisIsbn.length >0">
           <h5 class="card-title"><b>{{item.availableBooksWithThisIsbn[0].title}}</b>, {{item.availableBooksWithThisIsbn[0].author}}</h5>
-          <p class="card-text"><b>Descrição:</b> {{item.availableBooksWithThisIsbn[0].description}}</p>
+          <p class="card-text text-justify"><b>Descrição:</b> {{item.availableBooksWithThisIsbn[0].description}}</p>
       
       </div>
       <div *ngIf="item.availableBooksWithThisIsbn.length == 0">
           <h5 class="card-title"><b>{{item.unavailableBooksWithThisIsbn[0].title}}</b>, {{item.unavailableBooksWithThisIsbn[0].author}}</h5>
-          <p class="card-text"><b>Descrição:</b> {{item.unavailableBooksWithThisIsbn[0].description}}</p>    
+          <p class="card-text text-justify"><b>Descrição:</b> {{item.unavailableBooksWithThisIsbn[0].description}}</p>    
       </div>
       <div>
         <br>
