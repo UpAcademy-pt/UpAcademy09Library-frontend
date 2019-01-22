@@ -1,20 +1,28 @@
 {
-	"A pesquisa por": "",
-	"A sua Biblioteca": "qwe",
+	"A pesquisa por": "Searching for",
+	"Activar o utilizador": "",
 	"Actualizar": "Update",
 	"Adicionar": "Add",
 	"Adicionar livros": "Add Books",
 	"Anterior": "Previous",
 	"Autor": "Author",
+	"Cancelamento da reserva": "",
+	"Cancelar": "",
+	"Conceder privilégios administrativos ao utilizador": "",
 	"Confirmar devolução:": "Confirm return",
 	"Confirmar entrega": "Confirm delivery",
+	"Confirmação de reserva": "",
 	"Confirme a Palavra-Passe": "Confirm password",
 	"Contactos": "Contacts",
 	"Data de entrega": "",
 	"Data de levantamento": "Pick-up date",
 	"Data de reserva": "Reservation date",
+	"Desactivar o utilizador": "",
 	"Descrição": "Description",
 	"Descriçāo": "Description",
+	"Deseja cancelar a reserva do livro": "",
+	"Deseja prosseguir com a reserva do livro": "",
+	"Entrega prevista": "",
 	"Erro: Email já se encontra registado": "Error: E-mail already registered",
 	"Estado": "Status",
 	"Estado do Utilizador:": "User status",
@@ -24,6 +32,8 @@
 	"Introduza e-mail válido": "",
 	"Introduza um nome": "",
 	"Isbn": "",
+	"Livros a devolver pelo utilizador": "",
+	"Livros a entregar ao utilizador": "",
 	"Livros a recolher": "Book's to collect",
 	"Livros mais reservados": "Most reserved books",
 	"Localização": "Location",
@@ -36,21 +46,21 @@
 		"nip}}": ""
 	},
 	"Nova Palavra-Passe": "New Password",
+	"Não": "",
+	"O Utilizador": "",
 	"O par e-mail/password está incorrecto Por favor tente novamente ou contacte o administrador para recuperar a sua password": "The pair e-mail/password is incorrect. Please try again or contact the page administrator to retrieve your password.",
 	"Palavra-Chave": "Keyword",
 	"Palavra-passe": "Password",
 	"Privilégios Administrativos:": "Administrative privileges",
 	"Procurar por": "Search by",
 	"Próximo": "Next",
+	"Quantidade": "",
 	"Registar": "Register",
-	"Regulamento": "",
-	"Regulamento de Permissões Administrativas, Taxas e Outras Receitas, onde se inclui as Bibliotecas\n      Municipais, Subseção II, artigo 857º (página 101)\n      [Regulamento n": {
-		"º 364/2012, Diário da República, 2": {
-			"ª série, de 14/08]": ""
-		}
-	},
 	"Reservas do utilizador:": "User's reservations",
+	"Sair": "",
+	"Sim": "",
 	"Telefone": "Phone Number",
+	"Tem a certeza que quer conceder privilégios de administrador ao Utilizador": "",
 	"Tema": "Topic",
 	"Titulo": "Title",
 	"Título": "Title",
@@ -73,32 +83,32 @@
 	"areaPessoal": "Personal Area",
 	"catalogo": "Catalog",
 	"categoria": "Category",
+	"colocar titulo": "",
 	"contactos": {
 		"p1": "Please contact us by phone to solve or clarify any questions related to the Library.",
 		"p2": "Ask general or more specialized questions to the Library."
 	},
 	"descricao": "Description",
-	"descrição": "Description",
 	"detalheLivros": {
 		"p1": "Book Details"
 	},
 	"detalhesUser": "User Details",
+	"encontra-se desactivado, primeiro active o utilizador para conceder privilégios de administrador": "",
 	"estado": "Status",
-	"home": {
-		"p1": "p1",
-		"subtitle": "sub",
-		"title": "title"
-	},
 	"imprimir": "Print",
-	"kkkk": "",
+	"isbn": "",
 	"livro": "Book",
 	"livros guardados": "Favorite Books",
+	"livros levantados": "",
 	"localizacao": "Location",
 	"login": {
 		"p1": "The e-mail insirted is not valid. Please insert a correct e-mail."
 	},
 	"não obteve resultados": {
-		" Por favor, faça nova\n          pesquisa": {
+		"\n              Por\n              favor, faça nova\n              pesquisa": {
+			"0": ""
+		},
+		"\n              Por favor, faça nova pesquisa": {
 			"0": ""
 		}
 	},
@@ -109,9 +119,5 @@
 	},
 	"sair": "Logout",
 	"submeter": "Submit",
-	"topico": "Topic",
-	"verHistorico": "History",
-	"{{ 'home": {
-		"p1' | translate }}": ""
-	}
+	"verHistorico": "History"
 }
