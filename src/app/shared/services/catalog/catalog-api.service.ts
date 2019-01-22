@@ -43,7 +43,7 @@ export class CatalogApiService {
 
   // DELETE Book by id
   public deleteBook(id) {
-    return this.http.delete(apiUrl + id);
+    return this.http.put(apiUrl + 'removebook/' + id, null);
   }
 
   /* QUERYS */
