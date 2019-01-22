@@ -3,5 +3,9 @@ input.ng-invalid.ng-touched{
 }
 .required:after {
     content:' *'; 
-    color: red;
-  }
+    color: red;  
+}
+.container {
+    margin-left: 0;
+    padding-left: 10rem;
+}

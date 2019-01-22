@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 })
 
 export class RequestComponent implements OnInit {
-  @Input() historyRequest$: any;
+  historyRequest$: any;
   history: any;
   bookToPickup: History;
   subscription: Subscription;
@@ -20,7 +20,9 @@ export class RequestComponent implements OnInit {
 
   constructor(private modalService: BsModalService, private dataService: DataService, public router: Router) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.historyRequest$ = this.dataService.getHistoryService();
+  }
 
   onSubmit(history) {
     console.log(history);

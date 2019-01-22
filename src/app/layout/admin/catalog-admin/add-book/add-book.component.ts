@@ -1,9 +1,9 @@
-import { Component, OnInit, TemplateRef } from '@angular/core';
+import { Component, OnInit, TemplateRef, Input } from '@angular/core';
 import { BsModalRef, BsModalService, TypeaheadMatch } from 'ngx-bootstrap';
 import { Catalog } from 'src/app/shared/models';
 import { ReplaySubject, observable } from 'rxjs';
 import { DataService } from 'src/app/shared';
-import { isNumber } from 'util';
+import { Location } from '@angular/common';
 import { debounceTime } from 'rxjs/internal/operators/';
 
 @Component({
@@ -12,6 +12,7 @@ import { debounceTime } from 'rxjs/internal/operators/';
   styleUrls: ['./add-book.component.css']
 })
 export class AddBookComponent implements OnInit {
+  @Input() showAdd;
 
   // variables
   modalRef: BsModalRef;
@@ -22,12 +23,12 @@ export class AddBookComponent implements OnInit {
   count: number;
   input: ReplaySubject<any> = new ReplaySubject<any>();
 
-  constructor(private modalService: BsModalService, private dataService: DataService) { }
+  constructor(private _location: Location, private modalService: BsModalService, private dataService: DataService) { }
 
   ngOnInit() { }
 
   openModal(template: TemplateRef<any>) {
-    this.modalRef = this.modalService.show(template);
+    this.modalRef = this.modalService.show(template, {class: 'modal-lg'});
   }
 
   // Persist the book in Database
@@ -136,5 +137,10 @@ export class AddBookComponent implements OnInit {
       error => {
         console.error(error);
       });
+  }
+
+  cancel() {
+    this.showAdd = false;
+     // <-- go back to previous location on cancel
   }
 }

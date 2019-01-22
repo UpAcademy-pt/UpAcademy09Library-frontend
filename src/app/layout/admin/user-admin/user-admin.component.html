@@ -1,3 +1,5 @@
+<div class="row" style="padding-right: 3rem">
+    <div class="col-12">
 <div class="table-responsive">
   <table class="table" [ngClass]='theme'>
     <thead>
@@ -21,5 +23,10 @@
       </tr>
     </tbody>
   </table>
+  <br>
+  <div class="text-center col-10">
   <pagination-controls id="userAdminPagination" class="my-paginationUser" (pageChange)=" page = $event" previousLabel="Anterior"
     nextLabel="Próximo" maxSize="7"></pagination-controls>
+  </div>
+</div>
+</div>

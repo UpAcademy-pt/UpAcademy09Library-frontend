@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./devolution.component.css']
 })
 export class DevolutionComponent implements OnInit {
-  @Input() historyRequest$: any;
+  historyRequest$: any;
   history: any;
   bookToDeliver: History;
   subscription: Subscription;
@@ -18,7 +18,9 @@ export class DevolutionComponent implements OnInit {
 
   constructor(private modalService: BsModalService, private dataService: DataService, public router: Router) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.historyRequest$ = this.dataService.getHistoryService();
+  }
 
   onSubmit(history) {
     console.log(history);

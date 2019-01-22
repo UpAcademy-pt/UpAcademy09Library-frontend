@@ -1,61 +1,57 @@
-<a class="btn" (click)="openModal(template)" tooltip="Adicionar Livro" placement="top"><img src="/assets/addBooks.png"></a>
-
-<ng-template #template>
-  <div class="modal-header">
-    <h4 class="modal-title pull-left" translate>Adicionar livros</h4>
-    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide(); onClose();">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <div class="modal-body">
-    <form #f="ngForm">
-      <div class="form-group">
-        <label class="required" for="title" translate>Título</label>
-        <input id="title "type="text" class="form-control" typeaheadOptionField="title" [typeaheadAsync]="true" [typeahead]="dataSource"
-          name="title" (typeaheadOnSelect)="typeaheadOnSelect($event)" (input)="debounce()" [(ngModel)]="catalog.title"
-          required>
-      </div>
-      <div class="form-group">
-        <label class="required" for="description" translate>Descriçāo</label>
-        <textarea type="input" class="form-control" name="description" [(ngModel)]="catalog.description" required></textarea>
-      </div>
-      <div class="form-group">
-        <label class="required" for="author" translate>Autor</label>
-         <input id="title "type="text" class="form-control" typeaheadOptionField="title"  [typeaheadAsync]="true" [typeahead]="dataSource"
-          name="author" (typeaheadOnSelect)="typeaheadOnSelect($event)" (input)="getBookAuthorGoogleApi()" [(ngModel)]="catalog.author"
-          required>
-      </div>
-      <div class="form-group">
-        <label class="required" for="topic" translate>Tema</label>
-        <input type="text" class="form-control" name="topic" [(ngModel)]="catalog.topic" required>
-      </div>
-      <div class="form-group">
-        <label class="required" for="location" translate>Localizaçāo</label>
-        <input type="text" class="form-control" name="location" [(ngModel)]="catalog.location" required>
-      </div>
-      <div class="form-group">
-        <label class="required" for="isbn">ISBN</label>
-        <input id="isbn"type="text" class="form-control" typeaheadOptionField="title" [typeaheadAsync]="true" [typeahead]="dataSource"
-          name="isbn" (typeaheadOnSelect)="typeaheadOnSelect($event)" (input)="getBookIsbnGoogleApi()" [(ngModel)]="catalog.isbn" 
-          required>
-      </div>
-      <div class="form-group">
-        <label for="rating">Rating</label>
-        <input type="text" class="form-control" name="rating" [(ngModel)]="catalog.rating">
-      </div>
-      <div class="form-group">
-        <label for="cover">Capa</label>
-        <input type="text" class="form-control" name="cover" [(ngModel)]="catalog.photoLink">
-      </div>
-      <div *ngIf="catalog.photoLink!==null" class="col-md-4 text-center">
-        <img src="{{catalog.photoLink}}">
-      </div>
-      <div class="form-group">
-        <label for="cover">Quantidade</label>
-        <input type="number" class="form-control" name="quantity" [(ngModel)]="count">
-      </div>
-      <button type="submit" (click)="onSubmit(); modalRef.hide(); loadData()" [disabled]="f.invalid" class="btn btn-success"
+<div class="container">
+  <h4 class="text-center" translate>Adicionar livros</h4>
+  <br>
+  <form #f="ngForm">
+      <div class="col-12 text-center" style="float:left; padding-bottom: 1rem">
+          <img src="{{catalog.photoLink}}">
+        </div>
+        <br>
+    <div class="form-group col-6" style="float:left;">
+      <label class="required" for="title" translate>Título</label>
+      <input size="50" id="title " type="text" class="form-control" typeaheadOptionField="title" [typeaheadAsync]="true"
+        [typeahead]="dataSource" name="title" (typeaheadOnSelect)="typeaheadOnSelect($event)" (input)="debounce()"
+        [(ngModel)]="catalog.title" required>
+    </div>
+    <div class="form-group col-6" style="float:right;">
+      <label class="required" for="author" translate>Autor</label>
+      <input size="50" id="author " type="text" class="form-control" typeaheadOptionField="title" [typeaheadAsync]="true"
+        [typeahead]="dataSource" name="author" (typeaheadOnSelect)="typeaheadOnSelect($event)" (input)="getBookAuthorGoogleApi()"
+        [(ngModel)]="catalog.author" required>
+    </div>
+    <div class="form-group col-6" style="float:right;">
+      <label class="required" for="isbn">ISBN</label>
+      <input size="50" id="isbn" type="text" class="form-control" typeaheadOptionField="title" [typeaheadAsync]="true"
+        [typeahead]="dataSource" name="isbn" (typeaheadOnSelect)="typeaheadOnSelect($event)" (input)="getBookIsbnGoogleApi()"
+        [(ngModel)]="catalog.isbn" required>
+    </div>
+    <div class="form-group col-6" style="float:left;">
+      <label class="required" for="topic" translate>Tema</label>
+      <input size="50" type="text" class="form-control" name="topic" [(ngModel)]="catalog.topic" required>
+    </div>
+    <div class="form-group col-6" style="float:right;">
+      <label class="required" for="location" translate>Localizaçāo</label>
+      <input size="50" type="text" class="form-control" name="location" [(ngModel)]="catalog.location" required>
+    </div>
+    <div class="form-group col-6" style="float:left;">
+      <label for="rating">Rating</label>
+      <input size="10" type="text" class="form-control" name="rating" [(ngModel)]="catalog.rating">
+    </div>
+    <div class="form-group col-12" style="float: right;">
+      <label class="required" for="description" translate>Descriçāo</label>
+      <textarea size="50" type="input" class="form-control" name="description" [(ngModel)]="catalog.description"
+        required></textarea>
+    </div>
+    <div class="form-group col-3" style="float:left;">
+      <label for="cover">Quantidade</label>
+      <input size="10" type="number" class="form-control" name="quantity" [(ngModel)]="count">
+    </div>
+    <div class="form-group col-9" style="float:right;">
+      <label for="cover">Capa</label>
+      <input size="20" type="text" class="form-control" name="cover" [(ngModel)]="catalog.photoLink">
+    </div>
+    <div class="form-group col-12" style="text-align: center; float:left;">
+      <button size="20" type="submit" (click)="onSubmit(); loadData();cancel()" [disabled]="f.invalid" class="btn btn-success"
         translate>Adicionar</button>
-    </form>
-  </div>
-</ng-template>
+    </div>
+  </form>
+</div>

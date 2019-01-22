@@ -9,7 +9,7 @@ import { Subscription, ReplaySubject } from 'rxjs';
   styleUrls: ['./analyze.component.css']
 })
 export class AnalyzeComponent implements OnInit, OnDestroy {
-  @Input() historyRequest$: any;
+  historyRequest$: any;
   history: any;
   subscription: Subscription;
   highestToReturn$: ReplaySubject<any[]> = new ReplaySubject(1);
@@ -18,6 +18,7 @@ export class AnalyzeComponent implements OnInit, OnDestroy {
   constructor(private dataService: DataService, public router: Router) { }
 
   ngOnInit() {
+    this.historyRequest$ = this.dataService.getHistoryService();
     // se eu não subsescrever ao data service aqui , o resto do código do history não funciona
     this.subscription = this.dataService.getHistoryService().subscribe(
       (res) => {

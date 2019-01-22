@@ -1,4 +1,6 @@
-<table class="table table-hover" [ngClass]='theme'>
+<div class="row" style="padding-right: 3rem">
+  <div class="col-12">
+    <table class="table table-hover" [ngClass]='theme'>
   <thead>
     <tr>
       <th>Título</th>
@@ -20,5 +22,10 @@
       </tr>
   </tbody>
 </table>
+<br>
+<div class="text-center col-10">
 <pagination-controls id="bookAdminPagination" class="my-pagination" (pageChange)=" p = $event" previousLabel="{{ 'Anterior' | translate }}"
   nextLabel="{{ 'Próximo' | translate }}" maxSize="7"></pagination-controls>
+</div>
+</div>
+</div>

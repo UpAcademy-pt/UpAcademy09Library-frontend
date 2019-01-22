@@ -18,6 +18,8 @@ export class AdminComponent implements OnInit {
   selectedTypeSearchOutput = 'Palavra-Chave';
   inputUser: any;
   inputCatalog: any;
+  history: any;
+  showRequest: boolean;
 
   // observable
   public catalog$: ReplaySubject<any[]> = new ReplaySubject(1);
@@ -35,6 +37,7 @@ export class AdminComponent implements OnInit {
     this.history$ = this.dataService.history$;
   }
   ngOnInit() {
+    this.showRequest = true;
   }
 
   onChangeInputCatalog() {
@@ -53,6 +56,7 @@ export class AdminComponent implements OnInit {
     this.searchUser$ = this.user$;
   }
   loadCatalogAfterSearch() {
-        this.searchCatalog$ = this.catalog$;
-}
+    this.searchCatalog$ = this.catalog$;
+  }
+
 }

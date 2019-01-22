@@ -1,13 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
+:host{
+  border:0;
+  padding: 0;
+}
 body{
     background-color: #fffdf8;
+    border:0;
+    padding: 0;
 }
 
 .tooltip.top .tooltip-arrow {
 
  
     border: 1px solid #e0e0e0;
-  
     width: 10px;
     height: 10px;
     border-bottom-color: white;
