@@ -51,6 +51,49 @@
     margin-right: 0.2em;
   }
 
+  .mod-button:hover {
+    color:white;
+    background-color: #73d84a;
+  }
+.mod-button{
+  
+  color:#73d84a;
+  font-size: 1.5em;
+  font-family: 'Heebo', sans-serif;
+  background-color: transparent;
+  border: 0.1em solid;
+  border-radius: 1em;
+  padding: 0.2em 1em 0.16em;
+  line-height: 1.2em;
+  box-shadow: 0 0.25em 1em -0.25em;
+  cursor: pointer;
+  transition: color 150ms ease-in-out, background-color 150ms ease-in-out, transform 150ms ease-in-out;
+  outline: 0;
+  margin: 0.5em 1em 0.5em  3em;
+
+}
+
+.cancel-button:hover {
+  color:white;
+  background-color: #b22c15;
+}
+.cancel-button{
+
+color:#b22c15;
+font-size: 1.5em;
+font-family: 'Heebo', sans-serif;
+background-color: transparent;
+border: 0.1em solid;
+border-radius: 1em;
+padding: 0.2em 1em 0.16em;
+line-height: 1.2em;
+box-shadow: 0 0.25em 1em -0.25em;
+cursor: pointer;
+transition: color 150ms ease-in-out, background-color 150ms ease-in-out, transform 150ms ease-in-out;
+outline: 0;
+margin:0.5em 3em 0.5em  1em;
+
+}
 
 body {
   text-align: center;

@@ -77,7 +77,7 @@
     </div>
     <ng-template #confReserva>
       <div class="modal-header">
-        <h4 class="modal-title pull-left" translate>Reserva</h4>
+        <h4 class="modal-title pull-left" translate>Confirmação de reserva</h4>
         <button type="button" class="close pull-right" aria-label="Close" (click)="resModal.hide()">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -87,8 +87,8 @@
           <div class="form-group">
             <div *ngIf="item.availableBooksWithThisIsbn.length >0">
               <p translate>Deseja prosseguir com a reserva do livro <span class="font-weight-bold">{{item.availableBooksWithThisIsbn[0].title}} de {{item.availableBooksWithThisIsbn[0].author}}?</span></p>
-              <button type="button" (click)="resModal.hide();reservar(item.availableBooksWithThisIsbn[0])" class="btn btn-success" translate>Sim</button>
-              <button type="button" (click)="resModal.hide()" class="btn btn-danger" translate>Cancelar</button>
+              <button type="button" (click)="resModal.hide();reservar(item.availableBooksWithThisIsbn[0])" class="mod-button text-center" translate>Sim</button>
+              <button type="button" (click)="resModal.hide()" class="cancel-button text-center" translate>Cancelar</button>
             </div>
            
           </div>
@@ -98,8 +98,8 @@
   
   
     <ng-template #cancReserva>
-      <div class="modal-header">
-        <h4 class="modal-title pull-left" translate>Reserva</h4>
+      <div class="modal-header text-center" >
+        <h4 class="modal-title pull-left" translate>Cancelamento da reserva</h4>
         <button type="button" class="close pull-right" aria-label="Close" (click)="resModal.hide()">
           <span aria-hidden="true">&times;</span>
         </button>
