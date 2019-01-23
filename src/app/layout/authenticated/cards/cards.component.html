@@ -66,7 +66,7 @@
       </button>
   
   
-      <button  *ngIf="item.unavailableBooksWithThisIsbn.length>0" type="button" [ngClass]="{'selected': true }" tooltip="remover reserva"
+      <button  *ngIf="item.unavailableBooksWithThisIsbn.length>0" type="button" [ngClass]="{'selected': false }" tooltip="remover reserva"
         (click)="openModal(cancReserva)" containerClass="customClass" placement="top" id="like-button" class="m-2" >
         Cancelar
       </button>
