@@ -7,40 +7,43 @@
       <div class="col-md-4 text-center">
         <img class="avatarUserAdmin" src="assets/adminViewAvatar-128.png">
       </div>
-      <div class="col-md-8">
+      <div class="col-md-4">
         <h4 class="card-text">{{user.name}}</h4>
         <p class="card-text">Email: {{user.email}}</p>
         <p class="card-text" translate>Nip: {{user.nip}} </p>
         <div *ngIf="user.admin">
-          <p class="card-text" translate>Privilégios Administrativos: <img src="/assets/admin.png"></p>
+          <p class="card-text" translate>Privilégios Administrativos: <img class="icons"src="/assets/admin.png"></p>
         </div>
         <div *ngIf="!user.active">
-          <p class="card-text" translate>Estado do Utilizador:<img src="/assets/user-inactive.png"></p>
+          <p class="card-text" translate>Estado do Utilizador:<img class="icons" src="/assets/user-inactive.png"></p>
         </div>
         <div *ngIf="user.active">
-          <p class="card-text" translate>Estado do Utilizador: <img src="/assets/user-active.png"></p>
+          <p class="card-text" translate>Estado do Utilizador: <img class="icons" src="/assets/user-active.png"></p>
         </div>
         <br>
-        <table class="table-bordered">
-          <thead>
-            <th translate>Reservas do utilizador: </th>
+        <div class="row align-self-center">
+            <div class="col-md-12">
+              <p style="font-size:large; font-weight: bold">Gestão de Permissões:</p>
+              <app-admin-privileges [userPrivileges]='user'></app-admin-privileges>
+              <app-disable [userPrivileges]='user'></app-disable>
+              <app-reactive [userPrivileges]='user'></app-reactive>
+            </div>
+          </div>
+          <p style="font-size:large; font-weight: bold" translate>Reservas do utilizador: </p>
+        <table class="table-hover table-bordered">
+          <thead *ngFor="let book of history">
+            <th >Título</th>
+            <th>isbn</th>
           </thead>
           <tbody>
             <tr *ngFor="let book of history">
               <!-- <td *ngIf="book.deliveryDate != null">Não tem Reservas</td> -->
               <td *ngIf="!book.deliveryDate">{{book.historyBook.title}}</td>
-              <td *ngIf="!book.deliveryDate">{{book.historyBook.author}}</td>
+              <td style="text-align: right" *ngIf="!book.deliveryDate">{{book.historyBook.isbn}}</td>
             </tr>
           </tbody>
         </table>
       </div>
-    </div>
-  </div>
-  <div class="row align-self-center  ">
-    <div class="col-md-12">
-      <app-admin-privileges [userPrivileges]='user'></app-admin-privileges>
-      <app-disable [userPrivileges]='user'></app-disable>
-      <app-reactive [userPrivileges]='user'></app-reactive>
     </div>
   </div>
   <a><img class="back" src="/assets/back.png" (change)="onChangeInput()" (click)="cancel()"></a>
