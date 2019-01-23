@@ -18,7 +18,9 @@
         <td>{{ book.isbn }}</td>
         <td>{{ book.topic }}</td>
         <td>{{ book.location }}</td>
-        <td>{{ book.state }}</td>
+        <td *ngIf="book.state == 'inUse'">Em uso</td>
+        <td *ngIf="book.state == 'reserved'">Reservado</td>
+        <td *ngIf="book.state == 'available'">Disponível</td>
       </tr>
   </tbody>
 </table>

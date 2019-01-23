@@ -14,8 +14,13 @@
           <p class="card-text">{{ 'localizacao' | translate }}: {{catalog?.location}} </p>
           <p class="card-text">{{ 'isbn' | translate }}: {{catalog?.isbn}} </p>
           <!-- <p class="card-text">{{ 'Quantidade' | translate }}: {{quantity}} </p> -->
-          <p>Rating: <rating [(ngModel)]="catalog.rating" [max]="max" [readonly]="isReadonly"></rating></p>
-          <p class="card-text">{{ 'estado' | translate }}: {{catalog?.state}}</p>
+          <p>Rating: <rating [(ngModel)]="catalog.rating" [max]="max" [readonly]="isReadonly"></rating>
+          </p>
+          <p class="card-text">{{ 'estado' | translate }}: 
+          <a *ngIf="catalog.state == 'inUse'" >Em uso</a>
+          <a *ngIf="catalog.state == 'reserved'">Reservado</a>
+          <a *ngIf="catalog.state == 'available'">Disponível</a>
+        </p>
         </div>
       </div>
     </div>
