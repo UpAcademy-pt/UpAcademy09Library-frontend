@@ -20,6 +20,7 @@
         <td *ngIf="!user.active"><img src="/assets/user-inactive.png"></td>
         <td *ngIf="user.active"><img src="/assets/user-active.png"></td>
         <td *ngIf="user.admin"><img src="/assets/admin.png"></td>
+        <td *ngIf="!user.admin"></td>
       </tr>
     </tbody>
   </table>

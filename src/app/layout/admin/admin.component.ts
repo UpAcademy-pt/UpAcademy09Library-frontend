@@ -41,6 +41,8 @@ export class AdminComponent implements OnInit {
   }
 
   onChangeInputCatalog() {
+    console.log(this.selectedTypeSearchCatalog);
+    console.log(this.inputCatalog);
     this.searchCatalog$ = this.dataService.queryCatalog(this.selectedTypeSearchCatalog, this.inputCatalog);
   }
   onChangeInputUser() {
@@ -55,8 +57,10 @@ export class AdminComponent implements OnInit {
   loadUserAfterSearch() {
     this.searchUser$ = this.user$;
   }
-  loadCatalogAfterSearch() {
-    this.searchCatalog$ = this.catalog$;
+  loadCatalogAfterSearch(input) {
+    if (input === '') {
+    this.searchCatalog$ = this.dataService.getCatalogGroupedByIsbn();
   }
+}
 
 }

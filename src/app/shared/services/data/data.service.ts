@@ -119,7 +119,7 @@ export class DataService {
     return this.catalogApi.getCatalogById(id);
   }
 
-   public getCatalogId(bookid) {
+  public getCatalogId(bookid) {
     this.catalogApi.getCatalogById(bookid).subscribe((res: any) => {
       this.book$.next(res);
     });
@@ -131,9 +131,11 @@ export class DataService {
     return this.catalogApi.getAvailableBooks();
   }
 
-  /* aplicar o mesmo para os outros depois de fala com a debora*/
-  // Switch Search
+
+  // Switch Search -- tentar encurtar o metodo
   public queryCatalog(searchableList, input) {
+    console.log(searchableList);
+    console.log(input);
     switch (searchableList) {
       case 'keyword':
         const data = [];
@@ -150,33 +152,79 @@ export class DataService {
             return this.searchCatalog$;
           });
         break;
-      case 'title': this.catalogApi.getCatalogByTitle(input).subscribe(
+      case 'title':
+      this.catalogApi.getCatalogByTitle(input).subscribe(
         (res: any) => {
-          return this.searchCatalog$.next(res);
+          const title = [];
+          res.forEach(element => {
+            if (element.availableBooksWithThisIsbn[0]) {
+              title.push(element.availableBooksWithThisIsbn[0]);
+            } else {
+              title.push(element.unavailableBooksWithThisIsbn[0]);
+            }
+            this.searchCatalog$.next(title);
+          });
+          return this.searchCatalog$;
         }
       );
         break;
       case 'author': this.catalogApi.getCatalogByAuthor(input).subscribe(
         (res: any) => {
-          return this.searchCatalog$.next(res);
+          const author = [];
+          res.forEach(element => {
+            if (element.availableBooksWithThisIsbn[0]) {
+              author.push(element.availableBooksWithThisIsbn[0]);
+            } else {
+              author.push(element.unavailableBooksWithThisIsbn[0]);
+            }
+            this.searchCatalog$.next(author);
+          });
+          return this.searchCatalog$;
         }
       );
         break;
       case 'description': this.catalogApi.getCatalogByDescription(input).subscribe(
         (res: any) => {
-          return this.searchCatalog$.next(res);
+          const description = [];
+          res.forEach(element => {
+            if (element.availableBooksWithThisIsbn[0]) {
+              description.push(element.availableBooksWithThisIsbn[0]);
+            } else {
+              description.push(element.unavailableBooksWithThisIsbn[0]);
+            }
+            this.searchCatalog$.next(description);
+          });
+          return this.searchCatalog$;
         }
       );
         break;
       case 'isbn': this.catalogApi.getCatalogByIsbn(input).subscribe(
         (res: any) => {
-          return this.searchCatalog$.next(res);
+          const isbn = [];
+          res.forEach(element => {
+            if (element.availableBooksWithThisIsbn[0]) {
+              isbn.push(element.availableBooksWithThisIsbn[0]);
+            } else {
+              isbn.push(element.unavailableBooksWithThisIsbn[0]);
+            }
+            this.searchCatalog$.next(isbn);
+          });
+          return this.searchCatalog$;
         }
       );
         break;
       case 'topic': this.catalogApi.getCatalogByTopic(input).subscribe(
         (res: any) => {
-          return this.searchCatalog$.next(res);
+          const topic = [];
+          res.forEach(element => {
+            if (element.availableBooksWithThisIsbn[0]) {
+              topic.push(element.availableBooksWithThisIsbn[0]);
+            } else {
+              topic.push(element.unavailableBooksWithThisIsbn[0]);
+            }
+            this.searchCatalog$.next(topic);
+          });
+          return this.searchCatalog$;
         }
       );
         break;
@@ -188,11 +236,11 @@ export class DataService {
   }
 
 
-// query para os cards dos users/
+  // query para os cards dos users/
   public queryCatalogUsers(searchableList, input) {
     switch (searchableList) {
       case 'keyword':
-              this.catalogApi.getCatalogByKeyword(input).subscribe(
+        this.catalogApi.getCatalogByKeyword(input).subscribe(
           (res: any) => {
             return this.searchCatalog$.next(res);
           });
@@ -308,8 +356,8 @@ export class DataService {
   }
 
   // remove from favorite
-  public removeFavoritesServices(userID: number,  isbn: any) {
-    return  this.acountApi.removeFavourite(userID, isbn);
+  public removeFavoritesServices(userID: number, isbn: any) {
+    return this.acountApi.removeFavourite(userID, isbn);
   }
   // get all favorites
   public getAllFavoritesServices(userID: number) {
@@ -416,7 +464,7 @@ export class DataService {
           } else {
             data.push(element.unavailableBooksWithThisIsbn[0]);
           }
-         return this.mostRead$.next(data);
+          return this.mostRead$.next(data);
         });
       }
     );
