@@ -22,11 +22,16 @@
         <p class="modal-title" translate>Confirmar entrega</p>
       </div>
       <form #f="ngForm" (keydown.enter)="onSubmit();privilegesModal.hide()">
-      <div class="modal-body">
-        <p class="btn" (click)="clickBook(book.historyBook)">{{ 'livro' | translate }}: {{book.historyBook.title}}</p>
-        <p class="btn" (click)="clickUser(book.historyUser)">{{ 'User' | translate }}: {{book.historyUser.email}}</p>
+      <div class="modal-body row align-content">
+          <p class="col-12">{{ 'livro' | translate }}:</p>
+          <div class="btn col-12">
+          <p class="btn" (click)="clickBook(book.historyBook)">
+            {{book.historyBook.title}}</p>
+        </div>
+          <p class="col-12">{{ 'livro' | translate }}:</p>
+          <p class="btn col-12" (click)="clickUser(book.historyUser)">{{book.historyUser.email}}</p>
       </div>
-      <div>
+      <div class="text-center col-10">
         <a class="btn" (keydown.enter)="onSubmit(book);modalRef.hide()" (click)="modalRef.hide();onSubmit(book)"><img src="assets/give.png"></a>
         <a class="btn" (click)="modalRef.hide()"><img src="assets/delete.png"></a>
       </div>

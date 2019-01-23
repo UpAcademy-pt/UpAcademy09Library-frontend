@@ -17,15 +17,15 @@
       <td>{{book.pickupDate | date:"M/d/yy, h:mm a"}}</td>
       <td class="btn" tooltip="Receber livro do utilizador" placement="top" (click)="openModal(receive)"><img src="/assets/receive.png"></td>
     </tr>
-    <ng-template class="modal rounded-0" #receive>
+    <ng-template class="modal rounded-0 text-center col-10" #receive>
       <div class="modal-header">
         <p class="modal-title" translate>Confirmar devolução:</p>
       </div>
-      <div class="modal-body">
+      <div class="modal-body text-center col-10">
         <p class="btn" (click)="clickBook(book.historyBook)">{{ 'livro' | translate }}: {{book.historyBook.title}}</p>
         <p class="btn" (click)="clickUser(book.historyUser)">{{ 'User' | translate }}: {{book.historyUser.email}}</p>
       </div>
-      <div>
+      <div class="text-center col-10">
         <a class="btn" (keydown.enter)="onSubmit(book);modalRef.hide()" (click)="modalRef.hide();onSubmit(book)"><img src="assets/give.png"></a>
         <a class="btn" (click)="modalRef.hide()"><img src="assets/delete.png"></a>
       </div>
