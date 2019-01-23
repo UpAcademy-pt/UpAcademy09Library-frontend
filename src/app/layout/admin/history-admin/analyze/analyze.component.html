@@ -1,44 +1,45 @@
 <div class="row" style="padding-right: 3rem">
-    <h4 class="text-center col-12"  style="padding-bottom: 2rem" translate>colocar titulo</h4>
-    <div class="col-12">
-<div class="container">
-  <div class="row">
-    <div class="col text-center">
-      <div id="print-section">
-        <table class="table table-hover" [ngClass]='theme'>
-          <thead>
-            <th translate >Livros a recolher</th>
-            <th translate >Localização</th>
-          </thead>
-          <tbody *ngFor="let book of historyRequest$ | async">
-            <tr *ngIf="book.reservationDate && !book.pickupDate">
-              <td><a class="btn" (click)="clickBook(book.historyBook)">{{book.historyBook.title}}</a></td>
-              <td><a class="btn" (click)="clickBook(book.historyBook)">{{book.historyBook.location}}</a></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <button printSectionId="print-section"  printTitle="Livros" [printStyle]="{table : {'border-collapse': 'collapse'}, table: {'border': '1px solid black'}, td : {'border': '1px solid black'}, tr: {'border': '1px solid black'}}" ngxPrint>{{ 'imprimir' | translate }}</button>
-    </div>
-    <br>
-    <div class="col">
-      <br>
-      <div class="tm-bg-primary-dark tm-block">
-        <div>
-          <table class="table table-hover" [ngClass]='theme'>
-            <thead>
-              <th translate>Livros mais reservados</th>
-            </thead>
-            <tbody *ngFor="let book of highestToReturn$ | async">
-              <tr>
-                <td><a class="btn" (click)="clickBook(book)">{{book.title}}</a></td>
-              </tr>
-            </tbody>
-          </table>
+  <h4 class="text-center col-12" style="padding-bottom: 2rem" translate>Reporting</h4>
+  <div class="col-12">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 text-center">
+          <div id="print-section">
+            <table class="table table-hover table" [ngClass]='theme'>
+              <thead>
+                <th translate>Livros a recolher</th>
+                <th translate>Localização</th>
+              </thead>
+              <tbody *ngFor="let book of historyRequest$ | async">
+                <tr *ngIf="book.reservationDate && !book.pickupDate">
+                  <td><a class="btn" (click)="clickBook(book.historyBook)">{{book.historyBook.title}}</a></td>
+                  <td><a class="btn" (click)="clickBook(book.historyBook)">{{book.historyBook.location}}</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <button printSectionId="print-section" printTitle="Livros" [printStyle]="{table : {'border-collapse': 'collapse'}, table: {'border': '1px solid black'}, td : {'border': '1px solid black'}, tr: {'border': '1px solid black'}}"
+            ngxPrint>{{ 'imprimir' | translate }}</button>
+        </div>
+        <br>
+        <div class="col-12">
+          <br>
+          <div class="tm-bg-primary-dark tm-block">
+            <div>
+              <table class="table table-hover" [ngClass]='theme'>
+                <thead>
+                  <th translate>Livros mais reservados</th>
+                </thead>
+                <tbody *ngFor="let book of highestToReturn$ | async">
+                  <tr>
+                    <td><a class="btn" (click)="clickBook(book)">{{book.title}}</a></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
-</div>
 </div>

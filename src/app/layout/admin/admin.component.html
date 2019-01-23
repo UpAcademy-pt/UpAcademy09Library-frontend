@@ -1,6 +1,6 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-lg-2 col-md-2 col-sm-2 m-0">
+    <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 m-0">
       <aside class="main_sidebar" (ngModel)="showRequest">
         <ul>
           <li class="active"><i class="fas fa-tasks"></i><a class="btn" data-toggle="collapse" (click)="isCollapsed = !isCollapsed"
@@ -27,7 +27,7 @@
       </aside>
     </div>
     <!-- container lado direito -->
-    <div class="col-lg-10 col-md-10 col-sm-10 padding">
+    <div class="col-xl-10 col-lg-9 col-md-8 col-sm-6 padding">
       <!-- add books component -->
       <div *ngIf="showAdd">
         <app-add-book (submit)="showCatalog = true; showAdd = false; showUser = false"></app-add-book>
@@ -38,7 +38,7 @@
         <!-- search component -->
         <div class="search content">
           <div class="container mb-3">
-            <div class="row justify-content-md-left">
+            <div class="row options justify-content-md-left">
               <div class="input-group">
                 <select class="select" (change)="selectChangeHandler($event)">
                   <option value="keyword" translate>Palavra-Chave</option>
@@ -51,7 +51,7 @@
                 <input class="form-control" type="text" name="search2" [(ngModel)]="inputCatalog" (keydown.enter)="onChangeInputCatalog()"
                   autocomplete="off" placeholder="{{'Procurar por' | translate}} {{selectedTypeSearchCatalog}}"
                   (ngModelChange)="loadCatalogAfterSearch($event)">
-                <button class="btn" type="submit" (click)="onChangeInputCatalog()"><i class="fas fa-search"></i></button>
+                <button class="btn btnSearch" type="submit" (click)="onChangeInputCatalog()"><i class="fas fa-search"></i></button>
               </div>
             </div>
           </div>
@@ -74,7 +74,7 @@
         <br>
         <div class="search content">
           <div class="container mb-3">
-            <div class="row justify-content-md-left">
+            <div class="row options justify-content-md-left">
               <div class="input-group">
                 <select class="select" (change)="selectChangeHandler($event)">
                   <option value="email">Email</option>
@@ -84,7 +84,7 @@
                 <input class="form-control" type="text" name="search1" [(ngModel)]="inputUser" (keydown.enter)="onChangeInputUser()"
                   autocomplete="off" placeholder="{{'Procurar por' | translate}} {{selectedTypeSearchUser}}"
                   (ngModelChange)="loadUserAfterSearch($event)">
-                <button class="btn" type="submit" (click)="onChangeInputUser()"><i class="fas fa-search"></i></button>
+                <button class="btn btnSearch" type="submit" (click)="onChangeInputUser()"><i class="fas fa-search"></i></button>
               </div>
             </div>
           </div>
@@ -113,84 +113,4 @@
       </div> 
     </div>
   </div>
-
-
-
 </div>
-<!-- <div class="container principal">
-  <app-history-admin [history$]='history$'></app-history-admin>
-</div> -->
-
-
-
-<!-- <tabset>
-  <tab heading="Gestão de Requisições" translate>
-    <app-history-admin [history$]='history$'></app-history-admin>
-  </tab>
-  <tab id="users-admin" heading="Gestão de Utilizadores" translate>
-    <br>
-    <div class="search content">
-      <div class="container mb-3">
-        <div class="row justify-content-md-left">
-          <div class="input-group">
-            <select class="select" (change)="selectChangeHandler($event)">
-              <option value="email">Email</option>
-              <option value="name" translate>Name</option>
-              <option value="nip" translate>NIP</option>
-            </select>
-            <input class="form-control" type="text" name="search1" [(ngModel)]="inputUser" (keydown.enter)="onChangeInputUser()"
-              autocomplete="off" placeholder="{{'Procurar por' | translate}} {{selectedTypeSearchUser}}"
-              (ngModelChange)="loadUserAfterSearch($event)">
-            <button class="btn" type="submit" (click)="onChangeInputUser()"><i class="fas fa-search"></i></button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <br>
-    <div *ngIf="(searchUser$ | async)?.length > 0; else notfoundUser">
-      <app-user-admin [user$]='searchUser$'></app-user-admin>
-    </div>
-    <ng-template #notfoundUser>
-      <div *ngIf="inputUser !== ''">
-        <p translate>A pesquisa por <span class="font-weight-bold">"{{inputUser}}"</span> não obteve resultados. Por
-          favor, faça nova
-          pesquisa.</p>
-      </div>
-    </ng-template>
-  </tab>
-  <tab id="books-admin" heading="Gestão de Livros" translate>
-    <br>
-    <div class="search content">
-      <div class="container mb-3">
-        <div class="row justify-content-md-left">
-          <div class="input-group">
-            <select class="select" (change)="selectChangeHandler($event)">
-              <option value="keyword" translate>Palavra-Chave</option>
-              <option value="title" translate>Título</option>
-              <option value="author" translate>Autor</option>
-              <option value="description" translate>Descrição</option>
-              <option value="isbn">Isbn</option>
-              <option value="topic" translate>Tópico</option>
-            </select>
-            <input class="form-control" type="text" name="search2" [(ngModel)]="inputCatalog" (keydown.enter)="onChangeInputCatalog()"
-              autocomplete="off" placeholder="{{'Procurar por' | translate}} {{selectedTypeSearchCatalog}}"
-              (ngModelChange)="loadCatalogAfterSearch($event)">
-            <button class="btn" type="submit" (click)="onChangeInputCatalog()"><i class="fas fa-search"></i></button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <br>
-    <div *ngIf="(searchCatalog$ | async)?.length > 0; else notfoundCatalog">
-      <app-catalog-admin [catalog$]='searchCatalog$'></app-catalog-admin>
-      <app-add-book></app-add-book>
-    </div>
-    <ng-template #notfoundCatalog>
-      <div *ngIf="inputCatalog !== ''">
-        <p translate>A pesquisa por <span class="font-weight-bold">"{{inputCatalog}}"</span> não obteve resultados. Por
-          favor, faça nova
-          pesquisa.</p>
-      </div>
-    </ng-template>
-  </tab>
-</tabset> -->
